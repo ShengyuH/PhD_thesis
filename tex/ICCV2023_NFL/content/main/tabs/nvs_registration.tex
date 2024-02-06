@@ -1,0 +1,27 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{1.0\columnwidth}{!}{
+    \begin{tabular}{l|ccc|ccc|ccc}
+    \toprule
+    & \multicolumn{3}{c|}{TownClean} & \multicolumn{3}{c|}{TownReal} & \multicolumn{3}{c}{Waymo NVS} \\
+    Method & Rec@5 $\uparrow$ & RE $\downarrow$ & TE $\downarrow$ &  Rec@5 $\uparrow$ & RE $\downarrow$ & TE $\downarrow$ & Rec@2 $\uparrow$ & RE $\downarrow$ &  TE $\downarrow$ \\
+    \midrule
+    % i-NGP~\cite{muller2022instant} & 70.3 & 13.6 & 4.2 & 76.0 & 12.9 & 4.2 & 60.2 & 7.2 & 1.9\\
+    % DS-NeRF~\cite{deng2021depth} & 58.3 & 18.1 & 5.1 & 56.2 & 16.8 & 5.1 & 42.3 & 8.9 & 2.4\\
+    % URF~\cite{rematas2021urban} & 61.5 & 15.5 & 5.0 & 59.9 & 14.9 & 4.7 & 32.1 & 10.0 & 2.7\\
+    % LiDARsim~\cite{manivasagam2020lidarsim} & \textbf{82.8} & \textbf{11.1} & \textbf{3.4} & \underline{79.2} & \textbf{9.9} & \textbf{3.4} & \underline{62.8} & \textbf{6.4} & \underline{1.8}\\
+    % Ours & \underline{80.2} & \underline{11.6} & \underline{3.7} & \textbf{85.9} & \underline{10.4} & \textbf{3.4} & \textbf{71.9} & \textbf{6.4} & \textbf{1.7}\\
+    i-NGP~\cite{muller2022instant} & 70.3 & 0.1 & 4.2 & 76.0 & 0.1 & 4.2 & 60.2 & 0.1 & 1.9\\
+    DS-NeRF~\cite{deng2021depth} & 58.3 & 0.2 & 5.1 & 56.2 & 0.2 & 5.1 & 42.3 & 0.1 & 2.4\\
+    URF~\cite{rematas2021urban} & 61.5 & 0.2 & 5.0 & 59.9 & 0.1 & 4.7 & 32.1 & 0.1 & 2.7\\
+    LiDARsim~\cite{manivasagam2020lidarsim} & \textbf{82.8} & 0.1 & \textbf{3.4} & \underline{79.2} & 0.1 & \textbf{3.4} & \underline{62.8} & 0.1 & \underline{1.8}\\
+    Ours & \underline{80.2} & 0.1 & \underline{3.7} & \textbf{85.9} & 0.1 & \textbf{3.4} & \textbf{71.9} & 0.1 & \textbf{1.7}\\
+    
+    \bottomrule
+    \end{tabular}
+    }
+	\caption{Point cloud registration results on three datasets.}
+	\label{tab:registration}
+\end{table}

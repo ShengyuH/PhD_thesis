@@ -1,0 +1,336 @@
+\newcommand{\X}{\mathbf{X}} %
+\newcommand{\Xset}{{\cal X}} %
+\newcommand{\T}{\mathbf{T}} %
+\newcommand{\Tset}{\mathcal{T}} %
+\newcommand{\Tp}{\tilde{\mathbf{T}}} %
+\newcommand{\Rp}{\tilde{\mathbf{R}}} %
+\newcommand{\tp}{\tilde{\mathbf{t}}} %
+\newcommand{\G}{\mathbf{G}} %
+\newcommand{\Edge}{\mathcal{E}} %
+\newcommand{\Gset}{\mathcal{G}} %
+\newcommand{\g}{\mathbf{g}} %
+\newcommand{\flow}{\mathbf{F}} %
+\newcommand{\fpt}{\bm{f}} %
+\newcommand{\Pm}{\mathbf{P}} %
+\newcommand{\Pset}{\mathcal{P}} %
+\newcommand{\Id}{\mathbf{I}} %
+\newcommand{\R}{\mathbb{R}} %
+\newcommand{\Rot}{\mathbf{R}} %
+\newcommand{\tra}{\mathbf{t}} %
+\newcommand{\Lap}{\mathbf{L}} %
+\newcommand{\w}{\mathbf{w}} %
+\newcommand{\Z}{\bm{\zeta}} %
+\newcommand{\Zm}{\mathbf{Z}} %
+\newcommand{\U}{\mathbf{U}} %
+\newcommand{\segnet}{\varphi_{\mathrm{group}}} %
+\newcommand{\flownet}{\varphi_{\mathrm{flow}}} %
+\newcommand{\confnet}{\varphi_{\mathrm{conf}}} %
+\newcommand{\Man}{\mathcal{M}} %
+\newcommand{\one}{\mathbf{1}} %
+\newcommand{\zero}{\mathbf{0}} %
+\newcommand{\SOg}{\mathrm{SO}(3)} %
+\newcommand{\Sm}{\mathbf{S}} %
+\newcommand{\D}{\mathbf{D}} %
+\newcommand{\gt}{\mathrm{gt}}   %
+\newcommand{\wt}{\mathbf{w}}    %
+\newcommand{\cf}{\textit{cf.}}    %
+\newcommand{\wrt}{\text{w.r.t.}}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\refpaper}[1]{{\hypersetup{linkcolor={blue}}\ref{#1}}}
+
+\newcommand{\mydots}{...}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{remark}{Remark}
+\newtheorem{cor}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{dfn}{Definition}
+\newtheorem{conj}{Conjecture}
+
+
+\newcommand{\tmpeqno}{{\color{red} (TEMPEQ) }}
+
+\newcommand{\jh}[1]{\textcolor[rgb]{0.0,0.0,1.0}{(Jiahui: #1)}}
+\newcommand{\tolga}[1]{{\color{red} (Tolga: #1)} }
+
+% \DeclareMathOperator{\sign}{sign}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\sas}{{\cal S} \alpha {\cal S} }
+
+\crefname{section}{\S}{\S\S}
+\crefname{subsection}{\S}{\S\S}
+
+\newtheorem{assumption}{\textbf{H}\hspace{-3pt}}
+\Crefname{assumption}{\textbf{H}\hspace{-3pt}}{\textbf{H}\hspace{-3pt}}
+\crefname{assumption}{\textbf{H}}{\textbf{H}}
+
+\newcommand{\insertimage}[4]{ %
+\begin{figure}[t]
+\centering
+\includegraphics[scale=#1, clip=true]{figures/#2}
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+\newcommand{\insertimageC}[5]{ %
+\begin{figure}[#5]
+\centering
+\includegraphics[width=#1\columnwidth, clip=true]{figures/#2}
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+
+\newcommand{\insertimageStar}[5]{ %
+\begin{figure}[#5]
+\centering
+\includegraphics[width=#1\columnwidth, clip=true]{figures/#2}
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+\newcommand{\insertimageAsSubfig}[5]{ %
+\begin{figure}[#5]
+\begin{center}
+\subfigbottomskip =-4in
+\subfigure{
+\includegraphics[width=#1\columnwidth]{figures/#2}
+\label{#4}
+}
+\end{center}
+\subfigbottomskip =-4in
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\newcolumntype{B}[3]{>{\boldmath\DC@{#1}{#2}{#3}}c<{\DC@end}}
+% \DeclareMathOperator*{\argmax}{argmax}
+\newcommand{\argmax}{\operatorname{argmax}}
+% \DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\argmin}{\operatorname{argmin}}
+\definecolor{tikz_gray}{RGB}{191,191,191}
+\definecolor{tikz_lblue}{RGB}{93,138,210}
+\definecolor{tikz_dblue}{RGB}{46,78,124}
+\definecolor{tikz_lviolet}{RGB}{161,125,173}
+\definecolor{tikz_dviolet}{RGB}{148,55,255}
+\definecolor{tikz_rose}{RGB}{250,150,150}
+\definecolor{tikz_pink}{RGB}{214,19,115}
+\definecolor{tikz_lpink}{RGB}{255,138,216}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\DeclareRobustCommand{\legendsquare}[1]{%
+  \tikz[baseline=(a.south)]{\node[#1, inner sep=.8ex, outer sep=0] (a) {};}%
+}
+\newcommand{\parahead}[1]{\noindent\textbf{#1}:\ }
+\newcommand{\tabhead}[1]{\par\textbf{#1}}
+\newenvironment{packed_itemize}
+{\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+
+\newcommand{\konrad}[1]{{\textcolor{blue}{\textbf{Konrad:} {#1}}}}
+\newcommand{\andreas}[1]{{\textcolor{cyan}{\textbf{Andreas:} {#1}}}}
+\newcommand{\zan}[1]{{\textcolor{brown}{\textbf{Zan:} {#1}}}}
+\newcommand{\shengyu}[1]{{\textcolor{magenta}{\textbf{Shengyu:} {#1}}}}
+\newcommand{\mikhail}[1]{{\textcolor{orange}{\textbf{Mikhail:} {#1}}}}
+\newcommand{\cameraready}[1]{{\textcolor{blue}{{#1}}}}
+
+\newcommand{\acro}{\textsc{Predator}}
+\newcommand{\acroexplain}{\textbf{p}oint-cloud \textbf{re}gistration with \textbf{d}eep \textbf{at}tention to the \textbf{o}verlap \textbf{r}egion}
+
+
+
+
+
+\sloppy
+\definecolor{turquoise}{cmyk}{0.65,0,0.1,0.3}
+\definecolor{purple}{rgb}{0.65,0,0.65}
+\definecolor{dark_green}{rgb}{0, 0.5, 0}
+\definecolor{orange}{rgb}{0.8, 0.6, 0.2}
+\definecolor{red}{rgb}{0.8, 0.2, 0.2}
+\definecolor{darkred}{rgb}{0.6, 0.1, 0.05}
+\definecolor{blueish}{rgb}{0.0, 0.3, .6}
+\definecolor{light_gray}{rgb}{0.7, 0.7, .7}
+\definecolor{pink}{rgb}{1, 0, 1}
+\definecolor{greyblue}{rgb}{0.25, 0.25, 1}
+
+
+\newcommand{\CIRCLE}[1]{\raisebox{.5pt}{\footnotesize \textcircled{\raisebox{-.6pt}{#1}}}}
+
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\waymo}{\emph{Waymo}}
+\newcommand{\nuscenes}{\emph{nuScenes}}
+
+\crefname{section}{\S}{\S\S}
+\crefname{subsection}{\S}{\S\S}
+\crefname{equation}{\text{Eq}}{\text{Eq}}
+\crefname{definition}{\text{Dfn.}}{\text{Dfn.}}
+\crefname{tab}{\text{Tab.}}{\text{Tab.}}
+\crefname{fig}{\text{Fig.}}{\text{Fig.}}
+\crefname{table}{\text{Tab.}}{\text{Tab.}}
+\crefname{figure}{\text{Fig.}}{\text{Fig.}}
+
+\usepackage{blindtext}
+\newcommand{\lorem}[1]{\todo{\blindtext[#1]}}
+
+\renewcommand{\paragraph}[1]{\vspace{1em}\noindent\textbf{#1}.}
+
+
+\newcommand{\lcircle}[1]{{\hspace{0.1em}\tikz\draw[#1,fill=#1] (0,0) circle (.4ex);}}
+
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+
+\def\eg{\emph{e.g}\onedot} \def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} \def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{c.f}\onedot} \def\Cf{\emph{C.f}\onedot}
+\def\etc{\emph{etc}\onedot} \def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} \def\dof{d.o.f\onedot}
+\def\etal{\emph{et al}\onedot}
+\makeatother
+
+\newcommand{\ego}{\mathrm{ego}}
+\newcommand{\pos}{\mathrm{pos}}
+\newcommand{\geo}{\mathrm{ego}}     %
+\newcommand{\pose}{\mathrm{pose}}
+\newcommand{\obj}{\mathrm{obj}}
+\newcommand{\trans}{\mathrm{trans}}
+\newcommand{\type}{*}
+\newcommand{\static}{\mathrm{static}}
+\newcommand{\loss}{\mathcal{L}}
+\newcommand{\Iset}{\mathcal{I}}
+\newcommand{\tvec}{\mathbf{t}}
+\newcommand{\Flow}{\mathbf{V}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\quat}{\mathbf{q}}
+\newcommand{\SEuc}{\mathrm{SE}(3)}
+\newcommand{\Feature}{\mathbf{F}}
+\newcommand{\feature}{\mathbf{f}}
+\newcommand{\agfeature}{\tilde{\mathbf{f}}}
+\newcommand{\pillar}{\mathbf{p}}
+\newcommand{\point}{\mathbf{x}}
+\newcommand{\offset}{\bm{\delta}}
+\newcommand{\MLP}{\mathrm{MLP}}
+\newcommand{\PN}{\mathrm{PN}}
+\newcommand{\FG}{\mathrm{FG}}
+\newcommand{\cat}{\mathrm{cat}}
+\newcommand{\textoffset}{\mathrm{offset}}
+\newcommand{\PC}{\mathbf{X}}
+\newcommand{\PCset}{\mathcal{X}}
+\newcommand{\bev}{\mathrm{base}}  %
+\newcommand{\motion}{\mathrm{motion}}  %
+
+\definecolor{lossred}{rgb}{1.0, 0.01, 0.24}
+\definecolor{lossgreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{lossblue}{rgb}{0.0, 0.44, 1.0}
+\definecolor{lossyellow}{rgb}{1.0, 0.66, 0.07}
+\definecolor{losspurple}{rgb}{0.76, 0.33, 0.76}
+\definecolor{tab10orange}{rgb}{1.0, 0.7, 0.0}
+
+
+
+
+\newcommand{\todo}[1]{{\textcolor{red}{\textbf{#1}}}}
+
+\newcommand{\btau}{\boldsymbol{\tau}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\beps}{\boldsymbol{\epsilon}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bc}{\mathbf{c}}
+
+\newcommand{\map}{\boldsymbol{\mathcal{M}}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\normal}{\mathcal{N}}
+\newcommand{\guide}{\mathcal{J}}
+
+
+\newcommand{\name}{{{NeLF}}\xspace}
+
+\definecolor{mygray}{RGB}{120, 120, 120}
+\definecolor{myblue}{RGB}{68, 114, 196}
+\definecolor{myorange}{RGB}{237, 125, 49}
+
+\newcommand{\dir}{\mathbf{d}}
+\newcommand{\origin}{\mathbf{o}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\ray}{\mathbf{r}}
+\newcommand{\density}{\sigma}
+\newcommand{\opacity}{\alpha}
+\newcommand{\reflectance}{\rho}
+\newcommand{\radiance}{\mathbf{c}}
+\newcommand{\intensity}{e}
+\newcommand{\pdrop}{p_d}
+\newcommand{\ptwo}{p_s}
+\newcommand{\posfeat}{\mathbf{f}_{\text{pos}}}
+\newcommand{\geofeat}{\mathbf{f}_{\text{geo}}}
+\newcommand{\geofeatbar}{\bar{\mathbf{f}}_{\text{geo}}}
+\newcommand{\dirfeat}{\mathbf{f}_{\text{dir}}}
+\newcommand{\rangefeat}{\mathbf{f}_{\text{range}}}
+\newcommand{\rayfeat}{\mathbf{f}_{\text{beam}}}
+\definecolor{sem0}{rgb}{0.98431373, 0.70588235, 0.68235294}
+\definecolor{sem1}{rgb}{0.70196078,0.80392157, 0.89019608}
+\definecolor{sem2}{rgb}{0.8, 0.92156863, 0.77254902}
+\definecolor{sem3}{rgb}{0.87058824, 0.79607843, 0.89411765}
+\definecolor{ourgray}{rgb}{0.78, 0.78, 0.78}
+\definecolor{error}{rgb}{0, 0.635, 1}
+\definecolor{sdpoints}{rgb}{1.0, 0.706, 0.0}
+\definecolor{hit}{rgb}{0.12156863,0.47058824,0.70588235}
+\newcommand{\coolwarm}{\includegraphics[width=3em,height=0.8em]{content/main/images/coolwarm.png}}
+\newcommand{\bwr}{\includegraphics[width=3em,height=0.8em]{content/main/images/bwr.png}}
+
+
+
+\DeclarePairedDelimiter\parens{\lparen}{\rparen}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\braces{\lbrace}{\rbrace}
+\DeclarePairedDelimiter\bracks{\lbrack}{\rbrack}
+\DeclarePairedDelimiter\angles{\langle}{\rangle}
+
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+\crefname{equation}{\text{Eq}}{\text{Eq}}
+\crefname{equation}{Eq.}{Eq.}
+
+\makeatletter
+ \def\@textbottom{\vskip \z@ \@plus 1pt}
+ \let\@texttop\relax
+\makeatother
+
+
+\newcommand{\dynfl}{DyNFL\xspace}
+\newcommand{\rgb}{\mathbf{c}}
+\newcommand{\pt}{\mathbf{p}}
+\newcommand{\feat}{\gamma}
+\newcommand{\tnt}{Tanks and Temples\xspace}
+\newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\sdf}{f}
+\newcommand{\curv}{\frac{1}{2} \nabla^2 \sdf(\pos)}
+\newcommand{\dist}{\mathbf{d_{f}}}
+\newcommand{\leik}{\mathcal{L}_{\text{eik}}}
+\newcommand{\transmittance}{\mathcal{T}}
+\newcommand{\bwrDyNFL}{\includegraphics[width=3em,height=0.8em]{Figures/bwr.png}}
+\newcommand{\exponential}[1]{\text{exp}\left(#1\right)}
+\newcommand{\rayfeatideal}{\mathbf{f}_{\text{ray}}}
+\newcommand{\reflectivity}{\rho}
+\newcommand{\weight}{\alpha}
+\newcommand{\rayOri}{\mathbf{o}}
+\newcommand{\rayDir}{\mathbf{d}}

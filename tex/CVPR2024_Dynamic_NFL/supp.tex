@@ -1,0 +1,102 @@
+% CVPR 2024 Paper Template; see https://github.com/cvpr-org/author-kit
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
+% \usepackage[review]{Dycvpr}      % To produce the REVIEW version
+% \usepackage{cvpr}              % To produce the CAMERA-READY version
+\usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+
+% Include other packages here, before hyperref.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{trimclip}
+\input{preamble}
+% \usepackage{natbib}
+% \bibliographystyle{abbrvnat}
+% \setcitestyle{authoryear,open={((},close={))}} %Citation-related commands
+
+\makeatletter
+\DeclareRobustCommand{\shortto}{%
+  \mathrel{\mathpalette\short@to\relax}%
+}
+
+\newcommand{\short@to}[2]{%
+  \mkern2mu
+  \clipbox{{.5\width} 0 0 0}{$\m@th#1\vphantom{+}{\shortrightarrow}$}%
+  }
+\makeatother
+\newcommand{\xing}[1]{{\textcolor{blue}{\textbf{Xing: {#1}}}}}
+\newcommand{\shengyu}[1]{{\textcolor{red}{\textbf{Shengyu:} {#1}}}}
+\newcommand{\orl}[1]{{\textcolor{orange}{\textbf{OrL:} {#1}}}}
+\newcommand{\stefan}[1]{{\textcolor{pink}{\textbf{Stefan:} {#1}}}}
+\newcommand{\hanfeng}[1]{{\textcolor{green}{\textbf{Hanfeng:} {#1}}}}
+\newcommand{\dynfl}{DyNFL\xspace}
+\newcommand{\dynfl}{DyNFL\xspace}
+\input{macro.tex}
+% It is strongly recommended to use hyperref, especially for the review version.
+% hyperref with option pagebackref eases the reviewers' job.
+% Please disable hyperref *only* if you encounter grave issues, e.g. with the
+% file validation for the camera-ready version.
+%
+% If you comment hyperref and then uncomment it, you should delete
+% ReviewTempalte.aux before re-running LaTeX.
+% (Or just hit 'q' on the first LaTeX run, let it finish, and you
+%  should be clear).
+% \usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,citecolor=cvprblue]{hyperref}
+
+
+% Support for easy cross-referencing
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+
+
+
+
+%%%%%%%%% PAPER ID  - PLEASE UPDATE
+\def\paperID{2088} % *** Enter the CVPR Paper ID here
+\def\confName{CVPR}
+\def\confYear{2024}
+
+
+
+
+\title{Supplementary material: Dynamic LiDAR Re-simulation using Compositional Neural Fields}
+
+\setcounter{section}{0}
+\renewcommand\thesection{\Alph{section}}
+\newcommand{\manuallabel}[2]{\def\@currentlabel{#2}\label{#1}}
+\makeatother
+\newcommand{\refpaper}[1]{{\hypersetup{linkcolor={red}}\ref{#1}}}
+\allowdisplaybreaks
+\begin{document}
+\maketitle
+
+
+
+
+In this supplementary material, we first provide additional information about the datasets for our evaluations and implementation details of our proposed method in~\cref{sec:sup_dataset}. Next, we present more qualitative results in~\cref{sec:sup_visual}. Please also check the supplemental video for more results showcasing our performance. Finally, we provide the complete derivations of the SDF-based volume rendering for active sensor in~\cref{sec:sup_sdf_vol_render}. 
+
+\input{supp_A_dataset_implementation}
+\input{supp_B_visual}
+\input{supp_C_SDF}
+% \input{\subdir/tables/seg_interp}
+
+%%%%%%%%% REFERENCES
+{\small
+\bibliographystyle{ieeenat_fullname}
+\bibliography{main}
+}
+
+\end{document}

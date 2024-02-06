@@ -1,0 +1,22 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{lccccc|ccccc}
+			\toprule
+			& \multicolumn{5}{c|}{\textit{3DMatch}} & \multicolumn{5}{c}{\textit{3DLoMatch}} \\
+			\# Samples & 5000 & 2500 & 1000 & 500 & 250 & 5000 & 2500 & 1000 & 500 & 250 \\
+            \midrule
+			& \multicolumn{10}{c}{\textit{Registration Recall (\%)}} \\
+		    \midrule
+ 			FCGF~\cite{Choy2019FCGF} & 85.1 & 84.7 & 83.3 & 81.6 & 71.4 & 40.1 & 41.7 & 38.2 & 35.4 & 26.8 \\
+ 			FCGF+OA& \textbf{89.1} & \textbf{88.9} & \textbf{88.7} & \textbf{87.5} & \textbf{85.4} & \textbf{57.8} & \textbf{58.3} & \textbf{59.8} & \textbf{58.7} & \textbf{55.9}\\
+			\bottomrule
+			
+	\end{tabular}
+	}
+	\caption{Ablation of the proposed overlap attention module with sparse convolution backbone. FCGF + OA denotes adding proposed overlap attention module to FCGF model.}
+	\label{tab:ablate_fcgf}
+\end{table}
+

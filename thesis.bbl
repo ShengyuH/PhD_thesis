@@ -1,0 +1,1842 @@
+\begin{thebibliography}{217}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Inproceedings
+\bibitem[{Aoki et~al.(2019)Aoki, Goforth, Srivatsan and
+  Lucey}]{aoki2019pointnetlk}
+\bibinfo{author}{Aoki, Y.}, \bibinfo{author}{Goforth, H.},
+  \bibinfo{author}{Srivatsan, R.A.}, \bibinfo{author}{Lucey, S.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{PointnetLK}: Robust \& efficient point cloud
+  registration using {Pointnet}}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{{Arun} et~al.(1987){Arun}, {Huang} and {Blostein}}]{4767965}
+\bibinfo{author}{{Arun}, K.S.}, \bibinfo{author}{{Huang}, T.S.},
+  \bibinfo{author}{{Blostein}, S.D.}, \bibinfo{year}{1987}.
+\newblock \bibinfo{title}{Least-squares fitting of two 3-d point sets}.
+\newblock \bibinfo{journal}{IEEE TPAMI} \bibinfo{volume}{9},
+  \bibinfo{pages}{698--700}.
+\newblock \DOIprefix\doi{10.1109/TPAMI.1987.4767965}.
+%Type = Inproceedings
+\bibitem[{Attal et~al.(2023)Attal, Huang, Richardt, Zollhoefer, Kopf, O'Toole
+  and Kim}]{attal2023hyperreel}
+\bibinfo{author}{Attal, B.}, \bibinfo{author}{Huang, J.B.},
+  \bibinfo{author}{Richardt, C.}, \bibinfo{author}{Zollhoefer, M.},
+  \bibinfo{author}{Kopf, J.}, \bibinfo{author}{O'Toole, M.},
+  \bibinfo{author}{Kim, C.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{{HyperReel}: High-fidelity {6-DoF} video with
+  ray-conditioned sampling}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Attal et~al.(2021)Attal, Laidlaw, Gokaslan, Kim, Richardt, Tompkin
+  and O'Toole}]{attal2021torf}
+\bibinfo{author}{Attal, B.}, \bibinfo{author}{Laidlaw, E.},
+  \bibinfo{author}{Gokaslan, A.}, \bibinfo{author}{Kim, C.},
+  \bibinfo{author}{Richardt, C.}, \bibinfo{author}{Tompkin, J.},
+  \bibinfo{author}{O'Toole, M.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{T{\"o}RF}: Time-of-flight radiance fields for
+  dynamic scene view synthesis}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Aygun et~al.(2021)Aygun, Osep, Weber, Maximov, Stachniss, Behley and
+  Leal-Taix{\'e}}]{aygun20214d}
+\bibinfo{author}{Aygun, M.}, \bibinfo{author}{Osep, A.},
+  \bibinfo{author}{Weber, M.}, \bibinfo{author}{Maximov, M.},
+  \bibinfo{author}{Stachniss, C.}, \bibinfo{author}{Behley, J.},
+  \bibinfo{author}{Leal-Taix{\'e}, L.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{4d panoptic {LiDAR} segmentation}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Bai et~al.(2020)Bai, Luo, Zhou, Fu, Quan and Tai}]{bai2020d3feat}
+\bibinfo{author}{Bai, X.}, \bibinfo{author}{Luo, Z.}, \bibinfo{author}{Zhou,
+  L.}, \bibinfo{author}{Fu, H.}, \bibinfo{author}{Quan, L.},
+  \bibinfo{author}{Tai, C.L.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{D3feat: Joint learning of dense detection and
+  description of 3d local features}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Barron et~al.(2021)Barron, Mildenhall, Tancik, Hedman, Martin-Brualla
+  and Srinivasan}]{barron2021mip}
+\bibinfo{author}{Barron, J.T.}, \bibinfo{author}{Mildenhall, B.},
+  \bibinfo{author}{Tancik, M.}, \bibinfo{author}{Hedman, P.},
+  \bibinfo{author}{Martin-Brualla, R.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{Mip-NeRF}: A multiscale representation for
+  anti-aliasing neural radiance fields}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Barron et~al.(2022)Barron, Mildenhall, Verbin, Srinivasan and
+  Hedman}]{barron2022mip}
+\bibinfo{author}{Barron, J.T.}, \bibinfo{author}{Mildenhall, B.},
+  \bibinfo{author}{Verbin, D.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{author}{Hedman, P.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{Mip-NeRF} 360: Unbounded anti-aliased neural
+  radiance fields}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Barron et~al.(2023)Barron, Mildenhall, Verbin, Srinivasan and
+  Hedman}]{barron2023zipnerf}
+\bibinfo{author}{Barron, J.T.}, \bibinfo{author}{Mildenhall, B.},
+  \bibinfo{author}{Verbin, D.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{author}{Hedman, P.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Zip-nerf: Anti-aliased grid-based neural radiance
+  fields}, in: \bibinfo{booktitle}{IEEE International Conference on Computer
+  Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Baur et~al.(2021)Baur, Emmerichs, Moosmann, Pinggera, Ommer and
+  Geiger}]{baur2021slim}
+\bibinfo{author}{Baur, S.A.}, \bibinfo{author}{Emmerichs, D.J.},
+  \bibinfo{author}{Moosmann, F.}, \bibinfo{author}{Pinggera, P.},
+  \bibinfo{author}{Ommer, B.}, \bibinfo{author}{Geiger, A.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{SLIM}: Self-supervised {LiDAR} scene flow and motion
+  segmentation}, in: \bibinfo{booktitle}{IEEE International Conference on
+  Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Behl et~al.(2019)Behl, Paschalidou, Donn{\'e} and
+  Geiger}]{behl2019pointflownet}
+\bibinfo{author}{Behl, A.}, \bibinfo{author}{Paschalidou, D.},
+  \bibinfo{author}{Donn{\'e}, S.}, \bibinfo{author}{Geiger, A.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{PointFlowNet}: Learning representations for rigid
+  motion estimation from point clouds}, in: \bibinfo{booktitle}{IEEE Conference
+  on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Behley et~al.(2019)Behley, Garbade, Milioto, Quenzel, Behnke,
+  Stachniss and Gall}]{behley2019semantickitti}
+\bibinfo{author}{Behley, J.}, \bibinfo{author}{Garbade, M.},
+  \bibinfo{author}{Milioto, A.}, \bibinfo{author}{Quenzel, J.},
+  \bibinfo{author}{Behnke, S.}, \bibinfo{author}{Stachniss, C.},
+  \bibinfo{author}{Gall, J.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{SemanticKITTI}: A dataset for semantic scene
+  understanding of lidar sequences}, in: \bibinfo{booktitle}{IEEE International
+  Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Bengio et~al.(2009)Bengio, Louradour, Collobert and
+  Weston}]{bengio2009curriculum}
+\bibinfo{author}{Bengio, Y.}, \bibinfo{author}{Louradour, J.},
+  \bibinfo{author}{Collobert, R.}, \bibinfo{author}{Weston, J.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Curriculum learning}, in: \bibinfo{booktitle}{IEEE
+  International Conference on Machine Learning (ICML)}.
+%Type = Inproceedings
+\bibitem[{Berman et~al.(2018)Berman, Triki and Blaschko}]{berman2018lovasz}
+\bibinfo{author}{Berman, M.}, \bibinfo{author}{Triki, A.R.},
+  \bibinfo{author}{Blaschko, M.B.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{The {Lov{\'a}sz-Softmax} loss: A tractable surrogate
+  for the optimization of the intersection-over-union measure in neural
+  networks}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Besl and McKay(1992)}]{besl1992method}
+\bibinfo{author}{Besl, P.J.}, \bibinfo{author}{McKay, N.D.},
+  \bibinfo{year}{1992}.
+\newblock \bibinfo{title}{Method for registration of 3-d shapes}, in:
+  \bibinfo{booktitle}{Sensor fusion IV: control paradigms and data structures},
+  \bibinfo{organization}{International Society for Optics and Photonics}. pp.
+  \bibinfo{pages}{586--606}.
+%Type = Inproceedings
+\bibitem[{Bijelic et~al.(2020)Bijelic, Gruber, Mannan, Kraus, Ritter, Dietmayer
+  and Heide}]{bijelic2020seeing}
+\bibinfo{author}{Bijelic, M.}, \bibinfo{author}{Gruber, T.},
+  \bibinfo{author}{Mannan, F.}, \bibinfo{author}{Kraus, F.},
+  \bibinfo{author}{Ritter, W.}, \bibinfo{author}{Dietmayer, K.},
+  \bibinfo{author}{Heide, F.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Seeing through fog without seeing fog: Deep
+  multimodal sensor fusion in unseen adverse weather}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Caccia et~al.(2019)Caccia, Van~Hoof, Courville and
+  Pineau}]{caccia2019deep}
+\bibinfo{author}{Caccia, L.}, \bibinfo{author}{Van~Hoof, H.},
+  \bibinfo{author}{Courville, A.}, \bibinfo{author}{Pineau, J.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Deep generative modeling of {LiDAR} data}, in:
+  \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on Intelligent Robots and
+  Systems (IROS)}.
+%Type = Inproceedings
+\bibitem[{Caesar et~al.(2020)Caesar, Bankiti, Lang, Vora, Liong, Xu, Krishnan,
+  Pan, Baldan and Beijbom}]{caesar2020nuscenes}
+\bibinfo{author}{Caesar, H.}, \bibinfo{author}{Bankiti, V.},
+  \bibinfo{author}{Lang, A.H.}, \bibinfo{author}{Vora, S.},
+  \bibinfo{author}{Liong, V.E.}, \bibinfo{author}{Xu, Q.},
+  \bibinfo{author}{Krishnan, A.}, \bibinfo{author}{Pan, Y.},
+  \bibinfo{author}{Baldan, G.}, \bibinfo{author}{Beijbom, O.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{nuScenes}: A multimodal dataset for autonomous
+  driving}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Techreport
+\bibitem[{Carlsson et~al.(2001)Carlsson, Steinvall and
+  Letalick}]{carlsson2001signature}
+\bibinfo{author}{Carlsson, T.}, \bibinfo{author}{Steinvall, O.},
+  \bibinfo{author}{Letalick, D.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{Signature simulation and signal analysis for 3-D
+  laser radar}.
+\newblock \bibinfo{type}{Technical Report}. Swedish Defence Research Agency.
+%Type = Inproceedings
+\bibitem[{Chang et~al.(2023)Chang, Sharma, Kaess and Lucey}]{chang2023neural}
+\bibinfo{author}{Chang, M.}, \bibinfo{author}{Sharma, A.},
+  \bibinfo{author}{Kaess, M.}, \bibinfo{author}{Lucey, S.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Neural radiance field with {LiDAR} maps}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Chen et~al.(2022)Chen, Xu, Geiger, Yu and Su}]{chen2022tensorf}
+\bibinfo{author}{Chen, A.}, \bibinfo{author}{Xu, Z.}, \bibinfo{author}{Geiger,
+  A.}, \bibinfo{author}{Yu, J.}, \bibinfo{author}{Su, H.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{TensorRF}: Tensorial radiance fields}, in:
+  \bibinfo{booktitle}{European Conference on Computer Vision (ECCV)}.
+%Type = Article
+\bibitem[{Chen and Yang(2016)}]{chen2016dynamic}
+\bibinfo{author}{Chen, C.}, \bibinfo{author}{Yang, B.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Dynamic occlusion detection and inpainting of in situ
+  captured terrestrial laser scanning point clouds sequence}.
+\newblock \bibinfo{journal}{ISPRS Journal of Photogrammetry and Remote Sensing}
+  \bibinfo{volume}{119}, \bibinfo{pages}{90--107}.
+%Type = Article
+\bibitem[{Chen et~al.(2021)Chen, Li, Mersch, Wiesmann, Gall, Behley and
+  Stachniss}]{chen2021ral}
+\bibinfo{author}{Chen, X.}, \bibinfo{author}{Li, S.}, \bibinfo{author}{Mersch,
+  B.}, \bibinfo{author}{Wiesmann, L.}, \bibinfo{author}{Gall, J.},
+  \bibinfo{author}{Behley, J.}, \bibinfo{author}{Stachniss, C.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Moving object segmentation in {3D} {LiDAR} data: A
+  learning-based approach exploiting sequential data}.
+\newblock \bibinfo{journal}{IEEE RA-L} .
+%Type = Article
+\bibitem[{Chng et~al.(2022)Chng, Ramasinghe, Sherrah and Lucey}]{chng2022garf}
+\bibinfo{author}{Chng, S.F.}, \bibinfo{author}{Ramasinghe, S.},
+  \bibinfo{author}{Sherrah, J.}, \bibinfo{author}{Lucey, S.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{GARF}: Gaussian activated radiance fields for high
+  fidelity reconstruction and pose estimation}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2204.05735} .
+%Type = Inproceedings
+\bibitem[{Choi et~al.(2015)Choi, Zhou and Koltun}]{choi2015robust}
+\bibinfo{author}{Choi, S.}, \bibinfo{author}{Zhou, Q.Y.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Robust reconstruction of indoor scenes}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Choy et~al.(2020)Choy, Dong and Koltun}]{choy2020deep}
+\bibinfo{author}{Choy, C.}, \bibinfo{author}{Dong, W.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Deep global registration}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Choy et~al.(2019a)Choy, Gwak and Savarese}]{choy2019Minkowski}
+\bibinfo{author}{Choy, C.}, \bibinfo{author}{Gwak, J.},
+  \bibinfo{author}{Savarese, S.}, \bibinfo{year}{2019}a.
+\newblock \bibinfo{title}{4d spatio-temporal convnets: Minkowski convolutional
+  neural networks}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Choy et~al.(2019b)Choy, Park and Koltun}]{Choy2019FCGF}
+\bibinfo{author}{Choy, C.}, \bibinfo{author}{Park, J.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2019}b.
+\newblock \bibinfo{title}{Fully convolutional geometric features}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Curless and Levoy(1996)}]{curless1996volumetric}
+\bibinfo{author}{Curless, B.}, \bibinfo{author}{Levoy, M.},
+  \bibinfo{year}{1996}.
+\newblock \bibinfo{title}{A volumetric method for building complex models from
+  range images}, in: \bibinfo{booktitle}{ACM SIGGRAPH}.
+%Type = Article
+\bibitem[{Cuturi(2013)}]{cuturi2013sinkhorn}
+\bibinfo{author}{Cuturi, M.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Sinkhorn distances: Lightspeed computation of optimal
+  transport}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Article
+\bibitem[{Dendorfer et~al.(2021)Dendorfer, Osep, Milan, Schindler, Cremers,
+  Reid, Roth and Leal-Taix{\'e}}]{dendorfer2021motchallenge}
+\bibinfo{author}{Dendorfer, P.}, \bibinfo{author}{Osep, A.},
+  \bibinfo{author}{Milan, A.}, \bibinfo{author}{Schindler, K.},
+  \bibinfo{author}{Cremers, D.}, \bibinfo{author}{Reid, I.},
+  \bibinfo{author}{Roth, S.}, \bibinfo{author}{Leal-Taix{\'e}, L.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{MOTchallenge}: A benchmark for single-camera
+  multiple target tracking}.
+\newblock \bibinfo{journal}{IJCV} .
+%Type = Inproceedings
+\bibitem[{Deng et~al.(2018a)Deng, Birdal and Ilic}]{Deng2018PPFFoldNetUL}
+\bibinfo{author}{Deng, H.}, \bibinfo{author}{Birdal, T.},
+  \bibinfo{author}{Ilic, S.}, \bibinfo{year}{2018}a.
+\newblock \bibinfo{title}{{PPF-FoldNet}: Unsupervised learning of rotation
+  invariant 3d local descriptors}, in: \bibinfo{booktitle}{European Conference
+  on Computer Vision (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Deng et~al.(2018b)Deng, Birdal and Ilic}]{deng2018ppfnet}
+\bibinfo{author}{Deng, H.}, \bibinfo{author}{Birdal, T.},
+  \bibinfo{author}{Ilic, S.}, \bibinfo{year}{2018}b.
+\newblock \bibinfo{title}{Ppfnnet: Global context aware local features for
+  robust 3d point matching}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Deng et~al.(2021)Deng, Liu, Zhu and Ramanan}]{deng2021depth}
+\bibinfo{author}{Deng, K.}, \bibinfo{author}{Liu, A.}, \bibinfo{author}{Zhu,
+  J.Y.}, \bibinfo{author}{Ramanan, D.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Depth-supervised {NeRF}: Fewer views and faster
+  training for free}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2107.02791} .
+%Type = Inproceedings
+\bibitem[{Deng et~al.(2022)Deng, Liu, Zhu and Ramanan}]{kangle2021dsnerf}
+\bibinfo{author}{Deng, K.}, \bibinfo{author}{Liu, A.}, \bibinfo{author}{Zhu,
+  J.Y.}, \bibinfo{author}{Ramanan, D.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Depth-supervised {NeRF}: Fewer views and faster
+  training for free}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{DeTone et~al.(2018)DeTone, Malisiewicz and
+  Rabinovich}]{detone2018superpoint}
+\bibinfo{author}{DeTone, D.}, \bibinfo{author}{Malisiewicz, T.},
+  \bibinfo{author}{Rabinovich, A.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Superpoint: Self-supervised interest point detection
+  and description}, in: \bibinfo{booktitle}{CVPR Workshops}.
+%Type = Inproceedings
+\bibitem[{Dewan et~al.(2016)Dewan, Caselitz, Tipaldi and
+  Burgard}]{dewan2016rigid}
+\bibinfo{author}{Dewan, A.}, \bibinfo{author}{Caselitz, T.},
+  \bibinfo{author}{Tipaldi, G.D.}, \bibinfo{author}{Burgard, W.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Rigid scene flow for 3d lidar scans}, in:
+  \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on Intelligent Robots and
+  Systems (IROS)}.
+%Type = Inproceedings
+\bibitem[{Dosovitskiy et~al.(2017)Dosovitskiy, Ros, Codevilla, Lopez and
+  Koltun}]{dosovitskiy2017carla}
+\bibinfo{author}{Dosovitskiy, A.}, \bibinfo{author}{Ros, G.},
+  \bibinfo{author}{Codevilla, F.}, \bibinfo{author}{Lopez, A.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{{CARLA}: An open urban driving simulator}, in:
+  \bibinfo{booktitle}{CoRL}, \bibinfo{organization}{PMLR}.
+%Type = Inproceedings
+\bibitem[{Dusmanu et~al.(2019)Dusmanu, Rocco, Pajdla, Pollefeys, Sivic, Torii
+  and Sattler}]{dusmanu2019d2Net}
+\bibinfo{author}{Dusmanu, M.}, \bibinfo{author}{Rocco, I.},
+  \bibinfo{author}{Pajdla, T.}, \bibinfo{author}{Pollefeys, M.},
+  \bibinfo{author}{Sivic, J.}, \bibinfo{author}{Torii, A.},
+  \bibinfo{author}{Sattler, T.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{D2-Net}: A trainable {CNN} for joint detection and
+  description of local features}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Ester et~al.(1996)Ester, Kriegel, Sander, Xu
+  et~al.}]{ester1996density}
+\bibinfo{author}{Ester, M.}, \bibinfo{author}{Kriegel, H.P.},
+  \bibinfo{author}{Sander, J.}, \bibinfo{author}{Xu, X.}, et~al.,
+  \bibinfo{year}{1996}.
+\newblock \bibinfo{title}{A density-based algorithm for discovering clusters in
+  large spatial databases with noise.}, in: \bibinfo{booktitle}{Proc.\ KDD}.
+%Type = Inproceedings
+\bibitem[{Fan et~al.(2021)Fan, Yang and Kankanhalli}]{fan2021point}
+\bibinfo{author}{Fan, H.}, \bibinfo{author}{Yang, Y.},
+  \bibinfo{author}{Kankanhalli, M.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Point 4d transformer networks for spatio-temporal
+  modeling in point cloud videos}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Fan et~al.(2020)Fan, Yu, Ding, Yang and Kankanhalli}]{fan2020pstnet}
+\bibinfo{author}{Fan, H.}, \bibinfo{author}{Yu, X.}, \bibinfo{author}{Ding,
+  Y.}, \bibinfo{author}{Yang, Y.}, \bibinfo{author}{Kankanhalli, M.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{PSTNet}: Point spatio-temporal convolution on point
+  cloud sequences}, in: \bibinfo{booktitle}{International Conference on
+  Learning Representations (ICLR)}.
+%Type = Article
+\bibitem[{Fan et~al.(2023)Fan, Wang, Wang and Zhang}]{fan2023fsdv2}
+\bibinfo{author}{Fan, L.}, \bibinfo{author}{Wang, F.}, \bibinfo{author}{Wang,
+  N.}, \bibinfo{author}{Zhang, Z.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{{FSD V2}: Improving fully sparse 3d object detection
+  with virtual voxels}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2308.03755} .
+%Type = Article
+\bibitem[{Fang et~al.(2020a)Fang, Zhou, Yan, Zhao, Zhang, Ma, Wang and
+  Yang}]{baidusim}
+\bibinfo{author}{Fang, J.}, \bibinfo{author}{Zhou, D.}, \bibinfo{author}{Yan,
+  F.}, \bibinfo{author}{Zhao, T.}, \bibinfo{author}{Zhang, F.},
+  \bibinfo{author}{Ma, Y.}, \bibinfo{author}{Wang, L.}, \bibinfo{author}{Yang,
+  R.}, \bibinfo{year}{2020}a.
+\newblock \bibinfo{title}{Augmented {LiDAR} simulator for autonomous driving}.
+\newblock \bibinfo{journal}{IEEE RA-L} \bibinfo{volume}{5},
+  \bibinfo{pages}{1931--1938}.
+%Type = Article
+\bibitem[{Fang et~al.(2020b)Fang, Zhou, Yan, Zhao, Zhang, Ma, Wang and
+  Yang}]{fang2020augmented}
+\bibinfo{author}{Fang, J.}, \bibinfo{author}{Zhou, D.}, \bibinfo{author}{Yan,
+  F.}, \bibinfo{author}{Zhao, T.}, \bibinfo{author}{Zhang, F.},
+  \bibinfo{author}{Ma, Y.}, \bibinfo{author}{Wang, L.}, \bibinfo{author}{Yang,
+  R.}, \bibinfo{year}{2020}b.
+\newblock \bibinfo{title}{Augmented lidar simulator for autonomous driving}.
+\newblock \bibinfo{journal}{IEEE Robotics and Automation Letters}
+  \bibinfo{volume}{5}, \bibinfo{pages}{1931--1938}.
+%Type = Inproceedings
+\bibitem[{Filatov et~al.(2020)Filatov, Rykov and Murashkin}]{filatov2020any}
+\bibinfo{author}{Filatov, A.}, \bibinfo{author}{Rykov, A.},
+  \bibinfo{author}{Murashkin, V.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Any motion detector: Learning class-agnostic scene
+  dynamics from a sequence of lidar point clouds}, in: \bibinfo{booktitle}{IEEE
+  International Conference on Robotics and Automation (ICRA)}.
+%Type = Inproceedings
+\bibitem[{Fridovich-Keil et~al.(2022)Fridovich-Keil, Yu, Tancik, Chen, Recht
+  and Kanazawa}]{fridovich2022plenoxels}
+\bibinfo{author}{Fridovich-Keil, S.}, \bibinfo{author}{Yu, A.},
+  \bibinfo{author}{Tancik, M.}, \bibinfo{author}{Chen, Q.},
+  \bibinfo{author}{Recht, B.}, \bibinfo{author}{Kanazawa, A.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Plenoxels: Radiance fields without neural networks},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Geiger et~al.(2012)Geiger, Lenz and Urtasun}]{geiger2012kitti}
+\bibinfo{author}{Geiger, A.}, \bibinfo{author}{Lenz, P.},
+  \bibinfo{author}{Urtasun, R.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Are we ready for autonomous driving? the kitti vision
+  benchmark suite}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Giancola et~al.(2019)Giancola, Zarzar and
+  Ghanem}]{giancola2019leveraging}
+\bibinfo{author}{Giancola, S.}, \bibinfo{author}{Zarzar, J.},
+  \bibinfo{author}{Ghanem, B.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Leveraging shape completion for 3d siamese tracking},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Gilmer et~al.(2017)Gilmer, Schoenholz, Riley, Vinyals and
+  Dahl}]{gilmer2017neural}
+\bibinfo{author}{Gilmer, J.}, \bibinfo{author}{Schoenholz, S.S.},
+  \bibinfo{author}{Riley, P.F.}, \bibinfo{author}{Vinyals, O.},
+  \bibinfo{author}{Dahl, G.E.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Neural message passing for quantum chemistry}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Machine Learning
+  (ICML)}.
+%Type = Article
+\bibitem[{Glennie(2012)}]{glennie2012calibration}
+\bibinfo{author}{Glennie, C.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Calibration and kinematic analysis of the {Velodyne}
+  {HDL-64E} {S2} lidar sensor}.
+\newblock \bibinfo{journal}{Photogrammetric Engineering \& Remote Sensing}
+  \bibinfo{volume}{78}, \bibinfo{pages}{339--347}.
+%Type = Inproceedings
+\bibitem[{Gojcic et~al.(2021)Gojcic, Litany, Wieser, Guibas and
+  Birdal}]{gojcic2021weakly}
+\bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Litany, O.},
+  \bibinfo{author}{Wieser, A.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{author}{Birdal, T.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Weakly supervised learning of rigid 3d scene flow},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Gojcic et~al.(2020a)Gojcic, Zhou, Wegner, Guibas and
+  Birdal}]{gojcic2020learning}
+\bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Zhou, C.},
+  \bibinfo{author}{Wegner, J.D.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{author}{Birdal, T.}, \bibinfo{year}{2020}a.
+\newblock \bibinfo{title}{Learning multiview 3d point cloud registration}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Gojcic et~al.(2020b)Gojcic, Zhou, Wegner, Guibas and
+  Birdal}]{gojcic2020multiview}
+\bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Zhou, C.},
+  \bibinfo{author}{Wegner, J.D.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{author}{Birdal, T.}, \bibinfo{year}{2020}b.
+\newblock \bibinfo{title}{Learning multiview 3d point cloud registration}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Gojcic et~al.(2019)Gojcic, Zhou, Wegner and
+  Wieser}]{gojcic20193DSmoothNet}
+\bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Zhou, C.},
+  \bibinfo{author}{Wegner, J.D.}, \bibinfo{author}{Wieser, A.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{The perfect match: 3d point cloud matching with
+  smoothed densities}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Gojcic et~al.(2018)Gojcic, Zhou and Wieser}]{gojcic2018learned}
+\bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Zhou, C.},
+  \bibinfo{author}{Wieser, A.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Learned compact local feature descriptor for
+  {TLS}-based geodetic monitoring of natural outdoor scenes.}, in:
+  \bibinfo{booktitle}{ISPRS Annals}.
+%Type = Inproceedings
+\bibitem[{Gropp et~al.(2020)Gropp, Yariv, Haim, Atzmon and
+  Lipman}]{icml2020_2086}
+\bibinfo{author}{Gropp, A.}, \bibinfo{author}{Yariv, L.},
+  \bibinfo{author}{Haim, N.}, \bibinfo{author}{Atzmon, M.},
+  \bibinfo{author}{Lipman, Y.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Implicit geometric regularization for learning
+  shapes}, in: \bibinfo{booktitle}{IEEE International Conference on Machine
+  Learning (ICML)}.
+%Type = Inproceedings
+\bibitem[{Gro{\ss} et~al.(2019)Gro{\ss}, O{\v{s}}ep and
+  Leibe}]{gross2019alignnet}
+\bibinfo{author}{Gro{\ss}, J.}, \bibinfo{author}{O{\v{s}}ep, A.},
+  \bibinfo{author}{Leibe, B.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{AlignNet-3D}: Fast point cloud registration of
+  partially observed objects}, in: \bibinfo{booktitle}{IEEE International
+  conference on 3D vision (3DV)}.
+%Type = Inproceedings
+\bibitem[{Gu et~al.(2020)Gu, Ma, Manivasagam, Zeng, Wang, Xiong, Su and
+  Urtasun}]{gu2020weakly}
+\bibinfo{author}{Gu, J.}, \bibinfo{author}{Ma, W.C.},
+  \bibinfo{author}{Manivasagam, S.}, \bibinfo{author}{Zeng, W.},
+  \bibinfo{author}{Wang, Z.}, \bibinfo{author}{Xiong, Y.}, \bibinfo{author}{Su,
+  H.}, \bibinfo{author}{Urtasun, R.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Weakly-supervised 3d shape completion in the wild},
+  in: \bibinfo{booktitle}{European Conference on Computer Vision (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Guillard et~al.(2022)Guillard, Vemprala, Gupta, Miksik, Vineet, Fua
+  and Kapoor}]{guillard2022learning}
+\bibinfo{author}{Guillard, B.}, \bibinfo{author}{Vemprala, S.},
+  \bibinfo{author}{Gupta, J.K.}, \bibinfo{author}{Miksik, O.},
+  \bibinfo{author}{Vineet, V.}, \bibinfo{author}{Fua, P.},
+  \bibinfo{author}{Kapoor, A.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Learning to simulate realistic {LiDARs}}, in:
+  \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on Intelligent Robots and
+  Systems (IROS)}.
+%Type = Inproceedings
+\bibitem[{Guo et~al.(2014)Guo, Bennamoun, Sohel, Lu, Wan and
+  Zhang}]{guo2014performanceEvaluation}
+\bibinfo{author}{Guo, Y.}, \bibinfo{author}{Bennamoun, M.},
+  \bibinfo{author}{Sohel, F.}, \bibinfo{author}{Lu, M.}, \bibinfo{author}{Wan,
+  J.}, \bibinfo{author}{Zhang, J.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Performance evaluation of 3{D} local feature
+  descriptors}, in: \bibinfo{booktitle}{ACCV}.
+%Type = Article
+\bibitem[{Hahner et~al.(2022)Hahner, Sakaridis, Bijelic, Heide, Yu, Dai and
+  Van~Gool}]{hahner2022lidar}
+\bibinfo{author}{Hahner, M.}, \bibinfo{author}{Sakaridis, C.},
+  \bibinfo{author}{Bijelic, M.}, \bibinfo{author}{Heide, F.},
+  \bibinfo{author}{Yu, F.}, \bibinfo{author}{Dai, D.},
+  \bibinfo{author}{Van~Gool, L.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{LiDAR} snowfall simulation for robust 3d object
+  detection}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2203.15118} .
+%Type = Inproceedings
+\bibitem[{Hahner et~al.(2021)Hahner, Sakaridis, Dai and {Van
+  Gool}}]{hahner2021fog}
+\bibinfo{author}{Hahner, M.}, \bibinfo{author}{Sakaridis, C.},
+  \bibinfo{author}{Dai, D.}, \bibinfo{author}{{Van Gool}, L.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Fog simulation on real {LiDAR} point clouds for 3d
+  object detection in adverse weather}, in: \bibinfo{booktitle}{IEEE Conference
+  on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Halber and Funkhouser(2016)}]{Halber2016StructuredGR}
+\bibinfo{author}{Halber, M.}, \bibinfo{author}{Funkhouser, T.A.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Structured global registration of {RGB-D} scans in
+  indoor environments}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1607.08539} .
+%Type = Article
+\bibitem[{Huang et~al.(2022a)Huang, Birdal, Gojcic, Guibas and
+  Hu}]{huang2022multiway}
+\bibinfo{author}{Huang, J.}, \bibinfo{author}{Birdal, T.},
+  \bibinfo{author}{Gojcic, Z.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{author}{Hu, S.M.}, \bibinfo{year}{2022}a.
+\newblock \bibinfo{title}{Multiway non-rigid point cloud registration via
+  learned functional map synchronization}.
+\newblock \bibinfo{journal}{IEEE T-PAMI} .
+%Type = Inproceedings
+\bibitem[{Huang et~al.(2021a)Huang, Wang, Birdal, Sung, Arrigoni, Hu and
+  Guibas}]{huang2021multibodysync}
+\bibinfo{author}{Huang, J.}, \bibinfo{author}{Wang, H.},
+  \bibinfo{author}{Birdal, T.}, \bibinfo{author}{Sung, M.},
+  \bibinfo{author}{Arrigoni, F.}, \bibinfo{author}{Hu, S.M.},
+  \bibinfo{author}{Guibas, L.J.}, \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{{MultiBodySync}: Multi-body segmentation and motion
+  estimation via 3d scan synchronization}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Huang et~al.(2022b)Huang, Gojcic, Huang, Wieser and
+  Schindler}]{huang2022dynamic}
+\bibinfo{author}{Huang, S.}, \bibinfo{author}{Gojcic, Z.},
+  \bibinfo{author}{Huang, J.}, \bibinfo{author}{Wieser, A.},
+  \bibinfo{author}{Schindler, K.}, \bibinfo{year}{2022}b.
+\newblock \bibinfo{title}{Dynamic 3d scene analysis by point cloud
+  accumulation}, in: \bibinfo{booktitle}{European Conference on Computer Vision
+  (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Huang et~al.(2021b)Huang, Gojcic, Usvyatsov, Wieser and
+  Schindler}]{huang2021predator}
+\bibinfo{author}{Huang, S.}, \bibinfo{author}{Gojcic, Z.},
+  \bibinfo{author}{Usvyatsov, M.}, \bibinfo{author}{Wieser, A.},
+  \bibinfo{author}{Schindler, K.}, \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{Predator: Registration of 3d point clouds with low
+  overlap}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Huang et~al.(2023)Huang, Gojcic, Wang, Williams, Kasten, Fidler,
+  Schindler and Litany}]{Huang2023nfl}
+\bibinfo{author}{Huang, S.}, \bibinfo{author}{Gojcic, Z.},
+  \bibinfo{author}{Wang, Z.}, \bibinfo{author}{Williams, F.},
+  \bibinfo{author}{Kasten, Y.}, \bibinfo{author}{Fidler, S.},
+  \bibinfo{author}{Schindler, K.}, \bibinfo{author}{Litany, O.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Neural lidar fields for novel view synthesis}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Ioffe and Szegedy(2015)}]{ioffe2015batch}
+\bibinfo{author}{Ioffe, S.}, \bibinfo{author}{Szegedy, C.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Batch normalization: Accelerating deep network
+  training by reducing internal covariate shift}, in: \bibinfo{booktitle}{IEEE
+  International Conference on Machine Learning (ICML)}.
+%Type = Article
+\bibitem[{Johnson and Hebert(1999)}]{johnson1999}
+\bibinfo{author}{Johnson, A.}, \bibinfo{author}{Hebert, M.},
+  \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{Using spin images for efficient object recognition in
+  cluttered 3d scenes}.
+\newblock \bibinfo{journal}{IEEE TPAMI} \bibinfo{volume}{21},
+  \bibinfo{pages}{433--449}.
+%Type = Article
+\bibitem[{Jund et~al.(2021)Jund, Sweeney, Abdo, Chen and
+  Shlens}]{jund2021scalable}
+\bibinfo{author}{Jund, P.}, \bibinfo{author}{Sweeney, C.},
+  \bibinfo{author}{Abdo, N.}, \bibinfo{author}{Chen, Z.},
+  \bibinfo{author}{Shlens, J.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Scalable scene flow from point clouds in the real
+  world}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2103.01306} .
+%Type = Article
+\bibitem[{Kabsch(1976)}]{kabsch1976solution}
+\bibinfo{author}{Kabsch, W.}, \bibinfo{year}{1976}.
+\newblock \bibinfo{title}{A solution for the best rotation to relate two sets
+  of vectors}.
+\newblock \bibinfo{journal}{Acta Crystallographica Section A: Crystal Physics,
+  Diffraction, Theoretical and General Crystallography} \bibinfo{volume}{32},
+  \bibinfo{pages}{922--923}.
+%Type = Misc
+\bibitem[{Kasiopy()}]{turbosquid}
+\bibinfo{author}{Kasiopy}, .
+\newblock \bibinfo{title}{Town with suburb}.
+\newblock
+  \bibinfo{howpublished}{\url{https://www.turbosquid.com/3d-models/town-suburb-3d-max/1085661}}.
+\newblock \bibinfo{note}{Last accessed 2023}.
+%Type = Inproceedings
+\bibitem[{Kazhdan et~al.(2006)Kazhdan, Bolitho and Hoppe}]{kazhdan2006poisson}
+\bibinfo{author}{Kazhdan, M.}, \bibinfo{author}{Bolitho, M.},
+  \bibinfo{author}{Hoppe, H.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Poisson surface reconstruction}, in:
+  \bibinfo{booktitle}{Eurographics}.
+%Type = Article
+\bibitem[{Kerbl et~al.(2023)Kerbl, Kopanas, Leimk{\"u}hler and
+  Drettakis}]{kerbl20233d}
+\bibinfo{author}{Kerbl, B.}, \bibinfo{author}{Kopanas, G.},
+  \bibinfo{author}{Leimk{\"u}hler, T.}, \bibinfo{author}{Drettakis, G.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{3d gaussian splatting for real-time radiance field
+  rendering}.
+\newblock \bibinfo{journal}{ACM Transactions on Graphics} \bibinfo{volume}{42},
+  \bibinfo{pages}{1--14}.
+%Type = Inproceedings
+\bibitem[{Khoury et~al.(2017)Khoury, Zhou and Koltun}]{khoury2017CGF}
+\bibinfo{author}{Khoury, M.}, \bibinfo{author}{Zhou, Q.Y.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Learning compact geometric features}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Article
+\bibitem[{Kilic et~al.(2021)Kilic, Hegde, Sindagi, Cooper, Foster and
+  Patel}]{kilic2021lidar}
+\bibinfo{author}{Kilic, V.}, \bibinfo{author}{Hegde, D.},
+  \bibinfo{author}{Sindagi, V.}, \bibinfo{author}{Cooper, A.B.},
+  \bibinfo{author}{Foster, M.A.}, \bibinfo{author}{Patel, V.M.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Lidar light scattering augmentation ({LISA}):
+  Physics-based simulation of adverse weather conditions for 3d object
+  detection}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2107.07004} .
+%Type = Inproceedings
+\bibitem[{Kim and Kim(2020)}]{kim2020remove}
+\bibinfo{author}{Kim, G.}, \bibinfo{author}{Kim, A.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Remove, then revert: Static point cloud map
+  construction using multiresolution range images}, in:
+  \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on Intelligent Robots and
+  Systems (IROS)}.
+%Type = Article
+\bibitem[{Kingma and Ba(2014)}]{kingma2014adam}
+\bibinfo{author}{Kingma, D.P.}, \bibinfo{author}{Ba, J.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Adam: A method for stochastic optimization} .
+%Type = Article
+\bibitem[{Kipf and Welling(2017)}]{kipf2016semi}
+\bibinfo{author}{Kipf, T.N.}, \bibinfo{author}{Welling, M.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Semi-supervised classification with graph
+  convolutional networks} .
+%Type = Article
+\bibitem[{Klenk et~al.(2022)Klenk, Koestler, Scaramuzza and
+  Cremers}]{klenk2022nerf}
+\bibinfo{author}{Klenk, S.}, \bibinfo{author}{Koestler, L.},
+  \bibinfo{author}{Scaramuzza, D.}, \bibinfo{author}{Cremers, D.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{E-NeRF}: Neural radiance fields from a moving event
+  camera}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2208.11300} .
+%Type = Inproceedings
+\bibitem[{Koenig and Howard(2004)}]{koenig2004design}
+\bibinfo{author}{Koenig, N.}, \bibinfo{author}{Howard, A.},
+  \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{Design and use paradigms for gazebo, an open-source
+  multi-robot simulator}, in: \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on
+  Intelligent Robots and Systems (IROS)}.
+%Type = Inproceedings
+\bibitem[{Kundu et~al.(2022)Kundu, Genova, Yin, Fathi, Pantofaru, Guibas,
+  Tagliasacchi, Dellaert and Funkhouser}]{KunduCVPR2022PNF}
+\bibinfo{author}{Kundu, A.}, \bibinfo{author}{Genova, K.},
+  \bibinfo{author}{Yin, X.}, \bibinfo{author}{Fathi, A.},
+  \bibinfo{author}{Pantofaru, C.}, \bibinfo{author}{Guibas, L.},
+  \bibinfo{author}{Tagliasacchi, A.}, \bibinfo{author}{Dellaert, F.},
+  \bibinfo{author}{Funkhouser, T.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Panoptic neural fields: A semantic object-aware
+  neural scene representation}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Kurup and Bos(2021)}]{kurup2021dsor}
+\bibinfo{author}{Kurup, A.}, \bibinfo{author}{Bos, J.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{DSOR}: A scalable statistical filter for removing
+  falling snow from {LiDAR} point clouds in severe winter weather}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2109.07078} .
+%Type = Inproceedings
+\bibitem[{Lahoud et~al.(2019)Lahoud, Ghanem, Pollefeys and
+  Oswald}]{lahoud20193d}
+\bibinfo{author}{Lahoud, J.}, \bibinfo{author}{Ghanem, B.},
+  \bibinfo{author}{Pollefeys, M.}, \bibinfo{author}{Oswald, M.R.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{3d instance segmentation via multi-task metric
+  learning}, in: \bibinfo{booktitle}{IEEE International Conference on Computer
+  Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Lai et~al.(2014)Lai, Bo and Fox}]{lai2014unsupervised}
+\bibinfo{author}{Lai, K.}, \bibinfo{author}{Bo, L.}, \bibinfo{author}{Fox, D.},
+  \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Unsupervised feature learning for 3d scene labeling},
+  in: \bibinfo{booktitle}{IEEE International Conference on Robotics and
+  Automation (ICRA)}.
+%Type = Inproceedings
+\bibitem[{Lee et~al.(2015)Lee, Kang, Cho, Sim, Park, Um and Cho}]{lee2015lidar}
+\bibinfo{author}{Lee, S.}, \bibinfo{author}{Kang, D.}, \bibinfo{author}{Cho,
+  S.}, \bibinfo{author}{Sim, S.}, \bibinfo{author}{Park, Y.W.},
+  \bibinfo{author}{Um, K.}, \bibinfo{author}{Cho, K.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Lidar simulation method for low-cost repetitive
+  validation}, in: \bibinfo{booktitle}{Advances in Computer Science and
+  Ubiquitous Computing: CSA \& CUTE}, \bibinfo{organization}{Springer}. pp.
+  \bibinfo{pages}{237--242}.
+%Type = Inproceedings
+\bibitem[{Li et~al.(2023a)Li, Ren and Liu}]{li2023pcgen}
+\bibinfo{author}{Li, C.}, \bibinfo{author}{Ren, Y.}, \bibinfo{author}{Liu, B.},
+  \bibinfo{year}{2023}a.
+\newblock \bibinfo{title}{Pcgen: Point cloud generator for lidar simulation},
+  in: \bibinfo{booktitle}{IEEE International Conference on Robotics and
+  Automation (ICRA)}, \bibinfo{organization}{IEEE}. pp.
+  \bibinfo{pages}{11676--11682}.
+%Type = Inproceedings
+\bibitem[{Li et~al.(2019)Li, Li, Fu, Cohen-Or and Heng}]{li2019pu}
+\bibinfo{author}{Li, R.}, \bibinfo{author}{Li, X.}, \bibinfo{author}{Fu, C.W.},
+  \bibinfo{author}{Cohen-Or, D.}, \bibinfo{author}{Heng, P.A.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{PU-GAN}: a point cloud upsampling adversarial
+  network}, in: \bibinfo{booktitle}{IEEE International Conference on Computer
+  Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Li et~al.(2021a)Li, Lin, He, Liu and Shen}]{li2021hcrf}
+\bibinfo{author}{Li, R.}, \bibinfo{author}{Lin, G.}, \bibinfo{author}{He, T.},
+  \bibinfo{author}{Liu, F.}, \bibinfo{author}{Shen, C.}, \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{{HCRF-Flow}: Scene flow from point clouds with
+  continuous high-order crfs and position-aware flow embedding}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Li et~al.(2021b)Li, Kaesemodel~Pontes and Lucey}]{li2021neural}
+\bibinfo{author}{Li, X.}, \bibinfo{author}{Kaesemodel~Pontes, J.},
+  \bibinfo{author}{Lucey, S.}, \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{Neural scene flow prior}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Li et~al.(2023b)Li, M\"uller, Evans, Taylor, Unberath, Liu and
+  Lin}]{li2023neuralangelo}
+\bibinfo{author}{Li, Z.}, \bibinfo{author}{M\"uller, T.},
+  \bibinfo{author}{Evans, A.}, \bibinfo{author}{Taylor, R.H.},
+  \bibinfo{author}{Unberath, M.}, \bibinfo{author}{Liu, M.Y.},
+  \bibinfo{author}{Lin, C.H.}, \bibinfo{year}{2023}b.
+\newblock \bibinfo{title}{Neuralangelo: High-fidelity neural surface
+  reconstruction}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Li et~al.(2021c)Li, Niklaus, Snavely and Wang}]{li2020neural}
+\bibinfo{author}{Li, Z.}, \bibinfo{author}{Niklaus, S.},
+  \bibinfo{author}{Snavely, N.}, \bibinfo{author}{Wang, O.},
+  \bibinfo{year}{2021}c.
+\newblock \bibinfo{title}{Neural scene flow fields for space-time view
+  synthesis of dynamic scenes}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Lim et~al.(2003)Lim, Treitz, Wulder, St-Onge and
+  Flood}]{lim2003lidar}
+\bibinfo{author}{Lim, K.}, \bibinfo{author}{Treitz, P.},
+  \bibinfo{author}{Wulder, M.}, \bibinfo{author}{St-Onge, B.},
+  \bibinfo{author}{Flood, M.}, \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{Lidar remote sensing of forest structure}.
+\newblock \bibinfo{journal}{Progress in physical geography}
+  \bibinfo{volume}{27}, \bibinfo{pages}{88--106}.
+%Type = Inproceedings
+\bibitem[{Lin et~al.(2021)Lin, Ma, Torralba and Lucey}]{lin2021barf}
+\bibinfo{author}{Lin, C.H.}, \bibinfo{author}{Ma, W.C.},
+  \bibinfo{author}{Torralba, A.}, \bibinfo{author}{Lucey, S.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{BARF}: Bundle-adjusting neural radiance fields}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Article
+\bibitem[{Liu et~al.(2020)Liu, Gu, Zaw~Lin, Chua and Theobalt}]{liu2020neural}
+\bibinfo{author}{Liu, L.}, \bibinfo{author}{Gu, J.}, \bibinfo{author}{Zaw~Lin,
+  K.}, \bibinfo{author}{Chua, T.S.}, \bibinfo{author}{Theobalt, C.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Neural sparse voxel fields}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Liu et~al.(2019a)Liu, Qi and Guibas}]{liu2019flownet3d}
+\bibinfo{author}{Liu, X.}, \bibinfo{author}{Qi, C.R.}, \bibinfo{author}{Guibas,
+  L.J.}, \bibinfo{year}{2019}a.
+\newblock \bibinfo{title}{{FlowNet3D}: Learning scene flow in 3d point clouds},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Liu et~al.(2019b)Liu, Yan and Bohg}]{liu2019meteornet}
+\bibinfo{author}{Liu, X.}, \bibinfo{author}{Yan, M.}, \bibinfo{author}{Bohg,
+  J.}, \bibinfo{year}{2019}b.
+\newblock \bibinfo{title}{Meteornet: Deep learning on dynamic 3d point cloud
+  sequences}, in: \bibinfo{booktitle}{IEEE International Conference on Computer
+  Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Liu et~al.(2023)Liu, Gao, Meuleman, Tseng, Saraf, Kim, Chuang, Kopf
+  and Huang}]{liu2023robust}
+\bibinfo{author}{Liu, Y.L.}, \bibinfo{author}{Gao, C.},
+  \bibinfo{author}{Meuleman, A.}, \bibinfo{author}{Tseng, H.Y.},
+  \bibinfo{author}{Saraf, A.}, \bibinfo{author}{Kim, C.},
+  \bibinfo{author}{Chuang, Y.Y.}, \bibinfo{author}{Kopf, J.},
+  \bibinfo{author}{Huang, J.B.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Robust dynamic radiance fields}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Long et~al.(2015)Long, Shelhamer and Darrell}]{long2015fully}
+\bibinfo{author}{Long, J.}, \bibinfo{author}{Shelhamer, E.},
+  \bibinfo{author}{Darrell, T.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Fully convolutional networks for semantic
+  segmentation}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Lu et~al.(2020)Lu, Chen, Liu, Qu and Knoll}]{lu2020rskdd}
+\bibinfo{author}{Lu, F.}, \bibinfo{author}{Chen, G.}, \bibinfo{author}{Liu,
+  Y.}, \bibinfo{author}{Qu, Z.}, \bibinfo{author}{Knoll, A.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Rskdd-net: Random sample-based keypoint detector and
+  descriptor}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Lucas and Kanade(1981)}]{lucas1981LK}
+\bibinfo{author}{Lucas, B.D.}, \bibinfo{author}{Kanade, T.},
+  \bibinfo{year}{1981}.
+\newblock \bibinfo{title}{An iterative image registration technique with an
+  application to stereo vision}, in: \bibinfo{booktitle}{IJCAI}.
+%Type = Article
+\bibitem[{Luo et~al.(2022)Luo, Du, Tarr, Tenenbaum, Torralba and
+  Gan}]{luo2022learning}
+\bibinfo{author}{Luo, A.}, \bibinfo{author}{Du, Y.}, \bibinfo{author}{Tarr,
+  M.J.}, \bibinfo{author}{Tenenbaum, J.B.}, \bibinfo{author}{Torralba, A.},
+  \bibinfo{author}{Gan, C.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Learning neural acoustic fields}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2204.00628} .
+%Type = Inproceedings
+\bibitem[{Maas et~al.(2013)Maas, Hannun and Ng}]{maas2013rectifier}
+\bibinfo{author}{Maas, A.L.}, \bibinfo{author}{Hannun, A.Y.},
+  \bibinfo{author}{Ng, A.Y.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Rectifier nonlinearities improve neural network
+  acoustic models}, in: \bibinfo{booktitle}{IEEE International Conference on
+  Machine Learning (ICML)}.
+%Type = Inproceedings
+\bibitem[{Manivasagam et~al.(2020)Manivasagam, Wang, Wong, Zeng, Sazanovich,
+  Tan, Yang, Ma and Urtasun}]{manivasagam2020lidarsim}
+\bibinfo{author}{Manivasagam, S.}, \bibinfo{author}{Wang, S.},
+  \bibinfo{author}{Wong, K.}, \bibinfo{author}{Zeng, W.},
+  \bibinfo{author}{Sazanovich, M.}, \bibinfo{author}{Tan, S.},
+  \bibinfo{author}{Yang, B.}, \bibinfo{author}{Ma, W.C.},
+  \bibinfo{author}{Urtasun, R.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{LiDARsim}: Realistic {LiDAR} simulation by
+  leveraging the real world}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Max(1995)}]{max1995optical}
+\bibinfo{author}{Max, N.}, \bibinfo{year}{1995}.
+\newblock \bibinfo{title}{Optical models for direct volume rendering}.
+\newblock \bibinfo{journal}{IEEE Transactions on Visualization and Computer
+  Graphics} \bibinfo{volume}{1}, \bibinfo{pages}{99--108}.
+%Type = Techreport
+\bibitem[{Max and Chen(2005)}]{max2005local}
+\bibinfo{author}{Max, N.}, \bibinfo{author}{Chen, M.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Local and global illumination in the volume rendering
+  integral}.
+\newblock \bibinfo{type}{Technical Report}. Lawrence Livermore National Lab.,
+  Livermore, CA.
+%Type = Inproceedings
+\bibitem[{Mescheder et~al.(2019)Mescheder, Oechsle, Niemeyer, Nowozin and
+  Geiger}]{mescheder2019occupancy}
+\bibinfo{author}{Mescheder, L.}, \bibinfo{author}{Oechsle, M.},
+  \bibinfo{author}{Niemeyer, M.}, \bibinfo{author}{Nowozin, S.},
+  \bibinfo{author}{Geiger, A.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Occupancy networks: Learning 3d reconstruction in
+  function space}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Mildenhall et~al.(2022)Mildenhall, Hedman, Martin-Brualla, Srinivasan
+  and Barron}]{mildenhall2022nerf}
+\bibinfo{author}{Mildenhall, B.}, \bibinfo{author}{Hedman, P.},
+  \bibinfo{author}{Martin-Brualla, R.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{author}{Barron, J.T.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{NeRF} in the dark: High dynamic range view synthesis
+  from noisy raw images}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Mildenhall et~al.(2020)Mildenhall, Srinivasan, Tancik, Barron,
+  Ramamoorthi and Ng}]{mildenhall2020nerf}
+\bibinfo{author}{Mildenhall, B.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{author}{Tancik, M.}, \bibinfo{author}{Barron, J.T.},
+  \bibinfo{author}{Ramamoorthi, R.}, \bibinfo{author}{Ng, R.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{NerF}: Representing scenes as neural radiance fields
+  for view synthesis}, in: \bibinfo{booktitle}{European Conference on Computer
+  Vision (ECCV)}.
+%Type = Article
+\bibitem[{M{\"u}ller et~al.(2022)M{\"u}ller, Evans, Schied and
+  Keller}]{muller2022instant}
+\bibinfo{author}{M{\"u}ller, T.}, \bibinfo{author}{Evans, A.},
+  \bibinfo{author}{Schied, C.}, \bibinfo{author}{Keller, A.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Instant neural graphics primitives with a
+  multiresolution hash encoding}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2201.05989} .
+%Type = Article
+\bibitem[{M\"uller et~al.(2022)M\"uller, Evans, Schied and
+  Keller}]{mueller2022instant}
+\bibinfo{author}{M\"uller, T.}, \bibinfo{author}{Evans, A.},
+  \bibinfo{author}{Schied, C.}, \bibinfo{author}{Keller, A.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Instant neural graphics primitives with a
+  multiresolution hash encoding}.
+\newblock \bibinfo{journal}{ACM Trans. Graph.} \bibinfo{volume}{41},
+  \bibinfo{pages}{102:1--102:15}.
+%Type = Inproceedings
+\bibitem[{Nair and Hinton(2010)}]{nair2010rectified}
+\bibinfo{author}{Nair, V.}, \bibinfo{author}{Hinton, G.E.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Rectified linear units improve restricted boltzmann
+  machines}, in: \bibinfo{booktitle}{IEEE International Conference on Machine
+  Learning (ICML)}.
+%Type = Inproceedings
+\bibitem[{Niemeyer et~al.(2020)Niemeyer, Mescheder, Oechsle and
+  Geiger}]{niemeyer2020differentiable}
+\bibinfo{author}{Niemeyer, M.}, \bibinfo{author}{Mescheder, L.},
+  \bibinfo{author}{Oechsle, M.}, \bibinfo{author}{Geiger, A.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Differentiable volumetric rendering: Learning
+  implicit 3d representations without 3d supervision}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Oechsle et~al.(2021)Oechsle, Peng and Geiger}]{oechsle2021unisurf}
+\bibinfo{author}{Oechsle, M.}, \bibinfo{author}{Peng, S.},
+  \bibinfo{author}{Geiger, A.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{UNISURF}: Unifying neural implicit surfaces and
+  radiance fields for multi-view reconstruction}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Ost et~al.(2022)Ost, Laradji, Newell, Bahat and
+  Heide}]{Ost_2022_CVPR}
+\bibinfo{author}{Ost, J.}, \bibinfo{author}{Laradji, I.},
+  \bibinfo{author}{Newell, A.}, \bibinfo{author}{Bahat, Y.},
+  \bibinfo{author}{Heide, F.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Neural point light fields}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Ost et~al.(2021a)Ost, Mannan, Thuerey, Knodt and
+  Heide}]{ost2021neural}
+\bibinfo{author}{Ost, J.}, \bibinfo{author}{Mannan, F.},
+  \bibinfo{author}{Thuerey, N.}, \bibinfo{author}{Knodt, J.},
+  \bibinfo{author}{Heide, F.}, \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{Neural scene graphs for dynamic scenes}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Ost et~al.(2021b)Ost, Mannan, Thuerey, Knodt and
+  Heide}]{Ost_2021_CVPR}
+\bibinfo{author}{Ost, J.}, \bibinfo{author}{Mannan, F.},
+  \bibinfo{author}{Thuerey, N.}, \bibinfo{author}{Knodt, J.},
+  \bibinfo{author}{Heide, F.}, \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{Neural scene graphs for dynamic scenes}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Ouyang and Raviv(2021)}]{ouyang2021occlusion}
+\bibinfo{author}{Ouyang, B.}, \bibinfo{author}{Raviv, D.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Occlusion guided self-supervised scene flow
+  estimation on 3d point clouds}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2104.04724} .
+%Type = Inproceedings
+\bibitem[{Pais et~al.(2020)Pais, Ramalingam, Govindu, Nascimento, Chellappa and
+  Miraldo}]{pais20203dregnet}
+\bibinfo{author}{Pais, G.D.}, \bibinfo{author}{Ramalingam, S.},
+  \bibinfo{author}{Govindu, V.M.}, \bibinfo{author}{Nascimento, J.C.},
+  \bibinfo{author}{Chellappa, R.}, \bibinfo{author}{Miraldo, P.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{3DRegNet}: A deep neural network for 3d point
+  registration}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Park et~al.(2019)Park, Florence, Straub, Newcombe and
+  Lovegrove}]{park2019deepsdf}
+\bibinfo{author}{Park, J.J.}, \bibinfo{author}{Florence, P.},
+  \bibinfo{author}{Straub, J.}, \bibinfo{author}{Newcombe, R.},
+  \bibinfo{author}{Lovegrove, S.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{DeepSDF}: Learning continuous signed distance
+  functions for shape representation}, in: \bibinfo{booktitle}{IEEE Conference
+  on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Park et~al.(2021a)Park, Sinha, Barron, Bouaziz, Goldman, Seitz and
+  Martin-Brualla}]{park2021nerfies}
+\bibinfo{author}{Park, K.}, \bibinfo{author}{Sinha, U.},
+  \bibinfo{author}{Barron, J.T.}, \bibinfo{author}{Bouaziz, S.},
+  \bibinfo{author}{Goldman, D.B.}, \bibinfo{author}{Seitz, S.M.},
+  \bibinfo{author}{Martin-Brualla, R.}, \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{Nerfies: Deformable neural radiance fields}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Article
+\bibitem[{Park et~al.(2021b)Park, Sinha, Hedman, Barron, Bouaziz, Goldman,
+  Martin-Brualla and Seitz}]{park2021hypernerf}
+\bibinfo{author}{Park, K.}, \bibinfo{author}{Sinha, U.},
+  \bibinfo{author}{Hedman, P.}, \bibinfo{author}{Barron, J.T.},
+  \bibinfo{author}{Bouaziz, S.}, \bibinfo{author}{Goldman, D.B.},
+  \bibinfo{author}{Martin-Brualla, R.}, \bibinfo{author}{Seitz, S.M.},
+  \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{{HyperNeRF}: A higher-dimensional representation for
+  topologically varying neural radiance fields}.
+\newblock \bibinfo{journal}{ACM Transactions on Graphics} \bibinfo{volume}{40}.
+%Type = Article
+\bibitem[{Paszke et~al.(2021)Paszke, Gross, Massa, Lerer, Bradbury, Chanan,
+  Killeen, Lin, Gimelshein, Antiga, Desmaison, Kopf, Yang, DeVito, Raison,
+  Tejani, Chilamkurthy, Steiner, Fang, Bai and Chintala}]{NEURIPS2019_9015}
+\bibinfo{author}{Paszke, A.}, \bibinfo{author}{Gross, S.},
+  \bibinfo{author}{Massa, F.}, \bibinfo{author}{Lerer, A.},
+  \bibinfo{author}{Bradbury, J.}, \bibinfo{author}{Chanan, G.},
+  \bibinfo{author}{Killeen, T.}, \bibinfo{author}{Lin, Z.},
+  \bibinfo{author}{Gimelshein, N.}, \bibinfo{author}{Antiga, L.},
+  \bibinfo{author}{Desmaison, A.}, \bibinfo{author}{Kopf, A.},
+  \bibinfo{author}{Yang, E.}, \bibinfo{author}{DeVito, Z.},
+  \bibinfo{author}{Raison, M.}, \bibinfo{author}{Tejani, A.},
+  \bibinfo{author}{Chilamkurthy, S.}, \bibinfo{author}{Steiner, B.},
+  \bibinfo{author}{Fang, L.}, \bibinfo{author}{Bai, J.},
+  \bibinfo{author}{Chintala, S.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Pytorch: An imperative style, high-performance deep
+  learning library}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Peng et~al.(2020)Peng, Niemeyer, Mescheder, Pollefeys and
+  Geiger}]{peng2020convolutional}
+\bibinfo{author}{Peng, S.}, \bibinfo{author}{Niemeyer, M.},
+  \bibinfo{author}{Mescheder, L.}, \bibinfo{author}{Pollefeys, M.},
+  \bibinfo{author}{Geiger, A.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Convolutional occupancy networks}, in:
+  \bibinfo{booktitle}{European Conference on Computer Vision (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Pfister et~al.(2000)Pfister, Zwicker, Van~Baar and
+  Gross}]{pfister2000surfels}
+\bibinfo{author}{Pfister, H.}, \bibinfo{author}{Zwicker, M.},
+  \bibinfo{author}{Van~Baar, J.}, \bibinfo{author}{Gross, M.},
+  \bibinfo{year}{2000}.
+\newblock \bibinfo{title}{Surfels: Surface elements as rendering primitives},
+  in: \bibinfo{booktitle}{Computer Graphics and Interactive Techniques}.
+%Type = Article
+\bibitem[{Piergiovanni et~al.(2021)Piergiovanni, Casser, Ryoo and
+  Angelova}]{piergiovanni20214d}
+\bibinfo{author}{Piergiovanni, A.}, \bibinfo{author}{Casser, V.},
+  \bibinfo{author}{Ryoo, M.S.}, \bibinfo{author}{Angelova, A.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{4d-net for learned multi-modal alignment}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2109.01066} .
+%Type = Inproceedings
+\bibitem[{Pomerleau et~al.(2014)Pomerleau, Kr{\"u}si, Colas, Furgale and
+  Siegwart}]{pomerleau2014long}
+\bibinfo{author}{Pomerleau, F.}, \bibinfo{author}{Kr{\"u}si, P.},
+  \bibinfo{author}{Colas, F.}, \bibinfo{author}{Furgale, P.},
+  \bibinfo{author}{Siegwart, R.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Long-term 3d map maintenance in dynamic
+  environments}, in: \bibinfo{booktitle}{IEEE International Conference on
+  Robotics and Automation (ICRA)}.
+%Type = Inproceedings
+\bibitem[{Pumarola et~al.(2021a)Pumarola, Corona, Pons-Moll and
+  Moreno-Noguer}]{pumarola2021d}
+\bibinfo{author}{Pumarola, A.}, \bibinfo{author}{Corona, E.},
+  \bibinfo{author}{Pons-Moll, G.}, \bibinfo{author}{Moreno-Noguer, F.},
+  \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{{D-NeRF}: Neural radiance fields for dynamic scenes},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Pumarola et~al.(2021b)Pumarola, Corona, Pons-Moll and
+  Moreno-Noguer}]{pumarola2020d}
+\bibinfo{author}{Pumarola, A.}, \bibinfo{author}{Corona, E.},
+  \bibinfo{author}{Pons-Moll, G.}, \bibinfo{author}{Moreno-Noguer, F.},
+  \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{D-nerf: Neural radiance fields for dynamic scenes},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Puy et~al.(2020)Puy, Boulch and Marlet}]{puy2020flot}
+\bibinfo{author}{Puy, G.}, \bibinfo{author}{Boulch, A.},
+  \bibinfo{author}{Marlet, R.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{FLOT}: Scene flow on point clouds guided by optimal
+  transport}, in: \bibinfo{booktitle}{European Conference on Computer Vision
+  (ECCV)}.
+%Type = Article
+\bibitem[{Qadri et~al.(2022)Qadri, Kaess and Gkioulekas}]{qadri2022neural}
+\bibinfo{author}{Qadri, M.}, \bibinfo{author}{Kaess, M.},
+  \bibinfo{author}{Gkioulekas, I.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Neural implicit surface reconstruction using imaging
+  sonar}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2209.08221} .
+%Type = Inproceedings
+\bibitem[{Qi et~al.(2017)Qi, Su, Mo and Guibas}]{qi2017pointnet}
+\bibinfo{author}{Qi, C.R.}, \bibinfo{author}{Su, H.}, \bibinfo{author}{Mo, K.},
+  \bibinfo{author}{Guibas, L.J.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Pointnet: Deep learning on point sets for 3d
+  classification and segmentation}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Qi et~al.(2021)Qi, Zhou, Najibi, Sun, Vo, Deng and
+  Anguelov}]{qi2021offboard}
+\bibinfo{author}{Qi, C.R.}, \bibinfo{author}{Zhou, Y.},
+  \bibinfo{author}{Najibi, M.}, \bibinfo{author}{Sun, P.}, \bibinfo{author}{Vo,
+  K.}, \bibinfo{author}{Deng, B.}, \bibinfo{author}{Anguelov, D.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Offboard 3d object detection from point cloud
+  sequences}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Rasshofer et~al.(2011)Rasshofer, Spies and
+  Spies}]{rasshofer2011influences}
+\bibinfo{author}{Rasshofer, R.H.}, \bibinfo{author}{Spies, M.},
+  \bibinfo{author}{Spies, H.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Influences of weather phenomena on automotive laser
+  radar systems}.
+\newblock \bibinfo{journal}{Advances in Radio Science} \bibinfo{volume}{9},
+  \bibinfo{pages}{49--60}.
+%Type = Article
+\bibitem[{Rematas et~al.(2021)Rematas, Liu, Srinivasan, Barron, Tagliasacchi,
+  Funkhouser and Ferrari}]{rematas2021urban}
+\bibinfo{author}{Rematas, K.}, \bibinfo{author}{Liu, A.},
+  \bibinfo{author}{Srinivasan, P.P.}, \bibinfo{author}{Barron, J.T.},
+  \bibinfo{author}{Tagliasacchi, A.}, \bibinfo{author}{Funkhouser, T.},
+  \bibinfo{author}{Ferrari, V.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Urban radiance fields}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2111.14643} .
+%Type = Inproceedings
+\bibitem[{Rematas et~al.(2022)Rematas, Liu, Srinivasan, Barron, Tagliasacchi,
+  Funkhouser and Ferrari}]{rematas2022urban}
+\bibinfo{author}{Rematas, K.}, \bibinfo{author}{Liu, A.},
+  \bibinfo{author}{Srinivasan, P.P.}, \bibinfo{author}{Barron, J.T.},
+  \bibinfo{author}{Tagliasacchi, A.}, \bibinfo{author}{Funkhouser, T.},
+  \bibinfo{author}{Ferrari, V.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Urban radiance fields}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Rempe et~al.(2020)Rempe, Birdal, Zhao, Gojcic, Sridhar and
+  Guibas}]{rempe2020caspr}
+\bibinfo{author}{Rempe, D.}, \bibinfo{author}{Birdal, T.},
+  \bibinfo{author}{Zhao, Y.}, \bibinfo{author}{Gojcic, Z.},
+  \bibinfo{author}{Sridhar, S.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{CaSPR}: Learning canonical spatiotemporal point
+  cloud representations}.
+%Type = Article
+\bibitem[{Revaud et~al.(2019)Revaud, Weinzaepfel, De~Souza, Pion, Csurka, Cabon
+  and Humenberger}]{revaud2019r2d2}
+\bibinfo{author}{Revaud, J.}, \bibinfo{author}{Weinzaepfel, P.},
+  \bibinfo{author}{De~Souza, C.}, \bibinfo{author}{Pion, N.},
+  \bibinfo{author}{Csurka, G.}, \bibinfo{author}{Cabon, Y.},
+  \bibinfo{author}{Humenberger, M.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{R2D2}: Repeatable and reliable detector and
+  descriptor}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1906.06195} .
+%Type = Article
+\bibitem[{Roessle et~al.(2021)Roessle, Barron, Mildenhall, Srinivasan and
+  Nie{\ss}ner}]{roessle2021dense}
+\bibinfo{author}{Roessle, B.}, \bibinfo{author}{Barron, J.T.},
+  \bibinfo{author}{Mildenhall, B.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{author}{Nie{\ss}ner, M.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Dense depth priors for neural radiance fields from
+  sparse input views}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2112.03288} .
+%Type = Article
+\bibitem[{Rudnev et~al.(2022)Rudnev, Elgharib, Theobalt and
+  Golyanik}]{rudnev2022eventnerf}
+\bibinfo{author}{Rudnev, V.}, \bibinfo{author}{Elgharib, M.},
+  \bibinfo{author}{Theobalt, C.}, \bibinfo{author}{Golyanik, V.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{EventNeRF}: Neural radiance fields from a single
+  colour event camera}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2206.11896} .
+%Type = Inproceedings
+\bibitem[{Rusu et~al.(2009)Rusu, Blodow and Beetz}]{rusu2009FPFH}
+\bibinfo{author}{Rusu, R.B.}, \bibinfo{author}{Blodow, N.},
+  \bibinfo{author}{Beetz, M.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Fast point feature histograms ({FPFH}) for 3{D}
+  registration}, in: \bibinfo{booktitle}{IEEE International Conference on
+  Robotics and Automation (ICRA)}.
+%Type = Inproceedings
+\bibitem[{Rusu et~al.(2008)Rusu, Blodow, Marton and Beetz}]{rusu2008PFH}
+\bibinfo{author}{Rusu, R.B.}, \bibinfo{author}{Blodow, N.},
+  \bibinfo{author}{Marton, Z.C.}, \bibinfo{author}{Beetz, M.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Aligning point cloud views using persistent feature
+  histograms}, in: \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on Intelligent
+  Robots and Systems (IROS)}.
+%Type = Inproceedings
+\bibitem[{{Sara Fridovich-Keil and Giacomo Meanti} et~al.(2023){Sara
+  Fridovich-Keil and Giacomo Meanti}, Warburg, Recht and
+  Kanazawa}]{kplanes_2023}
+\bibinfo{author}{{Sara Fridovich-Keil and Giacomo Meanti}},
+  \bibinfo{author}{Warburg, F.R.}, \bibinfo{author}{Recht, B.},
+  \bibinfo{author}{Kanazawa, A.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{K-planes: Explicit radiance fields in space, time,
+  and appearance}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Sarlin et~al.(2020)Sarlin, DeTone, Malisiewicz and
+  Rabinovich}]{sarlin2020superglue}
+\bibinfo{author}{Sarlin, P.E.}, \bibinfo{author}{DeTone, D.},
+  \bibinfo{author}{Malisiewicz, T.}, \bibinfo{author}{Rabinovich, A.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Superglue: Learning feature matching with graph
+  neural networks}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Schauer and N{\"u}chter(2018)}]{schauer2018peopleremover}
+\bibinfo{author}{Schauer, J.}, \bibinfo{author}{N{\"u}chter, A.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{The peopleremover—removing dynamic objects from 3-d
+  point cloud data by traversing a voxel occupancy grid}.
+\newblock \bibinfo{journal}{IEEE RA-L} \bibinfo{volume}{3},
+  \bibinfo{pages}{1679--1686}.
+%Type = Inproceedings
+\bibitem[{Sch\"{o}nberger and Frahm(2016)}]{schoenberger2016sfm}
+\bibinfo{author}{Sch\"{o}nberger, J.L.}, \bibinfo{author}{Frahm, J.M.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Structure-from-motion revisited}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Shah et~al.(2018)Shah, Dey, Lovett and Kapoor}]{shah2018airsim}
+\bibinfo{author}{Shah, S.}, \bibinfo{author}{Dey, D.}, \bibinfo{author}{Lovett,
+  C.}, \bibinfo{author}{Kapoor, A.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Airsim: High-fidelity visual and physical simulation
+  for autonomous vehicles}, in: \bibinfo{booktitle}{International Conference on
+  Field and Service Robotics}, \bibinfo{organization}{Springer}. pp.
+  \bibinfo{pages}{621--635}.
+%Type = Article
+\bibitem[{Shih et~al.(2022)Shih, Liao, Lin, Wong and
+  Wang}]{shih2022reconstruction}
+\bibinfo{author}{Shih, Y.C.}, \bibinfo{author}{Liao, W.H.},
+  \bibinfo{author}{Lin, W.C.}, \bibinfo{author}{Wong, S.K.},
+  \bibinfo{author}{Wang, C.C.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Reconstruction and synthesis of lidar point clouds of
+  spray}.
+\newblock \bibinfo{journal}{IEEE RA-L} \bibinfo{volume}{7},
+  \bibinfo{pages}{3765--3772}.
+%Type = Inproceedings
+\bibitem[{Shoemake(1985)}]{10.1145/325334.325242}
+\bibinfo{author}{Shoemake, K.}, \bibinfo{year}{1985}.
+\newblock \bibinfo{title}{Animating rotation with quaternion curves}, in:
+  \bibinfo{booktitle}{Conference on Computer Graphics and Interactive
+  Techniques}, \bibinfo{publisher}{Association for Computing Machinery}. p.
+  \bibinfo{pages}{245–254}.
+%Type = Inproceedings
+\bibitem[{Shotton et~al.(2013)Shotton, Glocker, Zach, Izadi, Criminisi and
+  Fitzgibbon}]{shotton2013scene}
+\bibinfo{author}{Shotton, J.}, \bibinfo{author}{Glocker, B.},
+  \bibinfo{author}{Zach, C.}, \bibinfo{author}{Izadi, S.},
+  \bibinfo{author}{Criminisi, A.}, \bibinfo{author}{Fitzgibbon, A.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Scene coordinate regression forests for camera
+  relocalization in {RGB-D} images}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Sinkhorn(1964)}]{sinkhorn1964relationship}
+\bibinfo{author}{Sinkhorn, R.}, \bibinfo{year}{1964}.
+\newblock \bibinfo{title}{A relationship between arbitrary positive matrices
+  and doubly stochastic matrices}.
+\newblock \bibinfo{journal}{The annals of mathematical statistics}
+  \bibinfo{volume}{35}, \bibinfo{pages}{876--879}.
+%Type = Inproceedings
+\bibitem[{Sun et~al.(2018)Sun, Yang, Liu and Kautz}]{sun2018pwc}
+\bibinfo{author}{Sun, D.}, \bibinfo{author}{Yang, X.}, \bibinfo{author}{Liu,
+  M.Y.}, \bibinfo{author}{Kautz, J.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{PWC-net}: Cnns for optical flow using pyramid,
+  warping, and cost volume}, in: \bibinfo{booktitle}{IEEE Conference on
+  Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Sun et~al.(2022)Sun, Chen, Wang, Li, Averbuch-Elor, Zhou and
+  Snavely}]{sun2022neural}
+\bibinfo{author}{Sun, J.}, \bibinfo{author}{Chen, X.}, \bibinfo{author}{Wang,
+  Q.}, \bibinfo{author}{Li, Z.}, \bibinfo{author}{Averbuch-Elor, H.},
+  \bibinfo{author}{Zhou, X.}, \bibinfo{author}{Snavely, N.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Neural 3d reconstruction in the wild}, in:
+  \bibinfo{booktitle}{ACM SIGGRAPH}.
+%Type = Inproceedings
+\bibitem[{Sun et~al.(2020a)Sun, Kretzschmar, Dotiwalla, Chouard, Patnaik, Tsui,
+  Guo, Zhou, Chai, Caine et~al.}]{sun2020scalability}
+\bibinfo{author}{Sun, P.}, \bibinfo{author}{Kretzschmar, H.},
+  \bibinfo{author}{Dotiwalla, X.}, \bibinfo{author}{Chouard, A.},
+  \bibinfo{author}{Patnaik, V.}, \bibinfo{author}{Tsui, P.},
+  \bibinfo{author}{Guo, J.}, \bibinfo{author}{Zhou, Y.}, \bibinfo{author}{Chai,
+  Y.}, \bibinfo{author}{Caine, B.}, et~al., \bibinfo{year}{2020}a.
+\newblock \bibinfo{title}{Scalability in perception for autonomous driving:
+  {Waymo} open dataset}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Sun et~al.(2020b)Sun, Cheng, Zhang, Zhang, Zheng, Wang and
+  Wei}]{sun2020circle}
+\bibinfo{author}{Sun, Y.}, \bibinfo{author}{Cheng, C.}, \bibinfo{author}{Zhang,
+  Y.}, \bibinfo{author}{Zhang, C.}, \bibinfo{author}{Zheng, L.},
+  \bibinfo{author}{Wang, Z.}, \bibinfo{author}{Wei, Y.}, \bibinfo{year}{2020}b.
+\newblock \bibinfo{title}{Circle loss: A unified perspective of pair similarity
+  optimization}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Tagliasacchi and Mildenhall(2022)}]{tagliasacchi2022volume}
+\bibinfo{author}{Tagliasacchi, A.}, \bibinfo{author}{Mildenhall, B.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Volume rendering digest for nerf}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2209.02417} .
+%Type = Inproceedings
+\bibitem[{Tang et~al.(2022)Tang, Liu, Li, Lin and Han}]{tang2022torchsparse}
+\bibinfo{author}{Tang, H.}, \bibinfo{author}{Liu, Z.}, \bibinfo{author}{Li,
+  X.}, \bibinfo{author}{Lin, Y.}, \bibinfo{author}{Han, S.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{TorchSparse: Efficient Point Cloud Inference
+  Engine}}, in: \bibinfo{booktitle}{MLSys}, pp. \bibinfo{pages}{302--315}.
+%Type = Inproceedings
+\bibitem[{Tang et~al.(2020)Tang, Liu, Zhao, Lin, Lin, Wang and
+  Han}]{tang2020searching}
+\bibinfo{author}{Tang, H.}, \bibinfo{author}{Liu, Z.}, \bibinfo{author}{Zhao,
+  S.}, \bibinfo{author}{Lin, Y.}, \bibinfo{author}{Lin, J.},
+  \bibinfo{author}{Wang, H.}, \bibinfo{author}{Han, S.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Searching efficient 3d architectures with sparse
+  point-voxel convolution}, in: \bibinfo{booktitle}{European Conference on
+  Computer Vision (ECCV)}.
+%Type = Misc
+\bibitem[{Tang(2022)}]{torch-ngp}
+\bibinfo{author}{Tang, J.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Torch-ngp: a {PyTorch} implementation of
+  instant-ngp}.
+\newblock \bibinfo{note}{Https://github.com/ashawkey/torch-ngp}.
+%Type = Article
+\bibitem[{Tao et~al.(2023)Tao, Gao, Wang, Chen, Hao, Liang, Salzmann and
+  Yu}]{tao2023lidar}
+\bibinfo{author}{Tao, T.}, \bibinfo{author}{Gao, L.}, \bibinfo{author}{Wang,
+  G.}, \bibinfo{author}{Chen, P.}, \bibinfo{author}{Hao, D.},
+  \bibinfo{author}{Liang, X.}, \bibinfo{author}{Salzmann, M.},
+  \bibinfo{author}{Yu, K.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Lidar-nerf: Novel lidar view synthesis via neural
+  radiance fields}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2304.10406} .
+%Type = Inproceedings
+\bibitem[{Teed and Deng(2021)}]{teed2021raft}
+\bibinfo{author}{Teed, Z.}, \bibinfo{author}{Deng, J.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{RAFT-3D}: Scene flow using rigid-motion embeddings},
+  in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Thomas et~al.(2019)Thomas, Qi, Deschaud, Marcotegui, Goulette and
+  Guibas}]{thomas2019kpconv}
+\bibinfo{author}{Thomas, H.}, \bibinfo{author}{Qi, C.R.},
+  \bibinfo{author}{Deschaud, J.E.}, \bibinfo{author}{Marcotegui, B.},
+  \bibinfo{author}{Goulette, F.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{{KPconv}: Flexible and deformable convolution for
+  point clouds}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Tombari et~al.(2010a)Tombari, Salti and Di~Stefano}]{tombari2010USC}
+\bibinfo{author}{Tombari, F.}, \bibinfo{author}{Salti, S.},
+  \bibinfo{author}{Di~Stefano, L.}, \bibinfo{year}{2010}a.
+\newblock \bibinfo{title}{Unique shape context for 3{D} data description}, in:
+  \bibinfo{booktitle}{ACM Workshop on 3D Object Retrieval}.
+%Type = Inproceedings
+\bibitem[{Tombari et~al.(2010b)Tombari, Salti and Di~Stefano}]{tombari2010SHOT}
+\bibinfo{author}{Tombari, F.}, \bibinfo{author}{Salti, S.},
+  \bibinfo{author}{Di~Stefano, L.}, \bibinfo{year}{2010}b.
+\newblock \bibinfo{title}{Unique signatures of histograms for local surface
+  description}, in: \bibinfo{booktitle}{European Conference on Computer Vision
+  (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Turki et~al.(2023)Turki, Zhang, Ferroni and Ramanan}]{turki2023suds}
+\bibinfo{author}{Turki, H.}, \bibinfo{author}{Zhang, J.Y.},
+  \bibinfo{author}{Ferroni, F.}, \bibinfo{author}{Ramanan, D.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Suds: Scalable urban dynamic scenes}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Ulyanov et~al.(2016)Ulyanov, Vedaldi and
+  Lempitsky}]{ulyanov2016instance}
+\bibinfo{author}{Ulyanov, D.}, \bibinfo{author}{Vedaldi, A.},
+  \bibinfo{author}{Lempitsky, V.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Instance normalization: The missing ingredient for
+  fast stylization}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1607.08022} .
+%Type = Inproceedings
+\bibitem[{Valentin et~al.(2016)Valentin, Dai, Nie{\ss}ner, Kohli, Torr, Izadi
+  and Keskin}]{valentin2016learning}
+\bibinfo{author}{Valentin, J.}, \bibinfo{author}{Dai, A.},
+  \bibinfo{author}{Nie{\ss}ner, M.}, \bibinfo{author}{Kohli, P.},
+  \bibinfo{author}{Torr, P.}, \bibinfo{author}{Izadi, S.},
+  \bibinfo{author}{Keskin, C.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Learning to navigate the energy landscape}, in:
+  \bibinfo{booktitle}{3DV}.
+%Type = Inproceedings
+\bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones,
+  Gomez, Kaiser and Polosukhin}]{vaswani2017attention}
+\bibinfo{author}{Vaswani, A.}, \bibinfo{author}{Shazeer, N.},
+  \bibinfo{author}{Parmar, N.}, \bibinfo{author}{Uszkoreit, J.},
+  \bibinfo{author}{Jones, L.}, \bibinfo{author}{Gomez, A.N.},
+  \bibinfo{author}{Kaiser, {\L}.}, \bibinfo{author}{Polosukhin, I.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Attention is all you need}, in:
+  \bibinfo{booktitle}{Advances in Neural Information Processing Systems
+  (NeurIPS)}.
+%Type = Inproceedings
+\bibitem[{Vedula et~al.(1999)Vedula, Baker, Rander, Collins and
+  Kanade}]{vedula1999three}
+\bibinfo{author}{Vedula, S.}, \bibinfo{author}{Baker, S.},
+  \bibinfo{author}{Rander, P.}, \bibinfo{author}{Collins, R.},
+  \bibinfo{author}{Kanade, T.}, \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{Three-dimensional scene flow}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Verbin et~al.(2022)Verbin, Hedman, Mildenhall, Zickler, Barron and
+  Srinivasan}]{verbin2022ref}
+\bibinfo{author}{Verbin, D.}, \bibinfo{author}{Hedman, P.},
+  \bibinfo{author}{Mildenhall, B.}, \bibinfo{author}{Zickler, T.},
+  \bibinfo{author}{Barron, J.T.}, \bibinfo{author}{Srinivasan, P.P.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Ref-nerf: Structured view-dependent appearance for
+  neural radiance fields}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Vogel et~al.(2011)Vogel, Schindler and Roth}]{vogel20113d}
+\bibinfo{author}{Vogel, C.}, \bibinfo{author}{Schindler, K.},
+  \bibinfo{author}{Roth, S.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{3d scene flow estimation with a rigid motion prior},
+  in: \bibinfo{booktitle}{IEEE International Conference on Computer Vision
+  (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Vogel et~al.(2013)Vogel, Schindler and Roth}]{vogel2013piecewise}
+\bibinfo{author}{Vogel, C.}, \bibinfo{author}{Schindler, K.},
+  \bibinfo{author}{Roth, S.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Piecewise rigid scene flow}, in:
+  \bibinfo{booktitle}{IEEE International Conference on Computer Vision (ICCV)}.
+%Type = Article
+\bibitem[{Vogel et~al.(2015)Vogel, Schindler and Roth}]{vogel20153d}
+\bibinfo{author}{Vogel, C.}, \bibinfo{author}{Schindler, K.},
+  \bibinfo{author}{Roth, S.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{3d scene flow estimation with a piecewise rigid scene
+  model}.
+\newblock \bibinfo{journal}{International Journal of Computer Vision}
+  \bibinfo{volume}{115}, \bibinfo{pages}{1--28}.
+%Type = Inproceedings
+\bibitem[{Waechter et~al.(2014)Waechter, Moehrle and Goesele}]{waechter2014let}
+\bibinfo{author}{Waechter, M.}, \bibinfo{author}{Moehrle, N.},
+  \bibinfo{author}{Goesele, M.}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Let there be color! large-scale texturing of 3d
+  reconstructions}, in: \bibinfo{booktitle}{European Conference on Computer
+  Vision (ECCV)}.
+%Type = Article
+\bibitem[{Wagner et~al.(2006)Wagner, Ullrich, Ducic, Melzer and
+  Studnicka}]{wagner2006gaussian}
+\bibinfo{author}{Wagner, W.}, \bibinfo{author}{Ullrich, A.},
+  \bibinfo{author}{Ducic, V.}, \bibinfo{author}{Melzer, T.},
+  \bibinfo{author}{Studnicka, N.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Gaussian decomposition and calibration of a novel
+  small-footprint full-waveform digitising airborne laser scanner}.
+\newblock \bibinfo{journal}{ISPRS Journal of Photogrammetry and Remote Sensing}
+  \bibinfo{volume}{60}, \bibinfo{pages}{100--112}.
+%Type = Inproceedings
+\bibitem[{Wang et~al.(2019a)Wang, Sridhar, Huang, Valentin, Song and
+  Guibas}]{wang2019normalized}
+\bibinfo{author}{Wang, H.}, \bibinfo{author}{Sridhar, S.},
+  \bibinfo{author}{Huang, J.}, \bibinfo{author}{Valentin, J.},
+  \bibinfo{author}{Song, S.}, \bibinfo{author}{Guibas, L.J.},
+  \bibinfo{year}{2019}a.
+\newblock \bibinfo{title}{Normalized object coordinate space for category-level
+  6d object pose and size estimation}, in: \bibinfo{booktitle}{IEEE Conference
+  on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Wang et~al.(2021)Wang, Liu, Liu, Theobalt, Komura and
+  Wang}]{wang2021neus}
+\bibinfo{author}{Wang, P.}, \bibinfo{author}{Liu, L.}, \bibinfo{author}{Liu,
+  Y.}, \bibinfo{author}{Theobalt, C.}, \bibinfo{author}{Komura, T.},
+  \bibinfo{author}{Wang, W.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{NeuS}: Learning neural implicit surfaces by volume
+  rendering for multi-view reconstruction}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2106.10689} .
+%Type = Inproceedings
+\bibitem[{Wang et~al.(2023a)Wang, Han, Habermann, Daniilidis, Theobalt and
+  Liu}]{wang2023neus2}
+\bibinfo{author}{Wang, Y.}, \bibinfo{author}{Han, Q.},
+  \bibinfo{author}{Habermann, M.}, \bibinfo{author}{Daniilidis, K.},
+  \bibinfo{author}{Theobalt, C.}, \bibinfo{author}{Liu, L.},
+  \bibinfo{year}{2023}a.
+\newblock \bibinfo{title}{Neus2: Fast learning of neural implicit surfaces for
+  multi-view reconstruction}, in: \bibinfo{booktitle}{IEEE International
+  Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Wang et~al.(2022)Wang, Skorokhodov and Wonka}]{wang2022hf}
+\bibinfo{author}{Wang, Y.}, \bibinfo{author}{Skorokhodov, I.},
+  \bibinfo{author}{Wonka, P.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Hf-neus: Improved surface reconstruction using
+  high-frequency details}, in: \bibinfo{booktitle}{Advances in Neural
+  Information Processing Systems (NeurIPS)}.
+%Type = Inproceedings
+\bibitem[{Wang and Solomon(2019a)}]{wang2019dcp}
+\bibinfo{author}{Wang, Y.}, \bibinfo{author}{Solomon, J.M.},
+  \bibinfo{year}{2019}a.
+\newblock \bibinfo{title}{Deep closest point: Learning representations for
+  point cloud registration}, in: \bibinfo{booktitle}{IEEE International
+  Conference on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Wang and Solomon(2019b)}]{wang2019prnet}
+\bibinfo{author}{Wang, Y.}, \bibinfo{author}{Solomon, J.M.},
+  \bibinfo{year}{2019}b.
+\newblock \bibinfo{title}{{PRNet}: Self-supervised learning for
+  partial-to-partial registration}, in: \bibinfo{booktitle}{Advances in Neural
+  Information Processing Systems (NeurIPS)}.
+%Type = Article
+\bibitem[{Wang et~al.(2019b)Wang, Sun, Liu, Sarma, Bronstein and
+  Solomon}]{wang2019dynamic}
+\bibinfo{author}{Wang, Y.}, \bibinfo{author}{Sun, Y.}, \bibinfo{author}{Liu,
+  Z.}, \bibinfo{author}{Sarma, S.E.}, \bibinfo{author}{Bronstein, M.M.},
+  \bibinfo{author}{Solomon, J.M.}, \bibinfo{year}{2019}b.
+\newblock \bibinfo{title}{Dynamic graph {CNN} for learning on point clouds}.
+\newblock \bibinfo{journal}{ACM TOG} \bibinfo{volume}{38}.
+%Type = Inproceedings
+\bibitem[{Wang et~al.(2023b)Wang, Shen, Gao, Huang, Munkberg, Hasselgren,
+  Gojcic, Chen and Fidler}]{wang2023neural}
+\bibinfo{author}{Wang, Z.}, \bibinfo{author}{Shen, T.}, \bibinfo{author}{Gao,
+  J.}, \bibinfo{author}{Huang, S.}, \bibinfo{author}{Munkberg, J.},
+  \bibinfo{author}{Hasselgren, J.}, \bibinfo{author}{Gojcic, Z.},
+  \bibinfo{author}{Chen, W.}, \bibinfo{author}{Fidler, S.},
+  \bibinfo{year}{2023}b.
+\newblock \bibinfo{title}{Neural fields meet explicit geometric representations
+  for inverse rendering of urban scenes}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Wedel et~al.(2008)Wedel, Rabe, Vaudrey, Brox, Franke and
+  Cremers}]{wedel2008efficient}
+\bibinfo{author}{Wedel, A.}, \bibinfo{author}{Rabe, C.},
+  \bibinfo{author}{Vaudrey, T.}, \bibinfo{author}{Brox, T.},
+  \bibinfo{author}{Franke, U.}, \bibinfo{author}{Cremers, D.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Efficient dense scene flow from sparse or dense
+  stereo data}, in: \bibinfo{booktitle}{European Conference on Computer Vision
+  (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Weng et~al.(2020)Weng, Wang, Held and Kitani}]{weng20203d}
+\bibinfo{author}{Weng, X.}, \bibinfo{author}{Wang, J.}, \bibinfo{author}{Held,
+  D.}, \bibinfo{author}{Kitani, K.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{3d multi-object tracking: A baseline and new
+  evaluation metrics}, in: \bibinfo{booktitle}{IEEE/RSJ Intl. Conference on
+  Intelligent Robots and Systems (IROS)}.
+%Type = Article
+\bibitem[{Wiles et~al.(2020)Wiles, Ehrhardt and Zisserman}]{wiles2020d2d}
+\bibinfo{author}{Wiles, O.}, \bibinfo{author}{Ehrhardt, S.},
+  \bibinfo{author}{Zisserman, A.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{D2D}: Learning to find good correspondences for
+  image matching and manipulation}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2007.08480} .
+%Type = Misc
+\bibitem[{Williams(2022)}]{point-cloud-utils}
+\bibinfo{author}{Williams, F.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Point cloud utils}.
+\newblock \bibinfo{note}{Https://www.github.com/fwilliams/point-cloud-utils}.
+%Type = Article
+\bibitem[{Winiwarter et~al.(2022)Winiwarter, Pena, Weiser, Anders, S{\'a}nchez,
+  Searle and H{\"o}fle}]{winiwarter2022virtual}
+\bibinfo{author}{Winiwarter, L.}, \bibinfo{author}{Pena, A.M.E.},
+  \bibinfo{author}{Weiser, H.}, \bibinfo{author}{Anders, K.},
+  \bibinfo{author}{S{\'a}nchez, J.M.}, \bibinfo{author}{Searle, M.},
+  \bibinfo{author}{H{\"o}fle, B.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Virtual laser scanning with {HELIOS++}: A novel take
+  on ray tracing-based simulation of topographic full-waveform 3d laser
+  scanning}.
+\newblock \bibinfo{journal}{Remote Sensing of Environment}
+  \bibinfo{volume}{269}, \bibinfo{pages}{112772}.
+%Type = Inproceedings
+\bibitem[{Wu et~al.(2020a)Wu, Chen and Metaxas}]{wu2020motionnet}
+\bibinfo{author}{Wu, P.}, \bibinfo{author}{Chen, S.}, \bibinfo{author}{Metaxas,
+  D.N.}, \bibinfo{year}{2020}a.
+\newblock \bibinfo{title}{{MotionNet}: Joint perception and motion prediction
+  for autonomous driving based on bird's eye view maps}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Wu et~al.(2022a)Wu, Wang, Pan, Xu, Theobalt, Liu and
+  Lin}]{wu2022voxurf}
+\bibinfo{author}{Wu, T.}, \bibinfo{author}{Wang, J.}, \bibinfo{author}{Pan,
+  X.}, \bibinfo{author}{Xu, X.}, \bibinfo{author}{Theobalt, C.},
+  \bibinfo{author}{Liu, Z.}, \bibinfo{author}{Lin, D.}, \bibinfo{year}{2022}a.
+\newblock \bibinfo{title}{Voxurf: Voxel-based efficient and accurate neural
+  surface reconstruction}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2208.12697} .
+%Type = Article
+\bibitem[{Wu et~al.(2022b)Wu, Zhong, Tagliasacchi, Cole and Oztireli}]{wu2022d}
+\bibinfo{author}{Wu, T.}, \bibinfo{author}{Zhong, F.},
+  \bibinfo{author}{Tagliasacchi, A.}, \bibinfo{author}{Cole, F.},
+  \bibinfo{author}{Oztireli, C.}, \bibinfo{year}{2022}b.
+\newblock \bibinfo{title}{D\^{} 2nerf: Self-supervised decoupling of dynamic
+  and static objects from a monocular video}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Wu et~al.(2020b)Wu, Wang, Li, Liu and Fuxin}]{wu2019pointpwc}
+\bibinfo{author}{Wu, W.}, \bibinfo{author}{Wang, Z.Y.}, \bibinfo{author}{Li,
+  Z.}, \bibinfo{author}{Liu, W.}, \bibinfo{author}{Fuxin, L.},
+  \bibinfo{year}{2020}b.
+\newblock \bibinfo{title}{Pointpwc-net: Cost volume on point clouds for (self-)
+  supervised scene flow estimation}, in: \bibinfo{booktitle}{European
+  Conference on Computer Vision (ECCV)}.
+%Type = Inproceedings
+\bibitem[{Wu et~al.(2015)Wu, Song, Khosla, Yu, Zhang, Tang and
+  Xiao}]{wu2015ModelNet}
+\bibinfo{author}{Wu, Z.}, \bibinfo{author}{Song, S.}, \bibinfo{author}{Khosla,
+  A.}, \bibinfo{author}{Yu, F.}, \bibinfo{author}{Zhang, L.},
+  \bibinfo{author}{Tang, X.}, \bibinfo{author}{Xiao, J.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{3d shapenets: A deep representation for volumetric
+  shapes}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Xiao et~al.(2013)Xiao, Owens and Torralba}]{xiao2013sun3d}
+\bibinfo{author}{Xiao, J.}, \bibinfo{author}{Owens, A.},
+  \bibinfo{author}{Torralba, A.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Sun3d: A database of big spaces reconstructed using
+  sfm and object labels}, in: \bibinfo{booktitle}{IEEE International Conference
+  on Computer Vision (ICCV)}.
+%Type = Inproceedings
+\bibitem[{Xie et~al.(2022)Xie, Takikawa, Saito, Litany, Yan, Khan, Tombari,
+  Tompkin, Sitzmann and Sridhar}]{xie2022neural}
+\bibinfo{author}{Xie, Y.}, \bibinfo{author}{Takikawa, T.},
+  \bibinfo{author}{Saito, S.}, \bibinfo{author}{Litany, O.},
+  \bibinfo{author}{Yan, S.}, \bibinfo{author}{Khan, N.},
+  \bibinfo{author}{Tombari, F.}, \bibinfo{author}{Tompkin, J.},
+  \bibinfo{author}{Sitzmann, V.}, \bibinfo{author}{Sridhar, S.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Neural fields in visual computing and beyond}, in:
+  \bibinfo{booktitle}{Computer Graphics Forum}, \bibinfo{organization}{Wiley
+  Online Library}. pp. \bibinfo{pages}{641--676}.
+%Type = Article
+\bibitem[{Yang et~al.(2021a)Yang, Bai, Liang, Zeng and
+  Urtasun}]{yang2021auto4d}
+\bibinfo{author}{Yang, B.}, \bibinfo{author}{Bai, M.}, \bibinfo{author}{Liang,
+  M.}, \bibinfo{author}{Zeng, W.}, \bibinfo{author}{Urtasun, R.},
+  \bibinfo{year}{2021}a.
+\newblock \bibinfo{title}{Auto4d: Learning to label 4d objects from sequential
+  point clouds}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2101.06586} .
+%Type = Article
+\bibitem[{Yang et~al.(2023a)Yang, Ivanovic, Litany, Weng, Kim, Li, Che, Xu,
+  Fidler, Pavone and Wang}]{yang2023emernerf}
+\bibinfo{author}{Yang, J.}, \bibinfo{author}{Ivanovic, B.},
+  \bibinfo{author}{Litany, O.}, \bibinfo{author}{Weng, X.},
+  \bibinfo{author}{Kim, S.W.}, \bibinfo{author}{Li, B.}, \bibinfo{author}{Che,
+  T.}, \bibinfo{author}{Xu, D.}, \bibinfo{author}{Fidler, S.},
+  \bibinfo{author}{Pavone, M.}, \bibinfo{author}{Wang, Y.},
+  \bibinfo{year}{2023}a.
+\newblock \bibinfo{title}{Emernerf: Emergent spatial-temporal scene
+  decomposition via self-supervision}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2311.02077} .
+%Type = Inproceedings
+\bibitem[{Yang et~al.(2023b)Yang, Chen, Wang, Manivasagam, Ma, Yang and
+  Urtasun}]{Yang_2023_unisim}
+\bibinfo{author}{Yang, Z.}, \bibinfo{author}{Chen, Y.}, \bibinfo{author}{Wang,
+  J.}, \bibinfo{author}{Manivasagam, S.}, \bibinfo{author}{Ma, W.C.},
+  \bibinfo{author}{Yang, A.J.}, \bibinfo{author}{Urtasun, R.},
+  \bibinfo{year}{2023}b.
+\newblock \bibinfo{title}{Unisim: A neural closed-loop sensor simulator}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Yang et~al.(2023c)Yang, Chen, Wang, Manivasagam, Ma, Yang and
+  Urtasun}]{yang2023unisim}
+\bibinfo{author}{Yang, Z.}, \bibinfo{author}{Chen, Y.}, \bibinfo{author}{Wang,
+  J.}, \bibinfo{author}{Manivasagam, S.}, \bibinfo{author}{Ma, W.C.},
+  \bibinfo{author}{Yang, A.J.}, \bibinfo{author}{Urtasun, R.},
+  \bibinfo{year}{2023}c.
+\newblock \bibinfo{title}{Unisim: A neural closed-loop sensor simulator}, in:
+  \bibinfo{booktitle}{IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Yang et~al.(2019)Yang, Pan, Luo, Zhou, Grauman and
+  Huang}]{yang2019extreme}
+\bibinfo{author}{Yang, Z.}, \bibinfo{author}{Pan, J.Z.}, \bibinfo{author}{Luo,
+  L.}, \bibinfo{author}{Zhou, X.}, \bibinfo{author}{Grauman, K.},
+  \bibinfo{author}{Huang, Q.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Extreme relative pose estimation for rgb-d scans via
+  scene completion}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Yang et~al.(2020)Yang, Yan and Huang}]{yang2020extreme}
+\bibinfo{author}{Yang, Z.}, \bibinfo{author}{Yan, S.}, \bibinfo{author}{Huang,
+  Q.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Extreme relative pose network under hybrid
+  representations}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision
+  and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Yang et~al.(2021b)Yang, Zhou, Chen and Ngiam}]{yang20213d}
+\bibinfo{author}{Yang, Z.}, \bibinfo{author}{Zhou, Y.}, \bibinfo{author}{Chen,
+  Z.}, \bibinfo{author}{Ngiam, J.}, \bibinfo{year}{2021}b.
+\newblock \bibinfo{title}{{3D-MAN}: 3d multi-frame attention network for object
+  detection}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Yariv et~al.(2021)Yariv, Gu, Kasten and Lipman}]{yariv2021volume}
+\bibinfo{author}{Yariv, L.}, \bibinfo{author}{Gu, J.}, \bibinfo{author}{Kasten,
+  Y.}, \bibinfo{author}{Lipman, Y.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Volume rendering of neural implicit surfaces}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Yew and Lee(2018)}]{yew20183dfeat}
+\bibinfo{author}{Yew, Z.J.}, \bibinfo{author}{Lee, G.H.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{3dfeat-net: Weakly supervised local 3d features for
+  point cloud registration}, in: \bibinfo{booktitle}{European Conference on
+  Computer Vision (ECCV)}, \bibinfo{organization}{Springer}. pp.
+  \bibinfo{pages}{630--646}.
+%Type = Inproceedings
+\bibitem[{Yew and Lee(2020)}]{yew2020rpm}
+\bibinfo{author}{Yew, Z.J.}, \bibinfo{author}{Lee, G.H.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{RPM-Net}: Robust point matching using learned
+  features}, in: \bibinfo{booktitle}{IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Yu et~al.(2021)Yu, Fridovich-Keil, Tancik, Chen, Recht and
+  Kanazawa}]{yu2021plenoxels}
+\bibinfo{author}{Yu, A.}, \bibinfo{author}{Fridovich-Keil, S.},
+  \bibinfo{author}{Tancik, M.}, \bibinfo{author}{Chen, Q.},
+  \bibinfo{author}{Recht, B.}, \bibinfo{author}{Kanazawa, A.},
+  \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Plenoxels: Radiance fields without neural networks}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2112.05131} .
+%Type = Article
+\bibitem[{Yu et~al.(2022)Yu, Peng, Niemeyer, Sattler and
+  Geiger}]{yu2022monosdf}
+\bibinfo{author}{Yu, Z.}, \bibinfo{author}{Peng, S.},
+  \bibinfo{author}{Niemeyer, M.}, \bibinfo{author}{Sattler, T.},
+  \bibinfo{author}{Geiger, A.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{MonoSDF}: Exploring monocular geometric cues for
+  neural implicit surface reconstruction}.
+\newblock \bibinfo{journal}{Advances in Neural Information Processing Systems
+  (NeurIPS)} .
+%Type = Inproceedings
+\bibitem[{Yuan et~al.(2018)Yuan, Khot, Held, Mertz and Hebert}]{yuan2018pcn}
+\bibinfo{author}{Yuan, W.}, \bibinfo{author}{Khot, T.}, \bibinfo{author}{Held,
+  D.}, \bibinfo{author}{Mertz, C.}, \bibinfo{author}{Hebert, M.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{PCN}: Point completion network}, in:
+  \bibinfo{booktitle}{IEEE International conference on 3D vision (3DV)}.
+%Type = Inproceedings
+\bibitem[{Yuan et~al.(2021)Yuan, Lv, Schmidt and Lovegrove}]{yuan2021star}
+\bibinfo{author}{Yuan, W.}, \bibinfo{author}{Lv, Z.}, \bibinfo{author}{Schmidt,
+  T.}, \bibinfo{author}{Lovegrove, S.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Star: Self-supervised tracking and reconstruction of
+  rigid objects in motion with neural rendering}, in: \bibinfo{booktitle}{IEEE
+  Conference on Computer Vision and Pattern Recognition (CVPR)}.
+%Type = Inproceedings
+\bibitem[{Zeng et~al.(2017)Zeng, Song, Nie{\ss}ner, Fisher, Xiao and
+  Funkhouser}]{zeng20163dmatch}
+\bibinfo{author}{Zeng, A.}, \bibinfo{author}{Song, S.},
+  \bibinfo{author}{Nie{\ss}ner, M.}, \bibinfo{author}{Fisher, M.},
+  \bibinfo{author}{Xiao, J.}, \bibinfo{author}{Funkhouser, T.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{{3DMatch}: learning local geometric descriptors from
+  {RGB-D} reconstructions}, in: \bibinfo{booktitle}{IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR)}.
+%Type = Article
+\bibitem[{Zhang et~al.(2023)Zhang, Zhang, Kuang and Zhang}]{zhang2023nerf}
+\bibinfo{author}{Zhang, J.}, \bibinfo{author}{Zhang, F.},
+  \bibinfo{author}{Kuang, S.}, \bibinfo{author}{Zhang, L.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Nerf-lidar: Generating realistic lidar point clouds
+  with neural radiance fields}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2304.14811} .
+%Type = Article
+\bibitem[{Zhang et~al.(2020)Zhang, Riegler, Snavely and
+  Koltun}]{zhang2020nerf++}
+\bibinfo{author}{Zhang, K.}, \bibinfo{author}{Riegler, G.},
+  \bibinfo{author}{Snavely, N.}, \bibinfo{author}{Koltun, V.},
+  \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{NeRF++}: Analyzing and improving neural radiance
+  fields}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2010.07492} .
+%Type = Article
+\bibitem[{Zhou et~al.(2018)Zhou, Park and Koltun}]{Zhou2018}
+\bibinfo{author}{Zhou, Q.Y.}, \bibinfo{author}{Park, J.},
+  \bibinfo{author}{Koltun, V.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{Open3D}: {A} modern library for {3D} data
+  processing}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1801.09847} .
+%Type = Article
+\bibitem[{Zuo et~al.(2023)Zuo, Yang, Merrill, Xu and
+  Leutenegger}]{zuo2023incremental}
+\bibinfo{author}{Zuo, X.}, \bibinfo{author}{Yang, N.},
+  \bibinfo{author}{Merrill, N.}, \bibinfo{author}{Xu, B.},
+  \bibinfo{author}{Leutenegger, S.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Incremental dense reconstruction from monocular video
+  with guided sparse feature volume fusion}.
+\newblock \bibinfo{journal}{IEEE Robotics and Automation Letters} .
+%Type = Inproceedings
+\bibitem[{Zyrianov et~al.(2022)Zyrianov, Zhu and Wang}]{zyrianov2022learning}
+\bibinfo{author}{Zyrianov, V.}, \bibinfo{author}{Zhu, X.},
+  \bibinfo{author}{Wang, S.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Learning to generate realistic {LiDAR} point clouds},
+  in: \bibinfo{booktitle}{European Conference on Computer Vision (ECCV)},
+  \bibinfo{organization}{Springer}.
+
+\end{thebibliography}

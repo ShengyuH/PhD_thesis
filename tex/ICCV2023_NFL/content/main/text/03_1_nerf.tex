@@ -1,0 +1,39 @@
+\subsection{Volume rendering for passive sensors}
+\label{sec:revisit_vr}
+In the following, we provide a brief summary of camera-based volume rendering as used by NeRF~\cite{mildenhall2020nerf,tagliasacchi2022volume}. This will serve as the basis to derive volume rendering equations for the active LiDAR sensor.
+
+\paragraph{Density and transmittance.}
+For a ray $\ray(\origin, \dir)$ emitted from the origin $\origin \in \real^3$ in direction $\dir \in \real^3$, the \textit{density} $\density_\zeta$ at range $\zeta$ is a scalar function that indicates the differential likelihood of hitting a reflective particle at position $\ray_\zeta = \origin + \zeta \dir$. \textit{Transmittance} $T_{\zeta}$ indicates the probability of traversing the interval $[0, \zeta)$ without hitting anything. Taking a differential step $d\zeta$ along the ray,  the probability of \emph{not} hitting anything is $T_{\zeta+d\zeta} = T_{\zeta} \cdot \parens*{1 -\density_\zeta d\zeta}$.
+Integrating over an interval $[\zeta_0, \zeta)$ yields the probability $T_{\zeta_0 \rightarrow \zeta}$ of traversing the interval unhindered,
+
+\begin{equation}
+T_{\zeta_0 \rightarrow \zeta} \equiv \frac{T_{\zeta}}{T_{\zeta_0}} = \exp\parens*{-\int_{\zeta_0}^\zeta \density_t dt}\;,
+\label{eq:trans_ab}
+\end{equation}
+leading to the decomposition: $T_{\zeta} = T_{0 \rightarrow \zeta_0} \cdot T_{\zeta_0 \rightarrow \zeta}\;.$
+    
+
+
+\paragraph{Integration over homogeneous media.}
+Assuming a homogeneous medium along the ray segment $[\zeta_j, \zeta_{j+1}]$ with constant radiance $\radiance \in \real^3$ and density $\density$, the accumulated radiance from that segment evaluates to 
+\begin{equation}
+    \radiance(\zeta_j \rightarrow \zeta_{j+1}) 
+    = \radiance_{\zeta_j}\int_{\zeta_j}^{\zeta_{j+1}} T_{\zeta_j \rightarrow \zeta} \cdot \density_\zeta \; d\zeta
+    = \opacity_{\zeta_j} \radiance_{\zeta_j}\;,
+\end{equation}
+with $\opacity_{\zeta_j}=1-\exp\parens*{{-\density_{\zeta_j}(\zeta_{j+1} - \zeta_j)}}$ being the \textit{opacity}. 
+
+\paragraph{Volume rendering.}
+By discretizing the ray into $N$ segments with piecewise constant densities and radiance values, we obtain the total irradiance (color to be rendered): %
+\begin{equation}
+    \begin{aligned}
+      \radiance = \sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}  T_{\zeta} \cdot \density_\zeta \radiance_\zeta \;d\zeta  
+      = \sum_{j=1}^N  w_j \radiance_{\zeta_j}\;,
+    \end{aligned}
+    \label{eq: vol_render_nerf}
+\end{equation}
+where $w_j$ is the \textit{weight} for the $j$-th segment:
+\begin{equation}
+    \label{eq:weights_nerf}
+    w_j = \opacity_{\zeta_j}\prod_{k=1}^{j-1}(1 - \opacity_{\zeta_k})\;.
+\end{equation}

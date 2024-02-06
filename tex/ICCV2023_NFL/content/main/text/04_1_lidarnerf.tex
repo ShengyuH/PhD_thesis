@@ -1,0 +1,38 @@
+\subsection{Volume rendering for LiDAR rays}
+\label{sec:lidar_vr}
+In contrast to passive sensors like cameras that rely on ambient illumination, LiDAR actively illuminates the scene and measures the back-scattered radiance. This two-way transmittance alters the volume rendering formulation. %
+
+\paragraph{Radiant power integration.}
+As discussed in \cref{sec:lidar_model} 
+the radiant power along a LiDAR ray is a delta function that is non-zero only at reflecting surfaces. To incorporate this forward model into the volumetric representation we combine \cref{eq:ht} and \cref{eq:hc} to obtain the 
+probabilistic radiant power:
+\begin{equation}
+P_\zeta = C \frac{T^2_{\zeta} \cdot \density_\zeta  \reflectance_\zeta}{\zeta^2} \cos(\theta)\;,
+\label{eq:radiance}
+\end{equation}
+where $C$ is a system constant, $\reflectance_\zeta$ is the differentiable reflectance, and $\theta$ is the incidence angle.
+In a homogeneous medium with constant reflectance $\reflectance$ and density $\density$, the integrated $P(\zeta_j \rightarrow \zeta_{j+1})$ evaluates to:
+\begin{equation}
+     P(\zeta_j \rightarrow \zeta_{j+1}) 
+     \!=\!\!\!\int_{\zeta_j}^{\zeta_{j+1}}\!\!\!\!C \frac{T^2_{\zeta_j \rightarrow \zeta} \density_\zeta \reflectance_\zeta}{\zeta^2}\!\cos(\theta_{j})\,d\zeta
+     \!\approx\!\opacity_{\zeta_j} \reflectance_{\zeta_j}', 
+\label{eq:lidar_rad}
+\end{equation}
+where we approximate $\zeta \in [\zeta_j, \zeta_{j+1}]$ by $\frac{\zeta_j + \zeta_{j+1}}{2}$, and 
+\begin{equation}
+    \opacity_{\zeta_j}\!=\!\frac{1}{2}\parens*{1- e^{-2\density_{\zeta_j}\delta_j}}\;,\; \reflectance_{\zeta_j}' = C \reflectance_{\zeta_j}\frac{4 \cos(\theta_j)}{(\zeta_j + \zeta_{j+1})^2}.
+\end{equation}
+
+
+\paragraph{Volume rendering.}
+The observed power at the active sensor can be evaluated by plugging \cref{eq:lidar_rad} into \cref{eq: vol_render_nerf}: 
+\begin{equation}
+      P
+      =\!\sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}\!\!C \frac{T^2_{\zeta} \cdot \density_\zeta \reflectance_\zeta}{\zeta^2} \cos(\theta_j) \; d\zeta
+      =\!\sum_{j=1}^N w_j \reflectance_{\zeta_j}',
+\end{equation}
+where the weights $w_j$ are now evaluated as (\cf \cref{eq:weights_nerf}):
+\begin{equation}
+   w_j = 2 \opacity_{\zeta_j} \cdot\prod_{k=1}^{j-1}(1 - 2 \opacity_{\zeta_k})\;.
+\label{eq:lidar_weights}
+\end{equation}

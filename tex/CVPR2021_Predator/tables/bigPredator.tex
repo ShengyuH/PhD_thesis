@@ -1,0 +1,28 @@
+			
+
+
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{lccccc|ccccc}
+			\toprule
+			& \multicolumn{5}{c|}{\textit{3DMatch}} & \multicolumn{5}{c}{\textit{3DLoMatch}} \\
+			\# Samples & 5000 & 2500 & 1000 & 500 & 250 & 5000 & 2500 & 1000 & 500 & 250 \\
+            \midrule
+			& \multicolumn{10}{c}{\textit{Registration Recall (\%)}} \\
+		    \midrule
+ 			3DSN~\cite{gojcic20193DSmoothNet} & 78.4 & 76.2 & 71.4 & 67.6 & 50.8 & 33.0 & 29.0 & 23.3 & 17.0 & 11.0  \\
+ 			FCGF~\cite{Choy2019FCGF} & \underline{85.1} & \underline{84.7} & 83.3 & 81.6 & 71.4 & \underline{40.1} & 41.7 & 38.2 & 35.4 & 26.8 \\
+ 			D3Feat~\cite{bai2020d3feat} & 81.6 & 84.5 & \underline{83.4} & \underline{82.4} & \underline{77.9} & 37.2 & \underline{42.7} & \underline{46.9} & \underline{43.8} & \underline{39.1} \\
+ 			\acro\ & \textbf{89.0} & \textbf{89.9} & \textbf{90.6} & \textbf{88.5} & \textbf{86.6} & \textbf{59.8} & \textbf{61.2} & \textbf{62.4} & \textbf{60.8} & \textbf{58.1} \\
+			\bottomrule
+			
+	\end{tabular}
+	}
+	\caption{Results on the \emph{3DMatch} and \emph{3DLoMatch} datasets.}
+	\label{tab:big_predator}
+    
+\end{table}
+

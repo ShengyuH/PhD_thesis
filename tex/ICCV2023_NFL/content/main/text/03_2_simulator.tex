@@ -1,0 +1,53 @@
+\subsection{LiDAR model}
+\label{sec:lidar_model}
+
+LiDAR emits laser beam pulses and determines the distance from the sensor to the nearest reflective surface by measuring the time of flight. 
+Often the LiDAR beams are pictured as ideal straight-line segments ending on a 3D surface point. In reality, things are more complicated: real lasers emit a pulse with non-zero divergence and finite pulse width, while real receivers employ signal processing techniques like radiant thresholding and binning to detect the return. This leads to phenomena such as discretization errors, over- and underestimation biases~(\cf \cref{fig:toy_example}), and multiple returns from one beam (or no return at all). 
+In the following, we discuss key aspects of the LiDAR acquisition process and explain the effects that emerge, which inspire our model design. We also built a LiDAR simulator that accounts for these mechanisms, see~\cref{sec:dataset}.
+
+
+\paragraph{Beam divergence.}
+LiDAR beams diverge as they travel away from the sensor. The size of laser beams can become wider over distance, and typically not negligible in street scenes. Consequently, the illuminated area grows and the irradiance (radiant power per area) decreases with increasing range.
+The size of the beam's footprint is characterised by the divergence angle $(2\gamma_0)$ and the range $\zeta$. Let $\ray^{\gamma}$ be an ideal ray within the beam's cross-section, $\gamma \leq \gamma_0$, then its irradiance $E(\zeta, \gamma)$ at range $\zeta$ can be approximated by a Gaussian function in the ray coordinate system~\cite{wagner2006gaussian}:
+\begin{equation}
+    E(\zeta, \gamma) =\frac{2I_0}{\pi (\gamma_0 \zeta)^2} g(\gamma), \quad g(\gamma) = \exp\parens*{-2 \frac{\gamma^2}{\gamma_0^2}},
+\end{equation}
+where $I_0$ is the pulse peak power. %
+
+
+\paragraph{Pulse waveform.}
+When the emitted LiDAR pulse returns to the sensor, the range to the reflective surface can be determined from its travel time and the speed of light $c$. Since the pulse has finite duration $\tau_H$, the time of return is found by analysing the received intensity profile. The transmitted pulse power over time can be characterised as~\cite{carlsson2001signature}:
+\begin{equation}
+    P_e(t) \propto \parens*{\frac{t}{\tau}}^2 \exp\parens*{-\frac{t}{\tau}},\quad \tau = \frac{\tau_H}{1.75}\;.
+\label{eq:pulse}
+\end{equation}
+The range-dependent received radiant power $P(\zeta$) is the result of convolving the pulse power with the systems impulse response $H(\zeta)$~\cite{rasshofer2011influences,hahner2021fog,hahner2022lidar}:
+\begin{equation}
+    P(\zeta) = \int_0^{2\zeta/c} P_e(t) H(\zeta - \frac{ct}{2}) \; dt\;,
+\end{equation}
+where the impulse response $H(\zeta)$ is a composition of the target and the receiver responses: $H(\zeta) =  H_T(\zeta) H_C(\zeta)$.
+Assuming a Lambertian surface, the target response due to a surface located at range $\zeta_0$ depends on the incidence angle $\theta$ and the reflectance $\reflectance$:
+\begin{equation}
+    H_T(\zeta) = \frac{\reflectance}{\pi} \cos(\theta) \delta(\zeta - \zeta_0)\;, 
+\label{eq:ht}
+\end{equation}
+with $\delta(\cdot)$ the Dirac delta function.
+The receiver response $H_C(\zeta)$ is computed by integrating over the solid angle spanned by the receiver's effective area $A_e$:
+\begin{equation}
+   H_C(\zeta) = T^2_{\zeta} \frac{A_e}{\zeta^2}\;,
+\label{eq:hc}
+\end{equation}
+where $T_{\zeta} \in [0,1]$ is the one-way transmittance, squared to account for the two-way trip.
+
+
+\paragraph{Beam discretization.}
+In practice, we follow~\cite{winiwarter2022virtual} and approximate the Gaussian beam profile using $M\!=\!37$ rays that are radially distributed around the central ray with different divergence angles $\gamma_i$. The total radiant power $P(\zeta)$ is the weighted sum over those rays: $P(\zeta) = \sum_{i=1}^M g(\gamma_i) P_i(\zeta)\;.$
+Taking into account the beam divergence is important to reproduce two important phenomena: range biases and multiple returns, see \cref{fig:overview} and \cref{fig:toy_example}. As different rays hit a slanted surface at different ranges the integrated waveform peak may shift, causing over- or underestimations. Along object edges, rays within the same beam may hit different surfaces, causing multiple peaks (respectively, range readings), in the return waveform.
+
+
+\paragraph{Range estimation.}
+
+One common approach to estimate the surface range from the received waveform is to locate its peak. To that end the signal is discretized in time to obtain a histogram, and local maxima above a certain threshold are declared detections~\cite{winiwarter2022virtual}. The associated range values are then corrected to remove known biases stemming from the pulse waveform (\cf \cref{eq:pulse}) and, optionally, biases due to the radiant power~\cite{winiwarter2022virtual}.
+By modeling the binning and thresholding procedure one can reproduce further LiDAR  behaviors: systematic discretization errors in the range resolution (\cf \cref{fig:toy_example}), and the dropping of rays with low returned power (\cf \cref{fig:overview}).
+
+

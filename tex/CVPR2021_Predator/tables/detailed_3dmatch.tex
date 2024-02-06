@@ -1,0 +1,42 @@
+\begin{table}[t!]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{lcccccccccc|cccccccccc}
+			\toprule
+			& \multicolumn{10}{c|}{\textit{3DMatch}} & \multicolumn{10}{c}{\textit{3DLoMatch}} \\
+			& Kitchen & Home 1 & Home 2 & Hotel 1 & Hotel 2 & Hotel 3 & Study & MIT Lab & Avg. & STD	& Kitchen & Home 1 & Home 2 & Hotel 1 & Hotel 2 & Hotel 3 & Study & MIT Lab & Avg. & STD\\
+            \midrule
+            & \multicolumn{20}{c}{\textit{\# Sample}} \\
+            \midrule
+            & \textbf{449} & 106 & 159 & 182 & 78 & 26 & \underline{234} & 45 & 160 & 128 & \textbf{524} & \underline{283} & 222 & 210 & 138 & 42 & 237 & 70 & 191 & 154\\
+			\midrule
+			& \multicolumn{20}{c}{\textit{Registration Recall (\%)}~$\uparrow$} \\
+			\midrule
+			3DSN~\cite{gojcic20193DSmoothNet} & 90.6 & 90.6 & 65.4 & 89.6 & 82.1 & 80.8 & 68.4 & 60.0 & 78.4 & 11.5 & 51.4 & 25.9 & 44.1 & 41.1 & 30.7 & 36.6 & 14.0 & 20.3 & 33.0 & 11.8 \\
+			FCGF~\cite{Choy2019FCGF} & \textbf{98.0} & \underline{94.3} & \underline{68.6} & \textbf{96.7} & \underline{91.0} & \textbf{84.6} & 76.1 & \underline{71.1} & \underline{85.1} & 11.0 & \underline{60.8} & \underline{42.2} & \underline{53.6} & \underline{53.1} & \underline{38.0} & 26.8 & \underline{16.1} & 30.4 & \underline{40.1} & 14.3\\
+			D3Feat~\cite{bai2020d3feat} & 96.0 & 86.8 & 67.3 & 90.7 & 88.5 & 80.8 & \underline{78.2} & 64.4 & 81.6 & \underline{10.5} & 49.7 & 37.2 & 47.3 & 47.8 & 36.5 & \underline{31.7} & 15.7 & \underline{31.9} & 37.2 & \textbf{10.6}\\
+			Ours & \underline{97.6} & \textbf{97.2} & \textbf{74.8} & \textbf{98.9} & \textbf{96.2} & \textbf{88.5} & \textbf{85.9} & \textbf{73.3} & \textbf{89.0} & \textbf{9.6} & \textbf
+			{71.5} & \textbf{58.2} & \textbf{60.8} & \textbf{77.5} & \textbf{64.2} & \textbf{61.0} & \textbf{45.8} & \textbf{39.1} & \textbf{59.8} & \underline{11.7} \\
+			\midrule
+			& \multicolumn{20}{c}{\textit{Relative Rotation Error (\degree)}~$\downarrow$} \\
+			\midrule
+			3DSN~\cite{gojcic20193DSmoothNet} & 1.926 & 1.843 & \underline{2.324} & 2.041 & 1.952 & 2.908 & 2.296 & 2.301 & 2.199 & 0.321 & \underline{3.020} & 3.898 & 3.427 & 3.196 & 3.217 & 3.328 & 4.325 & 3.814 & 3.528 & 0.414\\
+			FCGF~\cite{Choy2019FCGF} & \textbf{1.767} & \underline{1.849} & \textbf{2.210} & \textbf{1.867} & \underline{1.667} & \underline{2.417} & \textbf{2.024} & \textbf{1.792} & \textbf{1.949} & \underline{0.236} & \textbf{2.904} & \underline{3.229} & \underline{3.277} & \underline{2.768} & \textbf{2.801} & \textbf{2.822} & \underline{3.372} & 4.006 & \underline{3.147} & 0.394\\
+			D3Feat~\cite{bai2020d3feat} & 2.016 & 2.029 & 2.425 & \underline{1.990} & 1.967 & \textbf{2.400} & 2.346 & 2.115 & 2.161 & \textbf{0.183} & 3.226 & 3.492 & 3.373 & 3.330 & 3.165 & \underline{2.972} & 3.708 & \underline{3.619} & 3.361 & \textbf{0.227} \\
+			Ours & \underline{1.861} & \textbf{1.806} & 2.473 & 2.045 & \textbf{1.600} & 2.458 & \underline{2.067} & \underline{1.926} & \underline{2.029} & 0.286 & 3.079 & \textbf{2.637} & \textbf{3.220} & \textbf{2.694} & \underline{2.907} & 3.390 & \textbf{3.046} & \textbf{3.412} & \textbf{3.048} & \underline{0.273}\\
+			\midrule
+			& \multicolumn{20}{c}{\textit{Relative Translation Error (m)}~$\downarrow$} \\
+			\midrule
+			3DSN~\cite{gojcic20193DSmoothNet} & 0.059 & 0.070 & 0.079 & 0.065 & 0.074 & 0.062 & 0.093 & 0.065 & 0.071 & \textbf{0.010} & \underline{0.082} & 0.098 & 0.096 & 0.101 & \textbf{0.080} & 0.089 & 0.158 & \textbf{0.120} & 0.103 & 0.024\\
+			FCGF~\cite{Choy2019FCGF} & \underline{0.053} & \underline{0.056} & \underline{0.071} & \textbf{0.062} & \underline{0.061} & \underline{0.055} & \underline{0.082} & 0.090 & \underline{0.066} & 0.013 & 0.084 & \underline{0.097} & \textbf{0.076} & 0.101 & \underline{0.084} & \underline{0.077} & \underline{0.144} & 0.140 & \underline{0.100} & 0.025\\
+			D3Feat~\cite{bai2020d3feat} & 0.055 & 0.065 & 0.080 & \underline{0.064} & 0.078 & \textbf{0.049} & 0.083 & \underline{0.064} & 0.067 & 0.011 & 0.088 & 0.101 & 0.086 & \underline{0.099} & 0.092 & \textbf{0.075} & 0.146 & 0.135 & 0.103 & \underline{0.023}\\
+			Ours & \textbf{0.048} & \textbf{0.055} & \textbf{0.070} & 0.073 & \textbf{0.060} & 0.065 & \textbf{0.080} & \textbf{0.063} & \textbf{0.064} & \underline{0.010} & \textbf{0.081} & \textbf{0.080} & \underline{0.084} & \textbf{0.099} & 0.096 & 0.077 & \textbf{0.101} & \underline{0.130} & \textbf{0.093} & \textbf{0.016}\\
+			\bottomrule
+	\end{tabular}
+	}
+	\caption{Detailed results on the \emph{3DMatch} and \emph{3DLoMatch} datasets.}
+	\label{tab:detailed_3dmatch}
+\end{table}
+

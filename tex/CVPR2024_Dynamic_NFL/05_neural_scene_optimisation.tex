@@ -1,0 +1,46 @@
+\section{Neural scene optimisation} \label{sec:optmisation}
+Given the set of LiDAR scans and the associated tracked bounding boxes of the dynamic vehicles, we optimise our neural scene representation by minimising the loss:
+\begin{equation}
+    \mathcal{L} = w_{\zeta} \mathcal{L}_{\zeta} +  w_{s} \mathcal{L}_{s} + w_{\text{eik}} \mathcal{L}_{\text{eik}} + w_{\intensity} \mathcal{L}_{\intensity} + w_{\text{drop}} \mathcal{L}_{\text{drop}},
+    \label{loss}
+\end{equation}
+where $w_{*}$ denotes respective weights, and each individual loss term $\mathcal{L}_*$ is explained below.
+
+
+\paragraph{Range reconstruction loss.}
+For range estimation, we employ L1 loss, defined as: $\mathcal{L}_{\zeta} = \frac{1}{|\mathcal{R}|}\sum_{\ray \in \mathcal{R}}|\zeta_{est} -\zeta_{gt}|$, where $\mathcal{R}$ denotes the set of LiDAR rays, $\zeta_{est}$ and $\zeta_{gt}$ correspond to the estimated and actual ranges, respectively. 
+
+
+\paragraph{Surface points' SDF regularisation.} \label{sec:surfacesdf}
+Acknowledging that LiDAR points mostly come from actual surface, we introduce an additional SDF regularisation term $\mathcal{L}_{s}$ that penalizes surface points' SDF values: $\mathcal{L}_{s} = \frac{1}{|\mathcal{P}|}\sum_{\mathbf{p} \in \mathcal{P}}|s(\mathbf{p})|$. Here $\mathcal{P}$ denotes the set of surface points and $s({\mathbf{p}})$ represents the SDF value of the point $\mathbf{p}$.
+
+
+\paragraph{Eikonal constraint.}
+Following~\cite{icml2020_2086}, we utilize the Eikonal loss, $\leik$, to regularize the SDF level set. This ensures the gradient norm of the SDF is approximately one at any queried point. The loss is computed as: $\leik = \frac{1}{|\mathcal{Z}|} \sum_{\mathbf{p} \in \mathcal{Z}}( \| \nabla s(\mathbf{p}) \|_2 - 1)^2$, where $\mathcal{Z}$ is the set of all the sampled points. To stablise the training procedure, we adopt a numerical approach~\cite{li2023neuralangelo} to compute $\nabla s(\pt)$ as: 
+\begin{equation}
+    \nabla s(\pt) = \frac{s \left( \pt + \boldsymbol{\epsilon} \right) - s \left(\pt - \boldsymbol{\epsilon} \right)}{2 \epsilon} \;,
+    \label{eqn:central_diff_normal}
+\end{equation}
+where the numerical step size $\epsilon$ is set to be $10^{-3}$ meters.
+
+
+\paragraph{Intensity Loss.}
+For intensity reconstruction, we apply L2 loss, defined as: $\mathcal{L}_{\intensity} = \frac{1}{|\mathcal{R}|}\sum_{\ray \in \mathcal{R}}(\intensity_{est} -\intensity_{gt})^2.$
+
+
+\paragraph{Ray drop loss.}
+We follow~\cite{Huang2023nfl} to supervise the ray drop estimation with a combination of a binary cross entropy loss $\mathcal{L}_{bce}$ and a Lovasz loss $\mathcal{L}_{ls}$ \cite{berman2018lovasz} as:
+\begin{equation}
+     \mathcal{L}_{\text{drop}} = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} \left(\mathcal{L}_{bce}(p_{d, est}, {p_{d, gt}}) + \mathcal{L}_{ls}(p_{d, est}, {p_{d, gt}}) \right)\;.
+     \label{eq:raydrop_loss}
+\end{equation}
+It's worth noting that in the context of dynamic neural fields, during training, we incorporate all LiDAR rays that intersect with the objects' bounding boxes of the scenes. A ray is classified as \textit{dropped} either if it is labeled as such in the dataset or if it does not intersect with the actual surfaces of the dynamic vehicles (\eg rays that are close but in parallel to the surfaces). This approach enhances the accuracy and realism of the reconstructed dynamic neural fields, improving the rendering fidelity at inference time. 
+
+% \paragraph{Ray drop labels for dynamic neural field} 
+% We select ray drop labels for training dynamic neural fields as follows. Given a ray intersected with a vehicle's bounding box $v$, if $v$ matches the ray label $\mathcal{I}$, it is treated as a \textbf{non-dropped} sample ($\hat{p_d} = 0$). Conversely, if the ray either \textbf{1.)} is marked as dropped in the dataset or \textbf{2.)} extends beyond the vehicle's bounding box range, it is considered a \textbf{dropped} sample ($\hat{p_d} = 1$). Utilizing these labels, we train the ray drop prediction for each dynamic neural field using the same loss as \ref{eq:raydrop_loss}.
+
+
+
+% \paragraph{Implementation details}\label{sec:trainingdetails}
+
+% In training time We choose $w_{r}=3, w_{in}=50, w_{*}=0.15, w_{s}=1, w_{\text{eik}}=0.3 $, batch size as 4096 and trained for 60000 iterations on a single RTX3090 GPU, the starting learning rate is 0.005. 

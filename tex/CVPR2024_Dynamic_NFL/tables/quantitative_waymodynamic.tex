@@ -1,0 +1,19 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{l|ccccc}
+    \toprule
+    Method  & MAE $\downarrow$ &  MedAE $\downarrow$ & CD $\downarrow$ & MedAE Dyn $\downarrow$ & Intensity RMSE $\downarrow$\\
+    \midrule
+    LiDARsim~\cite{manivasagam2020lidarsim} & 170.1 & 11.5 & 31.1 &  16.0  & 0.10\\
+    Unisim~\cite{yang2023unisim} & 35.6 & 6.1 & 14.3 &14.3 & \textbf{0.05}\\
+    Ours~ & \textbf{30.8} & \textbf{3.0} & \textbf{10.9} &\textbf{8.5} & \textbf{0.05}\\
+    \bottomrule
+    \end{tabular}
+    }
+    
+	\caption{Evaluation of LiDAR NVS on \textit{Waymo Dynamic} dataset.}
+	\label{tab:waymodynamic}
+\end{table}

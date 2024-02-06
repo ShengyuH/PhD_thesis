@@ -1,0 +1,21 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{1.0\textwidth}{!}{
+    \begin{tabular}{ll|ccc|ccccc|cc|ccc}
+    \toprule
+    & & \multicolumn{3}{c|}{First range} & \multicolumn{5}{c|}{Second range} & \multicolumn{2}{c|}{Intensity} & \multicolumn{3}{c}{Ray drop}  \\
+     \multicolumn{2}{c|}{Method}    & Recall@50$\uparrow$  & MAE $\downarrow$ & MedAE $\downarrow$ & Seg. recall $\uparrow$ & Seg. precision $\uparrow$ & Recall@50 $\uparrow$ & MAE $\downarrow$ & MedAE $\downarrow$ & MSE\textsuperscript{1st} $\downarrow$ & MSE\textsuperscript{2nd} $\downarrow$ & Recall $\uparrow$ & Precision $\uparrow$ &  IoU $\uparrow$ \\
+    \midrule
+    \multicolumn{2}{c|}{LiDARsim~\cite{manivasagam2020lidarsim}} & 74.1 & 105.4 & 18.5 & 3.5 & 11.5 & 1.0 & 2258.0 & 1898.2 & 0.013 & 0.018 & 32.5 & \textbf{85.5} & 30.5 \\
+    \arrayrulecolor{lightgray}\cline{1-15}\arrayrulecolor{black}
+    \multirow{3}{*}{Ours} & Central ray & 92.8 & 32.8 & 5.6 & 79.8 & 62.9 & 61.1 & 589.1 & 21.8 & 0.004 & 0.009 & 64.3 & 81.7 & \textbf{57.1} \\
+    & Diverged beam & 92.3 & 36.1 & 5.7 & 82.1 & 55.6 & 67.4 & 505.1 & 13.4 & \textbf{0.004} & \textbf{0.008} & \textbf{65.1} & 78.0 & 56.1 \\
+    & GT mask & \textbf{93.2} & \textbf{29.7} & \textbf{5.6} & \textbf{100.0} & \textbf{100.0} & \textbf{79.8} & \textbf{116.0} & \textbf{8.1} & 0.004 & 0.011 & 65.1 & 78.0 & 56.1 \\
+    \bottomrule
+    \end{tabular}
+    }
+	\caption{Comprehensive ray measurement evaluation of LiDAR novel view synthesis on \textit{Waymo Interp.} dataset.}
+	\label{tab:full_eval}
+\end{table}

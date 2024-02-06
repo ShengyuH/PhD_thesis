@@ -1,0 +1,79 @@
+\section{LiDAR Novel View Synthesis}
+\label{sec:method}
+
+We now turn to constructing a neural field model tailored for LiDAR scans, along with a differentiable volume rendering scheme to enable LiDAR novel view synthesis.
+We first formulate the problem setting, then set up a corresponding neural scene representation (\cref{sec:neural_scene_rep}) and derive volume rendering for active sensing (\cref{sec:lidar_vr}). Finally, we describe the rendering procedure used to synthesize novel views (\cref{sec:render_lidar}) and our optimisation scheme (\cref{sec:opt}). 
+
+
+\paragraph{Problem setting.}
+Consider a collection of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor (\eg, mounted on a vehicle). Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \text{SE}(3)$ and consists of $n_r$ rays. Every ray $\ray(\origin, \dir)$ records observations $(\zeta_1, \intensity_1, \pdrop, \ptwo, \zeta_2, \intensity_2)$: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return.
+Our goal is to reconstruct a (continuous) volumetric representation of the scene in terms of density $\density$ and reflectance $\reflectance$, from which we can subsequently render virtual LiDAR scans $\mathbf{X}_{tgt}$ from novel sensor poses $\mathbf{T}_{tgt}$.
+
+\subsection{Neural scene representation}\label{sec:neural_scene_rep}
+We encode the scene as a neural field $F: (\x, \dir) \mapsto (\density, \reflectance, \pdrop)$ that takes as input a location $\x \in \real^3$ and viewing direction $\dir \in \real^3$, and returns a density $\density$, a reflectance $\reflectance$ and a ray drop probability $\pdrop$. We found it beneficial to additionally return also a local contribution $\pdrop \in [0, 1]$ to the probability of ray drop, which will be discussed below.
+Technically, we use a hash encoding~\cite{muller2022instant} to map coordinates $\x$ to positional features $\posfeat \in \real^{32}$ and project the view direction onto the first 16 coefficients of the spherical harmonics basis, $\dirfeat \in \real^{16}$. The neural field is parameterized by four Multi-Layer Perceptrons (MLPs): $[\density; \geofeat] = f_\density(\posfeat)$ regresses density and extracts an additional geometry feature $\geofeat \in \real^{15}$ that supports the other networks; $\reflectance = f_{\reflectance}(\geofeat, \dirfeat)$ regresses reflectance; $\pdrop = f_{\text{drop}}(\geofeat, \dirfeat)$ classifies whether a ray drop occurs; and  $p_s = f_{\text{sr}}(\rayfeat)$ classifies the existance of a second return. The feature $\rayfeat$ will be detailed in \cref{sec:render_lidar}.
+
+\input{\subdir/content/main/text/04_1_lidarnerf}
+
+
+
+\subsection{Assembling the beam from multiple rays}
+\label{sec:render_lidar}
+Next, we apply the adapted volume rendering formulation to multiple rays within a single LiDAR beam.
+
+
+\paragraph{First range estimation.}
+We adopt a two-stage approach to extract range values from the neural field,\footnote{Note the similarity to the detector in the instrument that first finds the peak of the waveform, then corrects for pulse shape.} as shown in \cref{fig:overview} (a).
+To estimate the range for an ideal ray $\ray$, we uniformly sample $N^c$ points and query their density values, then compute the weights $\{w^c_j\}_{j=1}^{N^c}$ using \cref{eq:lidar_weights}. A coarse peak estimate $\zeta_p$ is obtained by finding the point with the highest weight along the ray: $p = \argmax_j \{w^c_j\}_{j=1}^{N^c} $. Next, we uniformly sample $N^f$ points from the local interval $\zeta_j \in [\zeta_p - \epsilon, \zeta_p + \epsilon]$. The weights $w_j^f$ at these points are recomputed and normalized to then obtain the final, refined range estimate $\zeta_f$ as:~$\zeta_f = \sum_{j=1}^{N^f} w^f_j \cdot \zeta_j\;.$
+
+
+
+\paragraph{Second range estimation.}
+As discussed in~\cref{sec:lidar_model} a single LiDAR beam might have multiple returns if enough energy was reflected from surfaces further away than the first return. To capture this behavior in our scene representation, we employ \textit{truncated} volume rendering to estimate the radiant power beyond the first return (see \cref{fig:overview} (b)).
+
+Specifically, for each beam, we first predict a two-return mask $p_s$, by classifying its features $\rayfeat = (\geofeatbar,\dirfeat,\rangefeat)$, where $\geofeatbar$ is the volume-rendered geometric feature, and $\rangefeat$ describes the standard deviation and maximum discrepancy of range estimates at the first return. Intuitively, $\geofeatbar$ describes the local geometry (\eg an edge), $\dirfeat$ encodes the relation of the beam to the geometry, and $\rangefeat$ characterizes the beam's prior interaction with the scene.
+
+For beams that have two returns, we then perform \textit{truncated} volume rendering as follows. We first add a buffer $\xi$\footnote{The buffer $\xi$ is sensor specific and describes the minimum spacing between two distinct returns.} to the estimated range $\zeta_1$ of the first return. We then reset the transmittance $T_{\zeta_1 + \xi}$ to 1 by zeroing out the densities up to $(\zeta_1 + \xi)$ and recalculate the weights to ensure that they adhere to \cref{eq:lidar_weights}. Finally, we repeat the range estimation described above to estimate the range of the second return $\zeta_2$. Note that for beams with two returns, the estimated range $\zeta_1$ denotes the minimum range of all rays within the beam diameter, i.e. we perform volume rendering on all rays of a beam and pick the closest one as the first return. This is different from the beams with a single return where we directly use the central ray to estimate $\zeta_1$. 
+
+
+
+
+
+
+\paragraph{Reflectance estimation.}
+At every detected surface point we can also retrieve reflectance from the neural field, using the relation $\reflectance = \sum_{j=1}^{N^f} w_j^f \cdot \reflectance_j$.
+
+
+\paragraph{Ray drop probability.}
+In real LiDAR sensors, some emitted beams return no range measurement at all. This happens when the observed return signal has either too low amplitude or no clear peak (\cref{fig:overview} (c)). However, this effect is hard to model in a fully physics-based way,\footnote{Beyond simple thresholding, which our beam model would support.} because it depends on (usually undisclosed) details of the detection logic. We empirically observe that the ray drop probability can be learned from LiDAR measurements. To this end, we augment the neural scene representation with a dedicated variable for the local probability of \textit{not} back-scattering radiant power $\pdrop(\zeta) \in \{0, 1\}$\footnote{Please refer to the supplementary for discussions on this design choice.}. 
+Volume rendering integrates that quantity into a ray drop probability: $\pdrop(\ray) = \sum_{j=1}^{N_c} w_j^c\cdot p_d(\zeta_j)$.
+
+
+\subsection{Training the neural LiDAR field}
+\label{sec:opt}
+Given a set of posed LiDAR scans, we optimise our neural field model by minimising the loss
+\begin{equation}
+    \mathcal{L} = \mathcal{L}_{\text{range}} + \lambda_e \mathcal{L}_{e} + \lambda_d \mathcal{L}_{d} + \lambda_s\mathcal{L}_s\;,
+\label{eq:loss}
+\end{equation}
+consisting of a reconstruction loss $\mathcal{L}_{\text{range}}$ for range estimation, reflectance loss $\mathcal{L}_{e}$, and classification losses $\mathcal{L}_{d}$ for ray drops and $\mathcal{L}_s$ for two returns. 
+
+
+\paragraph{Range reconstruction.}
+We add two separate losses for the coarse range $\zeta_p$ and the refined range $\zeta_f$, $\mathcal{L}_{\text{range}} = \mathcal{L}_{\text{range}}^c + \mathcal{L}_{\text{range}}^f$. For coarse range, we impose a Gaussian distribution~\cite{rematas2021urban} around the ground truth $\hat{\zeta}$, 
+\begin{equation}
+    \mathcal{L}_{\text{range}}^c = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} \parens*{1-\!\sum_{w_j \in \mathcal{X}_c^n}\!w_j \hat{w}_j+\!\sum_{w_k \in \mathcal{X}_c^e}\!w_k^2}\;,
+\end{equation}
+where $\mathcal{R}$ is the set of LiDAR rays, $\mathcal{X}_c^n$ and $\mathcal{X}_c^e$ denote points sampled within and outside the interval $[\hat{\zeta}-\epsilon,\hat{\zeta}+\epsilon]$. The ground truth weight $\hat{w}_j$ is calculated by integrating the Gaussian distribution.
+The range refinement loss is defined as: $\mathcal{L}_{\text{range}}^f = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} |\hat{\zeta} - \zeta_f|.$
+
+
+\paragraph{Reflectance reconstruction}
+is optimized by minimizing an L2 loss \wrt the ground truth intensity $\hat{\intensity}$:~$\mathcal{L}_e = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} (\hat{\intensity} - \intensity)^2\;.$  
+
+
+\paragraph{Ray drop and dual return masks} 
+are trained as classification tasks, by minimizing the combination of a binary cross entropy loss $\mathcal{L}_{bce}$ and a Lovasz loss $\mathcal{L}_{ls}$~\cite{berman2018lovasz}:
+\begin{equation}
+     \mathcal{L}_* = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} \left(\mathcal{L}_{bce}(p_*, \hat{p_*}) + \mathcal{L}_{ls}(p_*, \hat{p_*}) \right)\;.
+\end{equation}

@@ -1,0 +1,32 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{clcccc|cccccc}
+    \toprule
+    & & \multicolumn{4}{c|}{Static part} & \multicolumn{5}{c}{Dynamic foreground}  \\
+    Dataset                   & Method    & EPE avg.$\downarrow$ & AccS$\uparrow$  & AccR$\uparrow$ & ROutlier$\downarrow$ & EPE avg. $\downarrow$ & EPE med.$\downarrow$  & AccS$\uparrow$   & AccR$\uparrow$   & ROutliers $\downarrow$                 \\
+    \midrule
+    \multirow{7}{*}{\emph{Waymo}}    & PPWC-Net~\cite{wu2019pointpwc}  & 0.414 & 17.6 & 40.2 & 12.1 & 0.475 & 0.201 & 9.0 & 29.3 & 22.4  \\
+                              & FLOT~\cite{puy2020flot} & 0.129 & 65.2 & 85.0 & 2.8 & 0.625 & 0.231 & 9.8 & 27.4 & 33.8   \\
+                              & WsRSF~\cite{gojcic2021weakly} & 0.063 & 87.3 & 96.6 & 0.6 & 0.381 & 0.094 & 31.3 & 64.0 & 10.1       \\
+                              & NSFPrior~\cite{li2021neural} & 0.187 & 79.8 & 89.1 & 4.7 & 0.237 & 0.077 & 44.7 & 68.6 & 11.5\\                     \arrayrulecolor{lightgray}\cline{2-11}\arrayrulecolor{black}
+                              & Ours & \underline{0.028} & \underline{97.5} & \underline{99.5} & \underline{0.1} & \underline{0.197} & \underline{0.062} & \underline{53.3} & \underline{77.5} & \underline{5.9}  \\
+                              & Ours+ & \textbf{0.018} & \textbf{99.0} & \textbf{99.7} & \textbf{0.1} & \textbf{0.173} & \textbf{0.043} & \textbf{69.1} & \textbf{86.9} & \textbf{5.1} \\
+                              & Ours (w.\ ground) & 0.042 & 91.9 & 98.8 & 0.1 & 0.219 & 0.071 & 47.1 & 72.8 & 8.5 \\            
+    \midrule
+    \multirow{7}{*}{\emph{nuScenes}} & PPWC-Net~\cite{wu2019pointpwc}  & 0.316 & 16.1 & 37.0 & 8.7 & 0.661 & 0.307 & 7.6 & 24.2 & 31.9\\
+                                  & FLOT~\cite{puy2020flot} & 0.153 & 51.7 & 78.3 & 4.3 & 1.216 & 0.710 & 3.0 & 10.3 & 63.9 \\
+                                  & WsRSF~\cite{gojcic2021weakly} & 0.195 & 57.4 & 82.6 & 4.8 & 0.539 & 0.204 & 17.9 & 37.4 & 22.9 \\
+                                  & NSFPrior~\cite{li2021neural} &  0.584 & 38.9 & 56.7 & 26.9 & 0.707 & 0.222 & 19.3 & 37.8 & 32.0 \\
+                                  \arrayrulecolor{lightgray}\cline{2-11}\arrayrulecolor{black}
+                                  & Ours & \underline{0.111} & \underline{65.4} & \underline{88.6} & \underline{1.1} & \underline{0.301} & \underline{0.146} & \underline{26.6} & \underline{53.4} & \textbf{12.1} \\
+                                  & Ours+ & \textbf{0.091} & \textbf{72.8} & \textbf{91.9} & \textbf{0.9} & \textbf{0.301} & \textbf{0.135} & \textbf{32.7} & \textbf{56.7} & \underline{13.7} \\
+                                  & Ours (w.\ ground) & 0.134 & 55.3 & 83.8 & 1.9 & 0.37 & 0.182 & 18.2 & 43.8 & 17.5  \\   
+    \bottomrule
+    \end{tabular}
+    }
+	\caption{Scene flow results on \emph{Waymo} and \emph{nuScenes} datasets.}
+	\label{tab:sf_main}
+\end{table}

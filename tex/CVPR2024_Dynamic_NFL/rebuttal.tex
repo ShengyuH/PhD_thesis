@@ -1,0 +1,237 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[rebuttal]{cvpr}
+
+% Include other packages here, before hyperref.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+\renewcommand{\bibsection}{}
+% Import additional packages in the preamble file, before hyperref
+\input{preamble}
+\input{macro}
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,citecolor=cvprblue,bookmarks=false]{hyperref}
+% \usepackage[pagebackref,breaklinks,colorlinks,bookmarks=false]{hyperref}
+
+% Support for easy cross-referencing
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+
+\newcommand{\ROne}{{\textcolor{red}{\textbf{R1}}}}
+\newcommand{\RTwo}{{\textcolor{cyan}{\textbf{R2}}}}
+\newcommand{\RThree}{{\textcolor{blue}{\textbf{R3}}}}
+\newcommand{\xing}[1]{{\textcolor{blue}{\textbf{Xing: {#1}}}}}
+\newcommand{\shengyu}[1]{{\textcolor{red}{\textbf{Shengyu:} {#1}}}}
+\newcommand{\orl}[1]{{\textcolor{orange}{\textbf{OrL:} {#1}}}}
+\newcommand{\stefan}[1]{{\textcolor{pink}{\textbf{Stefan:} {#1}}}}
+\newcommand{\hanfeng}[1]{{\textcolor{green}{\textbf{Hanfeng:} {#1}}}}
+% If you wish to avoid re-using figure, table, and equation numbers from
+% the main paper, please uncomment the following and change the numbers
+% appropriately.
+%\setcounter{figure}{2}
+%\setcounter{table}{1}
+%\setcounter{equation}{2}
+
+% If you wish to avoid re-using reference numbers from the main paper,
+% please uncomment the following and change the counter for `enumiv' to
+% the number of references you have in the main paper (here, 6).
+%\let\oldthebibliography=\thebibliography
+%\let\oldendthebibliography=\endthebibliography
+%\renewenvironment{thebibliography}[1]{%
+%     \oldthebibliography{#1}%
+%     \setcounter{enumiv}{6}%
+%}{\oldendthebibliography}
+
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\refname}{}
+\renewcommand{\bibname}{}
+%%%%%%%%% PAPER ID  - PLEASE UPDATE
+\def\paperID{2088} % *** Enter the Paper ID here
+\def\confName{CVPR}
+\def\confYear{2024}
+
+\begin{document}
+
+%%%%%%%%% TITLE - PLEASE UPDATE
+\title{Dynamic LiDAR Re-simulation using Compositional Neural Fields -- Author Response}  % **** Enter the paper title here
+
+\maketitle
+\thispagestyle{empty}
+\appendix
+
+%%%%%%%%% BODY TEXT - ENTER YOUR RESPONSE BELOW
+\noindent
+% We thank the reviewers for their insightful comments. 
+% We appreciate that they find our research objective "LiDAR re-simulation for dynamic environments" \textit{novel} and \textit{challenging} (\ROne, \RThree), 
+% our proposed method \textit{strong} and \textit{logical}(\ROne, \RTwo), 
+% our evaluations \textit{adequate} and \textit{thorough}(\ROne, \RTwo, \RThree) that demonstrate \textit{state-of-the-art} performance of our method in dynamic/static scenes(\ROne, \RTwo, \RThree). 
+% In the following, we address their specific concerns\footnote{Fig.\ and Tab.\ number without a letter "A" refer to the main paper.}
+We thank the reviewers for their insightful comments. 
+We appreciate that they find the research problem \textit{challenging} (\RThree~--XGTq)), the proposed method \textit{logical} and \textit{novel} (\ROne~--yvF1, \RTwo~-- DM3P), and the evaluations \textit{adequate} and \textit{thorough}. Moreover, we are glad they confirm \textit{state-of-the-art} performance in both dynamic and static scenes (\ROne, \RTwo, \RThree). In the following, we address the remaining concerns.\footnote{Fig.\ and Tab.\ number without a letter "A" refer to the main paper.}
+
+
+\paragraph{Runtime analysis (\ROne)} 
+% The training time of our model is on average 12 hours for 60000 steps with batch size 4096 on a single RTX 3090. 
+% At inference time, rendering one LiDAR scan with resolution of 2650*64 requires 6.5 seconds with Float32 precision. 
+% Using the same setting with Float16 precision, the training time is on average 7 hours and the inference time is 2.2 seconds per LiDAR scan.
+% Using a single RTX 3090 GPU card, training DyNFL takes around 7 hours and the inference speed is about 2.2 seconds per dynamic LiDAR scan. 
+% Note that we envision the counterfactual re-simulation enabled by DyNFL as an offline task to stress-test trained perception models in "what if" scenarios, 
+% therefore, efficiency is less important compared to the realism. The runtime can be potentially improved by reducing rendering complexity in efficiency-critical scenarios. 
+DyNFL training takes $\approx$7 hours on a single RTX 3090 GPU with fp16 precision, inference takes 2.2 seconds per LiDAR scan. The envisioned offline use for counterfactual re-simulation prioritizes realism over efficiency. Runtime can potentially be improved for high-throughput applications by reducing rendering complexity.
+
+
+
+\paragraph{Vehicle re-simulation from unseen angles (\ROne, \RThree)}
+% We admit that synthesizing LiDAR scans from unseen angles remains as a limitation of our work. 
+% Since our method is compositional, it's feasible to directly leverage learned shape prior to improve individual shape reconstruction.
+% This strategic utilization holds the potential to augment the overall robustness of our approach against occlusion scenarios.
+% View synthesis of dynamic vehicles from unseen angles indeed remains a challenge for our pure optimisation-based method. 
+% However, benefited from our scene decomposition, it's feasible to integrate learned shape priors into per-instance neural field optimisation~\cite{hypnerf2023} to complete unseen regions. This also holds potential to improve robustness against occlusions. We leave this for future work. 
+View synthesis of vehicles from unobserved angles remains a challenge in our optimization-based approach. Leveraging our scene decomposition into individual object instances allows for the integration of learned shape priors into neural field optimization~\cite{hypnerf2023} to fill in unseen regions, or to enhance robustness about other (non self-) occlusions. We defer this topic to future research.
+
+
+\paragraph{Future frame generation (\ROne)}
+% We trained our model using the first 40 frames and evaluate against the last 10 frames. 
+% The results in \cref{fig:future_frames} reveal that, in the context of future frame generation, 
+% the pretrained vehicle neural fields effectively preserve their reconstruction quality. 
+% Conversely, challenges arise in the synthesis of LiDAR scans from unseen regions for the static background neural field.
+% Following the suggestion, we train DyNFL using the first 40 frames and evaluate against the last 10 frames, and present the results on \textit{Waymo Dynamic} dataset in \cref{tab:future_frame_quant} and \cref{fig:future_frames}. 
+% Notably, the performance is worse than those achieved in the original setting (\cf Tab. 1) as the new setting requires scene extrapolation, which is only achievable via learned prior. 
+% DyNFL still significantly outperforms LiDARsim and the performance on dynamic vehicles only degrades slightly attributed to 
+% our accurate pose interpolation and high-quality asset reconstruction. We will incorporate this result in the final version. 
+We trained DyNFL using the initial 40 frames and assessed its performance against the last 10 frames. The results are presented on the \textit{Waymo Dynamic} dataset in \cref{tab:future_frame_quant} and \cref{fig:future_frames}. Unsurprisingly, the performance is comparatively inferior to the original setting (\cf Tab.~1), as it requires extrapolation beyond the observed environment, and thus again a (possibly learned) scene prior. Nevertheless DyNFL continues to outperform LiDARsim. The degradation on dynamic vehicles is marginal, attributable to our precise pose interpolation and high-quality asset reconstruction. We will incorporate these findings in the final version.
+
+
+\paragraph{Quantitative evaluation beyond view interpolation (\ROne)}
+% We conducted experiments on \textit{WaymoNVS}\cite{Huang2023nfl} dataset which employs a dedicated closed-loop evaluation to validate the real novel view synthesis performance(\cf Tab. 2). 
+% Additionally, we provide the quantitative evaluation on future frame generation of 4 scenes from \textit{WaymoDynamic} in \cref{tab:future_frame_quant}
+% The results on \textit{WaymoNVS}~\cite{Huang2023nfl} dataset are reported in Tab. 2, demonstrating the superior performance of DyNFL on real NVS task. 
+% We will incorporate new results on \textit{Waymo Dynamic} dataset under similar setting in our final version. 
+Tab.~2 reports results on the \textit{WaymoNVS} dataset, showcasing the superior performance of DyNFL in real NVS tasks. In the final version, we plan to include additional results on \textit{Waymo Dynamic}, under similar settings.
+
+
+\paragraph{Clarifications on ablation studies (\RTwo)} 
+% In Tab. 3 the black number is evaluated by DyNFL in different datasets using active sensing formulation(\cf Sec. 4.2) 
+% and the following green/red number represent the deviations from the evaluations performed by DyNFL without the application 
+% of the active sensing formulation, where negative values denote improvement. Similary in Tab. 4, the black numbers denote 
+% evaluations incorporating surface points' SDF regularization, and the accompanying green numbers signify the improvement 
+% achieved compared to evaluations conducted without the regularization.
+% In Tab. 3, we report results using our full system equipped with active sensing formulation on different datasets, 
+% the numbers in bracket indicate the \textcolor{green}{improvement} or the \textcolor{red}{deterioration} of the performance 
+% compared to the model without the active sensing formulation. Similary in Tab. 4, we evaluate the effectiveness of surface points' SDF regularization.
+In Tab.~3 we present results employing our complete system, including the active sensing formulation, on various datasets. The numbers in brackets denote the \textcolor{green}{increase} or \textcolor{red}{drop} in performance compared to the model without the active sensing component. Similarly, in Tab.~4, we assess the efficacy of SDF regularization.
+
+
+\paragraph{Dependency on bounding box annotation (\RTwo, \RThree)}
+% The current version needs the bbox annotation of the dynamic vehicles to separate static/dynamic LiDAR points. 
+% Nonetheless, we argue that the availability of extensive labeled driving datasets compensates for this requirement, 
+% and the re-simulation serves more as closed-loop test of perception models than training sets. Leveraging the compositional nature of our approach, 
+% we demonstrate the capability to generate diverse scenes using only a handful of meticulously annotated scenes, 
+% and in some instances, even employing CAD models.
+% Similar to LiDARsim, DyNFL needs object detection and tracking annotations to model each object. 
+% We argue that such dependency is not a major issue as there are large driving datasets with accurate annotations available. 
+% Together with the compositional nature of DyNFL, we can create extensive and diverse scenarios by combining assets from different scenes, 
+% to support counterfactual re-simulation. 
+% Admittedly, empowering DyNFL with auto labeling tools has the potential to make it fully automatic. 
+% This is beyond the scope of our work and we consider it as future work. 
+Similar to LiDARsim, DyNFL relies on object detection and tracking annotations to model each object. We contend that this dependency is not a significant concern, given the availability of large driving datasets with accurate annotations. Leveraging the compositional nature of DyNFL, we can generate extensive and diverse scenarios by combining assets from different scenes to support counterfactual re-simulation. Combining DyNFL with auto-labeling tools has the potential to achieve full automation, but that is beyond the scope of our current work. It will be an interesting avenue for future research.
+
+
+\paragraph{Bounding box inaccuracy (\RThree)}
+% The pose in-accuracy might be an issue, but could be alleviated by integrating the pose optimization into the reconstruction pipeline. 
+% We also consider such investigation as future work. 
+Pose inaccuracy could potentially be a challenge, and could in the future probably be mitigated by integrating pose optimization into the reconstruction.
+
+
+\paragraph{Comparison to existing works (\RThree)} 
+% Our work shares similarities with two existing approaches, LiDARsim \cite{manivasagam2020lidarsim} and NFL \cite{Huang2023nfl}. 
+% LiDARsim facilitates LiDAR re-simulation for dynamic scenes by employing an explicit Surfel representation. 
+% On the other hand, NFL employs density-based NeRF to represent LiDAR fields, achieving state-of-the-art performance but is limited to static scenes. 
+% In comparison, DyNFL not only builds upon the achievements of NFL but also enhances reconstruction quality and extends support for LiDAR re-simulation in dynamic scenes. 
+% We will improve accordingly in the camera-ready version of our work.
+% LiDARsim~\cite{manivasagam2020lidarsim} and NFL~\cite{Huang2023nfl} are most relevant to ours. 
+% LiDARsim addresses dynamic LiDAR re-simulation using a compositional method. 
+% However, it relies on explicit surface modelling and is not optimized for NVS nor accounting for view-dependent effects, 
+% resulting in inferior performance. 
+% NFL uses neural surface modelling but is limited to handling static scenes (\ROne). 
+% Its unconstrained surface modelling has also been proven to be worse than our SDF-based modelling. 
+% We will incorporate such discussion in the camera-ready version. 
+LiDARsim and NFL are the most relevant public competitors. LiDARsim addresses dynamic LiDAR re-simulation through a compositional method, but it relies on explicit surface modeling, is not optimized for NVS, and does not account for view-dependent effects. NFL utilizes neural surface modeling but is limited to handling static scenes, and its unconstrained surface representation turned out to be less effective than our SDF-based one. We will incorporate this discussion in the final version.
+
+
+\paragraph{Impact of noisy points on downstream application (\RThree)}
+% The presence of noisy points in occluded areas is a result of the ray-drop prediction in our method. 
+% In real-world scenarios, ray-drop typically signifies insufficient reflected pulse power. 
+% In our approach, we combine the case where LiDAR beams do not intersect with an object and the case where they strike a non-reflective surface. 
+% This combination can lead to rendered points behind non-reflective surfaces, such as vehicle windows. 
+% However, it's important to note that these noisy points are rendered from static background neural field and do not compromise the robustness of our model for downstream tasks.
+
+% As illustrated in Figure \ref{fig:noisypoints}, we present detection results obtained from GT data and our re-simulations. 
+% Remarkably, the detection bboxes align well even in occluded areas with the presence of noisy points. 
+% This further underscores the resilience of our model in handling such scenarios.
+% The presence of noisy points in occluded areas is mostly due to the erroneous ray-drop prediction (\eg false negatives) when rendering the static background. 
+% We analyse their effects on object detection task and present qualitative results in Fig. \ref{fig:noisypoints}. 
+% Notably, despite the presence of noisy points in our re-simulated LiDAR scans, 
+% the object detection results agree well with those obtained using GT LiDAR scans, underscoring the effectiveness of DyNFL for downstream applications in challenging scenarios 
+Noise points in occluded areas primarily stem from erroneous ray-drop predictions (false negatives) during rendering of the static background. We analyze their impact on the object detection task and show qualitative results in Fig.~\ref{fig:noisypoints}. Remarkably, despite the presence of those noise points the detection results in our re-simulated LiDAR scans align closely with those obtained from ground truth (GT) LiDAR scans. I.e., DyNFL is adequate at least for some downstream applications.
+
+
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=1\linewidth]{Figures_rebuttal/future_frames.pdf}
+        
+        \caption{Qualitative results of LiDAR future frame simulation.
+        }
+    \label{fig:future_frames}
+    
+\end{figure}
+
+\begin{table}[t]
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{0.6\columnwidth}{!}{
+    \begin{tabular}{l|cccc}
+    \toprule
+    Method  & MAE $\downarrow$ &  MedAE $\downarrow$ & CD $\downarrow$ & MedAE Dyn $\downarrow$ \\
+    \midrule
+    LiDARsim & 333.3 & 25.3 & 67.8&  13.0  \\
+    Ours~ & \textbf{81.8} & \textbf{8.6} & \textbf{26.4} &\textbf{9.3} \\
+    \bottomrule
+    \end{tabular}
+    }
+    
+	\caption{Results of future frame simulation.}
+	\label{tab:future_frame_quant}
+    
+\end{table}
+
+\begin{figure}[t]
+   \centering
+   \includegraphics[width=1\linewidth]{Figures_rebuttal/noisypoints.pdf}
+   
+   \caption{
+   Object detections on noisy re-simulated LiDAR scans. 
+   }
+    
+   \label{fig:noisypoints}
+\end{figure}
+
+
+%%%%%%%%% REFERENCES
+{
+    \scriptsize
+    \bibliographystyle{ieeenat_atal}
+    \bibliography{main}
+}
+
+\end{document}

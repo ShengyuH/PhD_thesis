@@ -1,0 +1,19 @@
+\begin{table}[t]
+	\centering
+	\resizebox{0.9\columnwidth}{!}{
+		\begin{tabular}{@{}lcccccccc@{}}
+			\toprule
+             & \multicolumn{1}{c}{GT} & \multicolumn{3}{c}{Ours} & \multicolumn{3}{c}{LiDARSim\cite{manivasagam2020lidarsim}} \\
+			  \cmidrule(r){2-2}\cmidrule(r){3-5} \cmidrule(l){6-8}
+			Threshold & AP$\uparrow$ & \multicolumn{1}{c}{AP$\uparrow$}& \multicolumn{1}{c}{Agg.$\uparrow$}& \multicolumn{1}{c}{Dyn. Agg.$\uparrow$} & \multicolumn{1}{c}{AP$\uparrow$} & \multicolumn{1}{c}{Agg.$\uparrow$}& \multicolumn{1}{c}{Dyn. Agg.$\uparrow$} \\
+			\midrule
+			IoU$>$0.7 &0.85  &0.86 & \textbf{0.77}& \textbf{0.71}& \textbf{0.90} & 0.76 & 0.68\\
+			IoU$>$0.5 &\textbf{0.98}  & 0.96 & \textbf{0.87}& \textbf{0.76}& 0.95 & 0.86& \textbf{0.76} \\
+			\bottomrule
+		\end{tabular}
+	}
+    
+	\caption{Object detection results on \textit{Waymo Dyanmic} datasets.}
+    
+	\label{tab:detection}
+\end{table}

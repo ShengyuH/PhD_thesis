@@ -1,0 +1,23 @@
+\section{Introduction}
+\label{sec:intro}
+LiDAR point clouds are a primary data source for robot perception in dynamically changing 3D scenes. They play a crucial role in mobile robotics and autonomous driving.
+To ensure awareness of a large field of view at any point in time, 3D point measurements are acquired as a sequence of sparse scans that each cover a large field-of-view---typically, the full 360$^\circ$.
+In each individual scan \emph{(i)} the point density is low, and \emph{(ii)} some scene parts are occluded. Both issues complicate downstream processing.
+One way to mitigate the problem is to assume the sensor ego-motion is known and to align multiple consecutive scans into a common scene coordinate frame, thus accumulating them into a denser and more complete point cloud.
+This simple accumulation strategy already boosts performance for perception tasks like object detection~\cite{caesar2020nuscenes} and semantic segmentation~\cite{behley2019semantickitti}, but it also highlights important problems.
+First, to obtain sufficiently accurate sensor poses the ego-motion is typically computed in post-processing to enable sensor fusion and loop closures --- meaning 
+that it would actually not be available for online perception. Second, compensating the sensor ego-motion 
+only aligns scan points of the static background, while moving foreground objects are smeared out along their motion trajectories (\cref{fig:teaser}b). 
+
+To properly accumulate 3D points across multiple frames, one must disentangle the individual moving objects from the static background and reason about their spatio-temporal properties. Since the grouping of the 3D points into moving objects itself depends on their motion, the task becomes a form of multi-frame 3D scene flow estimation. Traditional scene flow methods~\cite{liu2019flownet3d,wu2019pointpwc,puy2020flot} model dynamics in the form of a free-form velocity field from one frame to the next, only constrained by some form of (piece-wise) smoothing~\cite{vogel2013piecewise,vogel20153d,dewan2016rigid}.
+
+While this is a very flexible and general approach, it also has two disadvantages in the context of autonomous driving scenes: \emph{(i)} it ignores the geometric structure of the scene, which normally consists of a dominant, static background and a small number of discrete objects that, at least locally, move rigidly;
+\emph{(ii)} it also ignores the temporal structure and only looks at the minimal setup of two frames. Consequently, one risks physically implausible scene flow estimates~\cite{gojcic2021weakly}, and does not benefit from the dense temporal sequence of scans.
+
+Starting from these observations, we propose a novel point cloud accumulation scheme tailored to the autonomous driving setting. To that end, we aim to accumulate point clouds over time while abstracting the scene into a collection of rigidly moving agents~\cite{behl2019pointflownet,gojcic2021weakly,teed2021raft}
+and reasoning about each agent's motion on the basis of a longer sequence of frames~\cite{huang2021multibodysync,huang2022multiway}. 
+Along with the accumulated point cloud (\cref{fig:teaser}c), our method provides more holistic scene understanding, including foreground/background segmentation, motion segmentation, and per-object parametric motion compensation. As a result, our method can conveniently serve as a common, low-latency preprocessing step for perception tasks including surface reconstruction (\cref{fig:teaser}f) and semantic segmentation~\cite{behley2019semantickitti}.
+
+We carry out extensive evaluations on two autonomous driving datasets \emph{Waymo}~\cite{sun2020scalability} and \emph{nuScenes}~\cite{caesar2020nuscenes}, where our method greatly outperforms prior art. For example, on \emph{Waymo} we reduce the average endpoint error from 12.9$\,$cm to 1.8$\,$cm for the static part and from 23.7$\,$cm to 17.3$\,$cm for the dynamic objects. We observe similar performance gains also on \emph{nuScenes}.
+
+In summary, we present a novel, learnable model for temporal accumulation of 3D point cloud sequences over multiple frames, which disentangles the background from dynamic foreground objects. By decomposing the scene into agents that move rigidly over time, our model is able to learn multi-frame motion and reason about motion in context over longer time sequences. Moreover, our method allows for low-latency processing, as it operates on raw point clouds and requires only their sequence order as further input. It is therefore suitable for use in online scene understanding, for instance as a low-level preprocessor for semantic segmentation or surface reconstruction.

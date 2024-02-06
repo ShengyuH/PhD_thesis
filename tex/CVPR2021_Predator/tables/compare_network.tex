@@ -1,0 +1,18 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{ccccc}
+			\toprule
+            \multicolumn{1}{c}{} & \multicolumn{1}{c}{\# strided} & \multicolumn{1}{c}{convolution} & \multicolumn{1}{c}{first conv.} & \multicolumn{1}{c}{final}\\
+            \multicolumn{1}{c}{} & \multicolumn{1}{c}{convolutions} & \multicolumn{1}{c}{radius} & \multicolumn{1}{c}{feature dim.} & \multicolumn{1}{c}{feature dim.}\\
+            \hline
+            \multicolumn{1}{c}{\emph{3DMatch}} & 3 & 2.5 & 64 & 32 \\
+            \multicolumn{1}{c}{\emph{ModelNet}} & 2 & 2.75 & 256 & 96 \\
+            \multicolumn{1}{c}{\emph{odometryKITTI}} & 3 & 4.25 & 128 & 32 \\
+			\bottomrule
+	\end{tabular}}
+	\caption{Different network configurations for \emph{3DMatch}, \emph{ModelNet} and \emph{odometryKITTI} datasets.}
+	\label{tab:compare_network}
+\end{table}

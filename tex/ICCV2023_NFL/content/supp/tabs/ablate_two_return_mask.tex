@@ -1,0 +1,21 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{ccc|ccc|ccc}
+    \toprule
+    \multicolumn{3}{c|}{Features} & \multicolumn{3}{c|}{Two return segmentation} & \multicolumn{3}{c}{Second range} \\
+     $\overline{\textbf{f}}_\text{geo}$ & $\dirfeat$ & $\rangefeat$ & Recall $\uparrow$ & Precision $\uparrow$ & IoU $\uparrow$ & Recall@0.5 $\uparrow$ & MAE $\downarrow$ & MedAE $\downarrow$ \\
+    \midrule
+    \ding{51} & & & 78.0 & 61.6 & 52.8 & 60.1 & 620.1 & 26.7 \\
+    \ding{51} & \ding{51} & & 79.8 & 62.9 & 54.5 & 61.1 & 589.1 & 21.8 \\
+    \ding{51} & \ding{51} & \ding{51} & 82.1 & 55.6 & 49.8 & 67.4 & 505.1 & 13.4 \\
+    \arrayrulecolor{lightgray}\cline{1-9}\arrayrulecolor{black}
+    \multicolumn{3}{c|}{threshold depth std.} & 30.8 & 24.2 & 14.8 & 24.7 & 1532.2 & 1461.4 \\
+    \bottomrule\textbf{}
+    \end{tabular}
+    }
+	\caption{Qualitative results of two return segmentation on \textit{Waymo Interp}. dataset.}
+	\label{tab:ablate_two_return_mask}
+\end{table}

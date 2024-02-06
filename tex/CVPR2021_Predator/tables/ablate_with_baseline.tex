@@ -1,0 +1,23 @@
+\begin{table}[t!]
+    \setlength{\tabcolsep}{10pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{\columnwidth}{!}{
+    \begin{tabular}{lll|cccccc}
+			\toprule
+			\multicolumn{3}{c}{overlap attention} & \multicolumn{3}{c}{\textit{3DMatch}} & \multicolumn{3}{c}{\textit{3DLoMatch}} \\
+            \cline{4-9}
+            \multicolumn{1}{c}{\textit{ov.}} & \multicolumn{1}{c}{\textit{$\times$ov.}} & \multicolumn{1}{c}{\textit{cond.}} & FMR & IR & RR & FMR & IR & RR \\
+            \hline
+            \multicolumn{1}{c}{}& \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \underline{96.4} & 39.6 & 82.6 & 72.2 & 14.5 & 38.9\\
+            \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & 94.6 & 38.3 & 84.1 & 67.1 & 14.3 & 42.8 \\
+            \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{} & \underline{96.4} & 50.8 & 87.7 & \underline{73.8} & 20.9 & 56.5 \\
+            \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{}  & \multicolumn{1}{c}{\ding{51}} &  95.7 & \underline{52.1} & \underline{88.0} & 72.5 & \underline{21.2} & \underline{57.5} \\
+            \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{\ding{51}} & \multicolumn{1}{c}{\ding{51}} & \textbf{96.7} & \textbf{58.0} & \textbf{89.0} & \textbf{78.6} & \textbf{26.7}& \textbf{59.8} \\
+			\bottomrule
+	\end{tabular}
+	}
+	\caption{Ablation of the network architecture. \textit{ov.} denotes upsampling the overlap scores; \textit{cond.} denotes conditioning the bottleneck features on the respective other point cloud; \textit{$\times$ov.} denotes upsampling the cross overlap scores.}
+	\label{tab:3DMatch_ablation_w_baseline}
+	
+\end{table}

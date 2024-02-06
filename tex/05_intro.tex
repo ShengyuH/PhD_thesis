@@ -1,0 +1,34 @@
+\chapter{Introduction} 
+paper dissertations require an introduction which includes the overriding research question, the methodology used and the relevance of the thesis to science and economy
+the conclusion should merge the results of the publications and include suggestions for ongoing research
+
+
+\section{Outline \& Contributions} 
+
+The work presented in this thesis comprises articles published to journals and conferences of the fields of Computer Vision and Experimental Fluid Dynamics.
+
+
+\subsection{Predator}
+
+In Chapter ...
+
+\paragraph{Contributions}
+\begin{itemize}
+\item A warping-based variational optical flow approach is adapted to volumetric particle flow estimation. To account also for larger displacements between time steps, a coarse-to-fine pyramid scheme is implemented.
+An efficient primal-dual optimization approach is used to minimize the energy, which is formulated as a saddle-point problem.
+%With convex approximation the non-convex energy is minimized using an efficient primal-dual algorithm.
+\item The energy formulation is derived from the stationary Stokes equations, which model the incompressibility and viscosity of the fluid. Both, a hard constraint and an alternative soft constraint variant on the flow divergence are integrated into the variational framework. The Euler-Lagrange equations of the energy reveal that the viscosity of the fluid can be accounted for via quadratic regularization of the flow gradient. 
+\item To handle also large measurement volumes, a semi-dense formulation is introduced. It takes into account the individual requirements of particle reconstruction and flow estimation. While the data term is evaluated at full resolution, the flow field is regularized at a lower spatial resolution.
+\item Extensive evaluations are carried out for different data terms and regularizers. Further, ablation studies on the matching window size, seeding density and stepsize of the semi-dense formulation are performed, justifying the chosen parameters and the effectiveness of the presented approach.
+\end{itemize}
+
+
+\section{Relevance to Science and Economy}
+
+xxx
+
+\paragraph{Open Source.}
+xxx
+
+\paragraph{Scientific Recognition.}
+xxx

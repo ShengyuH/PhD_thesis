@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper,twoside]{scrbook}
+\addtokomafont{disposition}{\rmfamily}
+%\usepackage[Bjornstrup]{fncychap}
+\renewcommand*{\chapterformat}{%
+  \thechapter\enskip
+  \textcolor{gray!50}{\rule[-\dp\strutbox]{2pt}{\baselineskip}}\enskip
+}
+\setkomafont{disposition}{\normalcolor\bfseries}
+\input{tex/packages}
+
+
+
+\hyphenation{VIIRS}
+
+\graphicspath{{./figs/}}
+
+\setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.05}
+
+
+\input{tex/preamble}
+\begin{document}
+
+\selectlanguage{english}
+
+\frontmatter
+
+\input{tex/01_titlepage}
+\input{tex/02_abstract}
+\input{tex/03_acknow}
+
+\tableofcontents
+% \input{tex/04_acronyms}
+
+\mainmatter
+
+
+
+% ----
+% Introduction
+\input{tex/05_intro}
+
+% ----
+% Background
+\input{tex/06_relatedWork}
+
+% ----
+%papers
+
+\newcommand{\subdir}{tex/CVPR2021_Predator}
+\input{\subdir/main}
+
+\renewcommand{\subdir}{tex/ECCV2022_PCAccumulation}
+\input{\subdir/main}
+
+\renewcommand{\subdir}{tex/ICCV2023_NFL}
+\input{\subdir/main}
+
+\renewcommand{\subdir}{tex/CVPR2024_Dynamic_NFL}
+\input{\subdir/main}
+
+
+
+
+
+
+\graphicspath{{./figs/}}
+% ----
+% Conclusions + Outlook
+\input{tex/07_conclusion}
+
+
+%** Switch to appendix-mode in Latex.
+%
+\appendix
+
+%** I would like to have the appendices enumerated by Alphabetical
+%   characters.
+\renewcommand{\thepart}{\Alph{part}}
+
+
+\renewcommand\bibsection{\chapter{Bibliography}}
+\bibliographystyle{elsarticle-harv}
+\bibliography{references}                % name your BibTeX data base
+
+%\input{publications_list}
+\input{tex/08_publications}
+\input{tex/09_cv}
+
+
+\end{document}

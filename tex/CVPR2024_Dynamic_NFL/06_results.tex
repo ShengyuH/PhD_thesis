@@ -1,0 +1,122 @@
+\section{Experiments}
+\input{\subdir/fig/qualitative_waymodynamic}
+\subsection{Datasets and evaluation protocol}\label{sec:datasets}
+
+\paragraph{Real-world Dynamic scenes.} 
+We construct \textit{Waymo Dynamic} dataset by selecting four representative scenes from Waymo Open dataset~\cite{sun2020scalability}, with multiple moving vehicles inside. These scenes are comprised of sequences of 50 consecutive frames. For evaluation purposes, every fifth frame is designated for testing, while the other 40 frames are allocated for training.
+
+
+\paragraph{Real-world static scenes.}
+We also evaluate our method on four static scenes as introduced in~\cite{Huang2023nfl}. There are two settings, \textit{Waymo Interp} applies the same evaluation protocol as \textit{Waymo Dynamic}, while \textit{Waymo NVS} employs a dedicated closed-loop evaluation to validate the real novel view synthesis performance. Please refer to NFL~\cite{Huang2023nfl} for more details about this setting. 
+ 
+
+% We test on \textit{Waymo Interp} and \textit{Waymo NVS} datasets introduced in \cite{Huang2023nfl}.
+% \textit{Waymo Interp} involves 10 testing scans uniformly sampled from a series of 50 consecutive scans for each scene. 
+% For the \textit{Waymo NVS} dataset, we conduct a dedicated closed-loop verification to validate the new view synthesis capability of our method. Initially, we construct a neural radiance field using real LiDAR scans. Subsequently, we synthesize LiDAR scans at new viewpoints by adjusting the sensor poses. Using these synthesized LiDAR scans, we construct another neural radiance field from scratch, and assess it by comparing it against the original real LiDAR scans.
+
+
+\paragraph{Synthetic static scenes.}  
+\textit{TownClean} and \textit{TownReal} are synthetic static scenes introduced in NFL~\cite{Huang2023nfl}. They consist of 50 LiDAR scans simulated in urban street environment, using non-diverging and diverging beams, respectively. 
+
+% we first optimise our neural fields on the entire LiDAR sequence, and then generate LiDAR scans from novel views with a shifted sensor pose, retraining our model on the generated synthetic scans, and ultimately, evaluation against the original LiDAR sequence. 
+% In the \textit{Waymo NVS} approach, our model undergoes initial training on a full LiDAR sequence, followed by novel view synthesis from shifted sensor poses, retraining on these synthetic scans, and ultimately, evaluation against the original LiDAR sequence.
+% 50 scans train (Model A); shift poses -> render new 50 scans to train a model B; -> model B elvauated against the raw 50 scans
+% This is achieved by compiling LiDAR point aggregations for each of the moving vehicles within the scene, followed by the execution of a ray-surfel casting technique.
+
+
+\paragraph{Evaluation metrics.}\label{sec:metrics}
+To evaluate the LiDAR range accuracy, we employ a suite of four metrics: mean absolute errors~(MAE [cm]), median absolute errors~(MedAE [cm]), Chamfer distance~(CD[cm]) and MedAE for dynamic vehicles~(MedAE Dyn[cm]). For intensity evaluation, We report root mean square error~(RMSE).
+%
+In addition to our primary evaluations, we assess the re-simulated LiDAR scans' realism through two auxiliary tasks: object detection and semantic segmentation. For object detection, we calculate the \textit{detection agreement}~\cite{manivasagam2020lidarsim}, both for all vehicles (Agg.~[\%]) and specifically for dynamic vehicles (Dyn.$\;$Agg.~[\%]). Regarding semantic segmentation, we measure and report recall, precision, and the intersection over union (IoU[\%]). It's important to note that the predictions on the original LiDAR scans serve as our \textit{ground truth}, against which we compare the results obtained from the re-simulated scans.
+
+% For point cloud registration, we document rotation error(RE), translation error(TE) and Rec@2[\%], which denotes the percentage of estimated poses with translation errors below 2cm.
+
+
+\paragraph{Baseline methods.}
+Regarding LiDAR simulation on static scenes, NFL~\cite{Huang2023nfl} and LiDARsim\cite{manivasagam2020lidarsim} are two closest baselines to compare to. Additionally, we include i-NGP~\cite{mueller2022instant}, DS-NeRF~\cite{kangle2021dsnerf}, and URF~\cite{rematas2022urban} for comparison. As for simulation on dynamic scenes, we compare to LiDARsim~\cite{manivasagam2020lidarsim} and UniSim~\cite{yang2023unisim}\footnote{We re-implement LiDARsim~\cite{lee2015lidar} and UniSim~\cite{yang2023unisim} as they are not open-sourced.}. Please refer to the supplementary for implementation details.
+
+
+\input{\subdir/tables/quantitative_waymodynamic}
+\input{\subdir/tables/quantitative_waymostatic}
+\input{\subdir/fig/ecdf_waymodynamic}
+\input{\subdir/fig/qualitative_waymostatic}
+\subsection{LiDAR novel view synthesis evaluation} \label{sec:lidar_eval}
+\paragraph{LiDAR NVS in dynamic scenes.}
+
+Quantitative comparisons with baseline methods are detailed in~\cref{tab:waymodynamic}. \dynfl notably outperforms LiDARsim~\cite{manivasagam2020lidarsim} and UniSim~\cite{yang2023unisim} in range reconstruction. This improvement is largely due to our SDF-based neural scene representation, which incorporates the physical aspects of LiDAR sensing. Additionally, our method employs a ray drop test when rendering multiple neural fields, leading to a more accurate reconstruction of dynamic vehicles, as evidenced in~\cref{fig:errormap_dynamic} and further supported by the data in~\cref{fig:ecdf}.
+
+
+
+% and qualitative results are present in~\cref{fig:errormap_dynamic} and~\cref{fig:error_map}. \dynfl achieves superior geometry and intensity reconstruction in both scenarios, attributed to our advanced SDF-based surface representation and novel neural fields composition technique. 
+
+
+\paragraph{LiDAR NVS in static scenes.}
+In addition to dynamic scenes, we evaluate \dynfl against baseline methods in static scenarios, with the results detailed in~\cref{tab:waymostatic} and~\cref{fig:error_map}. \dynfl excels in reconstructing geometry in most cases. A key observation is its superior performance in reconstructing planar regions (\eg the ground shown in~\cref{fig:error_map}), especially when compared to NFL~\cite{Huang2023nfl}, which also uses a neural field for surface representation. This improvement is largely due to the enhanced surface regularizations provided by our advanced SDF-based surface modeling approach.
+
+% We report the evaluation results on both static and dynamic scenes. For static scenes, we provide a quantitative comparison among various methods in \cref{tab:waymostatic}, complemented by visualization in \cref{fig:error_map}. As for dynamic scenes, we present results in \cref{tab:waymodynamic} and \cref{fig:errormap_dynamic}. Notably, our method delivers state-of-the-art range simulation in both static and dynamic scenarios, and excels on most datasets. 
+
+
+% We report the evaluation results on both static and dynamic scenes. For static scenes, we provide a quantitative comparison among various methods in \cref{tab:waymostatic}, complemented by visualization in \cref{fig:error_map}. As for dynamic scenes, we present results in \cref{tab:waymodynamic} and \cref{fig:errormap_dynamic}. Notably, our method delivers state-of-the-art range simulation in both static and dynamic scenarios, and excels on most datasets. 
+
+
+
+\input{\subdir/tables/ablation_activesensing}
+\input{\subdir/tables/ablation_surfacesdf}
+\input{\subdir/fig/ablation_raydrop}
+
+\input{\subdir/fig/detection_qualitative}
+\input{\subdir/fig/sensor_manipulation}
+\input{\subdir/tables/detection_agreement}
+\input{\subdir/tables/seg_nvs}
+\input{\subdir/fig/object_insertion}
+\input{\subdir/fig/trajectory_manipulation}
+
+
+\subsection{Ablation study}
+\paragraph{SDF-based volume rendering for active sensing.}
+We begin by assessing the efficacy of our SDF-based volume rendering for active sensor, the results are shown in~\cref{tab:active_sensing}. When compared to our baseline that uses the SDF-based volume rendering for passive sensing, \dynfl demonstrates enhanced performance in both synthetic (\textit{TownClean}) and real-world (\textit{Waymo Interp} and \textit{Waymo Dynamic}) datasets, indicating the importance of incorporating the physical sensing process of LiDAR in addressing the inverse problem.
+
+
+\paragraph{Neural fields composition.} 
+To validate the efficacy of our two-stage neural field composition approach, we compare it with an alternative approach utilized in UniSim~\cite{yang2023unisim}. The results are shown in~\cref{tab:waymodynamic}. UniSim~\cite{yang2023unisim} blends different neural fields by sampling points from all intersected neural fields, followed by a single evaluation of volume rendering to produce the final LiDAR scan. In contrast, our method independently renders from each intersecting neural field first, and then combines these measurements into a final measurement using a ray drop test (\cf~\cref{fig:ablation_raydrop}). This approach leads to a notable improvement in geometry reconstruction over UniSim~\cite{yang2023unisim}, exemplified by our method halving the Median Absolute Error (MedAE) across all points. This enhancement is even more evident when focusing solely on points related to dynamic vehicles (\cf~\cref{fig:ecdf}).
+% 
+
+\paragraph{Surface points' SDF constraint.}
+We examine the importance of the surface points' SDF constraint discussed in ~\cref{sec:optmisation} on \textit{Town Real} and \textit{Waymo Interp} datasets. The results shown in \cref{tab:surface_sdf} suggest that our method yields improved geometry reconstruction quality by additionally enforcing LiDAR points to have zero SDF values. 
+
+
+\subsection{Auxiliary task evaluations} 
+\label{sec:downstream}
+To assess the fidelity of our neural re-simulation and gauge the domain gap between re-simulated and real scans, we evaluate their applicability in two downstream tasks: object detection and semantic segmentation.
+
+
+\paragraph{Object detection.}
+We utilize the pre-trained FSDv2~\cite{fan2023fsdv2} model for object detection and conduct evaluations on the re-simulated LiDAR scans within the \textit{Waymo Dynamic} dataset. Our results are compared against those from LiDARsim~\cite{manivasagam2020lidarsim}, with the findings detailed in~\cref{tab:detection} and~\cref{fig:detection}. Notably, \dynfl exhibits a more substantial detection agreement with the predictions on real LiDAR scans. This indicates a higher fidelity in our re-simulations and a reduced domain gap relative to actual scans.
+
+
+% On the \textit{Waymo Dynamic} dataset, we employ the pretrained FSDv2 object detection model \cite{fan2023fsdv2}. We evaluate its performance on LiDAR scans acquired from various sources, including ground truth (real), LiDARsim \cite{manivasagam2020lidarsim}, and our proposed model. The detection agreements with the ground truth LiDAR scans are presented in \cref{tab:detection}, and screenshots showcasing the detections are provided in \cref{fig:detection}. Notably, our method demonstrates a higher detection agreement, indicating our higher fidelity compared to LiDARsim \cite{manivasagam2020lidarsim}.
+
+
+\paragraph{Semantic segmentation.}
+For semantic segmentation, we use the pre-trained SPVNAS model~\cite{tang2020searching}, with the results presented in~\cref{tab:sem_seg_nvs_ours}. \dynfl improves over baseline methods according to most evaluation metrics, underscoring the realism of our re-simulated LiDAR scans.
+
+% \paragraph{Point cloud registration}
+% To assess the ability to preserve local geometric structures in LiDAR simulation methods, we employ a pre-trained point cloud registration model \cite{huang2022dynamic} tested on the Waymo dataset \cite{Sun_2020_CVPR}. The registration results' quality is presented in \cref{tab:registration}, revealing that our approach exhibits comparable performance to the state-of-the-art method NFL\cite{Huang2023nfl}.
+% % The results affirm the robustness of our method in maintaining the fidelity of local geometrical features in complex and noisy environments.
+% %
+% \xing{I am not sure whether we should include these registration results in this paper.}
+
+
+
+% \input{\subdir/tables/detection_shifted_AP}
+
+\subsection{Scene editing}
+Beyond LiDAR novel view synthesis by adjusting the sensor configurations (\cf \cref{fig:lidar_nvs}), we additionally demonstrate the practicality of our compositional neural fields approach through two scene editing applications.
+
+
+\paragraph{Insert object from one scene into another.}
+Our explicit neural scene de-composition and flexible composition technique enable seamless insertion and removal of neural assets across scenes. As demonstrated in~\cref{fig:vehicle_insertion}, we are able to replace a car from one scene with a truck from another scene, achieving accurate reconstruction of both geometry and intensity. In contrast, UniSim~\cite{yang2023unisim} struggles to preserve high quality geometry. This highlights the significant potential of our approach in generating diverse and realistic LiDAR scans for autonomous driving scenarios.
+
+
+\paragraph{Manipulate the trajectory of dynamic objects.}
+\dynfl also facilitates the manipulation of moving objects' trajectories by simply adjusting their relative poses to the canonical bounding box. Representative results are shown in ~\cref{fig:traj}. The high realism of our re-simulation is also indicated by the successful detection of inserted virtual objects.

@@ -1,0 +1,23 @@
+\begin{table}[t]
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\centering
+\resizebox{0.99\columnwidth}{!}{
+\begin{tabular}{l|ccc|ccc}
+\toprule
+& \multicolumn{3}{c|}{Town Real} & \multicolumn{3}{c}{Waymo NVS} \\
+    Method &  Rec@5 $\uparrow$ & RE $\downarrow$ &  TE $\downarrow$ &  Rec@2 $\uparrow$ & RE $\downarrow$ &  TE $\downarrow$ \\
+    \midrule
+    i-NGP~\cite{mueller2022instant} & 76.0 & 12.9 & 4.2& 60.2 & 7.2 & 1.9\\
+    DS-NeRF~\cite{deng2021depth} & 56.2 & 16.8 & 5.1& 42.3 & 8.9 & 2.4\\
+    URF~\cite{rematas2021urban} & 59.9 & 14.9 & 4.7& 32.1 & 10.0 & 2.7\\
+    LiDARsim~\cite{manivasagam2020lidarsim} & 79.2 & \textbf{9.9} & 3.4& 62.8 & \textbf{6.4} & 1.8\\
+    NFL density~\cite{Huang2023nfl} & \textbf{85.9} & \underline{10.4} & 3.4& \textbf{71.9} & \textbf{6.4} & \underline{1.7}\\
+    Ours & 76.6 & 10.8 & 3.8& 63.8 & 6.9 & 1.8\\
+    Ours stat. filter & \underline{82.3} & 10.8 & 3.5 & \underline{69.9} & 7.0 & \underline{1.7}\\
+\bottomrule
+\end{tabular}
+}
+\caption{Point cloud registration results on Waymo NVS.}
+\label{tab:registration}
+\end{table}

@@ -19,10 +19,6 @@
     }
 \end{table}
 
-
-
-% We extracted 50 consecutive frames from each scene, covering frame indices ranging from 50 to 100. Within each scene, our criteria for classifying a vehicle as dynamic involved assessing if the vehicle showcased a speed greater than 1 $m/s$ in any one of the 50 frames. Utilizing the bounding box annotations provided for these vehicles, we marked the points residing within these bounding boxes as the designated vehicle points for further analysis and annotation.
-
 \subsection{Implementation details}
 \paragraph{Ours.} 
 Our model is implemented based on nerfstudio\cite{nerfstudio}. For the static neural field, we sample $N_s=512$ points in total, with $N_u=256$ uniformly sampled points and $N_i=256$ weighted sampled points with 8 upsample steps. In each upsample step, 32 points are sampled based on the weight distribution of the previously sampled points. For each dynamic neural field, we sample $N_s=128$ points in total, with $N_u=64$ uniformly sampled points and $N_i=64$ weighted sampled points with 4 upsample steps. During training, we minimize the loss function using the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate of 0.005. It linearly decays to 0.0005 towards the end of training. For the loss weights, we use $w_{\zeta}=3, w_{e}=50, w_{\text{drop}}=0.15, w_{s}=1$, and  $w_{\text{eik}}=0.3$. The batch size is 4096 and we train the model for 60000 iterations on a single RTX3090 GPU with float32 precision.
@@ -33,9 +29,3 @@ To handle dynamic vehicles, we follow LiDARsim~\cite{manivasagam2020lidarsim} by
 
 \paragraph{UniSim.} 
 We re-implement UniSim's~\cite{yang2023unisim} rendering process for LiDAR measurements by replacing our ray-drop test-based neural fields composition method with its joint rendering method. For every ray $\mathbf{r} (\mathbf{o},\mathbf{d})$, we begin by conducting an intersection test with all dynamic bounding boxes in the scene to identify the near and far limits. We then uniformly sample 512 points along each ray, assigning each point to either a dynamic neural field, if it falls within a dynamic bounding box, or to the static neural field otherwise. After sampling, we query the SDF and intensity values from the relevant neural fields. Finally, using the SDF-based volume rendering formula in Eq.~\ref{eq:depth_render} for active sensors, we calculate the weights and perform the rendering. Note that we use the same neural field architecture as in our method.
-
-
-% such that we acknowledge which ray segment $[\zeta_{\text{near}}, \zeta_{\text{far}}]$ lies within the bounding box. 
-% We then uniformly sample 512 points along the ray and query the SDF values based on the intersection results. If the point lies within any intersected ray segment$[\zeta_{near}, \zeta_{far}]$ of a dynamic vehicle $v$, we query the SDF $s$, intensity $e$ and ray drop probability $p_d$ in the corresponding dynamic neural field $F^v$. If the point does not lie in any vehicle bounding box, we sample the SDF $s$, intensity $e$ and ray drop probability $p_d$ in the static neural field $F_{static}$.
-
-% and extracted the SDF values. If a sampled point fell within any intersected ray segment $[\zeta_{\text{near}}, \zeta_{\text{far}}]$ of a dynamic vehicle $v$, we extracted the corresponding SDF $s$, intensity $e$, and ray drop probability $p_d$ from the associated dynamic neural field $\mathbf{F}^{\text{v}}$. Conversely, if the point didn't reside within any vehicle bounding box, we sampled the SDF $s$, intensity $e$, and ray drop probability $p_d$ from the static neural field $\mathbf{F}_{\text{static}}$.

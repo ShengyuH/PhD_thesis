@@ -1,8 +1,32 @@
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+%     \begin{tabular}{clcccccc}
+%     \toprule
+%    &  & EPE avg.$\downarrow$ & EPE med.$\downarrow$ & AccS$\uparrow$ & AccR$\uparrow$ & ROutliers$\downarrow$   \\
+%    \midrule
+%     \multirow{3}{*}{\emph{Waymo}} & center & 0.265 & 0.095 & 36.9 & 62.9 & 9.9\\ 
+%     & center + ICP  & 0.212 & 0.047 & 61.2 & 80.0 & 7.7 \\
+%     & Ours   & 0.197 & 0.062 & 53.3 & 77.5 & 5.9 \\
+%     & Ours + ICP   & \textbf{0.173} & \textbf{0.043} & \textbf{69.1} & \textbf{86.9} & \textbf{5.1}\\
+%     \midrule
+%     \multirow{3}{*}{\emph{nuScenes}} & center & 0.553 & 0.258 & 13.5 & 32.7 & 28.2     \\ 
+%     & center + ICP   & 0.525 & 0.179 & 23.8 & 43.7 & 25.5\\
+%     & Ours   & 0.301 & 0.146 & 26.6 & 53.4 & \textbf{12.1}    \\
+%     & Ours + ICP   & \textbf{0.301} & \textbf{0.135} & \textbf{32.7} & \textbf{56.7} & 13.7 \\
+%     \bottomrule
+%     \end{tabular}
+% 	\caption{Comparison to centroid-based motion estimation baseline.}
+% 	\label{tab:tubenet_comparison}
+% \end{table}
+
+
 \begin{table}[t]
-    \setlength{\tabcolsep}{6pt}
+    \setlength{\tabcolsep}{3pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-    \begin{tabular}{clcccccc}
+    \begin{tabularx}{\textwidth}{YlYYYYYY}
     \toprule
    &  & EPE avg.$\downarrow$ & EPE med.$\downarrow$ & AccS$\uparrow$ & AccR$\uparrow$ & ROutliers$\downarrow$   \\
    \midrule
@@ -16,7 +40,7 @@
     & Ours   & 0.301 & 0.146 & 26.6 & 53.4 & \textbf{12.1}    \\
     & Ours + ICP   & \textbf{0.301} & \textbf{0.135} & \textbf{32.7} & \textbf{56.7} & 13.7 \\
     \bottomrule
-    \end{tabular}
+    \end{tabularx}
 	\caption{Comparison to centroid-based motion estimation baseline.}
 	\label{tab:tubenet_comparison}
 \end{table}

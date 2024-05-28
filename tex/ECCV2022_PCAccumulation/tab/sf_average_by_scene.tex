@@ -25,3 +25,30 @@
 	\caption{Scene flow estimation results on \emph{Waymo} and \emph{nuScenes} datasets. Numbers are averaged over all test scenes.}
 	\label{tab:sf_supp}
 \end{table}\textbf{}
+
+
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+%     \begin{tabularx}{\textwidth}{YlYYYY|YYYYY}
+%     \toprule
+%     & & \multicolumn{4}{c|}{Static part} & \multicolumn{4}{c}{Dynamic foreground}  \\
+%     Dataset  & Method  & EPE avg.$\downarrow$ & AccR$\uparrow$  & AccS$\uparrow$ & ROutlier$\downarrow$ & EPE avg. $\downarrow$ & AccR$\uparrow$   & AccS$\uparrow$   & ROutliers $\downarrow$ \\
+%     \midrule
+%     \multirow{5}{*}{\emph{Waymo}} & PPWC-Net~\cite{wu2019pointpwc}  &  0.475 $\pm$ 0.543 & 35.0 & 14.2 & 13.5 & 0.658 $\pm$ 0.696 & 27.1 & 7.9 & 22.9\\
+%                               & FLOT~\cite{puy2020flot} &   0.381 $\pm$ 0.516 & 68.8 & 51.8 & 13.0 & 0.772 $\pm$ 0.711 & 30.1 & 11.2 & 31.9\\
+%                               & WsRSF~\cite{gojcic2021weakly} & 1.415 $\pm$ 1.352 & 34.6 & 23.0 & 56.9 & 1.764 $\pm$ 1.744 & 21.0 & 8.6 & 61.6\\
+%                               & NSFPrior~\cite{li2021neural} & 0.159 $\pm$ 0.231 & 87.1 & 73.5 & 4.3 & 0.355 $\pm$ 0.456 & 63.7 & 41.3 & 14.3 \\
+%                               & Ours & \textbf{0.088} $\pm$ 0.237 & \textbf{91.6} & \textbf{81.9} & \textbf{2.3} & \textbf{0.169} $\pm$ 0.259 & \textbf{76.8} & \textbf{52.9} & \textbf{5.3}\\
+%     \midrule
+%     \multirow{5}{*}{\emph{nuScenes}} & PPWC-Net~\cite{wu2019pointpwc} & 0.488 $\pm$ 0.402 & 34.2 & 12.7 & 17.5 & 0.784 $\pm$ 0.547 & 22.8 & 6.9 & 35.0 \\
+%                                   & FLOT~\cite{puy2020flot} & 0.597 $\pm$ 0.582 & 53.3 & 35.1 & 26.6 & 1.156 $\pm$ 0.714 & 13.2 & 3.7 & 56.5\\
+%                                   & WsRSF~\cite{gojcic2021weakly} & 0.658 $\pm$ 0.483 & 47.5 & 31.1 & 31.5 & 0.925 $\pm$ 0.627 & 29.8 & 15.0 & 42.2\\
+%                                   & NSFPrior~\cite{li2021neural} & 0.501 $\pm$ 0.344 & 57.8 & 37.7 & 21.3 & 0.743 $\pm$ 0.537 & 39.1 & 19.9 & 31.1 \\
+%                                    & Ours & \textbf{0.226} $\pm$ 0.206 & \textbf{72.3} & \textbf{46.7} & \textbf{7.4} & \textbf{0.394} $\pm$ 0.26 & \textbf{47.8} & \textbf{22.7} & \textbf{17.3}\\
+%     \bottomrule
+%     \end{tabularx}
+% 	\caption{Scene flow estimation results on \emph{Waymo} and \emph{nuScenes} datasets. Numbers are averaged over all test scenes.}
+% 	\label{tab:sf_supp}
+% \end{table}\textbf{}

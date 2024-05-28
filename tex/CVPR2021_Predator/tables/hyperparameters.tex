@@ -1,9 +1,29 @@
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+% 	\resizebox{0.7\columnwidth}{!}{
+%     \begin{tabular}{cccccccc}
+% 			\toprule
+%              & $n_p$ & $\gamma$ & $V$ & $r_p$ & $r_s$ & $r_o$ & $r_m$\\
+%             \hline
+%             \multicolumn{1}{c}{\emph{3DMatch}} & 256 & 24 & 0.025 & 0.0375 & 0.1 & 0.0375 & 0.05\\
+%             \multicolumn{1}{c}{\emph{ModelNet}} & 384 & 64 & 0.06 & 0.018 & 0.06 & 0.04 & 0.04 \\
+%             \multicolumn{1}{c}{\emph{odometryKITTI}} & 512 & 48 & 0.3 & 0.21 & 0.75 & 0.45 & 0.3 \\
+% 			\bottomrule
+			
+% 	\end{tabular}
+% 	}
+% 	\caption{Hyper-parameters configurations for different datasets.}
+% 	\label{tab:hyperparameters}
+	
+% \end{table}
+
 \begin{table}[t]
     \setlength{\tabcolsep}{6pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{\columnwidth}{!}{
-    \begin{tabular}{cccccccc}
+    \begin{tabularx}{\textwidth}{YYYYYYYY}
 			\toprule
              & $n_p$ & $\gamma$ & $V$ & $r_p$ & $r_s$ & $r_o$ & $r_m$\\
             \hline
@@ -11,9 +31,7 @@
             \multicolumn{1}{c}{\emph{ModelNet}} & 384 & 64 & 0.06 & 0.018 & 0.06 & 0.04 & 0.04 \\
             \multicolumn{1}{c}{\emph{odometryKITTI}} & 512 & 48 & 0.3 & 0.21 & 0.75 & 0.45 & 0.3 \\
 			\bottomrule
-			
-	\end{tabular}
-	}
+	\end{tabularx}
 	\caption{Hyper-parameters configurations for different datasets.}
 	\label{tab:hyperparameters}
 	

@@ -1,7 +1,5 @@
 \section{Introduction}
 \label{sec:intro}
-{\let\thefootnote\relax\footnote{{$^*$First two authors contributed equally to this work.}}}
-
 Recent work has made substantial progress in fully automatic, 3D feature-based point cloud registration. At first glance, benchmarks like \textit{3DMatch}~\cite{zeng20163dmatch} appear to be saturated, with multiple state-of-the-art (SoTA) methods~\cite{gojcic20193DSmoothNet,Choy2019FCGF,bai2020d3feat} reaching nearly 95\% feature matching recall and successfully registering $>$80\% of all scan pairs.
 One may get the impression that the registration problem is solved---but this is actually not the case. We argue that the high success rates are a consequence of lenient evaluation protocols. We have been making our task too easy:
 existing literature and benchmarks~\cite{choi2015robust, zeng20163dmatch, khoury2017CGF} consider only pairs of point clouds with $\geq$30\% overlap to measure performance.

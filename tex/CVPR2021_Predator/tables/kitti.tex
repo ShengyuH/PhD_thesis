@@ -1,9 +1,31 @@
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{11pt}
+%     \renewcommand{\arraystretch}{1.05}
+% 	\centering
+% 	\resizebox{0.7\columnwidth}{!}{
+%     \begin{tabular}{lccccc}
+% 			\hline
+% 			Method & \textit{RTE [cm]}~$\downarrow$ & \textit{RRE [$^\circ$]}~$\downarrow$ & RR~$\uparrow$  \\
+% 			\hline
+%  			3DFeat-Net~\cite{yew20183dfeat} & 25.9 &  0.57 & 96.0  \\
+%  			FCGF~\cite{Choy2019FCGF} & 9.5  & 0.30  & 96.6\\
+%  			D3Feat*~\cite{bai2020d3feat} & \underline{7.2} %
+%  			& \underline{0.30} %
+%  			& \textbf{99.8} \\
+%  			\acro\ (\textit{rand}) & 8.8 & 0.34 & \textbf{99.8}  \\ 
+%  			\acro\ (\textit{prob. (om)}) &  \textbf{6.8} & \textbf{0.27} & \textbf{99.8} \\
+% 			\hline
+% 	\end{tabular}
+% 	}
+% 	\caption{Evaluation of \acro\ on \emph{odometryKITTI}, following the evaluation protocol employed by D3Feat~\cite{bai2020d3feat}.}
+% 	\label{tab:kitti}
+% \end{table}
+
 \begin{table}[t]
-    \setlength{\tabcolsep}{11pt}
-    \renewcommand{\arraystretch}{1.05}
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{\columnwidth}{!}{
-    \begin{tabular}{lccccc}
+    \begin{tabularx}{\textwidth}{lYYY}
 			\hline
 			Method & \textit{RTE [cm]}~$\downarrow$ & \textit{RRE [$^\circ$]}~$\downarrow$ & RR~$\uparrow$  \\
 			\hline
@@ -15,8 +37,7 @@
  			\acro\ (\textit{rand}) & 8.8 & 0.34 & \textbf{99.8}  \\ 
  			\acro\ (\textit{prob. (om)}) &  \textbf{6.8} & \textbf{0.27} & \textbf{99.8} \\
 			\hline
-	\end{tabular}
-	}
+	\end{tabularx}
 	\caption{Evaluation of \acro\ on \emph{odometryKITTI}, following the evaluation protocol employed by D3Feat~\cite{bai2020d3feat}.}
 	\label{tab:kitti}
 \end{table}

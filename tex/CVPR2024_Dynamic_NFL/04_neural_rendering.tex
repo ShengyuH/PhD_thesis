@@ -1,7 +1,6 @@
 \section{Neural rendering of the dynamic scene}
 In this section, we present the methodology for rendering LiDAR scans from the neural scene representation. We begin by revisiting the density-based volume rendering formulation for active sensors~\cite{Huang2023nfl} in \cref{sec:vol_render_background}. Subsequently, we explore the extension of this formulation to SDF-based neural scene representation in \cref{sec:sdf_vol_render}. Finally, we provide a detailed discussion on rendering LiDAR measurements from individual neural fields in~\cref{sec:dynamic_nfl_rendering} and the process of composing results from different neural fields in \cref{sec:neural_fields_composition}.
 
-% We start by introducing the background of volume rendering for active sensors in Sec.\ref{sec:vol_render_background}, then we present our extension to SDF-based volume rendering formulation for active sensors in Sec.\ref{sec:sdf_vol_render}. Finally we describe in detail how we estimate the results in our neural fields(Sec.\ref{sec:dynamic_nfl_rendering}) and how we composite results from different neural fields(Sec.\ref{sec:neural_fields_composition}).
 
 
 \subsection{Volume rendering for active sensor} \label{sec:vol_render_background}
@@ -28,47 +27,9 @@ Here, $C$ accounts for the constant values, and $\sigma_\zeta$ represents the de
 \label{eq:radiant_inter}
 \end{equation}
 where the weights $w_j = 2 \opacity_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \opacity_{\zeta_i}).$
-% \begin{equation}
-%    w_j = 2 \opacity_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \opacity_{\zeta_i})\;.
-% \label{eq:lidar_weights}
-% \end{equation}
+
 ~Here $\alpha_{\zeta_j}$ is the discrete opacity at range $\zeta_j$. Please refer to~\cite{Huang2023nfl} for more details.
 
-% LiDAR employs laser beam pulses to measure the distance / range to the nearest reflective surface by analyzing the time of flight. The return signal is a waveform profile of the received radiant power of the LiDAR sensor $P(\zeta)$ is a convolution of the pulse power $P_e(t)$ and the impulse response $H(\zeta)$
-% \begin{equation}
-%     P(\zeta) = \int_0^{2\zeta/c} P_e(t) H(\zeta - \frac{ct}{2}) \; dt\;,
-% \end{equation}
-% The impulse range-dependent impulse response $H(\zeta)$ is a multiplication of the target and sensor impulse responses $H(\zeta) = H_T(\zeta)H_S(\zeta)$.
-% where $H_T(\zeta)$ depends on the target surface range $\zeta_t$, incidence angle $\theta$ and the surface reflectance $\reflectance$
-% \begin{equation}
-%     H_T(\zeta) = \frac{\reflectance}{\pi} \cos(\theta) \delta(\zeta - \zeta_t)\;, 
-% \label{eq:ht}
-% \end{equation}
-% While the sensor response $H_S(\zeta)$ is composited by the transmittance $T_\zeta$ and the sensor's effective area $A_e$
-% \begin{equation}
-%    H_s(\zeta) = T^2_{\zeta} \frac{A_e}{\zeta^2}\;,
-% \label{eq:hc}
-% \end{equation}
-% The probabilistic radiant power of the range $\zeta$ can hence be derived as
-
-% \begin{equation}
-% P_\zeta = C \frac{T^2_{\zeta} \cdot \density_\zeta  \reflectance_\zeta}{\zeta^2} \cos(\theta)\;,
-% \label{eq:radiance}
-% \end{equation}
-
-% In the density representation\cite{Huang2023nfl} the volume rendering of the radiant power is evaluated as 
-% \begin{equation}
-%       P
-%       =\!\sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}\!\!C \frac{T^2_{\zeta} \cdot \density_\zeta \reflectance_\zeta}{\zeta^2} \cos(\theta_j) \; d\zeta
-%       =\!\sum_{j=1}^N w_j \reflectance_{\zeta_j}',
-% \label{eq:radiant_inter}
-% \end{equation}
-% where the weights $w_j$ are evaluated as:
-% \begin{equation}
-%    w_j = 2 \opacity_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \opacity_{\zeta_i})\;.
-% \label{eq:lidar_weights}
-% \end{equation}
-% where $\alpha_{\zeta_j}$ and $\reflectance_{\zeta_j}'$is the discrete opacity and reflectance at range $\zeta_j$
 
 \subsection{SDF-based volume rendering for active sensor} \label{sec:sdf_vol_render}
 % \orl{do we use sdf for both static and dynamic parts?} \hanfeng{yes}
@@ -82,7 +43,7 @@ where $\Phi_s(\cdot)$ represents the Sigmoid function, $f(\zeta)$ evaluates the 
 Next, we substitute the density $\density$ in \cref{eq:radiant_inter} with opaque density from \cref{eq:sigmoid_density} and re-evaluate the radiant power and weights as:
 \begin{equation}
       P
-      =\!\sum_{j=1}^N \transmittance^2_{\zeta_j} \tilde{\alpha}_{\zeta_j} \reflectance_{\zeta_j}',\quad \tilde{w}_j = 2 \tilde{\opacity}_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \tilde{\opacity}_{\zeta_i})\;.
+      =\!\sum_{j=1}^N \trans^2_{\zeta_j} \tilde{\alpha}_{\zeta_j} \reflectance_{\zeta_j}',\quad \tilde{w}_j = 2 \tilde{\opacity}_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \tilde{\opacity}_{\zeta_i})\;.
 \end{equation}
 In this context, $\tilde{\alpha}_{\zeta_j}$ is computed as:
 \begin{equation}
@@ -91,66 +52,12 @@ In this context, $\tilde{\alpha}_{\zeta_j}$ is computed as:
 \end{equation}
 Please refer to the supplementary for more details.
 
-% Finally, the blending weights of volume rendering can be computed by replacing $\alpha_{\zeta_j}$ in \cref{eq:lidar_weights} with $\tilde{\alpha}_{\zeta_j}$ as:
-% \begin{equation}
-   
-% \label{eq:new_lidar_weights}
-% \end{equation}
-
-
-
-
-% We extent the density-based volume rendering for active sensor to SDF-based.
-% Starting from the passive SDF-based volume rendering \cite{wang2021neus}, the Sigmoid density $\density_{\zeta_i}$ is calculated as
-% \begin{equation}
-% \density_{\zeta_i} = max(\frac{-\frac{{\rmfamily d}\Phi_s}{{\rmfamily d} \zeta_i}(f(\zeta_i))}{\Phi_s(f(\zeta_i))},0)
-% \label{eq:sigmoid_density}
-% \end{equation}
-% where $\Phi_s$ represents the Sigmoid function, $f$ is the SDF function that maps a range $\zeta$ to the SDF value of the point position $\origin + \dir * \zeta$. We substitute the density $\density$ in \ref{eq:radiant_inter} with Sigmoid density from \ref{eq:sigmoid_density} and evaluate the radiant power
-% \begin{equation}
-%       P
-%       =\!\sum_{j=1}^N \transmittance^2_{\zeta_j} \alpha_{\zeta_j} \reflectance_{\zeta_j}',
-% \end{equation}
-% $\alpha_{\zeta_j}$ is the SDF dependent opacity with
-% \begin{equation}
-% \begin{split}
-%     \alpha_{\zeta_j} = max(\!\frac{{\Phi_s(f(\zeta_j))}^2 -{\Phi_s(f(\zeta_{j+1}))}^2}{{2\Phi_s(f(\zeta_j))}^2},0)
-%     \label{eq:opacity}
-% \end{split}
-% \end{equation}
-% \paragraph{Depth volume rendering}The accumulated transmittance $\transmittance^2_{\zeta_j}$ is evaluated to
-% \begin{equation}
-% \begin{split}
-% \transmittance^2_{\zeta_j} = \prod_{i=1}^{j-1}(\frac{\Phi_s(f(\zeta_{i+1}))}{\Phi_s(f(\zeta_i))})^2 = \prod_{i=1}^{j-1}(1-2\alpha_{\zeta_i})\\
-% \end{split}
-% \end{equation}
-% Note that $\alpha_{\zeta_j} \in [0, 0.5], \transmittance^2_{\zeta_j} \in [0,1], \sum_{j=1}^N \transmittance^2_{\zeta_j} \cdot \alpha_{\zeta_j} = 0.5$, for depth volumetric rendering, we have 
-% \begin{align}
-%     \zeta = \sum_{j=1}^N 2 \cdot \transmittance^2_{\zeta_j} \cdot \alpha_{\zeta_j} \cdot \zeta_j
-%     =\sum_{j=1}^N w_j \cdot \zeta_j
-%     \label{eq:depth_render}
-% \end{align}
-% where $w_j = 2\alpha_{\zeta_j} \cdot \prod_{i=1}^{j-1}(1-2\alpha_{\zeta_i})$
 
 \subsection{Volume rendering for LiDAR measurements}\label{sec:dynamic_nfl_rendering}
 Consider rendering the LiDAR measurements from a single neural field, we employ the hierarchical sampling\cite{wang2021neus} technique to sample a total of $N_s= N_u + N_i$ points along each ray, where $N_u$ points are uniformly sampled, and $N_i$ points are probabilistically sampled based on the weights along the ray, facilitating denser sampling in proximity to the surface. Subsequently, we compute the weights for the $N_s$ points following~\cref{eq:new_weights}. The rendering of range, intensity, and ray drop for each ray can be expressed through volume rendering as follows: $y_\text{est} = \sum_{j=1}^{N_s} w_j y_j$, where $y \in \{\zeta, \intensity, \pdrop\}$.
 
-% \paragraph{Range estimation}
-% For range estimation, we employ the hierarchical sampling strategy referenced in \cite{wang2021neus} to sample $N = N_u + N_i$ points along each ray path $\{\origin + \dir \cdot \zeta_j\}_{j=1}^N$, which comprises of $N_u$ uniformly sampled points and $N_i$ weighted sampled points based on their SDF values $\{f(\zeta_j)\}_{j=1}^N$. Opacity values $\{\opacity_{\zeta_j})\}_{j=1}^N$ are computed according to the active sensing formulation stated in Equation \ref{eq:opacity}.
-% Weight evaluations $\{w\}_{j=1}^N$ are then conducted using the depth rendering equation from Equation \ref{eq:lidar_weights}, enabling the rendering of estimated range as $\zeta_{est} = \sum_{j=1}^{N} w_j \cdot \zeta_j\;.$ We adopt a one-shot range estimation mechanism instead of performing a coarse-to-fine mechanism in \cite{Huang2023nfl}, allows for denser sampling proximate to surface interfaces due to the hierarchical sampling algorithm\cite{wang2021neus}.
-
-
-% \paragraph{Intensity estimation}
-% In parallel with the methodologies of \cite{Huang2023nfl}, the encoding of ray directions via spherical harmonics and the extraction of geometric features from the MRH and MLP are instrumental in approximating intensity and ray drop probabilities.
-
-% For each ray, we use a shallow MLP to query the intensity value $\{\intensity_j\}_{j=1}^N$ on each sampled point. We render the final intensity prediction using the previous computed weights for range estimation $\intensity_{est} = \sum_{j=1}^N w_j \cdot \intensity_j$
-
-
-% \paragraph{Ray drop probability}
-% For each sampled distance on the ray $\ray$, we use another shallow MLP to query the local probability of not back-scattering radiant power $p_d(\zeta) \in [0, 1]$, employing the same weights utilized in range estimation, facilitate the final ray drop prediction: $p_d(\ray) = \sum_{j=1}^N w_j \cdot p_d(\zeta_j)$.
 
 \subsection{Neural rendering for multiple fields}\label{sec:neural_fields_composition}
-% \xing{Since we deem this section as the main contribution, it should be filled with sufficient contents and technical details. Otherwise, readers might have the illusion that our contribution is not significant. Maybe we should reorganize this section, like move the ray drop loss in section 5 to here.}
 Our full neural scene representation comprises $N+1$ neural fields as discussed in Sec.~\ref{sec: decomposition}. Rendering from all these fields for each ray during inference is computationally intensive. To address this, we implement a two-stage method. In the first stage, we identify the $k+1$ neural fields, where $k \geq 0$ represents the number of dynamic fields, that are likely to intersect with a given ray. The second stage involves rendering LiDAR measurements from these selected fields individually and then integrating them into a unified set of measurements.
 
 
@@ -160,41 +67,3 @@ As outlined in~\cref{sec: decomposition}, each dynamic neural field is reconstru
 
 \paragraph{Neural rendering from multiple neural fields.}
  After identifying the $k+1$ neural fields that potentially intersect with a ray, we perform volume rendering on each field separately, yielding $k+1$ distinct sets of LiDAR measurements. Next, we evaluate the ray drop probabilities across these fields. A ray is deemed \textit{dropped} if all neural fields indicate a drop probability $\pdrop > 0.5$. For rays not classified as dropped, we sort the estimated ranges in ascending order and select the nearest one as our final range prediction. Correspondingly, the intensity value is extracted from the same neural field associated with this closest range.
-
-
-
-
-
-% For each ray $\ray$ in the test time, we do not know whether the ray hits a dynamic vehicle or the static background, hence we are unable to directly transform the ray into the corresponding frame and render the result. So we develop a mechanism to classify to which neural field the ray belongs, in order to composite different neural fields.
-
-
-% \paragraph{Vehicle transformation interpolation}
-% For an arbitrary test frame index $t$, the vehicle positions remain unspecified. 
-% However, by interpolating vehicle poses from training data using spherical linear interpolation (SLERP) as per \cite{10.1145/325334.325242}, we can deduce the vehicle transformations $\{\mathbf{T}_{v,t}\}_{v=1}^{n_v}$ at test time.
-
-% In our case we use SLERP \cite{10.1145/325334.325242} to interpolate all vehicle transformations in all test frames before testing for convenience.
-% \paragraph{Intersection test}
-% After acquiring the vehicle positions in test frames, we need to determine which vehicle or static background the ray hits. For a ray  $\ray = (\origin, \dir, \mathbf{t})$, we iterate over all interpolated dynamic vehicles transformations $\{\mathbf{T}_{v,t}\}_{v=1}^{n_v}$ and calculate the ray origins and directions in all vehicle's anchor coordinate systems $\origin_{v, t} = \mathbf{R}_{v,t} \origin + \mathbf{trans}_{v,t}$ and $\dir_{v, t} = \mathbf{R}_{v,t} \dir$ where $\mathbf{T}_{v,t} = [\mathbf{R}_{v,t}|\mathbf{trans}_{v,t}]$. Then we leverage ray marching algorithm for each transformed $\origin_{v, t}$ and $\dir_{v, t}$ associated with the axis-aligned anchor bounding box $\mathbf{B}_{v,anchor}$ to determine the intersections between the rays and each vehicle.
-% The subsequent step is the discernment of the ray's intersection with either dynamic vehicles or the static environment. This is achieved by iterating over all interpolated transformations $\{\mathbf{T}_{v,t}\}_{v=1}^{n_v}$ to compute ray origins and directions within the anchor frames of each vehicle, followed by the application of a ray marching algorithm to ascertain potential intersections with vehicles' bounding boxes.
-
-% Rays devoid of intersections are processed using the static neural field to render range, intensity, and ray drop values:$\{\zeta, \intensity, p_d\} = \mathbf{F}_{static}(\ray)$.
-
-
-% Conversely, rays intersecting one or more vehicle bounding boxes are classified as potentially dynamic. It is crucial to consider that intersections with bounding boxes may not equate to actual vehicle contact due to intervening voids (refer to Figure \ref{fig:wrongintersection}).
-
-
-
-% \paragraph{Neural Field-Based Rendering Decision}
-
-% For classification, we assess the estimated ray drop probabilities and ranges for all intersecting neural fields--both dynamic and static. 
-% \begin{equation}
-%     \{(\zeta_\mathbf{F}, {p_d}_\mathbf{F}), \mathbf{F} \in \{\mathbf{F}_{v}\}_{v=1}^{n_{in}} \cup \{\mathbf{F}_{static}\}\}
-% \end{equation}
-% where$\zeta_\mathbf{F}$ and ${p_d}_\mathbf{F}$ is the estimated range and ray drop from the neural field $\mathbf{F}$, $n_{in}$ denotes the number of the intersected vehicles with the ray.
-% For the composition, the neural field $\mathbf{F}$ that yields the nearest range to the sensor without a ray drop is selected.
-% The estimated range can be formulated as:
-% \begin{equation}
-%     \zeta = min({\zeta_\mathbf{F}|\mathbf{F} \in \{\mathbf{F}_{v}\}_{v=1}^{n_{in}} \cup \{\mathbf{F}_{static}\} ,{p_d}_\mathbf{F}=0 })
-% \end{equation}
-% The intensity $\intensity$ is appraised using the identical neural field $\mathbf{F}$.
-% Should all intersecting vehicle neural fields $\{\mathbf{F}_{v}\}_{v=1}^{n_{in}}$ and the static field $\mathbf{F}_{static}$ yield $p_d = 1$, the ray is then regarded as dropped.

@@ -1,18 +1,36 @@
-\begin{table}[t!]
-    \setlength{\tabcolsep}{6pt}
+% \begin{table}[t!]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+% 	\resizebox{\columnwidth}{!}{
+%     \begin{tabular}{ccccccc}
+% 			\toprule
+%             \multicolumn{2}{c}{} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{data}\\\scalebox{0.9}[1.0]{loader}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{encoder}} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{overlap}\\\scalebox{0.9}[1.0]{attention}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{decoder}} &
+%             \multicolumn{1}{c}{\scalebox{0.9}[1.0]{overall}} \\
+%             \hline
+%             \multicolumn{2}{c}{FCGF~\cite{Choy2019FCGF}} & \textcolor{white}{20}\textbf{6} & 414 & --- & 25 & 445 \\
+%             \multicolumn{2}{c}{D3Feat~\cite{bai2020d3feat}} & 200 & \textcolor{white}{4}\underline{11} & --- & \underline{63} & \underline{274}\\
+%             \multicolumn{2}{c}{Ours} & \underline{191} & \textcolor{white}{41}\textbf{9} & 70 & \textcolor{white}{6}\textbf{1} & \textbf{271}\\ 
+% 			\bottomrule
+% 	\end{tabular}}
+% 	\caption{Runtime per fragment pair in milli-seconds, averaged over 1623 test pairs of \emph{3DMatch}.}
+% 	\label{tab:3DMatch_times}
+% \end{table}
+
+\begin{table}[t]
+    \setlength{\tabcolsep}{2pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{\columnwidth}{!}{
-    \begin{tabular}{ccccccc}
+    \begin{tabularx}{\textwidth}{lYYYYY}
 			\toprule
-            \multicolumn{2}{c}{} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{data}\\\scalebox{0.9}[1.0]{loader}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{encoder}} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{overlap}\\\scalebox{0.9}[1.0]{attention}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{decoder}} &
+            \multicolumn{1}{c}{} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{data}\\\scalebox{0.9}[1.0]{loader}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{encoder}} & \multicolumn{1}{c}{\renewcommand{\arraystretch}{0.8}\begin{tabular}{c}\scalebox{0.9}[1.0]{overlap}\\\scalebox{0.9}[1.0]{attention}\end{tabular}} & \multicolumn{1}{c}{\scalebox{0.9}[1.0]{decoder}} &
             \multicolumn{1}{c}{\scalebox{0.9}[1.0]{overall}} \\
             \hline
-            \multicolumn{2}{c}{FCGF~\cite{Choy2019FCGF}} & \textcolor{white}{20}\textbf{6} & 414 & --- & 25 & 445 \\
-            \multicolumn{2}{c}{D3Feat~\cite{bai2020d3feat}} & 200 & \textcolor{white}{4}\underline{11} & --- & \underline{63} & \underline{274}\\
-            \multicolumn{2}{c}{Ours} & \underline{191} & \textcolor{white}{41}\textbf{9} & 70 & \textcolor{white}{6}\textbf{1} & \textbf{271}\\ 
+            FCGF~\cite{Choy2019FCGF} & \textbf{6} & 414 & --- & 25 & 445 \\
+            D3Feat~\cite{bai2020d3feat} & 200 & \underline{11} & --- & \underline{63} & \underline{274}\\
+            Ours & \underline{191} & \textbf{9} & 70 & \textbf{1} & \textbf{271}\\ 
 			\bottomrule
-	\end{tabular}}
+	\end{tabularx}
 	\caption{Runtime per fragment pair in milli-seconds, averaged over 1623 test pairs of \emph{3DMatch}.}
 	\label{tab:3DMatch_times}
 \end{table}

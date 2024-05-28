@@ -1,9 +1,32 @@
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+% 	\resizebox{1.0\columnwidth}{!}{
+%     \begin{tabular}{lcccccc}
+% 			\hline
+% 			& \multicolumn{3}{c}{\textit{ModelNet}} & \multicolumn{3}{c}{\textit{ModelLoNet}} \\
+% 			\cline{2-7}
+% 			Methods & RRE & RTE & $CD$ & RRE & RTE & $CD$ \\
+% 			\hline
+%  			DCP-v2~\cite{wang2019dcp} & 11.975 & 0.171 & 0.0117 & 16.501 & 0.300 & 0.0268 \\
+%  			RPM-Net~\cite{yew2020rpm} & \textbf{1.712} & \textbf{0.018} & \textbf{0.00085} & \underline{7.342} & \textbf{0.124} & \textbf{0.0050}\\
+%  			\acro\ (\emph{rand}) & 2.407 & 0.028 & 0.00120 & 10.985 & 0.175 & 0.0097 \\ 
+%  			\acro\ (\emph{prob. ($om$)})  & \underline{1.739} & \underline{0.019} & \underline{0.00089} & \textbf{5.235} & \underline{0.132} & \underline{0.0083} \\
+% 			\hline
+% 	\end{tabular}
+% 	}
+% 	\caption{Evaluation results on \emph{ModelNet} and \emph{ModelLoNet}. 450 points are sampled for RANSAC with \textit{rand} / \textit{prob.}.}
+% 	\label{tab:modelnet}
+% \end{table}
+
+
+
 \begin{table}[t]
     \setlength{\tabcolsep}{6pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{\columnwidth}{!}{
-    \begin{tabular}{lcccccc}
+    \begin{tabularx}{\textwidth}{lYYYYYY}
 			\hline
 			& \multicolumn{3}{c}{\textit{ModelNet}} & \multicolumn{3}{c}{\textit{ModelLoNet}} \\
 			\cline{2-7}
@@ -14,9 +37,7 @@
  			\acro\ (\emph{rand}) & 2.407 & 0.028 & 0.00120 & 10.985 & 0.175 & 0.0097 \\ 
  			\acro\ (\emph{prob. ($om$)})  & \underline{1.739} & \underline{0.019} & \underline{0.00089} & \textbf{5.235} & \underline{0.132} & \underline{0.0083} \\
 			\hline
-	\end{tabular}
-	}
+	\end{tabularx}
 	\caption{Evaluation results on \emph{ModelNet} and \emph{ModelLoNet}. 450 points are sampled for RANSAC with \textit{rand} / \textit{prob.}.}
 	\label{tab:modelnet}
 \end{table}
-

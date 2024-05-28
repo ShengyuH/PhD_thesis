@@ -1,53 +1,37 @@
 \section{Dynamic neural scene representation}
 
+\begin{figure*}[t]
+    \centering
+        \includegraphics[width=1.0\textwidth]{Figures/overview.pdf}
+        \caption{
+        Overview of \dynfl. Our method takes LiDAR scans and tracked bounding boxes of dynamic vehicles as input. \dynfl first decomposes the scene into a static background and $N$ dynamic vehicles, each modelled using a dedicated neural field. These neural fields are then composed to re-simulate LiDAR scans in dynamic scenes. Our composition technique supports various scene edits, including altering object trajectories, removing and adding reconstructed neural assets between scenes.
+    }
+    \label{fig:main}
+\end{figure*}
 \paragraph{Problem statement.} 
 Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_t\}_{t=1}^T$ that have been compensated for ego-motion, along with tracked bounding boxes\footnote{We assume that the ground truth object detection and tracking annotations are available.} for dynamic vehicles $\mathcal{B} = \{\mathbf{B}_t^v\}_{v=1}^{N}$, where $T$ represents the total number of LiDAR scans, and $N$ is the count of dynamic vehicles. Each scan $\mathbf{X}_t$ is composed of $n_t$ rays, each ray $\mathbf{r}$ is described by the tuple $(\origin, \dir, \zeta, \intensity, \pdrop)$, where $\origin$ and $\dir$ denote the ray's origin and direction, $\zeta$ and $\intensity$ represent range and intensity values, and $\pdrop \in \{0,1\}$ indicates whether the ray is dropped or not due to insufficient returned radiant power.
-% \xing{Is this relevant to the ray drop loss in Sec.5? Actually, I cannot see the connection from this description.}\shengyu{not relevant, we model the ray drop differently}
 
-% Given a collection of LiDAR scans $\mathcal{X} = \{\mathbf{X}_t\}_{t=1}^{n_t}$, sensor poses $\mathcal{T}=\{\mathbf{T}_t \in \text{SE}(3) \}_{t=1}^{n_t}$ , as well as the bounding boxes for the dynamic vehicles $\mathcal{B} = \{\mathbf{B}_{v,t}\}_{v=1, t=1}^{n_v, n_t}$ for $ \mathbf{B}_{v,t} \in R^{8 \times 3}$, Here, $n_v$ represents the count of vehicles across the entire dataset, and $n_t$ signifies the number of temporal LiDAR frames. Each scan comprises $n_r$ rays, with each ray $\mathbf{r}$ characterized by the tuple $(\origin, \dir, \zeta_1, \intensity_1, \pdrop, \mathbf{t}, \mathbf{I})$, where $\origin \in \mathbb{R}^3$ is the origin, $\dir \in \mathbb{R}^3$ is the direction, $\zeta_1 \in \mathbb{R}$ is the estimated range by the LiDAR, $\intensity_1 \in \mathbb{R}$ is the return intensity, $\pdrop \in \{0,1\}$ indicates whether the ray was dropped, $\mathbf{t}$ is the time index, and $\mathbf{I} \in [-1, 0, \dots, n_v-1]$ is the label, with non-negative values specifying vehicle indices and -1 denoting dropped or background rays.
 
 The goal is to reconstruct the scene with a static-dynamic decomposed neural representation, that can enable the rendering of LiDAR scan $\mathbf{X}_{\text{tgt}}$ from novel viewpoint $\mathbf{T}_{\text{tgt}}$. This setup also facilitates various object manipulations, including altering object trajectories, and inserting or removing objects from the scene. The overview of our method is given in~\cref{fig:main}.
-
-% \hanfeng{with manipulated dynamic assets.} \orl{we allow more than that. We also allow to modify the asset locations, so i wouldn't go with ``time'' here. }
-
-
-% The objective is to infer a continuous, time-aware signed distance function (SDF)-based representation of the scene that is robust to the dynamics of the objects within it. Leveraging this representation, one can synthesize novel LiDAR frames $\mathbf{X}_{tgt}$ at specific time instances from new sensor poses $\mathbf{T}_{tgt}$ and novel dynamic vehicle poses $\{\mathbf{T}_{tgt,v}\}_{v=1}^{n_v}$.
 
 \subsection{Neural scene decomposition} \label{sec: decomposition}
 We leverage the inductive bias that driving scenes can be decomposed into a static component and $N$ rigidly-moving dynamic components~\cite{huang2022dynamic,gojcic2021weakly}. Consequently, we establish $N+1$ neural fields. The neural field $\mathbf{F}_{\text{static}}$ is designated for the static component of the scene, capturing the unchanging background elements. Concurrently, the set of neural fields $\{\mathbf{F}^v\}_{v=1}^{N}$ is used to model the $N$ dynamic entities, specifically the vehicles in motion.
 
-% In the presence of $n_v$ vehicles within a training scenario, we establish $n_v+1$ neural fields: $\{\mathbf{F}_{v}\}_{v=1}^{n_v} \cup \{\mathbf{F}_{static}\}$. Each dynamic entity is associated with a distinct neural field $\mathbf{F}_v$, while the static background is modeled by $\mathbf{F}_{static}$. A given ray $\mathbf{r}$ is processed based on its label $\mathbf{I}$; if $\mathbf{I} \ge 0$, the ray is incorporated into the corresponding dynamic neural field $\mathbf{F}_v$, otherwise, it is assimilated into the static field $\mathbf{F}_{static}$.
 
 
 \paragraph{Neural field for static background.} 
 The static background is encoded into a neural field $\mathbf{F}_\text{static}: (\x, \dir) \mapsto (s, \intensity, \pdrop)$ that estimates the signed distance $s$, intensity $\intensity$, and ray drop probability $\pdrop \in [0,1]$ given the point coordinates $\x$ and the ray direction $\dir$. In practice, we first use a multi-resolution hash encoding (MRH)~\cite{mueller2022instant} to map each point to its positional feature $\posfeat \in \real^{32}$, and project the view direction onto the first 16 coefficients of the spherical harmonics basis, resulting in $\dirfeat$. Subsequently, we utilize three Multilayer Perceptrons (MLPs) to estimate the scene properties as follows:
 \begin{equation}
-(s, \geofeat) = f_s(\posfeat), \quad \intensity = f_{\intensity}(\rayfeatideal), \quad \pdrop = f_{\text{drop}}(\rayfeatideal).
+(s, \geofeat) = f_s(\posfeat), \quad \intensity = f_{\intensity}(\rayfeat), \quad \pdrop = f_{\text{drop}}(\rayfeat).
 \end{equation}
-Here, $f_s, f_e,$ and $f_{\text{drop}}$ are three MLPs, $\rayfeatideal \in \mathbb{R}^{31}$ represents the ray feature and is constructed by concatenating the per-point geometric feature and the directional feature. The geometric feature is denoted as $\geofeat \in \mathbb{R}^{16}$. For more implementation details, please refer to the supplementary materials. 
-% \xing{$f_s, f_e, f_{drop}$ are three MLPs? Please give the definition.}
-
-% We encode the static scene as a neural field $\mathbf{F}_{static}: (\ray(\origin, \dir)) \mapsto (\zeta, \intensity, \pdrop)$ that takes a ray $\ray$ as input with origin $\origin \in \real^3$ and viewing direction $\dir \in \real^3$, and returns a range $\zeta$, a intensity $\intensity$ and a ray drop probability $\pdrop$.
-% In practice, we use a multi-resolution hash grid(MRH)~\cite{mueller2022instant} to map coordinates $\x \in \real^3$ to positional features $\posfeat \in \real^{32}$ and project the view direction onto the first 16 coefficients of the spherical harmonics basis, $\dirfeat \in \real^{16}$. The neural field is parameterized by three Multi-Layer Perceptrons (MLPs): $[s; \geofeat] = f_s(\posfeat)$ returns a SDF value $s$ and produces an additional geometry feature $\geofeat \in \real^{15}$ for other networks; $\intensity = f_{\intensity}(\geofeat, \dirfeat)$ deduces intensity; $\pdrop = f_{\text{drop}}(\geofeat, \dirfeat)$ determines whether a ray drops.
+Here, $f_s, f_e,$ and $f_{\text{drop}}$ are three MLPs, $\rayfeat \in \mathbb{R}^{31}$ represents the ray feature and is constructed by concatenating the per-point geometric feature and the directional feature. The geometric feature is denoted as $\geofeat \in \mathbb{R}^{16}$. For more implementation details, please refer to the supplementary materials. 
 
 
-% For the static component, we employ a hierarchical sampling strategy\cite{wang2021neus} to sample $N_s$ points per ray and deduce their SDF values using a multi-resolution hash grid(MRH)\cite{mueller2022instant}. Our active sensing volume rendering technique is then applied to compute the weights, which are used to supervise the range estimation, intensity, and drop probability of the ray $(\zeta, \intensity, p_d) = \mathbf{F}_{static}(\mathbf{r})$.
 
 
 \paragraph{Neural fields for dynamic vehicles.} 
 LiDAR scans collected over time are often mis-aligned due to the motion of both the sensor and other objects in the scene. Despite applying ego-motion for aligning static background points, dynamic object points remain blurred along their trajectories. Our approach to constructing a dynamic neural scene representation is grounded in the assumption that each dynamic object only undergoes rigid motion. Therefore, we can first align them over time and reconstruct them in their \textit{canonical} coordinate frame, and then render them over time by reversing the alignment of the neural field.
 
 Specifically, consider a dynamic vehicle $v$ 
-% \stefan{why is the vehicle index $v$ all of a sudden in bold...? It's just a scalar index, so it should not be (consistently with above).}
 occurring in LiDAR scans $\{\mathbf{X}^v_t\}_{t=1}^{T}$ along with the associated bounding boxes $\{\mathbf{B}^v_t \in \mathbb{R}^{3\times 8}\}_{t=1}^{T}$ in the world coordinate framework. Here each bounding box is defined by its eight corners, and the first bounding box $\mathbf{B}^v_1$ is considered as the \textit{canonical} box. We estimate the relative transformations $\{\mathbf{T}_t \in \text{SE}(3)\}_{t=2}^{T}$ between the remaining $T-1$ bounding boxes and the canonical box, expressed as $\mathbf{B}_1^v = \mathbf{T}_t \mathbf{B}_t^v$\footnote{$\mathbf{T}\mathbf{B} = \mathbf{R}\mathbf{B} + \mathbf{t}$, where $\mathbf{R}$ and $\mathbf{t}$ are the rotation and translation components of $\mathbf{T}$.}. 
 Subsequently, all LiDAR measurements on the object are transformed and accumulated in its canonical coordinate frame. The vehicle $v$ is then reconstructed in its canonical space, akin to the static background, using a neural field $\mathbf{F}^v$. To render the dynamic vehicle at timestamp $t$, the corresponding rigid transformation is applied to the queried rays. The dynamic neural field can thus be expressed as: $\mathbf{F}^v_t: (\mathbf{T}_{t}\x, \mathbf{T}_{t}\dir) \mapsto (s, \intensity, \pdrop)$. The rendering process for $\mathbf{F}^v$ is the same as rendering for static neural field $\mathbf{F}_{\text{static}}$.
-
-
-% For each dynamic vehicle $v$, we are provided with
-% \textbf{1.)}$\;$a series of bounding boxes  in world frame of the vehicle in $n_t$ time stamps.
-% \textbf{2.)}$\;$an axis-aligned anchor bounding box  $\mathbf{B}_{v,anchor}$.
-% \textbf{3.)}$\;$a set of relative rigid transformations $\{\mathbf{T}_{v,t}\}_{t=1}^{n_t}$ such that $\forall t \in [n_t], \mathbf{T}_{v,t}\mathbf{B}_{v,t} = \mathbf{B}_{v,anchor}$. 
-
-
-% For each ray $\ray(\origin, \dir, v, t)$ associated with dyanmic vehicle $v$ and frame index $t$ the ray origin $\origin$ and ray direction $\dir$ should be transformed into the frame of the anchor bounding box. The transformed ray origin $\origin_{v,t}$ and direction $\dir_{v,t}$ are then defined as $\origin_{v,t} = \mathbf{R}_{v,t} \origin + \mathbf{trans}_{v,t}$ and $\dir_{v,t} = \mathbf{R}_{v,t} \dir$. where $\mathbf{T}_{v,t} = [\mathbf{R}_{v,t}|\mathbf{trans}_{v,t}]$. The corresponding scene box for the dynamic ray is the anchor bounding box for the dynamic vehicle $\mathbf{B}_{v,anchor}$. 
-% We encode each dynamic vehicle with a dynamic neural field $\mathbf{F}_v$, each dynamic ray is processed in the corresponding dynamic neural field $\mathbf{F}_v$ using the same architecture as the static background, deducing range, intensity, and drop probability, $\mathbf{F}_v(\ray(\origin_{v,t}, \dir_{v,t})) = (\zeta, \intensity, p_d)$.

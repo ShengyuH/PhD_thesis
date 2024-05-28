@@ -1,39 +1,119 @@
+% \begin{table}[t]
+% 	\centering
+% 	\begin{subfigure}[t]{0.3\columnwidth}
+% 	    \vskip 0em
+% 		\centering
+% 		\resizebox{\textwidth}{!}{%
+% 			\begin{tabular}{ccc}
+%             \toprule
+%                             & \emph{Waymo} &\emph{nuScenes} \\
+%             \midrule
+%             PPWC-Net~\cite{wu2019pointpwc}       &    \phantom{21}\underline{0.608}       &  \phantom{6}\underline{0.990}   \\
+%             FLOT~\cite{puy2020flot}         &      \phantom{21}1.028     &  \phantom{6}2.010   \\
+%             WsRSF~\cite{gojcic2021weakly}            &     \phantom{21}1.252      &    \phantom{6}1.460 \\
+%             NSFPrior~\cite{li2021neural}            &     212.256      &    63.460 \\
+%             Ours &      \phantom{21}\textbf{0.174}     &  \phantom{6}\textbf{0.250}  \\
+%             \bottomrule
+%             \end{tabular}
+% 		}
+% 	\end{subfigure}
+% 	\hspace{5mm}
+% 	\begin{subfigure}[t]{0.34\columnwidth}
+% 		\vskip 0em
+% 		\centering
+% 		\resizebox{\textwidth}{!}{%
+% 			\begin{tabular}{ccc}
+%             \toprule
+%                             & \emph{Waymo} &\emph{nuScenes} \\
+%             \midrule
+%             ego-motion estimation & 0.100 & 0.188 \\
+%             motion segmentation & 0.024 & 0.040 \\
+%             instance association & 0.036 & 0.009 \\
+%             TubeNet & 0.014 & 0.013\\
+%             \bottomrule
+%             \end{tabular}
+% 		}
+% 	\end{subfigure}
+% 	\caption{Runtimes for the \waymo~and \nuscenes~datasets. All numbers are seconds per 5-frame (\emph{Waymo}), respectively 11-frame (\emph{nuScenes}) \textit{sample}.}
+%  	\label{tab:runtime}
+% \end{table}
+
+
+% \begin{table}[t]
+%     \centering
+%     \begin{minipage}{0.45\textwidth}
+%         \centering
+%         \resizebox{\textwidth}{!}{%
+%             \begin{tabular}{ccc}
+%             \toprule
+%                             & \emph{Waymo} &\emph{nuScenes} \\
+%             \midrule
+%             PPWC-Net~\cite{wu2019pointpwc}       &    \phantom{21}\underline{0.608}       &  \phantom{6}\underline{0.990}   \\
+%             FLOT~\cite{puy2020flot}         &      \phantom{21}1.028     &  \phantom{6}2.010   \\
+%             WsRSF~\cite{gojcic2021weakly}            &     \phantom{21}1.252      &    \phantom{6}1.460 \\
+%             NSFPrior~\cite{li2021neural}            &     212.256      &    63.460 \\
+%             Ours &      \phantom{21}\textbf{0.174}     &  \phantom{6}\textbf{0.250}  \\
+%             \bottomrule
+%             \end{tabular}
+%         }
+%     \end{minipage}%
+%     \hspace{5mm}
+%     \begin{minipage}{0.45\textwidth}
+%         \centering
+%         \resizebox{\textwidth}{!}{%
+%             \begin{tabular}{ccc}
+%             \toprule
+%                             & \emph{Waymo} &\emph{nuScenes} \\
+%             \midrule
+%             ego-motion estimation & 0.100 & 0.188 \\
+%             motion segmentation & 0.024 & 0.040 \\
+%             instance association & 0.036 & 0.009 \\
+%             TubeNet & 0.014 & 0.013\\
+%             \bottomrule
+%             \end{tabular}
+%         }
+%     \end{minipage}
+%     \caption{Runtimes for the \waymo~and \nuscenes~datasets. All numbers are seconds per 5-frame (\emph{Waymo}), respectively 11-frame (\emph{nuScenes}) \textit{sample}.}
+%     \label{tab:runtime}
+% \end{table}
+
+
 \begin{table}[t]
-	\centering
-	\begin{subfigure}[t]{0.3\columnwidth}
-	    \vskip 0em
-		\centering
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{ccc}
-            \toprule
-                            & \emph{Waymo} &\emph{nuScenes} \\
-            \midrule
-            PPWC-Net~\cite{wu2019pointpwc}       &    \phantom{21}\underline{0.608}       &  \phantom{6}\underline{0.990}   \\
-            FLOT~\cite{puy2020flot}         &      \phantom{21}1.028     &  \phantom{6}2.010   \\
-            WsRSF~\cite{gojcic2021weakly}            &     \phantom{21}1.252      &    \phantom{6}1.460 \\
-            NSFPrior~\cite{li2021neural}            &     212.256      &    63.460 \\
-            Ours &      \phantom{21}\textbf{0.174}     &  \phantom{6}\textbf{0.250}  \\
-            \bottomrule
-            \end{tabular}
-		}
-	\end{subfigure}
-	\hspace{5mm}
-	\begin{subfigure}[t]{0.34\columnwidth}
-		\vskip 0em
-		\centering
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{ccc}
-            \toprule
-                            & \emph{Waymo} &\emph{nuScenes} \\
-            \midrule
-            ego-motion estimation & 0.100 & 0.188 \\
-            motion segmentation & 0.024 & 0.040 \\
-            instance association & 0.036 & 0.009 \\
-            TubeNet & 0.014 & 0.013\\
-            \bottomrule
-            \end{tabular}
-		}
-	\end{subfigure}
-	\caption{Runtimes for the \waymo~and \nuscenes~datasets. All numbers are seconds per 5-frame (\emph{Waymo}), respectively 11-frame (\emph{nuScenes}) \textit{sample}.}
- 	\label{tab:runtime}
+    \centering
+    \makebox[\textwidth][c]{ % Center the box within the text width
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \resizebox{\textwidth}{!}{%
+                \begin{tabular}{ccc}
+                \toprule
+                                & \emph{Waymo} &\emph{nuScenes} \\
+                \midrule
+                PPWC-Net~\cite{wu2019pointpwc}       &    \phantom{21}\underline{0.608}       &  \phantom{6}\underline{0.990}   \\
+                FLOT~\cite{puy2020flot}         &      \phantom{21}1.028     &  \phantom{6}2.010   \\
+                WsRSF~\cite{gojcic2021weakly}            &     \phantom{21}1.252      &    \phantom{6}1.460 \\
+                NSFPrior~\cite{li2021neural}            &     212.256      &    63.460 \\
+                Ours &      \phantom{21}\textbf{0.174}     &  \phantom{6}\textbf{0.250}  \\
+                \bottomrule
+                \end{tabular}
+            }
+        \end{minipage}
+        \hspace{5mm}
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \resizebox{\textwidth}{!}{%
+                \begin{tabular}{ccc}
+                \toprule
+                                & \emph{Waymo} &\emph{nuScenes} \\
+                \midrule
+                ego-motion estimation & 0.100 & 0.188 \\
+                motion segmentation & 0.024 & 0.040 \\
+                instance association & 0.036 & 0.009 \\
+                TubeNet & 0.014 & 0.013\\
+                \bottomrule
+                \end{tabular}
+            }
+        \end{minipage}
+    }
+    \caption{Runtimes for the \waymo~and \nuscenes~datasets. All numbers are seconds per 5-frame (\emph{Waymo}), respectively 11-frame (\emph{nuScenes}) \textit{sample}.}
+    \label{tab:runtime}
 \end{table}

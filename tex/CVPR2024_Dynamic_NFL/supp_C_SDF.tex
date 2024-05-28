@@ -1,38 +1,38 @@
-\clearpage
+
 \section{SDF-based volume rendering for active sensor}\label{sec:sup_sdf_vol_render}
 In this section, we start by introducing the preliminary of NeRF~\cite{mildenhall2020nerf} following terminology as described in~\cite{tagliasacchi2022volume}. Then we provide the full derivation of the SDF-based volume rendering for active sensor. 
 
 \subsection{Preliminary}\label{sec:supp_pre}
 \paragraph{Density}
 For a ray emitted from the origin $\origin \in \real^3$ towards direction $\dir \in \real^3$, the \textit{density} $\density_\zeta$ at range $\zeta$ indicates the likelihood of light interacting with particles at that point $\ray_\zeta = \origin + \zeta \dir$. This interaction can include absorption or scattering of light. In passive sensing, density $\density$ is a critical factor in determining how much light from the scene's illumination is likely to reach the sensor after passing through the medium.
-\paragraph{Transmittance} quantifies the likelihood of light traveling through a given portion of the medium without being scattered or absorbed. Density is closely tied to the transmittance function $\transmittance(\zeta)$, which indicates the probability of a ray traveling over the interval $[0, \zeta)$ without hitting any particles. Then the probability $\transmittance(\zeta {+} d\zeta)$ of \emph{not} hitting a particle when taking a differential step $d\zeta$ is equal to $\transmittance(\zeta)$, the likelihood of the ray reaching $\zeta$, times $(1 - d\zeta \cdot \density(\zeta))$, the probability of not hitting anything during the step:
+\paragraph{Transmittance} quantifies the likelihood of light traveling through a given portion of the medium without being scattered or absorbed. Density is closely tied to the transmittance function $\trans(\zeta)$, which indicates the probability of a ray traveling over the interval $[0, \zeta)$ without hitting any particles. Then the probability $\trans(\zeta {+} d\zeta)$ of \emph{not} hitting a particle when taking a differential step $d\zeta$ is equal to $\trans(\zeta)$, the likelihood of the ray reaching $\zeta$, times $(1 - d\zeta \cdot \density(\zeta))$, the probability of not hitting anything during the step:
 % 
 \begin{align}
-\transmittance(\zeta+d\zeta) =& \transmittance(\zeta) \cdot (1 - d\zeta \cdot \density(\zeta))
+\trans(\zeta+d\zeta) =& \trans(\zeta) \cdot (1 - d\zeta \cdot \density(\zeta))
 \\
-\frac{\transmittance(\zeta+d\zeta) - \transmittance(\zeta)}{d\zeta} \equiv& \transmittance'(\zeta) = -\transmittance(\zeta) \cdot \sigma(\zeta) 
+\frac{\trans(\zeta+d\zeta) - \trans(\zeta)}{d\zeta} \equiv& \trans'(\zeta) = -\trans(\zeta) \cdot \sigma(\zeta) 
 \label{eq:derivative}
 \end{align}
 % 
 We solve the differential equation as follows:
 %
 \begin{align}
-\transmittance'(\zeta) &= -\transmittance(\zeta) \cdot \density(\zeta) \\
-\frac{\transmittance'(\zeta)}{\transmittance(\zeta)} &= -\density(\zeta) \\
-\int_a^b \frac{\transmittance'(\zeta)}{\transmittance(\zeta)} \; d\zeta &= -\int_a^b \density(\zeta) \; d\zeta \\
-\left. \log \transmittance(\zeta) \right|_a^b &= -\int_a^b \density(\zeta) \; d\zeta \\
-\transmittance(a \rightarrow b) \equiv \frac{\transmittance(b)}{\transmittance(a)} &= \exponential{-\int_a^b \density(\zeta) \; d\zeta}   
+\trans'(\zeta) &= -\trans(\zeta) \cdot \density(\zeta) \\
+\frac{\trans'(\zeta)}{\trans(\zeta)} &= -\density(\zeta) \\
+\int_a^b \frac{\trans'(\zeta)}{\trans(\zeta)} \; d\zeta &= -\int_a^b \density(\zeta) \; d\zeta \\
+\left. \log \trans(\zeta) \right|_a^b &= -\int_a^b \density(\zeta) \; d\zeta \\
+\trans(a \rightarrow b) \equiv \frac{\trans(b)}{\trans(a)} &= \exponential{-\int_a^b \density(\zeta) \; d\zeta}   
 \end{align}
 % 
 Hence, for a ray segment between $\zeta_0$ and $\zeta$, transmittance is given by:
 
 \begin{equation}
-\transmittance_{\zeta_0 \rightarrow \zeta} \equiv \frac{\transmittance_{\zeta}}{\transmittance_{\zeta_0}} = exp({-\int_{\zeta_0}^\zeta \density_t dt})\;,
+\trans_{\zeta_0 \rightarrow \zeta} \equiv \frac{\trans_{\zeta}}{\trans_{\zeta_0}} = exp({-\int_{\zeta_0}^\zeta \density_t dt})\;,
 \label{eq:trans_ab}
 \end{equation}
 which leads to following factorization of the transmittance:
 \begin{equation}
-\transmittance_{\zeta} = \transmittance_{0 \rightarrow \zeta_0} \cdot \transmittance_{\zeta_0 \rightarrow \zeta}\;.
+\trans_{\zeta} = \trans_{0 \rightarrow \zeta_0} \cdot \trans_{\zeta_0 \rightarrow \zeta}\;.
 \label{eq:factor}
 \end{equation}
 
@@ -44,31 +44,22 @@ NeuS\cite{wang2021neus} derives the opaque density based on the SDF which is:
 \density_{\zeta_i} =&  \max\left(\frac{-\frac{d\Phi_s}{d\zeta_i}(f(\zeta_i))}{\Phi_s(f(\zeta_i))},0\right)\\
                   =& \max\left(\frac{-(\nabla f(\zeta_i)\cdot \mathbf{v})\phi_s(f(\zeta_i))}{\Phi_s(f(\zeta_i))}, 0\right)
 \end{split}
-\label{eq:sigmoid_density}
+\label{eq:sigmoid_density_}
 \end{equation}
 where $\Phi_s$ represents the Sigmoid function, $f$ is the SDF function that maps a range $\zeta$ to the SDF value of the point position $\origin + \dir * \zeta$. Note that the integral term is computed by
 \begin{equation}
 \int \frac{-(\nabla f(\zeta)\cdot \mathbf{v})\phi_s(f(\zeta))}{\Phi_s(f(\zeta))}d\zeta = -\ln(\Phi_s(f(\zeta))) + C,
 \label{eq:intergration_density}
 \end{equation}
-% We can then calculate the accumulated transmittance from \ref{eq:trans_ab} using \ref{eq:intergration_density}:
-% % 
-% \begin{align}
-% \transmittance_\zeta = \transmittance(0 \rightarrow \zeta) 
-% % &= \prod_{k=1}^{n-1} \transmittance(t_k \rightarrow t_{k+1}) 
-% &= \exponential{- \int_{0}^{\zeta} \density(t) \; dt} 
-% = \Phi_s(f(\zeta))
-% \label{eq:trans_const}
-% \end{align}
-We extend the density-based volume rendering for active sensor to SDF-based. Starting from the passive SDF-based volume rendering \cite{wang2021neus}, We substitute the density $\tilde{\density}$ with opaque density in \ref{eq:sigmoid_density}
+We extend the density-based volume rendering for active sensor to SDF-based. Starting from the passive SDF-based volume rendering \cite{wang2021neus}, We substitute the density $\tilde{\density}$ with opaque density in \ref{eq:sigmoid_density_}
 and evaluate the radiant power integrated from ray segment [a,b] with constant reflectivity $\reflectivity_a$.
 
 Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v})>0$ within the ray segment $[a,b]$, we have
 \begin{align}
 P(a \rightarrow b)
-&= \int_a^b \transmittance^2(a\rightarrow t) \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
+&= \int_a^b \trans^2(a\rightarrow t) \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
 \\
-&= \reflectivity_a \int_a^b \transmittance^2(a\rightarrow t) \cdot \tilde{\density}_t \; dt
+&= \reflectivity_a \int_a^b \trans^2(a\rightarrow t) \cdot \tilde{\density}_t \; dt
 \\
 &= \reflectivity_a \int_a^b \exponential{-\int_a^t 2\tilde{\density}(u) \; du} \cdot \tilde{\density}_t \; dt
 \\
@@ -76,7 +67,6 @@ P(a \rightarrow b)
 \\
 &= \reflectivity_a \int_a^b \exponential{\left. 2\ln(\Phi_s(f(u)))\right|_a^t} \cdot \tilde{\density}_t \; dt
 \\
-% &= \reflectivity_a \int_a^b \exponential{2\ln(\Phi_s(f(t))) - 2\ln(\Phi_s(f(a)))} \cdot \tilde{\density}_t \; dt \\
 &= \reflectivity_a \int_a^b \exponential{2\ln(\Omega_t) - 2\ln(\Omega_a)} \cdot \tilde{\density}_t \; dt 
 \\
 &= \reflectivity_a \int_a^b \frac{{\Omega_t}^2}{{\Omega_a}^2} \cdot \tilde{\density}_t \; dt ~~~~\text{\textbf{let} $\Omega_x = \Phi_s(f(x))$}
@@ -84,22 +74,19 @@ P(a \rightarrow b)
 &= \frac{\reflectivity_a}{{\Omega_a}^2} \int_a^b {\Omega_t}^2 \cdot \tilde{\density}_t \; dt 
 \\
 &= \frac{\reflectivity_a}{{\Omega_a}^2} \int_a^b -\frac{d\Phi_s}{dt}(f(t)) \cdot \Phi_s(f(t)) \; dt 
-% \quad \text{$\tilde{\density}_t = \frac{-\frac{d\Phi_s}{d t}(f(t))}{\Phi_s(f(t))}$}
 \\
 &= \frac{\reflectivity_a}{{\Omega_a}^2} ( \left. -\frac{1}{2}{\Phi_s(f(t))}^2 \right|_a^b) \\
 &= \frac{\reflectivity_a}{{\Omega_a}^2} (\frac{1}{2}{\Phi_s(f(a))}^2 -\frac{1}{2}{\Phi_s(f(b))}^2 )\\
 &= \frac{{\Phi_s(f(a))}^2 -{\Phi_s(f(b))}^2}{{2\Phi_s(f(a))}^2} \cdot \reflectivity_a 
-% \quad \text{$T_a$ = $\Phi_s(f(a))$}
 \label{eq:homogeneous}
 \end{align}
-%\cref{eq:trans_const}
 
 Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v})<0$ within the ray segment $[a,b]$, we have
 \begin{align}
 P(a \rightarrow b)
-&= \int_a^b \transmittance^2(a\rightarrow t) \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
+&= \int_a^b \trans^2(a\rightarrow t) \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
 \\
-&= \int_a^b \transmittance^2(a\rightarrow t) \cdot 0 \cdot \reflectivity(t)  \; dt
+&= \int_a^b \trans^2(a\rightarrow t) \cdot 0 \cdot \reflectivity(t)  \; dt
 \\
 &= 0
 \end{align}
@@ -113,47 +100,30 @@ P(a \rightarrow b)
 Combining the above, we can evaluate the volume rendering integral through a medium with piecewise constant reflectivity:
 % 
 \begin{align}
-P(\zeta_{N+1}) &= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2(\zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta
+P(\zeta_{N+1}) &= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \trans^2(\zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta
 \\
-&= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2_{\zeta_n} \cdot \transmittance^2(\zeta_n \shortto \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
-% &&\text{from \ref{eq:factor}}
+&= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \trans^2_{\zeta_n} \cdot \trans^2(\zeta_n \shortto \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
 \\
-&= \sum_{n=1}^N \transmittance^2_{\zeta_n}  \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2(\zeta_n \rightarrow \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta \\
-% &&\text{constant}
-% \\
-&=\sum_{n=1}^N \transmittance^2_{\zeta_n} P(\zeta_n \rightarrow \zeta_{n+1})
+&= \sum_{n=1}^N \trans^2_{\zeta_n}  \int_{\zeta_n}^{\zeta_{n+1}} \trans^2(\zeta_n \rightarrow \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta \\
+&=\sum_{n=1}^N \trans^2_{\zeta_n} P(\zeta_n \rightarrow \zeta_{n+1})
 \\
-&= \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n},
-% &&\text{from \ref{eq:homogeneous}}
+&= \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n},
 \end{align}
 
 where 
 \begin{align}
 \tilde{\weight}_{\zeta_n} \equiv \max\left(\frac{{\Phi_s(f(\zeta_n)}^2 -{\Phi_s(f(\zeta_{n+1}))}^2}{{2\Phi_s(f(\zeta_n))}^2},0\right)
 \end{align}
-% 
-% This leads to the volume rendering equations from NeRF~\cite[Eq.3]{mildenhall2020nerf}:
-% % 
-% \begin{align}
-% P(\zeta_{N+1}) = \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \frac{{\Phi_s(f(\zeta_n))}^2 -{\Phi_s(f(\zeta_{n+1}))}^2}{{2\Phi_s(f(\zeta_n))}^2} \cdot \reflectivity_{\zeta_n}
-% \label{eq:final_radiant}
-% \end{align}
-% % 
-% Since the opacity is always greater than 0, we can express the opacity as
-% \begin{equation}
-%     \tilde{\weight}_{\zeta_n} \equiv max(\frac{{\Phi_s(f(\zeta_n))}^2 -{\Phi_s(f(\zeta_{n+1}))}^2}{{2\Phi_s(f(\zeta_n))}^2}, 0)
-%     \label{eq:opacity}
-% \end{equation}
 
-The discrete accumulated transmittance $\transmittance$ can be calculated as follows:
+The discrete accumulated transmittance $\trans$ can be calculated as follows:
 
 Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v}) > 0$ in $[\zeta_n, \zeta_{n+1}]$: 
 %
 \begin{align}
-\transmittance_{\zeta_n} 
+\trans_{\zeta_n} 
 &=\prod_{i=1}^{n-1}(\exp(-\int_{\zeta_n}^{\zeta_{n+1}}\tilde{\density}_\zeta \; d\zeta) \\
 &= \prod_{i=1}^{n-1}(\frac{\Phi_s(f(\zeta_{n+1}))}{\Phi_s(f(\zeta_n))})\\
-\transmittance^2_{\zeta_n}
+\trans^2_{\zeta_n}
 &= \prod_{i=1}^{n-1}(\frac{{\Phi_s(f(\zeta_{n+1}))}^2}{{\Phi_s(f(\zeta_n))}^2})\\
 &= \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_n})
 \label{eq:dicrete_transmittance}
@@ -161,25 +131,25 @@ Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v}) > 0$ in $[\zeta_n, \
 
 Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v}) < 0$ in $[\zeta_n, \zeta_{n+1}]$: 
 \begin{align}
-\transmittance_{\zeta_n} 
+\trans_{\zeta_n} 
 &=\prod_{i=1}^{n-1}(\exp(-\int_{\zeta_n}^{\zeta_{n+1}}\tilde{\density}_\zeta \; d\zeta) = \prod_{i=1}^{n-1}(1)
 \\
-\transmittance^2_{\zeta_n} &= \prod_{i=1}^{n-1}(1^2) = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_n})
+\trans^2_{\zeta_n} &= \prod_{i=1}^{n-1}(1^2) = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_n})
 \end{align}
 In conclusion, the radiant power can be reformulated as:
 
 \begin{align}
-P(\zeta_{N+1}) = \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n}
+P(\zeta_{N+1}) = \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n}
 \label{eq:final_radiant2}
 \end{align}
-where $\transmittance^2_{\zeta_n} = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_i})$
+where $\trans^2_{\zeta_n} = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_i})$
 
 
 \paragraph{Depth volume rendering of piecewise constant data}
 
-Note that $\tilde{\weight}_{\zeta_n} \in [0, 0.5], \transmittance^2_{\zeta_n} \in [0,1], \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} = 0.5$, for depth volumetric rendering, we have 
+Note that $\tilde{\weight}_{\zeta_n} \in [0, 0.5], \trans^2_{\zeta_n} \in [0,1], \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} = 0.5$, for depth volumetric rendering, we have 
 \begin{align}
-    \zeta = \sum_{n=1}^N 2 \cdot \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \zeta_n
+    \zeta = \sum_{n=1}^N 2 \cdot \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \zeta_n
     =\sum_{n=1}^N w_n \cdot \zeta_n
     \label{eq:depth_render}
 \end{align}

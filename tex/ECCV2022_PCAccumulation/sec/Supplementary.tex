@@ -126,8 +126,8 @@ In \refpaper{tab:sf_main} we report evaluation metrics calculated over all the p
 We plot instance association metrics at different thresholds in \cref{fig:supp_association}. As can be seen, offset prediction improves association recall and precision by \textgreater5\%, across a range of thresholds. Such improvement becomes more significant as one increases the \textit{IoU} threshold, reaching $\approx$10\% at $IoU=0.9$. We conclude that offset prediction is important to retain high-quality spatio-temporal instances, which can subsequently improve the accuracy of motion modelling for the dynamic parts (\textit{AccS} increases by 9.2\%  in \refpaper{tab:ablations}).
 
 
-\paragraph{Dynamic object motion modelling}
 \input{\subdir/tab/tubenet}
+\paragraph{Dynamic object motion modelling}
 We additionally compare the proposed TubeNet to two baseline methods. We naively align each frame $\PC_k^t$ $(t>1)$ of an instance $\PC_k$ to frame $\PC_k^0$ by %
 translating the centroids, and term this method \textit{center}. For \textit{center+ICP} we refine the simple translational alignment by a subsequent ICP. The detailed comparison is shown in \cref{tab:tubenet_comparison}. Our learned TubeNet achieves the best performance on both datasets. The improvement is larger on the challenging \emph{nuScenes} data, where the point clouds are sparser and less complete, so centroids computed from partial observations are not an accurate proxy for the object location. Our learned TubeNet can implicitly exploit prior knowledge about object shape and surface-level correspondence, leading to more robust and accurate motion modelling. 
 

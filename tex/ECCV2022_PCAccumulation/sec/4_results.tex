@@ -13,8 +13,8 @@ In this section, we first describe the datasets and the evaluation setting for o
 unique instance IDs of the tracking annotations and recover their rigid motion parameters by registering the bounding boxes.
 Notably, for \nuscenes~the bounding boxes are only annotated every 10 frames. To obtain pseudo ground truth for the remaining frames, we linearly interpolate the boxes, which may introduce a small amount of label noise especially for fast-moving objects.
 
-\paragraph{Metrics}
 \input{\subdir/tab/sf_results}
+\paragraph{Metrics}
 We use standard \emph{scene flow} evaluation metrics~\cite{liu2019flownet3d,baur2021slim} to compare the performance of our approach to the selected baselines. These metric include:
 \textit{(i)} 3D end-point-error~(\textit{EPE}~[m]) which denotes the mean $L_2$-error of all flow vectors averaged over all frames; 
 \textit{(ii)} strict/relaxed accuracy (\textit{AccS}~[\%]~/\textit{AccR}~[\%]). \ie, the fraction of points with \textit{EPE} $<$ 0.05/0.10m or relative error $<$ 0.05/0.10; \textit{(iii)} \textit{Outliers~[\%]} which denotes the ratio of points with \textit{EPE} $>$ 0.30m or relative error $>$ 0.10; and \textit{(iv)} \textit{ROutliers}~[\%], the fraction of points whose \textit{EPE} $>$ 0.30m and relative error $>$ 0.30. We evaluate these metrics for the static and dynamic parts of the scene separately.\footnote{A point is labelled as \textit{dynamic} if its ground-truth velocity is $>0.5\,$m/s.} %

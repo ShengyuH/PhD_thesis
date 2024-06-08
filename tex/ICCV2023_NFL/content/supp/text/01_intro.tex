@@ -14,7 +14,7 @@ We use the following 4 scenes~(\cf \cref{fig:supp_waymo_dataset}) that are mostl
     \setlength{\tabcolsep}{6pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{0.8\columnwidth}{!}{
+	\resizebox{0.6\columnwidth}{!}{
     \begin{tabular}{l|c}
     \toprule
     & Scene ID \\
@@ -35,7 +35,7 @@ We simulate the new trajectory by shifting the sensor by [1.5, 1.5, 0.5] meters 
     \setlength{\tabcolsep}{6pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{1.0\columnwidth}{!}{
+	\resizebox{0.8\columnwidth}{!}{
     \begin{tabular}{c|ccccc}
     \toprule
      & i-NGP & DS-NeRF & URF & LiDARsim & Ours \\
@@ -87,12 +87,14 @@ The ground truth weight $\hat{w}_j$ is computed as:
 
 \subsection{Additional results}
 \label{sec:supp_results}
+
 \begin{figure}[!t]
     \centering
-        \includegraphics[width=1.0\columnwidth]{content/main/images/rebuttal_secondary_return.pdf}
+        \includegraphics[width=0.8\columnwidth]{content/main/images/rebuttal_secondary_return.pdf}
         \caption{Rendered secondary returns are color-coded in {\setlength{\fboxsep}{0pt}\colorbox{sdpoints}{yellow}}.}
     \label{fig:rebuttal_second_return}
 \end{figure}
+
 \paragraph{Runtime analysis}
 Our \textit{central ray} version takes 4.1 ms per frame to render the single returns on an RTX 3090 GPU, while other NeRF-style methods require 2.4 ms. Only around $10\%$ of rays have second returns, resulting in low computational overhead. While our \textit{diverged beam} incurs additional costs due to querying diverged rays, it can be disabled if needed, without compromising first return performance (\cf Tab. 1). Our re-implementation of LiDARsim achieves 10 Hz runtime, but could be further improved using accelerated ray-tracing, \eg OptiX. Note that all methods already match or even (greatly) exceed the normal LiDAR measurement frequency (${\approx}10$ Hz). 
 
@@ -106,17 +108,16 @@ We conduct an ablation study to investigate different design choices for predict
 \paragraph{Importance of the second return}
 Multiple returns are critical for vegetation analysis in remote sensing~\cite{lim2003lidar}. NFL is the first work to model the second return by combining beam divergence and \textit{truncated} volume rendering. Unfortunately, second returns do not have semantic annotations in the Waymo dataset, which precluded a quantitative analysis. Nevertheless, qualitatively the rendered second returns are located mostly in vegetation regions, as shown in \cref{fig:rebuttal_second_return}. This correlation suggests that secondary returns could indeed be useful for detecting vegetation. 
 
-
-\paragraph{Semantic segmentation on \textit{Waymo Interp.} dataset}
 \input{\subdir/content/supp/tabs/interp_segmentation}
+\paragraph{Semantic segmentation on \textit{Waymo Interp.} dataset}
 We report additional semantic segmentation results on \textit{Wamo Interp.} dataset in \cref{tab:supp_sem_seg_interp}. NFL achieves the best performance for vehicle segmentation. Please note that \textit{Waymo Interp.} is of significantly smaller size (10 test frames \vs 50 frames per scene in other datasets).
 
-\paragraph{Quantitative results}
 \input{\subdir/content/supp/tabs/nvs_main}
 \input{\subdir/content/supp/tabs/ablate_vol_render}
 \input{\subdir/content/supp/tabs/nvs_registration}
 \input{\subdir/content/supp/tabs/nvs_segmentation}
 
+\paragraph{Quantitative results}
 We perform further experiments to evaluate an additional baseline method, denoted as \textit{i-NGP\cite{muller2022instant} + L2}, which optimizes the range estimation through L2 loss~\cite{deng2021depth,rematas2021urban}. The comprehensive results of our experimentation are presented in \cref{tab:supp_main}, \cref{tab:supp_ablate_vol_render}, \cref{tab:supp_registration}, and \cref{tab:supp_sem_seg}. Our findings reveal that the L2 loss performs inferior to its L1 loss counterpart (\ie i-NGP~\cite{muller2022instant}). However, replacing the standard volume rendering with the proposed formulation for active sensors, still leads to improved performance, as demonstrated in \cref{tab:supp_ablate_vol_render}.
 
 \paragraph{Qualitative results}

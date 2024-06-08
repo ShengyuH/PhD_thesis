@@ -1,33 +1,34 @@
 \begin{thebibliography}{10}
 
-\bibitem{aygun20214d}
-Mehmet Aygun, Aljosa Osep, Mark Weber, Maxim Maximov, Cyrill Stachniss, Jens
-  Behley, and Laura Leal-Taix{\'e}.
-\newblock 4d panoptic {LiDAR} segmentation.
+\bibitem{attal2021torf}
+Benjamin Attal, Eliot Laidlaw, Aaron Gokaslan, Changil Kim, Christian Richardt,
+  James Tompkin, and Matthew O'Toole.
+\newblock {T{\"o}RF}: Time-of-flight radiance fields for dynamic scene view
+  synthesis.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2021.
+
+\bibitem{barron2021mip}
+Jonathan~T Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo
+  Martin-Brualla, and Pratul~P Srinivasan.
+\newblock {Mip-NeRF}: A multiscale representation for anti-aliasing neural
+  radiance fields.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
-\bibitem{baur2021slim}
-Stefan~Andreas Baur, David~Josef Emmerichs, Frank Moosmann, Peter Pinggera,
-  Bjorn Ommer, and Andreas Geiger.
-\newblock {SLIM}: Self-supervised {LiDAR} scene flow and motion segmentation.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2021.
-
-\bibitem{behl2019pointflownet}
-Aseem Behl, Despoina Paschalidou, Simon Donn{\'e}, and Andreas Geiger.
-\newblock {PointFlowNet}: Learning representations for rigid motion estimation
-  from point clouds.
+\bibitem{barron2022mip}
+Jonathan~T Barron, Ben Mildenhall, Dor Verbin, Pratul~P Srinivasan, and Peter
+  Hedman.
+\newblock {Mip-NeRF} 360: Unbounded anti-aliased neural radiance fields.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2019.
+  (CVPR)}, 2022.
 
-\bibitem{behley2019semantickitti}
-Jens Behley, Martin Garbade, Andres Milioto, Jan Quenzel, Sven Behnke, Cyrill
-  Stachniss, and Jurgen Gall.
-\newblock {SemanticKITTI}: A dataset for semantic scene understanding of lidar
-  sequences.
+\bibitem{barron2023zipnerf}
+Jonathan~T. Barron, Ben Mildenhall, Dor Verbin, Pratul~P. Srinivasan, and Peter
+  Hedman.
+\newblock Zip-nerf: Anti-aliased grid-based neural radiance fields.
 \newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2019.
+  2023.
 
 \bibitem{berman2018lovasz}
 Maxim Berman, Amal~Rannen Triki, and Matthew~B Blaschko.
@@ -36,284 +37,267 @@ Maxim Berman, Amal~Rannen Triki, and Matthew~B Blaschko.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2018.
 
-\bibitem{besl1992method}
-Paul~J Besl and Neil~D McKay.
-\newblock Method for registration of 3-d shapes.
-\newblock In {\em Sensor fusion IV: control paradigms and data structures},
-  volume 1611, pages 586--606. International Society for Optics and Photonics,
-  1992.
-
-\bibitem{caesar2020nuscenes}
-Holger Caesar, Varun Bankiti, Alex~H Lang, Sourabh Vora, Venice~Erin Liong,
-  Qiang Xu, Anush Krishnan, Yu~Pan, Giancarlo Baldan, and Oscar Beijbom.
-\newblock {nuScenes}: A multimodal dataset for autonomous driving.
+\bibitem{bijelic2020seeing}
+Mario Bijelic, Tobias Gruber, Fahim Mannan, Florian Kraus, Werner Ritter, Klaus
+  Dietmayer, and Felix Heide.
+\newblock Seeing through fog without seeing fog: Deep multimodal sensor fusion
+  in unseen adverse weather.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
-\bibitem{chen2016dynamic}
-Chi Chen and Bisheng Yang.
-\newblock Dynamic occlusion detection and inpainting of in situ captured
-  terrestrial laser scanning point clouds sequence.
-\newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing},
-  119:90--107, 2016.
+\bibitem{carlsson2001signature}
+Tomas Carlsson, Ove Steinvall, and Dietmar Letalick.
+\newblock Signature simulation and signal analysis for 3-d laser radar.
+\newblock Technical report, Swedish Defence Research Agency, 2001.
 
-\bibitem{chen2021ral}
-X.~Chen, S.~Li, B.~Mersch, L.~Wiesmann, J.~Gall, J.~Behley, and C.~Stachniss.
-\newblock Moving object segmentation in {3D} {LiDAR} data: A learning-based
-  approach exploiting sequential data.
-\newblock {\em IEEE RA-L}, 2021.
+\bibitem{chng2022garf}
+Shin-Fang Chng, Sameera Ramasinghe, Jamie Sherrah, and Simon Lucey.
+\newblock {GARF}: Gaussian activated radiance fields for high fidelity
+  reconstruction and pose estimation.
+\newblock {\em arXiv preprint arXiv:2204.05735}, 2022.
 
-\bibitem{choy2019Minkowski}
-Christopher Choy, JunYoung Gwak, and Silvio Savarese.
-\newblock 4d spatio-temporal convnets: Minkowski convolutional neural networks.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2019.
+\bibitem{deng2021depth}
+Kangle Deng, Andrew Liu, Jun-Yan Zhu, and Deva Ramanan.
+\newblock Depth-supervised {NeRF}: Fewer views and faster training for free.
+\newblock {\em arXiv preprint arXiv:2107.02791}, 2021.
 
-\bibitem{cuturi2013sinkhorn}
-Marco Cuturi.
-\newblock Sinkhorn distances: Lightspeed computation of optimal transport.
-\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
-  2013.
+\bibitem{dosovitskiy2017carla}
+Alexey Dosovitskiy, German Ros, Felipe Codevilla, Antonio Lopez, and Vladlen
+  Koltun.
+\newblock {CARLA}: An open urban driving simulator.
+\newblock In {\em CoRL}. PMLR, 2017.
 
-\bibitem{dendorfer2021motchallenge}
-Patrick Dendorfer, Aljosa Osep, Anton Milan, Konrad Schindler, Daniel Cremers,
-  Ian Reid, Stefan Roth, and Laura Leal-Taix{\'e}.
-\newblock {MOTchallenge}: A benchmark for single-camera multiple target
-  tracking.
-\newblock {\em IJCV}, 2021.
+\bibitem{baidusim}
+Jin Fang, Dingfu Zhou, Feilong Yan, Tongtong Zhao, Feihu Zhang, Yu~Ma, Liang
+  Wang, and Ruigang Yang.
+\newblock Augmented {LiDAR} simulator for autonomous driving.
+\newblock {\em IEEE RA-L}, 5(2):1931--1938, 2020.
 
-\bibitem{dewan2016rigid}
-Ayush Dewan, Tim Caselitz, Gian~Diego Tipaldi, and Wolfram Burgard.
-\newblock Rigid scene flow for 3d lidar scans.
+\bibitem{glennie2012calibration}
+Craig Glennie.
+\newblock Calibration and kinematic analysis of the {Velodyne} {HDL-64E} {S2}
+  lidar sensor.
+\newblock {\em Photogrammetric Engineering \& Remote Sensing}, 78(4):339--347,
+  2012.
+
+\bibitem{guillard2022learning}
+Benoit Guillard, Sai Vemprala, Jayesh~K Gupta, Ondrej Miksik, Vibhav Vineet,
+  Pascal Fua, and Ashish Kapoor.
+\newblock Learning to simulate realistic {LiDARs}.
 \newblock In {\em IEEE/RSJ Intl. Conference on Intelligent Robots and Systems
-  (IROS)}, 2016.
+  (IROS)}, 2022.
 
-\bibitem{ester1996density}
-Martin Ester, Hans-Peter Kriegel, J{\"o}rg Sander, Xiaowei Xu, et~al.
-\newblock A density-based algorithm for discovering clusters in large spatial
-  databases with noise.
-\newblock In {\em Proc.\ KDD}, 1996.
+\bibitem{hahner2022lidar}
+Martin Hahner, Christos Sakaridis, Mario Bijelic, Felix Heide, Fisher Yu,
+  Dengxin Dai, and Luc Van~Gool.
+\newblock {LiDAR} snowfall simulation for robust 3d object detection.
+\newblock {\em arXiv preprint arXiv:2203.15118}, 2022.
 
-\bibitem{fan2021point}
-Hehe Fan, Yi~Yang, and Mohan Kankanhalli.
-\newblock Point 4d transformer networks for spatio-temporal modeling in point
-  cloud videos.
+\bibitem{hahner2021fog}
+Martin Hahner, Christos Sakaridis, Dengxin Dai, and Luc {Van Gool}.
+\newblock Fog simulation on real {LiDAR} point clouds for 3d object detection
+  in adverse weather.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
-\bibitem{fan2020pstnet}
-Hehe Fan, Xin Yu, Yuhang Ding, Yi~Yang, and Mohan Kankanhalli.
-\newblock {PSTNet}: Point spatio-temporal convolution on point cloud sequences.
-\newblock In {\em International Conference on Learning Representations (ICLR)},
-  2020.
+\bibitem{huang2022dynamic}
+Shengyu Huang, Zan Gojcic, Jiahui Huang, Andreas Wieser, and Konrad Schindler.
+\newblock Dynamic 3d scene analysis by point cloud accumulation.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2022.
 
-\bibitem{filatov2020any}
-Artem Filatov, Andrey Rykov, and Viacheslav Murashkin.
-\newblock Any motion detector: Learning class-agnostic scene dynamics from a
-  sequence of lidar point clouds.
-\newblock In {\em IEEE International Conference on Robotics and Automation
-  (ICRA)}, 2020.
-
-\bibitem{giancola2019leveraging}
-Silvio Giancola, Jesus Zarzar, and Bernard Ghanem.
-\newblock Leveraging shape completion for 3d siamese tracking.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2019.
-
-\bibitem{gojcic2021weakly}
-Zan Gojcic, Or~Litany, Andreas Wieser, Leonidas~J Guibas, and Tolga Birdal.
-\newblock Weakly supervised learning of rigid 3d scene flow.
+\bibitem{huang2021predator}
+Shengyu Huang, Zan Gojcic, Mikhail Usvyatsov, Andreas Wieser, and Konrad
+  Schindler.
+\newblock Predator: Registration of 3d point clouds with low overlap.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
-\bibitem{gojcic2020multiview}
-Zan Gojcic, Caifa Zhou, Jan~D Wegner, Leonidas~J Guibas, and Tolga Birdal.
-\newblock Learning multiview 3d point cloud registration.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2020.
+\bibitem{turbosquid}
+Kasiopy.
+\newblock Town with suburb.
+\newblock
+  \url{https://www.turbosquid.com/3d-models/town-suburb-3d-max/1085661}.
+\newblock last accessed 2023.
 
-\bibitem{gross2019alignnet}
-Johannes Gro{\ss}, Aljo{\v{s}}a O{\v{s}}ep, and Bastian Leibe.
-\newblock {AlignNet-3D}: Fast point cloud registration of partially observed
-  objects.
-\newblock In {\em IEEE International conference on 3D vision (3DV)}, 2019.
-
-\bibitem{gu2020weakly}
-Jiayuan Gu, Wei-Chiu Ma, Sivabalan Manivasagam, Wenyuan Zeng, Zihao Wang, Yuwen
-  Xiong, Hao Su, and Raquel Urtasun.
-\newblock Weakly-supervised 3d shape completion in the wild.
-\newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
-
-\bibitem{huang2022multiway}
-Jiahui Huang, Tolga Birdal, Zan Gojcic, Leonidas~J Guibas, and Shi-Min Hu.
-\newblock Multiway non-rigid point cloud registration via learned functional
-  map synchronization.
-\newblock {\em IEEE T-PAMI}, 2022.
-
-\bibitem{huang2021multibodysync}
-Jiahui Huang, He~Wang, Tolga Birdal, Minhyuk Sung, Federica Arrigoni, Shi-Min
-  Hu, and Leonidas~J Guibas.
-\newblock {MultiBodySync}: Multi-body segmentation and motion estimation via 3d
-  scan synchronization.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2021.
-
-\bibitem{ioffe2015batch}
-Sergey Ioffe and Christian Szegedy.
-\newblock Batch normalization: Accelerating deep network training by reducing
-  internal covariate shift.
-\newblock In {\em IEEE International Conference on Machine Learning (ICML)},
-  2015.
-
-\bibitem{jund2021scalable}
-Philipp Jund, Chris Sweeney, Nichola Abdo, Zhifeng Chen, and Jonathon Shlens.
-\newblock Scalable scene flow from point clouds in the real world.
-\newblock {\em arXiv preprint arXiv:2103.01306}, 2021.
-
-\bibitem{kabsch1976solution}
-Wolfgang Kabsch.
-\newblock A solution for the best rotation to relate two sets of vectors.
-\newblock {\em Acta Crystallographica Section A: Crystal Physics, Diffraction,
-  Theoretical and General Crystallography}, 32(5):922--923, 1976.
-
-\bibitem{kazhdan2006poisson}
-Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe.
-\newblock Poisson surface reconstruction.
-\newblock In {\em Eurographics}, 2006.
-
-\bibitem{kim2020remove}
-Giseop Kim and Ayoung Kim.
-\newblock Remove, then revert: Static point cloud map construction using
-  multiresolution range images.
-\newblock In {\em IEEE/RSJ Intl. Conference on Intelligent Robots and Systems
-  (IROS)}, 2020.
+\bibitem{kilic2021lidar}
+Velat Kilic, Deepti Hegde, Vishwanath Sindagi, A~Brinton Cooper, Mark~A Foster,
+  and Vishal~M Patel.
+\newblock Lidar light scattering augmentation ({LISA}): Physics-based
+  simulation of adverse weather conditions for 3d object detection.
+\newblock {\em arXiv preprint arXiv:2107.07004}, 2021.
 
 \bibitem{kingma2014adam}
 Diederik~P Kingma and Jimmy Ba.
 \newblock Adam: A method for stochastic optimization.
 \newblock 2014.
 
-\bibitem{lahoud20193d}
-Jean Lahoud, Bernard Ghanem, Marc Pollefeys, and Martin~R Oswald.
-\newblock 3d instance segmentation via multi-task metric learning.
+\bibitem{klenk2022nerf}
+Simon Klenk, Lukas Koestler, Davide Scaramuzza, and Daniel Cremers.
+\newblock {E-NeRF}: Neural radiance fields from a moving event camera.
+\newblock {\em arXiv preprint arXiv:2208.11300}, 2022.
+
+\bibitem{koenig2004design}
+Nathan Koenig and Andrew Howard.
+\newblock Design and use paradigms for gazebo, an open-source multi-robot
+  simulator.
+\newblock In {\em IEEE/RSJ Intl. Conference on Intelligent Robots and Systems
+  (IROS)}, 2004.
+
+\bibitem{kurup2021dsor}
+Akhil Kurup and Jeremy Bos.
+\newblock {DSOR}: A scalable statistical filter for removing falling snow from
+  {LiDAR} point clouds in severe winter weather.
+\newblock {\em arXiv preprint arXiv:2109.07078}, 2021.
+
+\bibitem{lim2003lidar}
+Kevin Lim, Paul Treitz, Michael Wulder, Beno{\^\i}t St-Onge, and Martin Flood.
+\newblock Lidar remote sensing of forest structure.
+\newblock {\em Progress in physical geography}, 27(1):88--106, 2003.
+
+\bibitem{lin2021barf}
+Chen-Hsuan Lin, Wei-Chiu Ma, Antonio Torralba, and Simon Lucey.
+\newblock {BARF}: Bundle-adjusting neural radiance fields.
 \newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2019.
-
-\bibitem{li2021hcrf}
-Ruibo Li, Guosheng Lin, Tong He, Fayao Liu, and Chunhua Shen.
-\newblock {HCRF-Flow}: Scene flow from point clouds with continuous high-order
-  crfs and position-aware flow embedding.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2021.
-
-\bibitem{li2019pu}
-Ruihui Li, Xianzhi Li, Chi-Wing Fu, Daniel Cohen-Or, and Pheng-Ann Heng.
-\newblock {PU-GAN}: a point cloud upsampling adversarial network.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2019.
-
-\bibitem{li2021neural}
-Xueqian Li, Jhony Kaesemodel~Pontes, and Simon Lucey.
-\newblock Neural scene flow prior.
-\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
   2021.
 
-\bibitem{liu2019flownet3d}
-Xingyu Liu, Charles~R Qi, and Leonidas~J Guibas.
-\newblock {FlowNet3D}: Learning scene flow in 3d point clouds.
+\bibitem{liu2020neural}
+Lingjie Liu, Jiatao Gu, Kyaw Zaw~Lin, Tat-Seng Chua, and Christian Theobalt.
+\newblock Neural sparse voxel fields.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2020.
+
+\bibitem{luo2022learning}
+Andrew Luo, Yilun Du, Michael~J Tarr, Joshua~B Tenenbaum, Antonio Torralba, and
+  Chuang Gan.
+\newblock Learning neural acoustic fields.
+\newblock {\em arXiv preprint arXiv:2204.00628}, 2022.
+
+\bibitem{manivasagam2020lidarsim}
+Sivabalan Manivasagam, Shenlong Wang, Kelvin Wong, Wenyuan Zeng, Mikita
+  Sazanovich, Shuhan Tan, Bin Yang, Wei-Chiu Ma, and Raquel Urtasun.
+\newblock {LiDARsim}: Realistic {LiDAR} simulation by leveraging the real
+  world.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2020.
+
+\bibitem{max1995optical}
+Nelson Max.
+\newblock Optical models for direct volume rendering.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  1(2):99--108, 1995.
+
+\bibitem{max2005local}
+Nelson Max and Min Chen.
+\newblock Local and global illumination in the volume rendering integral.
+\newblock Technical report, Lawrence Livermore National Lab., Livermore, CA,
+  2005.
+
+\bibitem{mescheder2019occupancy}
+Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and
+  Andreas Geiger.
+\newblock Occupancy networks: Learning 3d reconstruction in function space.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2019.
 
-\bibitem{liu2019meteornet}
-Xingyu Liu, Mengyuan Yan, and Jeannette Bohg.
-\newblock Meteornet: Deep learning on dynamic 3d point cloud sequences.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2019.
-
-\bibitem{long2015fully}
-Jonathan Long, Evan Shelhamer, and Trevor Darrell.
-\newblock Fully convolutional networks for semantic segmentation.
+\bibitem{mildenhall2022nerf}
+Ben Mildenhall, Peter Hedman, Ricardo Martin-Brualla, Pratul~P Srinivasan, and
+  Jonathan~T Barron.
+\newblock {NeRF} in the dark: High dynamic range view synthesis from noisy raw
+  images.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2015.
+  (CVPR)}, 2022.
 
-\bibitem{luo2021self}
-Chenxu Luo, Xiaodong Yang, and Alan Yuille.
-\newblock Self-supervised pillar motion learning for autonomous driving.
+\bibitem{mildenhall2020nerf}
+Ben Mildenhall, Pratul~P Srinivasan, Matthew Tancik, Jonathan~T Barron, Ravi
+  Ramamoorthi, and Ren Ng.
+\newblock {NerF}: Representing scenes as neural radiance fields for view
+  synthesis.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
+
+\bibitem{muller2022instant}
+Thomas M{\"u}ller, Alex Evans, Christoph Schied, and Alexander Keller.
+\newblock Instant neural graphics primitives with a multiresolution hash
+  encoding.
+\newblock {\em arXiv preprint arXiv:2201.05989}, 2022.
+
+\bibitem{oechsle2021unisurf}
+Michael Oechsle, Songyou Peng, and Andreas Geiger.
+\newblock {UNISURF}: Unifying neural implicit surfaces and radiance fields for
+  multi-view reconstruction.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
-\bibitem{ouyang2021occlusion}
-Bojun Ouyang and Dan Raviv.
-\newblock Occlusion guided self-supervised scene flow estimation on 3d point
-  clouds.
-\newblock {\em arXiv preprint arXiv:2104.04724}, 2021.
-
-\bibitem{NEURIPS2019_9015}
-Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
-  Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban
-  Desmaison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan
-  Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu~Fang, Junjie Bai, and Soumith
-  Chintala.
-\newblock Pytorch: An imperative style, high-performance deep learning library.
-\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
-  2021.
-
-\bibitem{peng2020convolutional}
-Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas
-  Geiger.
-\newblock Convolutional occupancy networks.
-\newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
-
-\bibitem{piergiovanni20214d}
-AJ~Piergiovanni, Vincent Casser, Michael~S Ryoo, and Anelia Angelova.
-\newblock 4d-net for learned multi-modal alignment.
-\newblock {\em arXiv preprint arXiv:2109.01066}, 2021.
-
-\bibitem{pomerleau2014long}
-Fran{\c{c}}ois Pomerleau, Philipp Kr{\"u}si, Francis Colas, Paul Furgale, and
-  Roland Siegwart.
-\newblock Long-term 3d map maintenance in dynamic environments.
-\newblock In {\em IEEE International Conference on Robotics and Automation
-  (ICRA)}, 2014.
-
-\bibitem{puy2020flot}
-Gilles Puy, Alexandre Boulch, and Renaud Marlet.
-\newblock {FLOT}: Scene flow on point clouds guided by optimal transport.
-\newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
-
-\bibitem{qi2017pointnet}
-Charles~R Qi, Hao Su, Kaichun Mo, and Leonidas~J Guibas.
-\newblock Pointnet: Deep learning on point sets for 3d classification and
-  segmentation.
+\bibitem{Ost_2022_CVPR}
+Julian Ost, Issam Laradji, Alejandro Newell, Yuval Bahat, and Felix Heide.
+\newblock Neural point light fields.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2017.
+  (CVPR)}, 2022.
 
-\bibitem{qi2021offboard}
-Charles~R Qi, Yin Zhou, Mahyar Najibi, Pei Sun, Khoa Vo, Boyang Deng, and
-  Dragomir Anguelov.
-\newblock Offboard 3d object detection from point cloud sequences.
+\bibitem{ost2021neural}
+Julian Ost, Fahim Mannan, Nils Thuerey, Julian Knodt, and Felix Heide.
+\newblock Neural scene graphs for dynamic scenes.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
-\bibitem{rempe2020caspr}
-Davis Rempe, Tolga Birdal, Yongheng Zhao, Zan Gojcic, Srinath Sridhar, and
-  Leonidas~J. Guibas.
-\newblock {CaSPR}: Learning canonical spatiotemporal point cloud
-  representations.
-\newblock 2020.
-
-\bibitem{schauer2018peopleremover}
-Johannes Schauer and Andreas N{\"u}chter.
-\newblock The peopleremover—removing dynamic objects from 3-d point cloud
-  data by traversing a voxel occupancy grid.
-\newblock {\em IEEE RA-L}, 3(3):1679--1686, 2018.
-
-\bibitem{sun2018pwc}
-Deqing Sun, Xiaodong Yang, Ming-Yu Liu, and Jan Kautz.
-\newblock {PWC-net}: Cnns for optical flow using pyramid, warping, and cost
-  volume.
+\bibitem{park2019deepsdf}
+Jeong~Joon Park, Peter Florence, Julian Straub, Richard Newcombe, and Steven
+  Lovegrove.
+\newblock {DeepSDF}: Learning continuous signed distance functions for shape
+  representation.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2018.
+  (CVPR)}, 2019.
+
+\bibitem{pfister2000surfels}
+Hanspeter Pfister, Matthias Zwicker, Jeroen Van~Baar, and Markus Gross.
+\newblock Surfels: Surface elements as rendering primitives.
+\newblock In {\em Computer Graphics and Interactive Techniques}, 2000.
+
+\bibitem{pumarola2021d}
+Albert Pumarola, Enric Corona, Gerard Pons-Moll, and Francesc Moreno-Noguer.
+\newblock {D-NeRF}: Neural radiance fields for dynamic scenes.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2021.
+
+\bibitem{qadri2022neural}
+Mohamad Qadri, Michael Kaess, and Ioannis Gkioulekas.
+\newblock Neural implicit surface reconstruction using imaging sonar.
+\newblock {\em arXiv preprint arXiv:2209.08221}, 2022.
+
+\bibitem{rasshofer2011influences}
+Ralph~H Rasshofer, Martin Spies, and Hans Spies.
+\newblock Influences of weather phenomena on automotive laser radar systems.
+\newblock {\em Advances in Radio Science}, 9:49--60, 2011.
+
+\bibitem{rematas2021urban}
+Konstantinos Rematas, Andrew Liu, Pratul~P Srinivasan, Jonathan~T Barron,
+  Andrea Tagliasacchi, Thomas Funkhouser, and Vittorio Ferrari.
+\newblock Urban radiance fields.
+\newblock {\em arXiv preprint arXiv:2111.14643}, 2021.
+
+\bibitem{roessle2021dense}
+Barbara Roessle, Jonathan~T Barron, Ben Mildenhall, Pratul~P Srinivasan, and
+  Matthias Nie{\ss}ner.
+\newblock Dense depth priors for neural radiance fields from sparse input
+  views.
+\newblock {\em arXiv preprint arXiv:2112.03288}, 2021.
+
+\bibitem{rudnev2022eventnerf}
+Viktor Rudnev, Mohamed Elgharib, Christian Theobalt, and Vladislav Golyanik.
+\newblock {EventNeRF}: Neural radiance fields from a single colour event
+  camera.
+\newblock {\em arXiv preprint arXiv:2206.11896}, 2022.
+
+\bibitem{schoenberger2016sfm}
+Johannes~Lutz Sch\"{o}nberger and Jan-Michael Frahm.
+\newblock Structure-from-motion revisited.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2016.
+
+\bibitem{shih2022reconstruction}
+Yi-Chien Shih, Wei-Hsiang Liao, Wen-Chieh Lin, Sai-Keung Wong, and Chieh-Chih
+  Wang.
+\newblock Reconstruction and synthesis of lidar point clouds of spray.
+\newblock {\em IEEE RA-L}, 7(2):3765--3772, 2022.
 
 \bibitem{sun2020scalability}
 Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai
@@ -323,111 +307,89 @@ Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
+\bibitem{tagliasacchi2022volume}
+Andrea Tagliasacchi and Ben Mildenhall.
+\newblock Volume rendering digest for nerf.
+\newblock {\em arXiv preprint arXiv:2209.02417}, 2022.
+
 \bibitem{tang2022torchsparse}
 Haotian Tang, Zhijian Liu, Xiuyu Li, Yujun Lin, and Song Han.
 \newblock {TorchSparse: Efficient Point Cloud Inference Engine}.
 \newblock In {\em MLSys}, volume~4, pages 302--315, 2022.
 
-\bibitem{teed2021raft}
-Zachary Teed and Jia Deng.
-\newblock {RAFT-3D}: Scene flow using rigid-motion embeddings.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2021.
-
-\bibitem{vaswani2017attention}
-Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
-  Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
-\newblock Attention is all you need.
-\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
-  2017.
-
-\bibitem{vedula1999three}
-Sundar Vedula, Simon Baker, Peter Rander, Robert Collins, and Takeo Kanade.
-\newblock Three-dimensional scene flow.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  1999.
-
-\bibitem{vogel20113d}
-Christoph Vogel, Konrad Schindler, and Stefan Roth.
-\newblock 3d scene flow estimation with a rigid motion prior.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2011.
-
-\bibitem{vogel2013piecewise}
-Christoph Vogel, Konrad Schindler, and Stefan Roth.
-\newblock Piecewise rigid scene flow.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2013.
-
-\bibitem{vogel20153d}
-Christoph Vogel, Konrad Schindler, and Stefan Roth.
-\newblock 3d scene flow estimation with a piecewise rigid scene model.
-\newblock {\em International Journal of Computer Vision}, 115(1):1--28, 2015.
-
-\bibitem{wang2019normalized}
-He~Wang, Srinath Sridhar, Jingwei Huang, Julien Valentin, Shuran Song, and
-  Leonidas~J Guibas.
-\newblock Normalized object coordinate space for category-level 6d object pose
-  and size estimation.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2019.
-
-\bibitem{wang2019associatively}
-Xinlong Wang, Shu Liu, Xiaoyong Shen, Chunhua Shen, and Jiaya Jia.
-\newblock Associatively segmenting instances and semantics in point clouds.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2019.
-
-\bibitem{wedel2008efficient}
-Andreas Wedel, Clemens Rabe, Tobi Vaudrey, Thomas Brox, Uwe Franke, and Daniel
-  Cremers.
-\newblock Efficient dense scene flow from sparse or dense stereo data.
-\newblock In {\em European Conference on Computer Vision (ECCV)}, 2008.
-
-\bibitem{weng20203d}
-Xinshuo Weng, Jianren Wang, David Held, and Kris Kitani.
-\newblock 3d multi-object tracking: A baseline and new evaluation metrics.
-\newblock In {\em IEEE/RSJ Intl. Conference on Intelligent Robots and Systems
-  (IROS)}, 2020.
-
-\bibitem{wu2020motionnet}
-Pengxiang Wu, Siheng Chen, and Dimitris~N Metaxas.
-\newblock {MotionNet}: Joint perception and motion prediction for autonomous
-  driving based on bird's eye view maps.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2020.
-
-\bibitem{wu2019pointpwc}
-Wenxuan Wu, Zhi~Yuan Wang, Zhuwen Li, Wei Liu, and Li~Fuxin.
-\newblock Pointpwc-net: Cost volume on point clouds for (self-) supervised
-  scene flow estimation.
+\bibitem{tang2020searching}
+Haotian Tang, Zhijian Liu, Shengyu Zhao, Yujun Lin, Ji~Lin, Hanrui Wang, and
+  Song Han.
+\newblock Searching efficient 3d architectures with sparse point-voxel
+  convolution.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
 
-\bibitem{yang2021auto4d}
-Bin Yang, Min Bai, Ming Liang, Wenyuan Zeng, and Raquel Urtasun.
-\newblock Auto4d: Learning to label 4d objects from sequential point clouds.
-\newblock {\em arXiv preprint arXiv:2101.06586}, 2021.
+\bibitem{torch-ngp}
+Jiaxiang Tang.
+\newblock Torch-ngp: a {PyTorch} implementation of instant-ngp, 2022.
+\newblock https://github.com/ashawkey/torch-ngp.
 
-\bibitem{yang20213d}
-Zetong Yang, Yin Zhou, Zhifeng Chen, and Jiquan Ngiam.
-\newblock {3D-MAN}: 3d multi-frame attention network for object detection.
+\bibitem{waechter2014let}
+Michael Waechter, Nils Moehrle, and Michael Goesele.
+\newblock Let there be color! large-scale texturing of 3d reconstructions.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2014.
+
+\bibitem{wagner2006gaussian}
+Wolfgang Wagner, Andreas Ullrich, Vesna Ducic, Thomas Melzer, and Nick
+  Studnicka.
+\newblock Gaussian decomposition and calibration of a novel small-footprint
+  full-waveform digitising airborne laser scanner.
+\newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing},
+  60(2):100--112, 2006.
+
+\bibitem{wang2021neus}
+Peng Wang, Lingjie Liu, Yuan Liu, Christian Theobalt, Taku Komura, and Wenping
+  Wang.
+\newblock {NeuS}: Learning neural implicit surfaces by volume rendering for
+  multi-view reconstruction.
+\newblock {\em arXiv preprint arXiv:2106.10689}, 2021.
+
+\bibitem{point-cloud-utils}
+Francis Williams.
+\newblock Point cloud utils, 2022.
+\newblock https://www.github.com/fwilliams/point-cloud-utils.
+
+\bibitem{winiwarter2022virtual}
+Lukas Winiwarter, Alberto Manuel~Esmor{\'\i}s Pena, Hannah Weiser, Katharina
+  Anders, Jorge~Mart{\'\i}nez S{\'a}nchez, Mark Searle, and Bernhard H{\"o}fle.
+\newblock Virtual laser scanning with {HELIOS++}: A novel take on ray
+  tracing-based simulation of topographic full-waveform 3d laser scanning.
+\newblock {\em Remote Sensing of Environment}, 269:112772, 2022.
+
+\bibitem{xie2022neural}
+Yiheng Xie, Towaki Takikawa, Shunsuke Saito, Or~Litany, Shiqin Yan, Numair
+  Khan, Federico Tombari, James Tompkin, Vincent Sitzmann, and Srinath Sridhar.
+\newblock Neural fields in visual computing and beyond.
+\newblock In {\em Computer Graphics Forum}, volume~41, pages 641--676. Wiley
+  Online Library, 2022.
+
+\bibitem{Yang_2023_unisim}
+Ze~Yang, Yun Chen, Jingkang Wang, Sivabalan Manivasagam, Wei-Chiu Ma,
+  Anqi~Joyce Yang, and Raquel Urtasun.
+\newblock Unisim: A neural closed-loop sensor simulator.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2021.
+  (CVPR)}, 2023.
 
-\bibitem{yew2020rpm}
-Zi~Jian Yew and Gim~Hee Lee.
-\newblock {RPM-Net}: Robust point matching using learned features.
-\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
-  (CVPR)}, 2020.
+\bibitem{yariv2021volume}
+Lior Yariv, Jiatao Gu, Yoni Kasten, and Yaron Lipman.
+\newblock Volume rendering of neural implicit surfaces.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2021.
 
-\bibitem{yuan2018pcn}
-Wentao Yuan, Tejas Khot, David Held, Christoph Mertz, and Martial Hebert.
-\newblock {PCN}: Point completion network.
-\newblock In {\em IEEE International conference on 3D vision (3DV)}, 2018.
+\bibitem{yu2021plenoxels}
+Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
+  Angjoo Kanazawa.
+\newblock Plenoxels: Radiance fields without neural networks.
+\newblock {\em arXiv preprint arXiv:2112.05131}, 2021.
 
-\bibitem{Zhou2018}
-Qian-Yi Zhou, Jaesik Park, and Vladlen Koltun.
-\newblock {Open3D}: {A} modern library for {3D} data processing.
-\newblock {\em arXiv preprint arXiv:1801.09847}, 2018.
+\bibitem{zhang2020nerf++}
+Kai Zhang, Gernot Riegler, Noah Snavely, and Vladlen Koltun.
+\newblock {NeRF++}: Analyzing and improving neural radiance fields.
+\newblock {\em arXiv preprint arXiv:2010.07492}, 2020.
 
 \end{thebibliography}

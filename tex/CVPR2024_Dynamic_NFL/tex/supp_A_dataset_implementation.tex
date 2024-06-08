@@ -20,12 +20,12 @@
 \end{table}
 
 \subsection{Implementation details}
-\paragraph{Ours.} 
+\paragraph{Ours} 
 Our model is implemented based on nerfstudio\cite{nerfstudio}. For the static neural field, we sample $N_s=512$ points in total, with $N_u=256$ uniformly sampled points and $N_i=256$ weighted sampled points with 8 upsample steps. In each upsample step, 32 points are sampled based on the weight distribution of the previously sampled points. For each dynamic neural field, we sample $N_s=128$ points in total, with $N_u=64$ uniformly sampled points and $N_i=64$ weighted sampled points with 4 upsample steps. During training, we minimize the loss function using the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate of 0.005. It linearly decays to 0.0005 towards the end of training. For the loss weights, we use $w_{\zeta}=3, w_{e}=50, w_{\text{drop}}=0.15, w_{s}=1$, and  $w_{\text{eik}}=0.3$. The batch size is 4096 and we train the model for 60000 iterations on a single RTX3090 GPU with float32 precision.
 
-\paragraph{LiDARsim.} We re-implement the LiDARsim~\cite{manivasagam2020lidarsim} as one of our baselines. 
+\paragraph{LiDARsim} We re-implement the LiDARsim~\cite{manivasagam2020lidarsim} as one of our baselines. 
 First, we estimated point-wise normal vectors by considering all points within a 20 cm radius ball within the training set. Following this, we applied voxel down-sampling~\cite{tang2022torchsparse}, employing a 4 cm voxel size to reconstruct individual disk surfels at each point. The surfel orientation is defined based on the estimated normal vector. During inference, we apply the ray-surfel intersections test to determine the intersection points, thus the range and intensity values. We select a fixed surfel radius of 6 cm for the \textit{Waymo} dataset and 12 cm for the \textit{Town} dataset.
 To handle dynamic vehicles, we follow LiDARsim~\cite{manivasagam2020lidarsim} by aggregating the LiDAR points for each vehicle from all the training frames and representing them in the \textit{canonical} frame of each vehicle. During inference, we transform all the aggregated vehicle points from their \textit{canonical} frames to the world frame and run ray-surfel intersection.
 
-\paragraph{UniSim.} 
+\paragraph{UniSim} 
 We re-implement UniSim's~\cite{yang2023unisim} rendering process for LiDAR measurements by replacing our ray-drop test-based neural fields composition method with its joint rendering method. For every ray $\mathbf{r} (\mathbf{o},\mathbf{d})$, we begin by conducting an intersection test with all dynamic bounding boxes in the scene to identify the near and far limits. We then uniformly sample 512 points along each ray, assigning each point to either a dynamic neural field, if it falls within a dynamic bounding box, or to the static neural field otherwise. After sampling, we query the SDF and intensity values from the relevant neural fields. Finally, using the SDF-based volume rendering formula in Eq.~\ref{eq:depth_render} for active sensors, we calculate the weights and perform the rendering. Note that we use the same neural field architecture as in our method.

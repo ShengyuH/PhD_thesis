@@ -7,15 +7,15 @@ Given the set of LiDAR scans and the associated tracked bounding boxes of the dy
 where $w_{*}$ denotes respective weights, and each individual loss term $\mathcal{L}_*$ is explained below.
 
 
-\paragraph{Range reconstruction loss.}
+\paragraph{Range reconstruction loss}
 For range estimation, we employ L1 loss, defined as: $\mathcal{L}_{\zeta} = \frac{1}{|\mathcal{R}|}\sum_{\ray \in \mathcal{R}}|\zeta_{est} -\zeta_{gt}|$, where $\mathcal{R}$ denotes the set of LiDAR rays, $\zeta_{est}$ and $\zeta_{gt}$ correspond to the estimated and actual ranges, respectively. 
 
 
-\paragraph{Surface points' SDF regularisation.} \label{sec:surfacesdf}
+\paragraph{Surface points' SDF regularisation} \label{sec:surfacesdf}
 Acknowledging that LiDAR points mostly come from actual surface, we introduce an additional SDF regularisation term $\mathcal{L}_{s}$ that penalizes surface points' SDF values: $\mathcal{L}_{s} = \frac{1}{|\mathcal{P}|}\sum_{\mathbf{p} \in \mathcal{P}}|s(\mathbf{p})|$. Here $\mathcal{P}$ denotes the set of surface points and $s({\mathbf{p}})$ represents the SDF value of the point $\mathbf{p}$.
 
 
-\paragraph{Eikonal constraint.}
+\paragraph{Eikonal constraint}
 Following~\cite{icml2020_2086}, we utilize the Eikonal loss, $\leik$, to regularize the SDF level set. This ensures the gradient norm of the SDF is approximately one at any queried point. The loss is computed as: $\leik = \frac{1}{|\mathcal{Z}|} \sum_{\mathbf{p} \in \mathcal{Z}}( \| \nabla s(\mathbf{p}) \|_2 - 1)^2$, where $\mathcal{Z}$ is the set of all the sampled points. To stablise the training procedure, we adopt a numerical approach~\cite{li2023neuralangelo} to compute $\nabla s(\pos)$ as: 
 \begin{equation}
     \nabla s(\pos) = \frac{s \left( \pos + \boldsymbol{\epsilon} \right) - s \left(\pos - \boldsymbol{\epsilon} \right)}{2 \epsilon} \;,
@@ -24,11 +24,11 @@ Following~\cite{icml2020_2086}, we utilize the Eikonal loss, $\leik$, to regular
 where the numerical step size $\epsilon$ is set to be $10^{-3}$ meters.
 
 
-\paragraph{Intensity Loss.}
+\paragraph{Intensity Loss}
 For intensity reconstruction, we apply L2 loss, defined as: $\mathcal{L}_{\intensity} = \frac{1}{|\mathcal{R}|}\sum_{\ray \in \mathcal{R}}(\intensity_{est} -\intensity_{gt})^2.$
 
 
-\paragraph{Ray drop loss.}
+\paragraph{Ray drop loss}
 We follow~\cite{Huang2023nfl} to supervise the ray drop estimation with a combination of a binary cross entropy loss $\mathcal{L}_{bce}$ and a Lovasz loss $\mathcal{L}_{ls}$ \cite{berman2018lovasz} as:
 \begin{equation}
      \mathcal{L}_{\text{drop}} = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} \left(\mathcal{L}_{bce}(p_{d, est}, {p_{d, gt}}) + \mathcal{L}_{ls}(p_{d, est}, {p_{d, gt}}) \right)\;.

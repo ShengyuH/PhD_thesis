@@ -27,8 +27,7 @@ Here, $C$ accounts for the constant values, and $\sigma_\zeta$ represents the de
 \label{eq:radiant_inter}
 \end{equation}
 where the weights $w_j = 2 \opacity_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \opacity_{\zeta_i}).$
-
-~Here $\alpha_{\zeta_j}$ is the discrete opacity at range $\zeta_j$. Please refer to~\cite{Huang2023nfl} for more details.
+Here $\alpha_{\zeta_j}$ is the discrete opacity at range $\zeta_j$. Please refer to~\cite{Huang2023nfl} for more details.
 
 
 \subsection{SDF-based volume rendering for active sensor} \label{sec:sdf_vol_render}
@@ -61,9 +60,9 @@ Consider rendering the LiDAR measurements from a single neural field, we employ 
 Our full neural scene representation comprises $N+1$ neural fields as discussed in Sec.~\ref{sec: decomposition}. Rendering from all these fields for each ray during inference is computationally intensive. To address this, we implement a two-stage method. In the first stage, we identify the $k+1$ neural fields, where $k \geq 0$ represents the number of dynamic fields, that are likely to intersect with a given ray. The second stage involves rendering LiDAR measurements from these selected fields individually and then integrating them into a unified set of measurements.
 
 
-\paragraph{Ray intersection test.}
+\paragraph{Ray intersection test}
 As outlined in~\cref{sec: decomposition}, each dynamic neural field is reconstructed in its unique canonical space, defined by a corresponding canonical box. To determine neural fields intersecting with a ray at inference time, we begin by estimating the transformations $\{\mathbf{T}_t^v\}_{v=1}^N$, which convert coordinates from the world framework to each vehicle's canonical space at timestamp $t$. These transformations are determined by interpolating the training set transformations using spherical linear interpolation (SLERP)~\cite{10.1145/325334.325242}. Following this, we apply transformations to the queried ray and run intersection tests with the canonical boxes of the scenes. 
 
 
-\paragraph{Neural rendering from multiple neural fields.}
+\paragraph{Neural rendering from multiple neural fields}
  After identifying the $k+1$ neural fields that potentially intersect with a ray, we perform volume rendering on each field separately, yielding $k+1$ distinct sets of LiDAR measurements. Next, we evaluate the ray drop probabilities across these fields. A ray is deemed \textit{dropped} if all neural fields indicate a drop probability $\pdrop > 0.5$. For rays not classified as dropped, we sort the estimated ranges in ascending order and select the nearest one as our final range prediction. Correspondingly, the intensity value is extracted from the same neural field associated with this closest range.

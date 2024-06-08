@@ -77,7 +77,6 @@ We again evaluate if \acro\ focuses on the overlap region. We extract 8,862 test
 \input{\subdir/tables/modelnet}
 \paragraph{Comparison to direct registration methods}
 To be able to compare \acro\ to RPM-Net~\cite{yew2020rpm} and DCP~\cite{wang2019dcp}, we resort to the synthetic, object-centric dataset they were designed for. We failed to train PRNet~\cite{wang2019prnet} due to random crashes of the original code (also observed in~\cite{choy2020deep}).
-
 Remarkably, \acro\ can compete with methods specifically tuned for \emph{ModelNet}, and in the low-overlap regime outperforms them in terms of \emph{RRE}, see Tab.~\ref{tab:modelnet}.
 Moreover, we observe a large boost by sampling points with overlap attention (\emph{prob.\ (om)}) rather than randomly (\emph{rand}).
 Fig.~\ref{fig:modelnet} (right) further underlines the importance of sampling in the overlap: \acro\ is a lot more robust in the low overlap regime ($\approx$8$^\circ$ lower RRE at completeness 0.4). 
@@ -87,8 +86,8 @@ Fig.~\ref{fig:modelnet} (right) further underlines the importance of sampling in
 \paragraph{Dataset}
 ~\cite{geiger2012kitti} contains 11 sequences of LiDAR-scanned outdoor driving scenarios. We follow ~\cite{Choy2019FCGF} and use sequences 0-5 for training, 6-7 for validation, and 8-10 for testing. In line with~\cite{Choy2019FCGF, bai2020d3feat} we further refine the provided ground truth poses using ICP~\cite{besl1992method} and only use point cloud pairs that are at most $10$~m away from each other for evaluation.
 
-\paragraph{Comparision to the SoTAs} 
 \input{\subdir/tables/kitti}
+\paragraph{Comparision to the SoTAs}
 We compare \acro\ to 3DFeat-Net~\cite{yew20183dfeat}, FCGF~\cite{Choy2019FCGF} and D3Feat*~\cite{bai2020d3feat}\footnote{We find that the released D3Feat code fails to reproduce the results in the paper, possible due to hyper-parameter changes.}
 %on \emph{odometryKITTI}. 
 As shown in Tab.~\ref{tab:kitti}, \acro\ performs on-par with the SoTA. The results also corroborate the impact of our overlap attention %(\textit{prob.(om)}), 

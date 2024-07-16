@@ -27,20 +27,21 @@ We use this simulator in combination with a 3D asset of a town~\cite{turbosquid}
 are created from different trajectories.  We use two different configurations of the LiDAR sensor: \textit{(\romannumeral 1)} \textit{TownClean}, in which LiDAR scans are simulated using an idealized, non-divergent ray; and \textit{(\romannumeral 2)} \textit{TownReal}, with a diverged beam profile approximated via 37 subrays. See the supplementary material for further details.
 
 
- \paragraph{Waymo Open dataset.} For evaluation on real-world data we use Waymo open dataset~\cite{sun2020scalability} which was captured by a 64-beam LiDAR sensor at 10 Hz. Here, we select four static scenes (see sequence IDs in supplementary material) and extract a five-second clip from each, resulting in 50 scans per scene. We hold out every $5$-th frame as a test view and use the remaining 40 scans for training (\textit{Waymo Interp.})
+ \paragraph{Waymo Open dataset}
+ For evaluation on real-world data we use Waymo open dataset~\cite{sun2020scalability} which was captured by a 64-beam LiDAR sensor at 10 Hz. Here, we select four static scenes (see sequence IDs in supplementary material) and extract a five-second clip from each, resulting in 50 scans per scene. We hold out every $5$-th frame as a test view and use the remaining 40 scans for training (\textit{Waymo Interp.})
  
 To evaluate the methods in a more challenging setting we propose a novel evaluation protocol based on a closed-loop simulation (\emph{Waymo NVS}). The protocol involves training and testing on all scans of a scene by first optimizing on the input views to synthesize novel views from a changed trajectory (shift the sensor by [1.5, 1.5, 0.5] meters\footnote{Please refer to the supplementary for ablations on different sensor shift configurations.}). The novel view are then used to re-optimize the method, synthesize scans in the original view and compare to the original scans to gauge performance. This formulation allows us to control task difficulty and could also be applied to evaluate camera-based novel view synthesis methods.
 
 
 
-\paragraph{Evaluation metrics.}
+\paragraph{Evaluation metrics}
 To evaluate range accuracy, we report four metrics: mean and median absolute errors (\textit{MAE} [cm], \textit{MedAE} [cm]),  two-way Chamfer distance (\textit{CD} [cm]), and \textit{recall@50}, which denotes the percentage of rays with range errors below 50 cm. 
 We additionally measure the two return segmentation recall (\textit{Seg. recall}) and precision (\textit{Seg. precision}).
 Intensity is evaluated using mean squared error (\textit{MSE}).
 For ray drop segmentation, we report recall and precision [$\%$], and intersection-over-union (\textit{IoU} [$\%$]). For point cloud registration, we report rotation error (\textit{RE} [\degree]) and translation error (\textit{TE} [cm]).
 
 
-\paragraph{Baselines.}
+\paragraph{Baselines}
 We compare NFL to four baselines. Closest to our problem setup is LiDARsim~\cite{manivasagam2020lidarsim} which was designed for LiDAR synthesis based on surface reconstruction and ray-surfel casting. We re-implement LiDARsim and augment it with a diverged beam profile to enable synthesis of the second returns. Additionally, we adapt three NeRF-like methods that were originally proposed for image synthesis i-NGP~\cite{muller2022instant}, DS-NeRF~\cite{deng2021depth}, and URF~\cite{rematas2021urban} by modifying their volumetric rendering to improve their range predictions. 
 Additional details are available in the supplementary.
 
@@ -48,18 +49,16 @@ Additional details are available in the supplementary.
 \subsection{Evaluation of LiDAR novel view synthesis}
 \label{sec:lidar_nvs_eval}
 
-\paragraph{Ray measurement.}
-
+\paragraph{Ray measurement}
 Using the \emph{Waymo Interp.} dataset we conduct a comprehensive analysis of all the ray measurements and present the results in \cref{tab:full_eval} and \cref{fig:two_return}. Only NFL and LiDARsim~\cite{manivasagam2020lidarsim} are used for this experiment, as other baselines can only support a single return. 
 LiDARsim's surface representation is explicit and not optimized for novel view synthesis nor accounts for view-dependent effects, which results in inferior range prediction and difficulties in retrieving secondary returns. In contrast, NFL directly optimizes the neural field for view synthesis while accounting for LiDAR acquisition process characteristics, resulting in significantly reduced range errors and superior performance in intensity and ray drop probability estimation. Notably, equipping our model with a \textit{diverged beam} representation improves range estimation for both first and second returns for rays with dual returns(\cf ~\cref{fig:ecdf}). However, diverged beam does slightly degrade the overall first-range accuracy likely due to imprecise two-return mask estimation. This hypothesis is supported by results using the ground truth two-return mask (\textit{GT mask}). In~\cref{fig:lidar_nvs} we show more qualitative results of novel view synthesis by NFL.
 
 
-\paragraph{First range.}
-
+\paragraph{First range}
 The results of estimating the range of the first return on all datasets are presented in~\cref{tab:main} and \cref{fig:full_qualitative}. As demonstrated by the results on \textit{TownClean}, \textit{TownReal}, and \textit{Waymo NVS}, the proposed volume rendering formulation of NFL effectively regularizes the density field resulting in superior performance in challenging cases. Even in the easier setting (resembling overfitting) on \textit{Waymo Interp.} dataset, our method achieves competitive performance. In contrast, NeRF-like formulations (i-NGP~\cite{muller2022instant}, DS-NeRF~\cite{deng2021depth}, and URF~\cite{rematas2021urban}) perform poorly when evaluated on real novel views due to their inability to account for the active sensing principle. LiDARsim achieves promising results on datasets with simple geometry and clean LiDAR measurements, as evidenced by low \textit{MedAE} scores on \textit{TownClean} and \textit{TownReal}. However, its explicit representation struggles with complex geometry in noisy real-world scenes, \eg, the vegetation regions in the \textit{Waymo} dataset, resulting in high \textit{MedAE} scores.
 
 
-\paragraph{Ablation study of volume rendering for active sensing.}
+\paragraph{Ablation study of volume rendering for active sensing}
 To evaluate the effectiveness of our volume rendering formulation for active sensors, we replace the volume rendering~\cite{mildenhall2020nerf} formulation initially developed for passive sensing in all NeRF-based baselines and report performance difference in ~\cref{tab:ablate_vol_render}. Our formulation improves range accuracy across all settings, without any hyper-parameter tuning.
 
 
@@ -73,12 +72,12 @@ To evaluate the effectiveness of our volume rendering formulation for active sen
 Having demonstrated NFL's improved ability to synthesize high-quality LiDAR scans through various metrics, we proceed to evaluate their perceptual quality by using them as input for two low-level perception tasks: point cloud registration~\cite{huang2021predator} and semantic segmentation~\cite{tang2020searching}.
 
 
-\paragraph{Point cloud registration.}
+\paragraph{Point cloud registration}
 To evaluate the extent to which synthesized scans preserve local geometric features, we apply the same point cloud registration model~\cite{huang2022dynamic} pre-trained on Waymo~\cite{sun2020scalability} to both GT LiDAR scans and scans synthesized using different methods. \cref{tab:registration} shows that NFL outperforms the baseline methods on datasets with complex geometry and higher noise levels (\textit{TownReal} and \textit{Waymo NVS}) that are more susceptible to artifacts occurring as a result of the LiDAR acquisition process.
 
 
 
 
 
-\paragraph{Semantic segmentation.}
+\paragraph{Semantic segmentation}
 To probe the potential domain gap between real and synthetic scans we apply the same, pre-trained semantic segmentation model~\cite{tang2020searching} to both and compare the predictions. \cref{tab:sem_seg} depicts the performance for both the \textit{vehicle} and \textit{background} classes. Notably, NFL achieves the highest recall for the \textit{vehicle} class, which is strongly affected by dual returns and ray drops. Example predictions are shown in~\cref{fig:semseg}.

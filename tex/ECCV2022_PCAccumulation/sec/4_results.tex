@@ -3,7 +3,7 @@
 In this section, we first describe the datasets and the evaluation setting for our experiments (\cref{sec:dataset_evalsetting}). We then proceed with a quantitative evaluation of our method and showcase its applicability to downstream tasks with qualitative results for surface reconstruction~(\cref{sec:evaluation_results}). Finally, we validate our design choices in an ablation study~(\cref{sec:ablation}).
 
 \subsection{Datasets and evaluation setting}
-\label{sec:dataset_eval}
+\label{sec:dataset_evalsetting}
 
 \paragraph{Waymo} The Waymo Open Dataset~\cite{sun2020scalability} includes 798/202 scenes for training/validation, where each scene is a 20-second clip captured by a 64-beam LiDAR at 10~Hz. We randomly sample 573/201 scenes for training/validation from the training split, and treat the whole validation split as a held-out test set. We consider every 5 consecutive frames as a \textit{sample} and extract 20 \textit{samples} from each clip, for a total of 11440/4013/4031 samples for training/validation/test. %
     

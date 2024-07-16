@@ -1,11 +1,10 @@
-\section{Datasets and implementation details}\label{sec:sup_dataset}
-\subsection{Datasets}
+\subsection{Datasets and implementation details}\label{sec:sup_dataset}
 \paragraph{\textit{Waymo Dynamic}} For the \textit{Waymo Dynamic} dataset, we take them from 4 scenes of \textit{Waymo Open Dataset}~\cite{sun2020scalability}. There are multiple moving vehicles inside each scene. 50 consecutive frames are taken from each scene for our evaluation. The vehicles are deemed as \textit{dynamic} if the speed is $>1\,$m/s. in any of the 50 frames. The corresponding scene IDs on \textit{Waymo Open Dataset} for our selected scenes are shown as follows:
-\begin{table}[!h]
+\begin{table}[t]
     \setlength{\tabcolsep}{4pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-	\resizebox{0.8\columnwidth}{!}{
+	\resizebox{0.6\columnwidth}{!}{
     \begin{tabular}{l|c}
     \toprule
     & Scene ID \\
@@ -19,7 +18,6 @@
     }
 \end{table}
 
-\subsection{Implementation details}
 \paragraph{Ours} 
 Our model is implemented based on nerfstudio\cite{nerfstudio}. For the static neural field, we sample $N_s=512$ points in total, with $N_u=256$ uniformly sampled points and $N_i=256$ weighted sampled points with 8 upsample steps. In each upsample step, 32 points are sampled based on the weight distribution of the previously sampled points. For each dynamic neural field, we sample $N_s=128$ points in total, with $N_u=64$ uniformly sampled points and $N_i=64$ weighted sampled points with 4 upsample steps. During training, we minimize the loss function using the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate of 0.005. It linearly decays to 0.0005 towards the end of training. For the loss weights, we use $w_{\zeta}=3, w_{e}=50, w_{\text{drop}}=0.15, w_{s}=1$, and  $w_{\text{eik}}=0.3$. The batch size is 4096 and we train the model for 60000 iterations on a single RTX3090 GPU with float32 precision.
 

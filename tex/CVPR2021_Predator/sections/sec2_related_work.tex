@@ -32,8 +32,6 @@ DCP~\cite{wang2019dcp} use a DGCNN network~\cite{wang2019dynamic} to extract loc
 update the similarity matrix with a differentiable Sinkhorn layer~\cite{sinkhorn1964relationship}. Similar to other methods, the weighted Kabsch algorithm\cite{4767965} is used to estimate the transformation parameters. Finally, ~\cite{gojcic2020learning,choy2020deep,pais20203dregnet}
 complement a learned feature descriptor with an outlier filtering network, which infers the correspondence weights for later use in the weighted Kabsch algorithm. 
 
-
-
 \paragraph{Contextual information} In the traditional pipeline, feature extraction is done independently per point cloud. Information %
 is only communicated when computing pairwise similarities, although aggregating contextual information
 at an earlier stage could provide additional cues to robustify the descriptors and guide the matching step.

@@ -1,11 +1,11 @@
-
-\section{SDF-based volume rendering for active sensor}\label{sec:sup_sdf_vol_render}
+\subsection{SDF-based volume rendering for active sensor}\label{sec:sup_sdf_vol_render}
 In this section, we start by introducing the preliminary of NeRF~\cite{mildenhall2020nerf} following terminology as described in~\cite{tagliasacchi2022volume}. Then we provide the full derivation of the SDF-based volume rendering for active sensor. 
 
-\subsection{Preliminary}\label{sec:supp_pre}
 \paragraph{Density}
-For a ray emitted from the origin $\origin \in \real^3$ towards direction $\dir \in \real^3$, the \textit{density} $\density_\zeta$ at range $\zeta$ indicates the likelihood of light interacting with particles at that point $\ray_\zeta = \origin + \zeta \dir$. This interaction can include absorption or scattering of light. In passive sensing, density $\density$ is a critical factor in determining how much light from the scene's illumination is likely to reach the sensor after passing through the medium.
-\paragraph{Transmittance} quantifies the likelihood of light traveling through a given portion of the medium without being scattered or absorbed. Density is closely tied to the transmittance function $\trans(\zeta)$, which indicates the probability of a ray traveling over the interval $[0, \zeta)$ without hitting any particles. Then the probability $\trans(\zeta {+} d\zeta)$ of \emph{not} hitting a particle when taking a differential step $d\zeta$ is equal to $\trans(\zeta)$, the likelihood of the ray reaching $\zeta$, times $(1 - d\zeta \cdot \density(\zeta))$, the probability of not hitting anything during the step:
+For a ray emitted from the origin $\origin \in \real^3$ towards direction $\dir \in \real^3$, the \textit{density} $\density_\zeta$ at range $\zeta$ indicates the likelihood of light interacting with particles at that point $\ray_\zeta = \origin + \zeta \dir$. This interaction can include absorption or scattering of light. In passive sensing, density $\density$ is a critical factor in determining how much light from the scene's illumination is likely to reach the sensor after passing through the medium.'
+
+\paragraph{Transmittance} 
+quantifies the likelihood of light traveling through a given portion of the medium without being scattered or absorbed. Density is closely tied to the transmittance function $\trans(\zeta)$, which indicates the probability of a ray traveling over the interval $[0, \zeta)$ without hitting any particles. Then the probability $\trans(\zeta {+} d\zeta)$ of \emph{not} hitting a particle when taking a differential step $d\zeta$ is equal to $\trans(\zeta)$, the likelihood of the ray reaching $\zeta$, times $(1 - d\zeta \cdot \density(\zeta))$, the probability of not hitting anything during the step:
 % 
 \begin{align}
 \trans(\zeta+d\zeta) =& \trans(\zeta) \cdot (1 - d\zeta \cdot \density(\zeta))
@@ -36,8 +36,10 @@ which leads to following factorization of the transmittance:
 \label{eq:factor}
 \end{equation}
 
-\paragraph{Opacity}Opacity is the complement of transmittance and represents the fraction of light that is either absorbed or scattered in the medium. In a homogeneous medium with constant density $\density$  the opacity for a segment $[\zeta_j, \zeta_{j+1}]$ of length $\Delta \zeta$ is given by $\opacity_{\zeta_j} = 1 - exp(-\density \cdot \Delta \zeta)$
-\subsection{SDF-based volume rendering for active sensor}\label{sec:sdf_active}
+\paragraph{Opacity}
+Opacity is the complement of transmittance and represents the fraction of light that is either absorbed or scattered in the medium. In a homogeneous medium with constant density $\density$  the opacity for a segment $[\zeta_j, \zeta_{j+1}]$ of length $\Delta \zeta$ is given by $\opacity_{\zeta_j} = 1 - exp(-\density \cdot \Delta \zeta)$
+
+\paragraph{SDF-based volume rendering for active sensor}
 NeuS\cite{wang2021neus} derives the opaque density based on the SDF which is:
 \begin{equation}
 \begin{split}
@@ -102,12 +104,13 @@ Combining the above, we can evaluate the volume rendering integral through a med
 \begin{align}
 P(\zeta_{N+1}) &= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \trans^2(\zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta
 \\
-&= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \trans^2_{\zeta_n} \cdot \trans^2(\zeta_n \shortto \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
+&= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \trans^2_{\zeta_n} \cdot \trans^2(\zeta_n \rightarrow \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
 \\
-&= \sum_{n=1}^N \trans^2_{\zeta_n}  \int_{\zeta_n}^{\zeta_{n+1}} \trans^2(\zeta_n \rightarrow \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta \\
+&= \sum_{n=1}^N \trans^2_{\zeta_n}  \int_{\zeta_n}^{\zeta_{n+1}} \trans^2(\zeta_n \rightarrow \zeta) \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
+\\
 &=\sum_{n=1}^N \trans^2_{\zeta_n} P(\zeta_n \rightarrow \zeta_{n+1})
 \\
-&= \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n},
+&= \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n}
 \end{align}
 
 where 
@@ -146,7 +149,6 @@ where $\trans^2_{\zeta_n} = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_i})$
 
 
 \paragraph{Depth volume rendering of piecewise constant data}
-
 Note that $\tilde{\weight}_{\zeta_n} \in [0, 0.5], \trans^2_{\zeta_n} \in [0,1], \sum_{n=1}^N \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} = 0.5$, for depth volumetric rendering, we have 
 \begin{align}
     \zeta = \sum_{n=1}^N 2 \cdot \trans^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \zeta_n

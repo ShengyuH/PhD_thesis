@@ -6,7 +6,7 @@ Often the LiDAR beams are pictured as ideal straight-line segments ending on a 3
 In the following, we discuss key aspects of the LiDAR acquisition process and explain the effects that emerge, which inspire our model design. We also built a LiDAR simulator that accounts for these mechanisms, see~\cref{sec:dataset}.
 
 
-\paragraph{Beam divergence.}
+\paragraph{Beam divergence}
 LiDAR beams diverge as they travel away from the sensor. The size of laser beams can become wider over distance, and typically not negligible in street scenes. Consequently, the illuminated area grows and the irradiance (radiant power per area) decreases with increasing range.
 The size of the beam's footprint is characterised by the divergence angle $(2\gamma_0)$ and the range $\zeta$. Let $\ray^{\gamma}$ be an ideal ray within the beam's cross-section, $\gamma \leq \gamma_0$, then its irradiance $E(\zeta, \gamma)$ at range $\zeta$ can be approximated by a Gaussian function in the ray coordinate system~\cite{wagner2006gaussian}:
 \begin{equation}
@@ -15,7 +15,7 @@ The size of the beam's footprint is characterised by the divergence angle $(2\ga
 where $I_0$ is the pulse peak power. %
 
 
-\paragraph{Pulse waveform.}
+\paragraph{Pulse waveform}
 When the emitted LiDAR pulse returns to the sensor, the range to the reflective surface can be determined from its travel time and the speed of light $c$. Since the pulse has finite duration $\tau_H$, the time of return is found by analysing the received intensity profile. The transmitted pulse power over time can be characterised as~\cite{carlsson2001signature}:
 \begin{equation}
     P_e(t) \propto \parens*{\frac{t}{\tau}}^2 \exp\parens*{-\frac{t}{\tau}},\quad \tau = \frac{\tau_H}{1.75}\;.
@@ -40,13 +40,12 @@ The receiver response $H_C(\zeta)$ is computed by integrating over the solid ang
 where $T_{\zeta} \in [0,1]$ is the one-way transmittance, squared to account for the two-way trip.
 
 
-\paragraph{Beam discretization.}
+\paragraph{Beam discretization}
 In practice, we follow~\cite{winiwarter2022virtual} and approximate the Gaussian beam profile using $M\!=\!37$ rays that are radially distributed around the central ray with different divergence angles $\gamma_i$. The total radiant power $P(\zeta)$ is the weighted sum over those rays: $P(\zeta) = \sum_{i=1}^M g(\gamma_i) P_i(\zeta)\;.$
 Taking into account the beam divergence is important to reproduce two important phenomena: range biases and multiple returns, see \cref{fig:overview} and \cref{fig:toy_example}. As different rays hit a slanted surface at different ranges the integrated waveform peak may shift, causing over- or underestimations. Along object edges, rays within the same beam may hit different surfaces, causing multiple peaks (respectively, range readings), in the return waveform.
 
 
-\paragraph{Range estimation.}
-
+\paragraph{Range estimation}
 One common approach to estimate the surface range from the received waveform is to locate its peak. To that end the signal is discretized in time to obtain a histogram, and local maxima above a certain threshold are declared detections~\cite{winiwarter2022virtual}. The associated range values are then corrected to remove known biases stemming from the pulse waveform (\cf \cref{eq:pulse}) and, optionally, biases due to the radiant power~\cite{winiwarter2022virtual}.
 By modeling the binning and thresholding procedure one can reproduce further LiDAR  behaviors: systematic discretization errors in the range resolution (\cf \cref{fig:toy_example}), and the dropping of rays with low returned power (\cf \cref{fig:overview}).
 

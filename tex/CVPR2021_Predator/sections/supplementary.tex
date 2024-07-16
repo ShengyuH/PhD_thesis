@@ -75,13 +75,14 @@ For 3DMatch/Modelnet/KITTI, we train \acro\ using Stochastic Gradient Descent fo
 
 \subsection{Network architecture}
 \label{sec:network_arch_supp}
+\input{\subdir/tables/compare_network}
 The detailed network architecture of \acro\ is depicted in Fig.~\ref{fig:network_arch_detailed}. Our model is built on the KPConv implementation from the D3Feat repository.%
 \footnote{\url{https://github.com/XuyangBai/D3Feat.pytorch}} %
 We complement each KPConv layer with instance normalisation Leaky ReLU activations. The $l$-th strided convolution is applied to a point cloud dowsampled with voxel size $2^{l}\cdot V$. Upsampling in the decoder is performed by querying the associated feature of the closest point from the previous layer.  
 
 With $\approx$20k points after voxel-grid downsampling, the point clouds in \emph{3DMatch}  are much denser than those of \emph{ModelNet40} with only 717 points. Moreover, they also have larger spatial extent with bounding boxes up to $3\times3\times3$~$\text{m}^3$, while \emph{ModelNet40} point clouds are normalised to fit into a unit sphere.
 To account for these large differences, we slightly adapt the encoder and decoder per dataset, but keep the same overlap attention model. Differences in network hyper-parameters are shown in Tab.~\ref{tab:compare_network}. 
-\input{\subdir/tables/compare_network}
+
 
 \input{\subdir/tables/detailed_3dmatch}
 \subsection{Additional results}

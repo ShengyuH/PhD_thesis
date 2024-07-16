@@ -2,7 +2,7 @@
 \label{sec:lidar_vr}
 In contrast to passive sensors like cameras that rely on ambient illumination, LiDAR actively illuminates the scene and measures the back-scattered radiance. This two-way transmittance alters the volume rendering formulation. %
 
-\paragraph{Radiant power integration.}
+\paragraph{Radiant power integration}
 As discussed in \cref{sec:lidar_model} 
 the radiant power along a LiDAR ray is a delta function that is non-zero only at reflecting surfaces. To incorporate this forward model into the volumetric representation we combine \cref{eq:ht} and \cref{eq:hc} to obtain the 
 probabilistic radiant power:
@@ -24,7 +24,7 @@ where we approximate $\zeta \in [\zeta_j, \zeta_{j+1}]$ by $\frac{\zeta_j + \zet
 \end{equation}
 
 
-\paragraph{Volume rendering.}
+\paragraph{Volume rendering}
 The observed power at the active sensor can be evaluated by plugging \cref{eq:lidar_rad} into \cref{eq: vol_render_nerf}: 
 \begin{equation}
       P

@@ -55,16 +55,16 @@ We utilize 49 paired consecutive frames per scene, with a relative displacement 
 
 
 \subsection{Implementation details}
-\paragraph{Our method.}
+\paragraph{Our method}
 Our model is implemented based on \emph{torch-ngp}~\cite{torch-ngp,muller2022instant} and can be trained on a single RTX 3090 GPU. During training we minimize \refpaper{eq:loss_function} using the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate of 0.005 which linearly decays to 0.0005 towards the end of training. We clip the gradient magnitudes of all parameters to 1.0 to stabilize the optimisation. In the first stage, we sample $N^c = 768$ points and in the second stage $N^f=64$ points for each ray. The window size $\epsilon$ for volume rendering is set to 0.8 m, and the buffer value $\xi$ between two returns is set to 2 m. The weights in the loss function, i.e., $\lambda_e$, $\lambda_d$, and $\lambda_s$, are set to 50, 0.15, and 0.15, respectively.
 
 \input{\subdir/content/supp/figures/diverged_beam}
 
-\paragraph{LiDARsim.}
+\paragraph{LiDARsim}
 Because the original implementation is not publicly available, we re-implemented LiDARsim~\cite{manivasagam2020lidarsim} following the paper as close as possible. Specifically, for all points in the training set, we first estimate pointwise normal vectors using all points within a 20 cm radius ball. Then, we apply voxel down-sampling~\cite{tang2022torchsparse} with a voxel size of 4 cm and reconstruct a disk surfel\footnote{We use the implementation from Point-Cloud-Utils~\cite{point-cloud-utils} library.} for each point. Here, the input point represents the disk center and it orientation is defined by the estimated normal vector. At inference time, we perform ray-surfel intersection to determine the intersection points. We empirically observed that LiDARsim's~\cite{manivasagam2020lidarsim} performance is sensitive to the selected surfel radius. Therefore, we have experimented with both a distance-dependent and fixed surfel radius and found that fixed surfel radius of 6 cm and 12 cm for \textit{Waymo} and \textit{Town} dataset, respectively lead to best range accuracy. To enable second range estimation, we augment LiDARsim with a diverged beam profile approximated using 7 rays. To obtain the second return mask, we consider a LiDAR beam to have two returns if the maximum range difference between all subrays is larger than a threshold\footnote{Sensor-specific parameter, 2 m on \textit{Waymo} dataset.}. The first return is defined as the closest ray-surfel intersection, while the second return is the nearest one that is at least two meters away. To train the ray drop module, we utilize 40k samples from the Waymo dataset~\cite{sun2020scalability}, and only apply this module after the ray-surfel intersection to refine the ray drop patterns. Please see~\cref{fig:supp_lidarsim_raydrop} for more qualitative results. 
 
 
-\paragraph{Other NeRF methods.}
+\paragraph{Other NeRF methods}
 We also use \emph{torch-ngp}~\cite{torch-ngp} codebase to implement other methods, using the same network and sampling configurations as used in ours. To estimate the range, we remove the radiance MLP and instead, apply volume rendering of the sampled $\zeta$ along the ray.  For DS-NeRF~\cite{deng2021depth} and URF~\cite{rematas2021urban}, we replace their positional encoding with a hash-grid~\cite{muller2022instant} to facilitate a fair comparison with i-NGP~\cite{muller2022instant}. Moreover, we substitute the original L2 loss with the L1 loss, as it results in better performance. Finally, we follow the original paper and augment DS-NeRF~\cite{deng2021depth} and URF~\cite{rematas2021urban} with the ray distribution loss and line-of-sight loss, respectively, to regularise the underlying geometry. 
 
 

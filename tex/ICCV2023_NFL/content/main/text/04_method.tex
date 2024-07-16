@@ -5,7 +5,7 @@ We now turn to constructing a neural field model tailored for LiDAR scans, along
 We first formulate the problem setting, then set up a corresponding neural scene representation (\cref{sec:neural_scene_rep}) and derive volume rendering for active sensing (\cref{sec:lidar_vr}). Finally, we describe the rendering procedure used to synthesize novel views (\cref{sec:render_lidar}) and our optimisation scheme (\cref{sec:opt}). 
 
 
-\paragraph{Problem setting.}
+\paragraph{Problem setting}
 Consider a collection of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor (\eg, mounted on a vehicle). Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \text{SE}(3)$ and consists of $n_r$ rays. Every ray $\ray(\origin, \dir)$ records observations $(\zeta_1, \intensity_1, \pdrop, \ptwo, \zeta_2, \intensity_2)$: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return.
 Our goal is to reconstruct a (continuous) volumetric representation of the scene in terms of density $\density$ and reflectance $\reflectance$, from which we can subsequently render virtual LiDAR scans $\mathbf{X}_{tgt}$ from novel sensor poses $\mathbf{T}_{tgt}$.
 
@@ -22,13 +22,13 @@ Technically, we use a hash encoding~\cite{muller2022instant} to map coordinates 
 Next, we apply the adapted volume rendering formulation to multiple rays within a single LiDAR beam.
 
 
-\paragraph{First range estimation.}
+\paragraph{First range estimation}
 We adopt a two-stage approach to extract range values from the neural field,\footnote{Note the similarity to the detector in the instrument that first finds the peak of the waveform, then corrects for pulse shape.} as shown in \cref{fig:overview} (a).
 To estimate the range for an ideal ray $\ray$, we uniformly sample $N^c$ points and query their density values, then compute the weights $\{w^c_j\}_{j=1}^{N^c}$ using \cref{eq:lidar_weights}. A coarse peak estimate $\zeta_p$ is obtained by finding the point with the highest weight along the ray: $p = \argmax_j \{w^c_j\}_{j=1}^{N^c} $. Next, we uniformly sample $N^f$ points from the local interval $\zeta_j \in [\zeta_p - \epsilon, \zeta_p + \epsilon]$. The weights $w_j^f$ at these points are recomputed and normalized to then obtain the final, refined range estimate $\zeta_f$ as:~$\zeta_f = \sum_{j=1}^{N^f} w^f_j \cdot \zeta_j\;.$
 
 
 
-\paragraph{Second range estimation.}
+\paragraph{Second range estimation}
 As discussed in~\cref{sec:lidar_model} a single LiDAR beam might have multiple returns if enough energy was reflected from surfaces further away than the first return. To capture this behavior in our scene representation, we employ \textit{truncated} volume rendering to estimate the radiant power beyond the first return (see \cref{fig:overview} (b)).
 
 Specifically, for each beam, we first predict a two-return mask $p_s$, by classifying its features $\rayfeat = (\geofeatbar,\dirfeat,\rangefeat)$, where $\geofeatbar$ is the volume-rendered geometric feature, and $\rangefeat$ describes the standard deviation and maximum discrepancy of range estimates at the first return. Intuitively, $\geofeatbar$ describes the local geometry (\eg an edge), $\dirfeat$ encodes the relation of the beam to the geometry, and $\rangefeat$ characterizes the beam's prior interaction with the scene.
@@ -40,11 +40,11 @@ For beams that have two returns, we then perform \textit{truncated} volume rende
 
 
 
-\paragraph{Reflectance estimation.}
+\paragraph{Reflectance estimation}
 At every detected surface point we can also retrieve reflectance from the neural field, using the relation $\reflectance = \sum_{j=1}^{N^f} w_j^f \cdot \reflectance_j$.
 
 
-\paragraph{Ray drop probability.}
+\paragraph{Ray drop probability}
 In real LiDAR sensors, some emitted beams return no range measurement at all. This happens when the observed return signal has either too low amplitude or no clear peak (\cref{fig:overview} (c)). However, this effect is hard to model in a fully physics-based way,\footnote{Beyond simple thresholding, which our beam model would support.} because it depends on (usually undisclosed) details of the detection logic. We empirically observe that the ray drop probability can be learned from LiDAR measurements. To this end, we augment the neural scene representation with a dedicated variable for the local probability of \textit{not} back-scattering radiant power $\pdrop(\zeta) \in \{0, 1\}$\footnote{Please refer to the supplementary for discussions on this design choice.}. 
 Volume rendering integrates that quantity into a ray drop probability: $\pdrop(\ray) = \sum_{j=1}^{N_c} w_j^c\cdot p_d(\zeta_j)$.
 
@@ -59,7 +59,7 @@ Given a set of posed LiDAR scans, we optimise our neural field model by minimisi
 consisting of a reconstruction loss $\mathcal{L}_{\text{range}}$ for range estimation, reflectance loss $\mathcal{L}_{e}$, and classification losses $\mathcal{L}_{d}$ for ray drops and $\mathcal{L}_s$ for two returns. 
 
 
-\paragraph{Range reconstruction.}
+\paragraph{Range reconstruction}
 We add two separate losses for the coarse range $\zeta_p$ and the refined range $\zeta_f$, $\mathcal{L}_{\text{range}} = \mathcal{L}_{\text{range}}^c + \mathcal{L}_{\text{range}}^f$. For coarse range, we impose a Gaussian distribution~\cite{rematas2021urban} around the ground truth $\hat{\zeta}$, 
 \begin{equation}
     \mathcal{L}_{\text{range}}^c = \frac{1}{|\mathcal{R}|} \sum_{\ray \in \mathcal{R}} \parens*{1-\!\sum_{w_j \in \mathcal{X}_c^n}\!w_j \hat{w}_j+\!\sum_{w_k \in \mathcal{X}_c^e}\!w_k^2}\;,

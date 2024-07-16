@@ -1,40 +1,40 @@
-% \begin{table}[t]
-%     \setlength{\tabcolsep}{6pt}
-%     \renewcommand{\arraystretch}{1.2}
-% 	\centering
-% 	\resizebox{0.7\columnwidth}{!}{
-%     \begin{tabular}{ccccc}
-% 			\toprule
-%             \multicolumn{1}{c}{} & \multicolumn{1}{c}{\# strided} & \multicolumn{1}{c}{convolution} & \multicolumn{1}{c}{first conv.} & \multicolumn{1}{c}{final}\\
-%             \multicolumn{1}{c}{} & \multicolumn{1}{c}{convolutions} & \multicolumn{1}{c}{radius} & \multicolumn{1}{c}{feature dim.} & \multicolumn{1}{c}{feature dim.}\\
-%             \hline
-%             \multicolumn{1}{c}{\emph{3DMatch}} & 3 & 2.5 & 64 & 32 \\
-%             \multicolumn{1}{c}{\emph{ModelNet}} & 2 & 2.75 & 256 & 96 \\
-%             \multicolumn{1}{c}{\emph{odometryKITTI}} & 3 & 4.25 & 128 & 32 \\
-% 			\bottomrule
-% 	\end{tabular}}
-% 	\caption{Different network configurations for \emph{3DMatch}, \emph{ModelNet} and \emph{odometryKITTI} datasets.}
-% 	\label{tab:compare_network}
-% \end{table}
-
 \begin{table}[t]
     \setlength{\tabcolsep}{6pt}
     \renewcommand{\arraystretch}{1.2}
 	\centering
-    \begin{tabularx}{\columnwidth}{lYYYYY|YYYYY}
+	\resizebox{0.7\columnwidth}{!}{
+    \begin{tabular}{ccccc}
 			\toprule
-			& \multicolumn{5}{c|}{\textit{3DMatch}} & \multicolumn{5}{c}{\textit{3DLoMatch}} \\
-			\# Samples & 5000 & 2500 & 1000 & 500 & 250 & 5000 & 2500 & 1000 & 500 & 250 \\
-            \midrule
-			& \multicolumn{10}{c}{\textit{Registration Recall (\%)}} \\
-		    \midrule
- 			3DSN~\cite{gojcic20193DSmoothNet} & 78.4 & 76.2 & 71.4 & 67.6 & 50.8 & 33.0 & 29.0 & 23.3 & 17.0 & 11.0  \\
- 			FCGF~\cite{Choy2019FCGF} & \underline{85.1} & \underline{84.7} & 83.3 & 81.6 & 71.4 & \underline{40.1} & 41.7 & 38.2 & 35.4 & 26.8 \\
- 			D3Feat~\cite{bai2020d3feat} & 81.6 & 84.5 & \underline{83.4} & \underline{82.4} & \underline{77.9} & 37.2 & \underline{42.7} & \underline{46.9} & \underline{43.8} & \underline{39.1} \\
- 			\acro\ & \textbf{89.0} & \textbf{89.9} & \textbf{90.6} & \textbf{88.5} & \textbf{86.6} & \textbf{59.8} & \textbf{61.2} & \textbf{62.4} & \textbf{60.8} & \textbf{58.1} \\
+            \multicolumn{1}{c}{} & \multicolumn{1}{c}{\# strided} & \multicolumn{1}{c}{convolution} & \multicolumn{1}{c}{first conv.} & \multicolumn{1}{c}{final}\\
+            \multicolumn{1}{c}{} & \multicolumn{1}{c}{convolutions} & \multicolumn{1}{c}{radius} & \multicolumn{1}{c}{feature dim.} & \multicolumn{1}{c}{feature dim.}\\
+            \hline
+            \multicolumn{1}{c}{\emph{3DMatch}} & 3 & 2.5 & 64 & 32 \\
+            \multicolumn{1}{c}{\emph{ModelNet}} & 2 & 2.75 & 256 & 96 \\
+            \multicolumn{1}{c}{\emph{odometryKITTI}} & 3 & 4.25 & 128 & 32 \\
 			\bottomrule
-	\end{tabularx}
-	\caption{Results on the \emph{3DMatch} and \emph{3DLoMatch} datasets.}
-	\label{tab:big_predator}
-    
+	\end{tabular}}
+	\caption{Different network configurations for \emph{3DMatch}, \emph{ModelNet} and \emph{odometryKITTI} datasets.}
+	\label{tab:compare_network}
 \end{table}
+
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+%     \begin{tabularx}{\columnwidth}{lYYYYY|YYYYY}
+% 			\toprule
+% 			& \multicolumn{5}{c|}{\textit{3DMatch}} & \multicolumn{5}{c}{\textit{3DLoMatch}} \\
+% 			\# Samples & 5000 & 2500 & 1000 & 500 & 250 & 5000 & 2500 & 1000 & 500 & 250 \\
+%             \midrule
+% 			& \multicolumn{10}{c}{\textit{Registration Recall (\%)}} \\
+% 		    \midrule
+%  			3DSN~\cite{gojcic20193DSmoothNet} & 78.4 & 76.2 & 71.4 & 67.6 & 50.8 & 33.0 & 29.0 & 23.3 & 17.0 & 11.0  \\
+%  			FCGF~\cite{Choy2019FCGF} & \underline{85.1} & \underline{84.7} & 83.3 & 81.6 & 71.4 & \underline{40.1} & 41.7 & 38.2 & 35.4 & 26.8 \\
+%  			D3Feat~\cite{bai2020d3feat} & 81.6 & 84.5 & \underline{83.4} & \underline{82.4} & \underline{77.9} & 37.2 & \underline{42.7} & \underline{46.9} & \underline{43.8} & \underline{39.1} \\
+%  			\acro\ & \textbf{89.0} & \textbf{89.9} & \textbf{90.6} & \textbf{88.5} & \textbf{86.6} & \textbf{59.8} & \textbf{61.2} & \textbf{62.4} & \textbf{60.8} & \textbf{58.1} \\
+% 			\bottomrule
+% 	\end{tabularx}
+% 	\caption{Results on the \emph{3DMatch} and \emph{3DLoMatch} datasets.}
+% 	\label{tab:big_predator}
+    
+% \end{table}

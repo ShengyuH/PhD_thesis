@@ -1,101 +1,94 @@
-\chapter{Introduction} 
+\chapter{Introduction}
+
 \section{Motivation}
-% why do we fancy a world with many autonomous systems
-Imagine waking up to a world where a service robot has already prepared your cappuccino and croissant, and an autonomous vehicle is ready to smoothly take you to your office. The advancements in robotics and autonomous systems have the potential to drastically revolutionize various aspects of our lives and numerous industries, including healthcare, transportation, manufacturing, and logistics. At the heart of these innovations is the capability to accurately model and understand complex physical interactions within dynamic environments. These sophisticated models are essential for developing intelligent systems that can interact seamlessly and safely with the real world.
 
-% simulation plays a very important role in creating autonomous system
-Simulation plays a critical role in the development of these intelligent systems. By providing controlled and authentic simulated environments, simulation allows these systems to be trained and rigorously tested. This approach is particularly important for exploring scenarios that are either too rare or too dangerous to reproduce in real life. For example, in autonomous driving, simulating scenarios such as sudden pedestrian crossings, unpredictable behavior of other vehicles, or severe weather conditions like snowstorms and heavy rain is crucial. Similarly, in healthcare, robots performing delicate surgeries can be trained in simulations to handle unexpected complications without risking patient safety. By simulating such scenarios, developers can ensure that their systems can handle a wide range of conditions and challenges, thus enhancing the overall robustness and reliability of autonomous systems. In this way, simulation not only accelerates the development process but also contributes to the safety and effectiveness of the deployed systems.
+Imagine waking up to a world where a service robot has already prepared your cappuccino and croissant, and an autonomous vehicle is ready to smoothly take you to your office. Advances in robotics and autonomous systems have the potential to revolutionize various aspects of our lives and numerous industries, including healthcare, transportation, and manufacturing. Central to these innovations is the capability to accurately model and understand complex dynamic physical environments, allowing for seamless and safe interactions with the real world.
 
-% traditional simultor is time-consuming and costly, can cause domain-gap 
-Traditional simulation approaches, such as those proposed in CARLA~\cite{dosovitskiy2017carla} and Isaac Sim~\cite{makoviychuk2021isaac}, have significantly contributed to advancing autonomous systems. However, these methods come with several limitations. They are often costly and time-consuming to create, requiring extensive manual setup and calibration. This not only limits their scalability but also introduces a domain gap—the discrepancies between simulated environments and the real world. Such gaps can diminish the effectiveness of training, as models developed in simulated settings may not perform well when deployed in real-world scenarios. Consequently, while traditional simulations provide valuable insights and testing grounds, their limitations necessitate more efficient and scalable solutions to bridge the gap between simulation and reality.
+Simulation plays a critical role in the development of these intelligent systems. By providing controlled and authentic environments, simulations allow these systems to be rigorously tested and trained. This approach is particularly important for exploring scenarios that are either too rare or too dangerous to reproduce in real life. For instance, in autonomous driving, simulating scenarios such as sudden pedestrian crossings or severe weather conditions like snowstorms and heavy rain is crucial. Similarly, in healthcare, robots performing delicate surgeries can be trained in simulations to handle unexpected complications without risking patient safety. By simulating such scenarios, developers can ensure their systems can handle a wide range of conditions and challenges, thereby enhancing the overall robustness and reliability of autonomous systems. Thus, simulation not only accelerates the development process but also contributes to the safety and effectiveness of the deployed systems.
 
-% the alternative would be data-driven simulation
-An alternative to traditional simulation methods is data-driven simulation, which leverages sensory data captured from real environments. This approach involves reconstructing the environment from the collected data and then simulating new sensory data by altering sensor configurations or modifying the environment itself. By utilizing real data, data-driven simulation significantly enhances the diversity of training and testing datasets, providing more realistic and varied scenarios for system training. This not only bridges the gap between simulation and reality but also ensures that the models are exposed to a wider range of conditions. Furthermore, data-driven simulations are generally more cost-effective and scalable compared to traditional methods, making them a promising solution for developing robust and reliable autonomous systems.
+Traditional simulation approaches, such as those proposed in CARLA~\cite{dosovitskiy2017carla} and Isaac Sim~\cite{makoviychuk2021isaac}, have significantly advanced autonomous systems. However, these methods have several limitations. They are often costly and time-consuming to create, requiring extensive manual setup. This not only limits their scalability but also introduces a domain gap—the discrepancies between simulated environments and the real world. Such gaps can lead to underperformance when models trained in simulated settings are deployed in real-world scenarios. Therefore, while traditional simulations provide valuable insights and testing grounds, their limitations necessitate more efficient and scalable solutions to bridge the gap between simulation and reality.
 
-% what's the core to such data-driven simualtion.
-The core of data-driven simulation consists of two main components: understanding and reconstructing scene dynamics, and simulating new sensory data based on this reconstruction. Dynamic scenes are typically captured by moving robots and can often be decomposed into a few moving objects and a static background. Understanding the motion of the robot or vehicle itself (ego-motion) and the motion of the dynamic parts from sensory data is the first step toward dynamic reconstruction. Accurately estimating these motions ensures that the simulation reflects the true dynamics of the real world.
+An alternative to traditional simulation methods is data-driven simulation, which leverages sensory data captured from real environments. This approach involves reconstructing the environment from collected data and then simulating new sensory data by adjusting sensor configurations or modifying the environment itself. By utilizing real data, data-driven simulation significantly expands the coverage of training and testing datasets, providing more realistic and varied scenarios for system training. This approach bridges the gap between simulation and reality and is generally more cost-effective and scalable than traditional methods, making it a promising solution for developing robust and reliable autonomous systems.
 
-Once the motion reconstruction is achieved, the next step involves simulating new sensory data by altering the sensor configurations or modifying the scene dynamics. This capability allows for the creation of diverse and realistic training scenarios by changing the sensor rig or editing the scene components. By simulating different viewpoints and conditions, this approach enhances the robustness and adaptability of the trained models, ultimately leading to more reliable and versatile autonomous systems.
+The core of data-driven simulation consists of two main components: understanding and reconstructing dynamic scenes, and subsequently simulating new sensory data. Dynamic scenes are typically captured by moving robots and can often be decomposed into a few moving objects and a static background. Understanding the motion of the robot itself (ego-motion) and the motion of the dynamic parts from sensory data is essential for dynamic reconstruction, ensuring that the simulation reflects the true dynamics of the real world.
 
-\section{Reseach Questions}
-In this thesis, we aim to advance the field of data-driven simulation by addressing two key aspects: multi-body dynamics reconstruction and compositional simulation. The following research questions are the focal points of our investigation:
+Once motion reconstruction is achieved, the next step involves simulating new sensory data by adjusting sensor configurations or modifying the scene dynamics. This capability allows for the creation of diverse and realistic training or testing scenarios. By simulating different viewpoints and conditions, this approach enhances the robustness and adaptability of the trained models, ultimately leading to more reliable autonomous systems.
+
+In this thesis, we aim to advance the field of data-driven simulation by addressing two key aspects: dynamic scene reconstruction and simulation, with a specific focus on point clouds as the sensory data. The following research questions are the focal points of our investigation.
+
+\section{Research Questions}
 
 \noindent
-\textbf{\textit{Research Question 1: How can we reliably and accurately align two point cloud fragments that are sparsely captured?}}
+\textbf{\textit{Research Question 1: How can we reliably and accurately recover ego-motion from point cloud fragments that are sparsely captured?}}
 
-Point cloud registration has been a persistent challenge. Although recent works~\cite{gojcic2018learned,Choy2019FCGF} have made significant strides on traditional benchmarks like 3DMatch~\cite{zeng20163dmatch}, their performance in challenging low-overlap scenarios remains suboptimal. This is particularly critical since real-world scenes are often captured sparsely, making low-overlap a common issue. Our goal is to develop a model that can robustly align point cloud fragments under low-overlap conditions.
+Point cloud registration has been a long-standing research question. Although recent works~\cite{gojcic2018learned,Choy2019FCGF} have made significant progress on traditional benchmarks like 3DMatch~\cite{zeng20163dmatch}, their performance in challenging low-overlap scenarios remains suboptimal. This is particularly critical since real-world scenes are often captured sparsely, making low-overlap a common issue. Our goal is to develop a model that can robustly align point cloud fragments under low-overlap conditions.
 
 \noindent
 \textbf{\textit{Research Question 2: What is an effective motion representation for densely-captured dynamic street scenes, and how can we accurately estimate it?}}
 
-Street scenes are frequently captured by RGB cameras and LiDAR sensors at high frequencies, comprising a static background, parked vehicles, and moving agents such as vehicles, bicycles, and pedestrians. Understanding these scene dynamics is essential for reconstruction and simulation. Previous works~\cite{li2020neural,gojcic2021weakly} either use unconstrained scene flow representations that may produce physically implausible motions or rely on only two frames, which do not account for the temporal smoothness of motions. Our objective is to design a method that handles multiple frames and accurately predicts physically viable motions.
+Street scenes are often captured by RGB cameras and LiDAR sensors at high frequencies, comprising a static background, parked vehicles, and moving agents such as vehicles, bicycles, and pedestrians. Understanding these scene dynamics is essential for reconstruction and subsequent simulation. Previous works~\cite{li2020neural,gojcic2021weakly} either use unconstrained scene flow representations that may produce physically implausible motions or rely on only two frames, which do not account for the temporal smoothness of motions. Our objective is to design a method that handles multiple frames and accurately predicts physically viable motions.
 
 \noindent
 \textbf{\textit{Research Question 3: What is an appropriate neural scene representation and forward model for LiDAR simulation?}}
 
-After addressing the motion estimation for both sparsely captured static scenes and densely captured dynamic scenes, the next step is to design a scene representation and forward model for simulation. Prior work~\cite{manivasagam2020lidarsim} employs explicit surface reconstruction and ray-surfel casting for LiDAR scans simulation. However, explicit reconstruction often results in the loss of surface details, and such decoupled two-stage methods cannot directly optimize the scene reconstruction for simulation tasks. Our goal is to create an alternative neural scene representation and a forward model tailored to LiDAR sensors to faithfully reconstruct and simulate LiDAR scans.
+After addressing motion estimation for both sparsely captured static scenes and densely captured dynamic scenes, the next step is to design a scene representation and a forward model for simulation. Prior work~\cite{manivasagam2020lidarsim} employs explicit surface reconstruction and ray-surfel casting for LiDAR scans simulation. However, explicit reconstruction often results in the loss of surface details, and such decoupled two-stage methods cannot directly optimize the scene reconstruction for simulation tasks. Our goal is to create an alternative neural scene representation and a forward model tailored to LiDAR sensors to faithfully reconstruct and simulate static LiDAR scans.
 
 \noindent
-\textbf{\textit{Research Question 4: How can we simulate LiDAR data in dynamic scenes?}}
+\textbf{\textit{Research Question 4: How can we simulate and edit LiDAR data in dynamic scenes?}}
 
-Building on the neural scene representation and forward model developed for data-driven LiDAR simulation, the next step is to extend these methods to handle dynamic scenes. This involves integrating dynamic scene modeling, as discussed in Research Question 2, with the neural scene representation and forward model from Research Question 3. Our aim is to develop a comprehensive framework that can accurately simulate LiDAR data in dynamic environments.
-
+Building on the neural scene representation and forward model developed for data-driven LiDAR simulation, the final step is to extend these methods to handle dynamic scenes. This involves integrating dynamic scene modeling, as discussed in Research Questions 1 and 2, with the neural scene representation and forward model from Research Question 3. Our aim is to develop a comprehensive framework that can flexibly edit dynamic scenes and authentically simulate LiDAR data in dynamic environments.
 
 \section{Outline \& Contributions} 
-This thesis addresses the research questions outlined earlier and contributes to the instigation of scene dynamics reconstruction and simulation. Speciﬁc contributions are detailed as follows.
+This thesis addresses the research questions outlined earlier and contributes to the instigation of dynamic scene reconstruction and simulation. Speciﬁc contributions are detailed as follows.
 
 
 \subsection{Registration of 3D Point Clouds with Low Overlap}
+In ~\cref{chap:cvpr21}, we investigated the first research question and the main contributions of our work are:
 
-\paragraph{Contributions}
 \begin{itemize}
-\item 
+    \item an analysis why existing registration pipelines break down in the low-overlap regime
+    \item a novel overlap attention block that allows for early information exchange between the two point clouds and focuses the subsequent steps on the overlap region
+    \item a scheme to reﬁne the feature point descriptors, by conditioning them also on the respective other point cloud
+    \item a novel loss function to train matchability scores, which help to sample better and more repeatable interest points
 \end{itemize}
 
 \subsection{Reconstruction of Multi-body Dynamics in Driving Scenes}
 
-In Chapter ...
-
-\paragraph{Contributions}
+In ~\cref{chap:eccv22}, we investigated the second research question and made the following scientific contributions:
 \begin{itemize}
-\item A
+    \item a novel, learnable model for temporal accumulation of 3D point cloud sequences over multiple frames, which disentangles the background from dynamic foreground objects
+    \item application to surface reconstruction
 \end{itemize}
 
 \subsection{Neural LiDAR Fields for Novel View Synthesis}
 
-In Chapter ...
+In~\cref{chap:iccv23}, we 
 
-\paragraph{Contributions}
 \begin{itemize}
-\item A
+    \item devise volume rendering for LiDAR sensors
+    \item incorporate beam divergence into the forward model
+    \item propose truncated volume rendering to account for secondary returns and improve range prediction
+    \item develop a LiDAR simulator for synthesizing scenes from 3D assets that serve as a test bed for viewpoints far from the original scan locations, and to study the effect of different scan patterns
+    \item propose a novel closed-loop evaluation protocol that leverages real data to evaluate view synthesis in challenging views
 \end{itemize}
-
 
 \subsection{Dynamic LiDAR Simulation using Compositional Neural Fields}
 
-In Chapter ...
+In~\cref{chap:cvpr24}, we 
 
-\paragraph{Contributions}
 \begin{itemize}
 \item A
 \end{itemize}
-
-Besides the above four papers included in this thesis, I also contribute the following works that are highly relevant to the thesis and also advance these two directions:
-- Living scene
-- Nothing Stands Still benchmark
-- Relighting work
-- Implicity
-
 
 
 
 
 \section{Relevance to Science and Economy}
 
-xxx
-
-\paragraph{Open Source}
-xxx
-
 \paragraph{Scientific Recognition}
-xxx
+The content presented in this thesis is derived from twelve papers I produced during my PhD, four of which are included in this thesis. Ten of these papers were published at renowned conferences in Computer Vision, Robotics, or Remote Sensing. Several of them received recognitions such as Best Paper Award, Best Paper Award Candidate, Oral, or Highlight papers. One paper was accepted at a workshop and won the Best Paper Award. Additionally, ten out of the twelve projects were open-sourced and received recognition from the community in the form of github stars. The datasets, code, and accompanying illustrative videos are available on my personal website: \url{shengyuh.github.io}.
+
+\paragraph{Relevance to Economy}
+The advancements in data-driven simulation and autonomous systems detailed in this thesis have significant economic implications, particularly for the automotive and service robotics industries. Enhanced simulation capabilities can accelerate the development and deployment of autonomous vehicles, reducing costs associated with physical prototyping and extensive road testing. This facilitates faster and safer integration of autonomous cars into transportation networks, potentially transforming infrastructure, improving traffic efficiency, and reducing accidents.
+
+For service robots, improved simulation tools enable the creation of more reliable and versatile robots capable of performing tasks in various environments, from homes to hospitals. This can lead to significant labor cost reductions and increased productivity in service sectors. By automating repetitive tasks, these advanced autonomous systems promise to enhance quality of life and drive economic growth by streamlining daily tasks and professional services.

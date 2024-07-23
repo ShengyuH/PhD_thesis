@@ -1093,6 +1093,12 @@ Tang Tao, Longfei Gao, Guangrun Wang, Peng Chen, Dayang Hao, Xiaodan Liang,
 \newblock Lidar-nerf: Novel lidar view synthesis via neural radiance fields.
 \newblock {\em arXiv preprint arXiv:2304.10406}, 2023.
 
+\bibitem{tao2023lidarnerf}
+Tang Tao, Longfei Gao, Guangrun Wang, Yixing Lao, Peng Chen, Zhao hengshuang,
+  Dayang Hao, Xiaodan Liang, Mathieu Salzmann, and Kaicheng Yu.
+\newblock Lidar-nerf: Novel lidar view synthesis via neural radiance fields.
+\newblock {\em arXiv preprint arXiv:2304.10406}, 2023.
+
 \bibitem{teed2021raft}
 Zachary Teed and Jia Deng.
 \newblock {RAFT-3D}: Scene flow using rigid-motion embeddings.
@@ -1436,6 +1442,12 @@ Junge Zhang, Feihu Zhang, Shaochen Kuang, and Li~Zhang.
 \newblock Nerf-lidar: Generating realistic lidar point clouds with neural
   radiance fields.
 \newblock {\em arXiv preprint arXiv:2304.14811}, 2023.
+
+\bibitem{zhang2023nerflidar}
+Junge Zhang, Feihu Zhang, Shaochen Kuang, and Li~Zhang.
+\newblock Nerf-lidar: Generating realistic lidar point clouds with neural
+  radiance fields.
+\newblock In {\em AAAI Conference on Artificial Intelligence (AAAI)}, 2024.
 
 \bibitem{zhang2020nerf++}
 Kai Zhang, Gernot Riegler, Noah Snavely, and Vladlen Koltun.

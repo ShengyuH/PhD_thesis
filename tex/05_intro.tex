@@ -43,48 +43,47 @@ This thesis addresses the research questions outlined earlier and contributes to
 
 
 \subsection{Registration of 3D Point Clouds with Low Overlap}
-In ~\cref{chap:cvpr21}, we investigated the first research question and the main contributions of our work are:
+In \cref{chap:cvpr21}, we address the challenge of pairwise registration of point clouds with low overlap by introducing \acro, a neural architecture designed to detect overlap regions between two unregistered scans and focus on those regions when sampling feature points. This approach results in improved registration recall. The main contributions of this work are as follows:
 
 \begin{itemize}
-    \item an analysis why existing registration pipelines break down in the low-overlap regime
-    \item a novel overlap attention block that allows for early information exchange between the two point clouds and focuses the subsequent steps on the overlap region
-    \item a scheme to reﬁne the feature point descriptors, by conditioning them also on the respective other point cloud
-    \item a novel loss function to train matchability scores, which help to sample better and more repeatable interest points
+\item We analyze the reasons why existing registration pipelines fail in low-overlap scenarios.
+\item We propose a novel overlap attention block that facilitates early information exchange between the two point clouds and directs subsequent steps to focus on the overlap region.
+\item We develop a scheme to refine feature point descriptors by conditioning them on the respective other point cloud.
+\item We introduce a novel loss function to train matchability scores, which enhances the sampling of better and more repeatable interest points.
 \end{itemize}
 
 \subsection{Reconstruction of Multi-body Dynamics in Driving Scenes}
+In ~\cref{chap:eccv22}, we explore the motion representation in street scenes and introduce a novel approach for multi-frame point cloud accumulation from LiDAR sequences. Our method leverages the inductive biases inherent in outdoor street scenes, such as their geometric layout and object-level rigidity, resulting in enhanced motion estimation. The main contributions of this work are as follows:
 
-In ~\cref{chap:eccv22}, we investigated the second research question and made the following scientific contributions:
 \begin{itemize}
-    \item a novel, learnable model for temporal accumulation of 3D point cloud sequences over multiple frames, which disentangles the background from dynamic foreground objects
-    \item application to surface reconstruction
+\item We propose a novel learnable model for the temporal accumulation of 3D point cloud sequences across multiple frames, enabling improved reasoning about motion over extended time sequences.
+\item Our model decomposes scenes into static background and agents that exhibit rigid motion over time, achieving holistic scene understanding, including foreground/background segmentation, motion segmentation, and per-object parametric motion compensation.
+\item The use of Birds-Eye-View projection in our method facilitates low-latency processing.
+\item We demonstrate the effectiveness of our approach in enhancing surface reconstruction.
 \end{itemize}
 
 \subsection{Neural LiDAR Fields for Novel View Synthesis}
-
-In~\cref{chap:iccv23}, we 
+In \cref{chap:iccv23}, we address the challenge of simulating LiDAR data from novel viewpoints or different sensor types. Unlike concurrent works~\cite{zhang2023nerflidar,tao2023lidarnerf} that treat LiDAR data merely as depth maps, we explore various sensor responses, including dropped rays, single returns, and dual returns. Compared to LiDARsim~\cite{manivasagam2020lidarsim}, our approach introduces an alternative neural scene representation, moving away from traditional explicit mesh or surface reconstructions. The contributions of this work are as follows:
 
 \begin{itemize}
-    \item devise volume rendering for LiDAR sensors
-    \item incorporate beam divergence into the forward model
-    \item propose truncated volume rendering to account for secondary returns and improve range prediction
-    \item develop a LiDAR simulator for synthesizing scenes from 3D assets that serve as a test bed for viewpoints far from the original scan locations, and to study the effect of different scan patterns
-    \item propose a novel closed-loop evaluation protocol that leverages real data to evaluate view synthesis in challenging views
+\item We devise a volume rendering technique specifically for LiDAR sensors.
+\item We incorporate beam divergence into the forward model to accurately simulate dual returns.
+\item We propose truncated volume rendering to account for secondary returns, thereby improving range prediction.
+\item We develop a LiDAR simulator capable of synthesizing scenes from 3D assets, serving as a test bed for evaluating viewpoints far from the original scan locations and studying the effects of different scan patterns.
+\item We introduce a novel closed-loop evaluation protocol that leverages real data to assess view synthesis in challenging perspectives.
 \end{itemize}
+
 
 \subsection{Dynamic LiDAR Simulation using Compositional Neural Fields}
-
-In~\cref{chap:cvpr24}, we 
+In \cref{chap:cvpr24}, we present DyNFL, a novel approach for high-fidelity simulation of LiDAR scans in dynamic driving scenes. DyNFL constructs editable neural fields from LiDAR measurements in dynamic environments, enabling modifications such as changing viewpoints, adjusting object positions, and adding or removing objects. By leveraging scene decomposition and neural field composition techniques, DyNFL achieves high fidelity with flexible editing capabilities. The main contributions of this work are as follows:
 
 \begin{itemize}
-\item A
+\item We introduce a framework for constructing editable neural fields from dynamic LiDAR measurements.
+\item We propose a novel neural field composition technique for integrating assets reconstructed from other scenes.
+\item We demonstrate the application of DyNFL in counterfactual scenario testing, providing a powerful tool for assessing the robustness of autonomous systems.
 \end{itemize}
 
-
-
-
 \section{Relevance to Science and Economy}
-
 \paragraph{Scientific Recognition}
 The content presented in this thesis is derived from twelve papers I produced during my PhD, four of which are included in this thesis. Ten of these papers were published at renowned conferences in Computer Vision, Robotics, or Remote Sensing. Several of them received recognitions such as Best Paper Award, Best Paper Award Candidate, Oral, or Highlight papers. One paper was accepted at a workshop and won the Best Paper Award. Additionally, ten out of the twelve projects were open-sourced and received recognition from the community in the form of github stars. The datasets, code, and accompanying illustrative videos are available on my personal website: \url{shengyuh.github.io}.
 

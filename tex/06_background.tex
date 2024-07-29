@@ -1,49 +1,24 @@
 \chapter{Background}
 \label{chap:background}
-In this chapter, we provide a background overview of the research ﬁelds related to this thesis. Here for general interest, we specifically focus on two aspects: pointc cloud processing~\cref{sec:bg_point_cloud} and neural filed in visual computing~\cref{sec:bg_neural_field}. Later in each chapter, we dive into detailed related works for each specific task.
+In this chapter, we provide an overview of the research fields relevant to this thesis. Specifically, we focus on two aspects: point cloud processing~\cref{sec:bg_point_cloud} and neural fields in visual computing~\cref{sec:bg_neural_field}. Detailed related works for each specific task are discussed in subsequent chapters.
 
-
-\section{Point cloud processing}
+\section{Point Cloud Processing}
 \label{sec:bg_point_cloud}
-3D data can be represented using various forms, including multi-view images~\cite{su2015multi}, dense voxels~\cite{choy20163d}, point clouds~\cite{qi2017pointnet,qi2017pointnet++}, polygon mesh~\cite{hanocka2019meshcnn}, and implicit representations~\cite{niemeyer2019occupancy,park2019deepsdf,chen2019learning}. In this section, we introduce various learning-based methods that handle the unstructured point cloud data. 
+3D data can be represented in various forms, including multi-view images~\cite{su2015multi,qi2016volumetric}, voxels~\cite{wu20153d,maturana2015voxnet}, point clouds~\cite{qi2017pointnet,wang2019dynamic}, polygon meshes~\cite{hanocka2019meshcnn,NEURIPS2020_0a656cc1}, and implicit representations~\cite{mescheder2019occupancy,park2019deepsdf,chen2019learning,yang2021geometry}. Among these, point clouds are favored for their scalability and reduced complexity compared to voxels and meshes, and their explicitness compared to multi-view images and implicit representations. However, point cloud data is unordered and unstructured, requiring models to be invariant to $N!$ permutations and robust to \textbf{SE}(3) transformations. Additionally, point clouds often have varied point density and noise, posing challenges for learning-based models. In this section, we introduce various learning-based methods that handle unstructured point cloud data. For a comprehensive review, refer to Guo \etal~\cite{guo2020deep}.
 
 \paragraph{Point-wise MLP}
-DeepSets~\cite{zaheer2017deep} and PointNet~\cite{qi2017pointnet} poineered deep learning for point cloud processing by intriducing the permutation-invariant operator. Taking PointNet for example, it first applies point-wise MLPs to extract high dimensional local information, then it uses the pooling operation along point dimension to reduce $N$ features to one global feature representing the entire point cloud, here $N$ demotes the number of points in this point cloud data. In this way, the model is invariant to arbitrary permutation of the un-ordered point cloud. PointNet is effective in modelling simple object but is inherently limited to handling complex geometry. This is because it only applies one global pooling operation to aggreated global information. PointNet++~\cite{qi2017pointnet++} addresses this limitation by hierarchically subsampling point cloud and appling pooling operation within each small neighborhood to aggregate local context for fine-grained information. 
+DeepSets~\cite{zaheer2017deep} and PointNet~\cite{qi2017pointnet} pioneered deep learning for point cloud processing by introducing permutation-invariant operators. PointNet processes each point individually using shared MLPs, followed by global max pooling to aggregate features, capturing global point cloud characteristics while being invariant to permutations. DeepSets~\cite{zaheer2017deep} achieves permutation invariance by summing all representations and applying nonlinear transformations. PointNet++\cite{qi2017pointnet++} extends PointNet by incorporating hierarchical structures to capture local context and progressively enrich global features. These methods are simple and effective for handling unordered point clouds but may struggle with fine-grained local structures due to the pooling approach. Extensions of PointNet++ improve local structure capture through enhanced neighborhood selection and aggregation techniques~\cite{wang2019dynamic}, as well as scalability~\cite{NEURIPS2022_9318763d}. RandLA-Net\cite{hu2020randla} focuses on real-time large-scale point cloud processing with a random sampling strategy and lightweight local feature aggregation, reducing computational load while maintaining performance.
 
-\paragraph{Point convolution}
-PointNet and PointNet++ fully rely on poinit-wise MLPs to model the spatial information and global pooling to aggreate context, which is insufficient to handle varied point density, point noise, and highly complicated geometry. Point convolution methods~\cite{thomas2019kpconv,}
+\paragraph{Point Convolution}
+To improve the efficiency of local feature aggregation, point convolution methods~\cite{li2018pointcnn,wu2019pointconv,thomas2019kpconv} define convolution kernels for point cloud data, with weights for neighboring points related to their spatial distribution relative to the center point. KPConv~\cite{thomas2019kpconv} introduces kernel points and learns weights for these points to perform convolutions directly on point sets. For varied density or complex geometry, deformable kernel points with learnable shifts are proposed. Compared to point-wise MLP-based methods~\cite{qi2017pointnet,qi2017pointnet++}, KPConv excels in detailed local feature extraction for tasks such as 3D semantic segmentation and representation learning~\cite{bai2020d3feat}. However, tuning the receptive field for different point densities and handling noise can be challenging.
 
+\paragraph{Sparse Convolution}
+Addressing the inherent sparsity of point cloud data, sparse convolution methods~\cite{tang2022torchsparse,hackel2020inference,3DSemanticSegmentationWithSubmanifoldSparseConvNet} focus on non-empty voxels and preserve sparse structures in deep layers, significantly reducing computational load and memory usage. These methods utilize hash tables to efficiently access active voxels, making them highly efficient for large-scale 3D scene understanding. Compared to point convolution methods, the receptive fields of sparse convolution layers are more intuitive and easier to understand. However, voxelization can lead to loss of fine detail and precision, which may be critical for fine-grained recognition tasks.
 
-
-\paragraph{Sparse convolution}
-
-\paragraph{Birds-eye-view projection}
-
-\paragraph{Other representations and processing techniques}
-
+\paragraph{BEV Projection}
+Bird's Eye View (BEV) projection transforms point clouds into a top-down 2D grid representation, simplifying the data structure and making it compatible with traditional 2D convolutional neural networks. This technique is widely used in autonomous driving for tasks like object detection~\cite{zhou2018voxelnet,lang2019pointpillars} and semantic segmentation~\cite{aksoy2020salsanet}, leveraging efficient 2D CNN architectures. The main advantage is computational efficiency and ease of integration with existing 2D CNN frameworks. However, the projection can lead to loss of height information and resolution, potentially affecting 3D feature extraction accuracy. Advanced approaches combine BEV with other local feature aggregations. PointPillars~\cite{lang2019pointpillars} applies PointNet~\cite{qi2017pointnet} within each grid to aggregate local context before applying 2D operations.
 
 \section{Neural field in visual computing}
 \label{sec:bg_neural_field}
-
-
-
-
-% \section{Point cloud Registration}
-% \label{sec:bg_registration}
-
-
-% \paragraph{Feature-based methods}
-% \paragraph{Regression-based methods}
-% \paragraph{Correspondence-free methods}
-
-% \section{Scene flow estimation}
-% \label{sec:bg_scene_flow}
-
-% \paragraph{Soft rigidity}
-% \paragraph{Hard rigidity}
-% \paragraph{Optimisation-based methods}
-
-
-
-\paragraph{What is neural fields}
-\paragraph{Forward model in neural rendering}
+Besides explicit representations like point cloud, voxel, mesh, and multi-view images, 3D data can also be represented implicitly, through fully-connected neural network weights. Explicit representations suffer from loss of details due to discretisation. Neural fields represent the shape as a continuous filed 
+ DeepSDF~\cite{park2019deepsdf}, Occupancy network~\cite{mescheder2019occupancy}, and IM-NET~\cite{chen2019learning} poineered representing 3D data implicitly in function space. NeRF

@@ -6,7 +6,32 @@ placeholder
 placeholder
 % -------
 \section{Limitations}
-placeholder
+Predator:
+1. the key point is not very accurate 
+2. no coarse matching, are not fully leveraging the feature matching at coarse level
+
+PCAccumulation:
+1. fully supervised methods, how to scale up to huge unlabeled datasets 
+2. how to spot and alleviate the domain gap
+
+NFL:
+1. handle the adverse weather
+
+DyNFL:
+1. jointly optimise the poses to account for inaccurate object detection results 
+2. 
+
 
 \section{Outlook}
-placeholder
+Looking into the future, there are various research fronts that we can advance: 
+
+1. Multi-body dynamics reconstruction
+    1. leverage the vison foundation models, to scale up the multi-body dynamic reconstruction
+    2. one 3D backbone for most of the point cloud data 
+2. neural simulation:
+    1. how to integrate the learned shape priors to amid partial reconstruction 
+    2. how to additionally model the adverse weather in the inverse problem 
+    3. a scalable neural reconstruction that can circumvent the time-consuming optimisation, at least to some extent
+3. apply matching to neural representations
+    1. our gaussian splatting loop closure can be seen as one attempt on this front 
+

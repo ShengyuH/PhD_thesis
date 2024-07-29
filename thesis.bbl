@@ -1,5 +1,11 @@
 \begin{thebibliography}{100}
 
+\bibitem{aksoy2020salsanet}
+Eren~Erdal Aksoy, Saimir Baci, and Selcuk Cavdar.
+\newblock Salsanet: Fast road and vehicle segmentation in lidar point clouds
+  for autonomous driving.
+\newblock In {\em IEEE intelligent vehicles symposium (IV)}, 2020.
+
 \bibitem{aoki2019pointnetlk}
 Yasuhiro Aoki, Hunter Goforth, Rangaprasad~Arun Srivatsan, and Simon Lucey.
 \newblock {PointnetLK}: Robust \& efficient point cloud registration using
@@ -192,13 +198,6 @@ Christopher Choy, Jaesik Park, and Vladlen Koltun.
 \newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
   2019.
 
-\bibitem{choy20163d}
-Christopher~B Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, and Silvio Savarese.
-\newblock 3d-r2n2: A unified approach for single and multi-view 3d object
-  reconstruction.
-\newblock In {\em European Conference on Computer Vision (ECCV)}. Springer,
-  2016.
-
 \bibitem{curless1996volumetric}
 Brian Curless and Marc Levoy.
 \newblock A volumetric method for building complex models from range images.
@@ -374,6 +373,13 @@ Zan Gojcic, Caifa Zhou, and Andreas Wieser.
   monitoring of natural outdoor scenes.
 \newblock In {\em ISPRS Annals}, 2018.
 
+\bibitem{3DSemanticSegmentationWithSubmanifoldSparseConvNet}
+Benjamin Graham, Martin Engelcke, and Laurens van~der Maaten.
+\newblock 3d semantic segmentation with submanifold sparse convolutional
+  networks.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2018.
+
 \bibitem{icml2020_2086}
 Amos Gropp, Lior Yariv, Niv Haim, Matan Atzmon, and Yaron Lipman.
 \newblock Implicit geometric regularization for learning shapes.
@@ -405,6 +411,19 @@ Yulan Guo, Mohammed Bennamoun, Ferdous Sohel, Min Lu, Jianwei Wan, and Jun
 \newblock Performance evaluation of 3{D} local feature descriptors.
 \newblock In {\em ACCV}, 2014.
 
+\bibitem{guo2020deep}
+Yulan Guo, Hanyun Wang, Qingyong Hu, Hao Liu, Li~Liu, and Mohammed Bennamoun.
+\newblock Deep learning for 3d point clouds: A survey.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  2020.
+
+\bibitem{hackel2020inference}
+Timo Hackel, Mikhail Usvyatsov, Silvano Galliani, Jan~D Wegner, and Konrad
+  Schindler.
+\newblock Inference, learning and attention mechanisms that exploit and
+  preserve sparsity in {CNNs}.
+\newblock {\em IJCV}, 2020.
+
 \bibitem{hahner2022lidar}
 Martin Hahner, Christos Sakaridis, Mario Bijelic, Felix Heide, Fisher Yu,
   Dengxin Dai, and Luc Van~Gool.
@@ -429,6 +448,14 @@ Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, and Daniel
   Cohen-Or.
 \newblock Meshcnn: a network with an edge.
 \newblock {\em ACM Transactions on Graphics (ToG)}, 38(4):1--12, 2019.
+
+\bibitem{hu2020randla}
+Qingyong Hu, Bo~Yang, Linhai Xie, Stefano Rosa, Yulan Guo, Zhihua Wang, Niki
+  Trigoni, and Andrew Markham.
+\newblock {RandLA-Net}: Efficient semantic segmentation of large-scale point
+  clouds.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2020.
 
 \bibitem{huang2022multiway}
 Jiahui Huang, Tolga Birdal, Zan Gojcic, Leonidas~J Guibas, and Shi-Min Hu.
@@ -574,6 +601,13 @@ Kevin Lai, Liefeng Bo, and Dieter Fox.
 \newblock In {\em IEEE International Conference on Robotics and Automation
   (ICRA)}, 2014.
 
+\bibitem{lang2019pointpillars}
+Alex~H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar
+  Beijbom.
+\newblock Pointpillars: Fast encoders for object detection from point clouds.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2019.
+
 \bibitem{lee2015lidar}
 Seongjo Lee, Dahyeon Kang, Seoungjae Cho, Sungdae Sim, Yong~Woon Park, Kyhyun
   Um, and Kyungeun Cho.
@@ -605,6 +639,12 @@ Xueqian Li, Jhony Kaesemodel~Pontes, and Simon Lucey.
 \newblock Neural scene flow prior.
 \newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
   2021.
+
+\bibitem{li2018pointcnn}
+Yangyan Li, Rui Bu, Mingchao Sun, Wei Wu, Xinhan Di, and Baoquan Chen.
+\newblock Pointcnn: Convolution on x-transformed points.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2018.
 
 \bibitem{li2023neuralangelo}
 Zhaoshuo Li, Thomas M\"uller, Alex Evans, Russell~H Taylor, Mathias Unberath,
@@ -707,6 +747,13 @@ Sivabalan Manivasagam, Shenlong Wang, Kelvin Wong, Wenyuan Zeng, Mikita
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
+\bibitem{maturana2015voxnet}
+Daniel Maturana and Sebastian Scherer.
+\newblock Voxnet: A 3d convolutional neural network for real-time object
+  recognition.
+\newblock In {\em IEEE/RSJ Intl. Conference on Intelligent Robots and Systems
+  (IROS)}, 2015.
+
 \bibitem{max1995optical}
 Nelson Max.
 \newblock Optical models for direct volume rendering.
@@ -725,6 +772,13 @@ Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and
 \newblock Occupancy networks: Learning 3d reconstruction in function space.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2019.
+
+\bibitem{NEURIPS2020_0a656cc1}
+Francesco Milano, Antonio Loquercio, Antoni Rosinol, Davide Scaramuzza, and
+  Luca Carlone.
+\newblock Primal-dual mesh convolutional neural networks.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2020.
 
 \bibitem{mildenhall2022nerf}
 Ben Mildenhall, Peter Hedman, Ricardo Martin-Brualla, Pratul~P Srinivasan, and
@@ -758,12 +812,6 @@ Vinod Nair and Geoffrey~E Hinton.
 \newblock Rectified linear units improve restricted boltzmann machines.
 \newblock In {\em IEEE International Conference on Machine Learning (ICML)},
   2010.
-
-\bibitem{niemeyer2019occupancy}
-Michael Niemeyer, Lars Mescheder, Michael Oechsle, and Andreas Geiger.
-\newblock Occupancy flow: 4d reconstruction by learning particle dynamics.
-\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
-  2019.
 
 \bibitem{niemeyer2020differentiable}
 Michael Niemeyer, Lars Mescheder, Michael Oechsle, and Andreas Geiger.
@@ -894,6 +942,13 @@ Charles~R Qi, Hao Su, Kaichun Mo, and Leonidas~J Guibas.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2017.
 
+\bibitem{qi2016volumetric}
+Charles~R Qi, Hao Su, Matthias Nie{\ss}ner, Angela Dai, Mengyuan Yan, and
+  Leonidas~J Guibas.
+\newblock Volumetric and multi-view cnns for object classification on 3d data.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2016.
+
 \bibitem{qi2017pointnet++}
 Charles~R Qi, Li~Yi, Hao Su, and Leonidas~J Guibas.
 \newblock Pointnet++: Deep hierarchical feature learning on point sets in a
@@ -906,6 +961,14 @@ Charles~R Qi, Yin Zhou, Mahyar Najibi, Pei Sun, Khoa Vo, Boyang Deng, and
 \newblock Offboard 3d object detection from point cloud sequences.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
+
+\bibitem{NEURIPS2022_9318763d}
+Guocheng Qian, Yuchen Li, Houwen Peng, Jinjie Mai, Hasan Hammoud, Mohamed
+  Elhoseiny, and Bernard Ghanem.
+\newblock Pointnext: Revisiting pointnet++ with improved training and scaling
+  strategies.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2022.
 
 \bibitem{rasshofer2011influences}
 Ralph~H Rasshofer, Martin Spies, and Hans Spies.
@@ -1306,11 +1369,24 @@ Tong Wu, Jiaqi Wang, Xingang Pan, Xudong Xu, Christian Theobalt, Ziwei Liu, and
   reconstruction.
 \newblock {\em arXiv preprint arXiv:2208.12697}, 2022.
 
+\bibitem{wu2019pointconv}
+Wenxuan Wu, Zhongang Qi, and Li~Fuxin.
+\newblock Pointconv: Deep convolutional networks on 3d point clouds.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2019.
+
 \bibitem{wu2019pointpwc}
 Wenxuan Wu, Zhi~Yuan Wang, Zhuwen Li, Wei Liu, and Li~Fuxin.
 \newblock Pointpwc-net: Cost volume on point clouds for (self-) supervised
   scene flow estimation.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
+
+\bibitem{wu20153d}
+Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang,
+  and Jianxiong Xiao.
+\newblock {3D ShapeNets}: A deep representation for volumetric shapes.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2015.
 
 \bibitem{wu2015ModelNet}
 Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang,
@@ -1336,6 +1412,12 @@ Yiheng Xie, Towaki Takikawa, Shunsuke Saito, Or~Litany, Shiqin Yan, Numair
 Bin Yang, Min Bai, Ming Liang, Wenyuan Zeng, and Raquel Urtasun.
 \newblock Auto4d: Learning to label 4d objects from sequential point clouds.
 \newblock {\em arXiv preprint arXiv:2101.06586}, 2021.
+
+\bibitem{yang2021geometry}
+Guandao Yang, Serge Belongie, Bharath Hariharan, and Vladlen Koltun.
+\newblock Geometry processing with neural fields.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2021.
 
 \bibitem{yang2023emernerf}
 Jiawei Yang, Boris Ivanovic, Or~Litany, Xinshuo Weng, Seung~Wook Kim, Boyi Li,
@@ -1458,6 +1540,13 @@ Kai Zhang, Gernot Riegler, Noah Snavely, and Vladlen Koltun.
 Qian-Yi Zhou, Jaesik Park, and Vladlen Koltun.
 \newblock {Open3D}: {A} modern library for {3D} data processing.
 \newblock {\em arXiv preprint arXiv:1801.09847}, 2018.
+
+\bibitem{zhou2018voxelnet}
+Yin Zhou and Oncel Tuzel.
+\newblock Voxelnet: End-to-end learning for point cloud based 3d object
+  detection.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2018.
 
 \bibitem{zuo2023incremental}
 Xingxing Zuo, Nan Yang, Nathaniel Merrill, Binbin Xu, and Stefan Leutenegger.

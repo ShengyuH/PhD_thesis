@@ -120,6 +120,12 @@ Mario Bijelic, Tobias Gruber, Fahim Mannan, Florian Kraus, Werner Ritter, Klaus
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
+\bibitem{buehler2001unstructured}
+Chris Buehler, Michael Bosse, Leonard McMillan, Steven Gortler, and Michael
+  Cohen.
+\newblock Unstructured lumigraph rendering.
+\newblock In {\em Computer graphics and interactive techniques}, 2001.
+
 \bibitem{caccia2019deep}
 Lucas Caccia, Herke Van~Hoof, Aaron Courville, and Joelle Pineau.
 \newblock Deep generative modeling of {LiDAR} data.
@@ -138,6 +144,13 @@ Tomas Carlsson, Ove Steinvall, and Dietmar Letalick.
 \newblock Signature simulation and signal analysis for 3-d laser radar.
 \newblock Technical report, Swedish Defence Research Agency, 2001.
 
+\bibitem{chabra2020deep}
+Rohan Chabra, Jan~E Lenssen, Eddy Ilg, Tanner Schmidt, Julian Straub, Steven
+  Lovegrove, and Richard Newcombe.
+\newblock Deep local shapes: Learning local {SDF} priors for detailed 3d
+  reconstruction.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
+
 \bibitem{chang2023neural}
 MingFang Chang, Akash Sharma, Michael Kaess, and Simon Lucey.
 \newblock Neural radiance field with {LiDAR} maps.
@@ -155,6 +168,11 @@ Chi Chen and Bisheng Yang.
   terrestrial laser scanning point clouds sequence.
 \newblock {\em ISPRS Journal of Photogrammetry and Remote Sensing},
   119:90--107, 2016.
+
+\bibitem{chen2023view}
+Shenchang~Eric Chen and Lance Williams.
+\newblock View interpolation for image synthesis.
+\newblock In {\em Seminal Graphics Papers: Pushing the Boundaries}. 2023.
 
 \bibitem{chen2021ral}
 X.~Chen, S.~Li, B.~Mersch, L.~Wiesmann, J.~Gall, J.~Behley, and C.~Stachniss.
@@ -208,6 +226,12 @@ Marco Cuturi.
 \newblock Sinkhorn distances: Lightspeed computation of optimal transport.
 \newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
   2013.
+
+\bibitem{debevec2023modeling}
+Paul~E Debevec, Camillo~J Taylor, and Jitendra Malik.
+\newblock Modeling and rendering architecture from photographs: A hybrid
+  geometry-and image-based approach.
+\newblock In {\em Seminal Graphics Papers: Pushing the Boundaries}. 2023.
 
 \bibitem{dendorfer2021motchallenge}
 Patrick Dendorfer, Aljosa Osep, Anton Milan, Konrad Schindler, Daniel Cremers,
@@ -309,6 +333,13 @@ Artem Filatov, Andrey Rykov, and Viacheslav Murashkin.
 \newblock In {\em IEEE International Conference on Robotics and Automation
   (ICRA)}, 2020.
 
+\bibitem{flynn2019deepview}
+John Flynn, Michael Broxton, Paul Debevec, Matthew DuVall, Graham Fyffe, Ryan
+  Overbeck, Noah Snavely, and Richard Tucker.
+\newblock Deepview: View synthesis with learned gradient descent.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2019.
+
 \bibitem{fridovich2022plenoxels}
 Sara Fridovich-Keil, Alex Yu, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
   Angjoo Kanazawa.
@@ -322,6 +353,12 @@ Andreas Geiger, Philip Lenz, and Raquel Urtasun.
   suite.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2012.
+
+\bibitem{genova2020local}
+Kyle Genova, Forrester Cole, Avneesh Sud, Aaron Sarna, and Thomas Funkhouser.
+\newblock Local deep implicit functions for 3d shape.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2020.
 
 \bibitem{giancola2019leveraging}
 Silvio Giancola, Jesus Zarzar, and Bernard Ghanem.
@@ -449,6 +486,11 @@ Rana Hanocka, Amir Hertz, Noa Fish, Raja Giryes, Shachar Fleishman, and Daniel
 \newblock Meshcnn: a network with an edge.
 \newblock {\em ACM Transactions on Graphics (ToG)}, 38(4):1--12, 2019.
 
+\bibitem{henzler2018single}
+Phlipp Henzler, Volker Rasche, Timo Ropinski, and Tobias Ritschel.
+\newblock Single-image tomography: 3d volumes from 2d cranial x-rays.
+\newblock In {\em Computer Graphics Forum}, 2018.
+
 \bibitem{hu2020randla}
 Qingyong Hu, Bo~Yang, Linhai Xie, Stefano Rosa, Yulan Guo, Zhihua Wang, Niki
   Trigoni, and Andrew Markham.
@@ -496,6 +538,13 @@ Sergey Ioffe and Christian Szegedy.
   internal covariate shift.
 \newblock In {\em IEEE International Conference on Machine Learning (ICML)},
   2015.
+
+\bibitem{jiang2020local}
+Chiyu Jiang, Avneesh Sud, Ameesh Makadia, Jingwei Huang, Matthias Nie{\ss}ner,
+  Thomas Funkhouser, et~al.
+\newblock Local implicit grid representations for 3d scenes.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2020.
 
 \bibitem{johnson1999}
 A.E. Johnson and M.~Hebert.
@@ -615,6 +664,11 @@ Seongjo Lee, Dahyeon Kang, Seoungjae Cho, Sungdae Sim, Yong~Woon Park, Kyhyun
 \newblock In {\em Advances in Computer Science and Ubiquitous Computing: CSA \&
   CUTE}, pages 237--242. Springer, 2015.
 
+\bibitem{levoy1990efficient}
+Marc Levoy.
+\newblock Efficient ray tracing of volume data.
+\newblock {\em ACM Transactions on Graphics (ToG)}, 9(3):245--261, 1990.
+
 \bibitem{li2023pcgen}
 Chenqi Li, Yuan Ren, and Bingbing Liu.
 \newblock Pcgen: Point cloud generator for lidar simulation.
@@ -695,6 +749,12 @@ Yu-Lun Liu, Chen Gao, Andreas Meuleman, Hung-Yu Tseng, Ayush Saraf, Changil
 \newblock Robust dynamic radiance fields.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2023.
+
+\bibitem{Lombardi2019}
+Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas
+  Lehrmann, and Yaser Sheikh.
+\newblock Neural volumes: Learning dynamic renderable volumes from images.
+\newblock {\em ACM Trans. Graph.}, 38(4):65:1--65:14, 2019.
 
 \bibitem{long2015fully}
 Jonathan Long, Evan Shelhamer, and Trevor Darrell.
@@ -795,11 +855,9 @@ Ben Mildenhall, Pratul~P Srinivasan, Matthew Tancik, Jonathan~T Barron, Ravi
   synthesis.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
 
-\bibitem{muller2022instant}
-Thomas M{\"u}ller, Alex Evans, Christoph Schied, and Alexander Keller.
-\newblock Instant neural graphics primitives with a multiresolution hash
-  encoding.
-\newblock {\em arXiv preprint arXiv:2201.05989}, 2022.
+\bibitem{tiny-cuda-nn}
+Thomas M\"uller.
+\newblock tiny-cuda-nn, 4 2021.
 
 \bibitem{mueller2022instant}
 Thomas M\"uller, Alex Evans, Christoph Schied, and Alexander Keller.
@@ -1052,12 +1110,23 @@ Johannes~Lutz Sch\"{o}nberger and Jan-Michael Frahm.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2016.
 
+\bibitem{shade1998layered}
+Jonathan Shade, Steven Gortler, Li-wei He, and Richard Szeliski.
+\newblock Layered depth images.
+\newblock In {\em Computer graphics and interactive techniques}, 1998.
+
 \bibitem{shah2018airsim}
 Shital Shah, Debadeepta Dey, Chris Lovett, and Ashish Kapoor.
 \newblock Airsim: High-fidelity visual and physical simulation for autonomous
   vehicles.
 \newblock In {\em International Conference on Field and Service Robotics},
   pages 621--635. Springer, 2018.
+
+\bibitem{shen2023flexible}
+Tianchang Shen, Jacob Munkberg, Jon Hasselgren, Kangxue Yin, Zian Wang,
+  Wenzheng Chen, Zan Gojcic, Sanja Fidler, Nicholas Sharp, and Jun Gao.
+\newblock Flexible isosurface extraction for gradient-based mesh optimization.
+\newblock {\em ACM Trans. Graph.}, 42(4):37--1, 2023.
 
 \bibitem{shih2022reconstruction}
 Yi-Chien Shih, Wei-Hsiang Liao, Wen-Chieh Lin, Sai-Keung Wong, and Chieh-Chih
@@ -1085,11 +1154,25 @@ Richard Sinkhorn.
   stochastic matrices.
 \newblock {\em The annals of mathematical statistics}, 35(2):876--879, 1964.
 
+\bibitem{srinivasan2019pushing}
+Pratul~P Srinivasan, Richard Tucker, Jonathan~T Barron, Ravi Ramamoorthi, Ren
+  Ng, and Noah Snavely.
+\newblock Pushing the boundaries of view extrapolation with multiplane images.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2019.
+
 \bibitem{su2015multi}
 Hang Su, Subhransu Maji, Evangelos Kalogerakis, and Erik Learned-Miller.
 \newblock Multi-view convolutional neural networks for 3d shape recognition.
 \newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
   2015.
+
+\bibitem{SunSC22}
+Cheng Sun, Min Sun, and Hwann{-}Tzong Chen.
+\newblock Direct voxel grid optimization: Super-fast convergence for radiance
+  fields reconstruction.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition (CVPR)}, 2022.
 
 \bibitem{sun2018pwc}
 Deqing Sun, Xiaodong Yang, Ming-Yu Liu, and Jan Kautz.
@@ -1123,6 +1206,14 @@ Yifan Sun, Changmao Cheng, Yuhan Zhang, Chi Zhang, Liang Zheng, Zhongdao Wang,
 Andrea Tagliasacchi and Ben Mildenhall.
 \newblock Volume rendering digest for nerf.
 \newblock {\em arXiv preprint arXiv:2209.02417}, 2022.
+
+\bibitem{tancik2020fourier}
+Matthew Tancik, Pratul Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin
+  Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan Barron, and Ren Ng.
+\newblock Fourier features let networks learn high frequency functions in low
+  dimensional domains.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2020.
 
 \bibitem{nerfstudio}
 Matthew Tancik, Ethan Weber, Evonne Ng, Ruilong Li, Brent Yi, Justin Kerr,
@@ -1440,6 +1531,13 @@ Ze~Yang, Yun Chen, Jingkang Wang, Sivabalan Manivasagam, Wei-Chiu Ma,
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2023.
 
+\bibitem{yang2023reconstructing}
+Ze~Yang, Sivabalan Manivasagam, Yun Chen, Jingkang Wang, Rui Hu, and Raquel
+  Urtasun.
+\newblock Reconstructing objects in-the-wild for realistic sensor simulation.
+\newblock In {\em IEEE International Conference on Robotics and Automation
+  (ICRA)}. IEEE, 2023.
+
 \bibitem{yang20213d}
 Zetong Yang, Yin Zhou, Zhifeng Chen, and Jiquan Ngiam.
 \newblock {3D-MAN}: 3d multi-frame attention network for object detection.
@@ -1547,6 +1645,13 @@ Yin Zhou and Oncel Tuzel.
   detection.
 \newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
   pattern recognition (CVPR)}, 2018.
+
+\bibitem{zhu2023living}
+Liyuan Zhu, Shengyu Huang, and Iro~Armeni Konrad~Schindler.
+\newblock Living scenes: Multi-object relocalization and reconstruction in
+  changing 3d environments.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2024.
 
 \bibitem{zuo2023incremental}
 Xingxing Zuo, Nan Yang, Nathaniel Merrill, Binbin Xu, and Stefan Leutenegger.

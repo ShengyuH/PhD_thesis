@@ -19,7 +19,7 @@ where $I_0$ is the pulse peak power. %
 When the emitted LiDAR pulse returns to the sensor, the range to the reflective surface can be determined from its travel time and the speed of light $c$. Since the pulse has finite duration $\tau_H$, the time of return is found by analysing the received intensity profile. The transmitted pulse power over time can be characterised as~\cite{carlsson2001signature}:
 \begin{equation}
     P_e(t) \propto \parens*{\frac{t}{\tau}}^2 \exp\parens*{-\frac{t}{\tau}},\quad \tau = \frac{\tau_H}{1.75}\;.
-\label{eq:pulse}
+\label{eq:iccv_pulse}
 \end{equation}
 The range-dependent received radiant power $P(\zeta$) is the result of convolving the pulse power with the systems impulse response $H(\zeta)$~\cite{rasshofer2011influences,hahner2021fog,hahner2022lidar}:
 \begin{equation}
@@ -29,13 +29,13 @@ where the impulse response $H(\zeta)$ is a composition of the target and the rec
 Assuming a Lambertian surface, the target response due to a surface located at range $\zeta_0$ depends on the incidence angle $\theta$ and the reflectance $\reflectance$:
 \begin{equation}
     H_T(\zeta) = \frac{\reflectance}{\pi} \cos(\theta) \delta(\zeta - \zeta_0)\;, 
-\label{eq:ht}
+\label{eq:iccv_ht}
 \end{equation}
 with $\delta(\cdot)$ the Dirac delta function.
 The receiver response $H_C(\zeta)$ is computed by integrating over the solid angle spanned by the receiver's effective area $A_e$:
 \begin{equation}
    H_C(\zeta) = T^2_{\zeta} \frac{A_e}{\zeta^2}\;,
-\label{eq:hc}
+\label{eq:iccv_hc}
 \end{equation}
 where $T_{\zeta} \in [0,1]$ is the one-way transmittance, squared to account for the two-way trip.
 
@@ -46,7 +46,7 @@ Taking into account the beam divergence is important to reproduce two important 
 
 
 \paragraph{Range estimation}
-One common approach to estimate the surface range from the received waveform is to locate its peak. To that end the signal is discretized in time to obtain a histogram, and local maxima above a certain threshold are declared detections~\cite{winiwarter2022virtual}. The associated range values are then corrected to remove known biases stemming from the pulse waveform (\cf \cref{eq:pulse}) and, optionally, biases due to the radiant power~\cite{winiwarter2022virtual}.
+One common approach to estimate the surface range from the received waveform is to locate its peak. To that end the signal is discretized in time to obtain a histogram, and local maxima above a certain threshold are declared detections~\cite{winiwarter2022virtual}. The associated range values are then corrected to remove known biases stemming from the pulse waveform (\cf \cref{eq:iccv_pulse}) and, optionally, biases due to the radiant power~\cite{winiwarter2022virtual}.
 By modeling the binning and thresholding procedure one can reproduce further LiDAR  behaviors: systematic discretization errors in the range resolution (\cf \cref{fig:iccv_toy_example}), and the dropping of rays with low returned power (\cf \cref{fig:iccv_overview}).
 
 

@@ -8,7 +8,7 @@ Integrating over an interval $[\zeta_0, \zeta)$ yields the probability $T_{\zeta
 
 \begin{equation}
 T_{\zeta_0 \rightarrow \zeta} \equiv \frac{T_{\zeta}}{T_{\zeta_0}} = \exp\parens*{-\int_{\zeta_0}^\zeta \density_t dt}\;,
-\label{eq:trans_ab}
+\label{eq:iccv_trans_ab}
 \end{equation}
 leading to the decomposition: $T_{\zeta} = T_{0 \rightarrow \zeta_0} \cdot T_{\zeta_0 \rightarrow \zeta}\;.$
     
@@ -30,10 +30,10 @@ By discretizing the ray into $N$ segments with piecewise constant densities and 
       \radiance = \sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}  T_{\zeta} \cdot \density_\zeta \radiance_\zeta \;d\zeta  
       = \sum_{j=1}^N  w_j \radiance_{\zeta_j}\;,
     \end{aligned}
-    \label{eq: vol_render_nerf}
+    \label{eq:iccv_ vol_render_nerf}
 \end{equation}
 where $w_j$ is the \textit{weight} for the $j$-th segment:
 \begin{equation}
-    \label{eq:weights_nerf}
+    \label{eq:iccv_weights_nerf}
     w_j = \opacity_{\zeta_j}\prod_{k=1}^{j-1}(1 - \opacity_{\zeta_k})\;.
 \end{equation}

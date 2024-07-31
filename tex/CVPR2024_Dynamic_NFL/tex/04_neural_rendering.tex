@@ -12,18 +12,18 @@ LiDAR utilizes laser beam pulses to determine the distance to the nearest reflec
 \end{equation}
 The impulse response $H(\zeta)$ is a product of the target and sensor impulse responses: $H(\zeta) = H_T(\zeta)\cdot H_S(\zeta)$, and the individual components are expressed as:
 \begin{equation}
-    H_T(\zeta) = \frac{\reflectance}{\pi} \cos(\theta) \delta(\zeta - \bar{\zeta})\;, \quad  H_s(\zeta) = T^2(\zeta) \frac{A_e}{\zeta^2}\;,
+    H_T(\zeta) = \frac{\reflectance}{\pi} \cos(\theta) \delta(\zeta - \bar{\zeta})\;, \quad  H_s(\zeta) = \transmittance^2_{\zeta} \frac{A_e}{\zeta^2}\;,
 \label{eq:ht}
 \end{equation}
-where $\reflectance$ represents the surface reflectance, $\theta$ denotes incidence angle, $\bar{\zeta}$ is the ground truth distance to the nearest reflective surface, $T(\zeta)$ and $A_e$ describe the transmittance at range $\zeta$ and sensor's effective area, respectively. Due to the non-differentiability introduced by the indicator function $\delta(\zeta - \bar{\zeta})$, ~\cref{eq:lidar} is non-differentiable and is thus not suitable for solving the inverse problem. NFL~\cite{Huang2023nfl} solves it by extending it into a probabilistic formulation given by:
+where $\reflectance$ represents the surface reflectance, $\theta$ denotes incidence angle, $\bar{\zeta}$ is the ground truth distance to the nearest reflective surface, $\transmittance_{\zeta}$ and $A_e$ describe the transmittance at range $\zeta$ and sensor's effective area, respectively. Due to the non-differentiability introduced by the indicator function $\delta(\zeta - \bar{\zeta})$, ~\cref{eq:lidar} is non-differentiable and is thus not suitable for solving the inverse problem. NFL~\cite{Huang2023nfl} solves it by extending it into a probabilistic formulation given by:
 \begin{equation}
-P(\zeta) = C \cdot \frac{T^2(\zeta) \cdot \density_\zeta  \reflectance_\zeta}{\zeta^2} \cos(\theta)\;.
+P(\zeta) = C \cdot \frac{T^2_{\zeta} \cdot \density_\zeta  \reflectance_\zeta}{\zeta^2} \cos(\theta)\;.
 \label{eq:radiance}
 \end{equation}
 Here, $C$ accounts for the constant values, and $\sigma_\zeta$ represents the density at range $\zeta$. The radiant can be reconstructed using the volume rendering formulation:
 \begin{equation}
       P
-      =\!\sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}\!\!C \frac{T^2({\zeta}) \cdot \density_\zeta \reflectance_\zeta}{\zeta^2} \cos(\theta_j) \; d\zeta
+      =\!\sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}\!\!C \frac{\transmittance^2_{\zeta} \cdot \density_\zeta \reflectance_\zeta}{\zeta^2} \cos(\theta_j) \; d\zeta
       =\!\sum_{j=1}^N w_j \reflectance_{\zeta_j}',
 \label{eq:radiant_inter}
 \end{equation}
@@ -43,7 +43,7 @@ where $\Phi_s(\cdot)$ represents the Sigmoid function, $f(\zeta)$ evaluates the 
 Next, we substitute the density $\density$ in \cref{eq:radiant_inter} with opaque density from \cref{eq:sigmoid_density} and re-evaluate the radiant power and weights as:
 \begin{equation}
       P
-      =\!\sum_{j=1}^N \trans^2_{\zeta_j} \tilde{\alpha}_{\zeta_j} \reflectance_{\zeta_j}',\quad \tilde{w}_j = 2 \tilde{\opacity}_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \tilde{\opacity}_{\zeta_i})\;.
+      =\!\sum_{j=1}^N \transmittance^2_{\zeta_j} \tilde{\alpha}_{\zeta_j} \reflectance_{\zeta_j}',\quad \tilde{w}_j = 2 \tilde{\opacity}_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \tilde{\opacity}_{\zeta_i})\;.
 \end{equation}
 In this context, $\tilde{\alpha}_{\zeta_j}$ is computed as:
 \begin{equation}

@@ -1,0 +1,219 @@
+\section{Appendix}
+In this appendix, we first provide additional information about the datasets for our evaluations and implementation details of our proposed method in~\cref{sec:sup_dataset}. Next, we present more qualitative results in~\cref{sec:sup_visual}. Finally, we provide the complete derivations of the SDF-based volume rendering for active sensor in~\cref{sec:sup_sdf_vol_render}. 
+
+\subsection{Datasets and implementation details}\label{sec:sup_dataset}
+\paragraph{\textit{Waymo Dynamic}} For the \textit{Waymo Dynamic} dataset, we take them from 4 scenes of \textit{Waymo Open Dataset}~\cite{sun2020scalability}. There are multiple moving vehicles inside each scene. 50 consecutive frames are taken from each scene for our evaluation. The vehicles are deemed as \textit{dynamic} if the speed is $>1\,$m/s. in any of the 50 frames. The corresponding scene IDs on \textit{Waymo Open Dataset} for our selected scenes are shown as follows:
+
+\begin{table}[!h]
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+	\resizebox{0.6\columnwidth}{!}{
+    \begin{tabular}{l|c}
+    \toprule
+    & Scene ID \\
+    \midrule
+    Scene 1 & 1083056852838271990\_4080\_000\_4100\_000 \\
+    Scene 2 & 13271285919570645382\_5320\_000\_5340\_000 \\
+    Scene 3 & 10072140764565668044\_4060\_000\_4080\_000 \\
+    Scene 4 & 10500357041547037089\_1474\_800\_1494\_800 \\
+    \bottomrule
+    \end{tabular}
+    }
+\end{table}
+
+\paragraph{Ours} 
+Our model is implemented based on nerfstudio\cite{nerfstudio}. For the static neural field, we sample $N_s=512$ points in total, with $N_u=256$ uniformly sampled points and $N_i=256$ weighted sampled points with 8 upsample steps. In each upsample step, 32 points are sampled based on the weight distribution of the previously sampled points. For each dynamic neural field, we sample $N_s=128$ points in total, with $N_u=64$ uniformly sampled points and $N_i=64$ weighted sampled points with 4 upsample steps. During training, we minimize the loss function using the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate of 0.005. It linearly decays to 0.0005 towards the end of training. For the loss weights, we use $w_{\zeta}=3, w_{e}=50, w_{\text{drop}}=0.15, w_{s}=1$, and  $w_{\text{eik}}=0.3$. The batch size is 4096 and we train the model for 60000 iterations on a single RTX3090 GPU with float32 precision.
+
+\paragraph{LiDARsim} We re-implement the LiDARsim~\cite{manivasagam2020lidarsim} as one of our baselines. 
+First, we estimated point-wise normal vectors by considering all points within a 20 cm radius ball within the training set. Following this, we applied voxel down-sampling~\cite{tang2022torchsparse}, employing a 4 cm voxel size to reconstruct individual disk surfels at each point. The surfel orientation is defined based on the estimated normal vector. During inference, we apply the ray-surfel intersections test to determine the intersection points, thus the range and intensity values. We select a fixed surfel radius of 6 cm for the \textit{Waymo} dataset and 12 cm for the \textit{Town} dataset.
+To handle dynamic vehicles, we follow LiDARsim~\cite{manivasagam2020lidarsim} by aggregating the LiDAR points for each vehicle from all the training frames and representing them in the \textit{canonical} frame of each vehicle. During inference, we transform all the aggregated vehicle points from their \textit{canonical} frames to the world frame and run ray-surfel intersection.
+
+\paragraph{UniSim} 
+We re-implement UniSim's~\cite{yang2023unisim} rendering process for LiDAR measurements by replacing our ray-drop test-based neural fields composition method with its joint rendering method. For every ray $\mathbf{r} (\mathbf{o},\mathbf{d})$, we begin by conducting an intersection test with all dynamic bounding boxes in the scene to identify the near and far limits. We then uniformly sample 512 points along each ray, assigning each point to either a dynamic neural field, if it falls within a dynamic bounding box, or to the static neural field otherwise. After sampling, we query the SDF and intensity values from the relevant neural fields. Finally, using the SDF-based volume rendering formula in Eq.~\ref{eq:depth_render} for active sensors, we calculate the weights and perform the rendering. Note that we use the same neural field architecture as in our method.
+
+
+\subsection{More qualitative results}
+\label{sec:sup_visual}
+In this section, we provide more qualitative results. In \cref{fig:4_scenes_supp}, we showcase the 4 scenes from \textit{Waymo dynamic} dataset. We show additional scene editing results in~\cref{fig:scene_editing_supp}. 
+
+\paragraph{Acknowledgements.}
+{Or Litany is a Taub fellow and is supported by the Azrieli Foundation Early Career Faculty Fellowship.}
+
+\clearpage
+
+
+\begin{figure}[t]
+    \centering
+     \includegraphics[width=1\columnwidth]{Figures_sup/4_scenes_sup.pdf}
+     \caption{Visualization of 4 selected scenes from \textit{Waymo Dynamic} dataset. For each scene, we aggregate 50 frames. In the first row, points are color-coded by the intensity values(0 ~\bwrDyNFL~ 0.25). In the second row, dynamic vehicles are painted as \textcolor{yellow}{yellow}.}
+     \label{fig:4_scenes_supp}
+  \end{figure}
+  
+  \begin{figure}[t]
+    \centering
+     \includegraphics[width=1\columnwidth]{Figures_sup/supp_scene_edit.pdf}
+     \caption{Visualization of scene editing capabilities. We showcase 3 kinds of scene editing capabilities including vehicle removal(left), trajectory manipulation(middle) and vehicle insertion(right). The first row represents the original scenes, the second row demonstrates the scenes after editing. All points are color-coded by the intensity values(0 ~\bwrDyNFL~ 0.25).}
+     \label{fig:scene_editing_supp}
+  \end{figure}
+
+
+\clearpage
+\subsection{SDF-based volume rendering for active sensor}\label{sec:sup_sdf_vol_render}
+In this section, we start by introducing the preliminary of NeRF~\cite{mildenhall2020nerf} following terminology as described in~\cite{tagliasacchi2022volume}. Then we provide the full derivation of the SDF-based volume rendering for active sensor. 
+
+\paragraph{Density}
+For a ray emitted from the origin $\origin \in \real^3$ towards direction $\dir \in \real^3$, the \textit{density} $\density_\zeta$ at range $\zeta$ indicates the likelihood of light interacting with particles at that point $\ray_\zeta = \origin + \zeta \dir$. This interaction can include absorption or scattering of light. In passive sensing, density $\density$ is a critical factor in determining how much light from the scene's illumination is likely to reach the sensor after passing through the medium.
+
+\paragraph{Transmittance} 
+quantifies the likelihood of light traveling through a given portion of the medium without being scattered or absorbed. Density is closely tied to the transmittance function $\transmittance_{\zeta}$, which indicates the probability of a ray traveling over the interval $[0, \zeta)$ without hitting any particles. Then the probability $\transmittance_{\zeta {+} d\zeta)}$ of \emph{not} hitting a particle when taking a differential step $d\zeta$ is equal to $\transmittance_{\zeta}$, the likelihood of the ray reaching $\zeta$, times $(1 - d\zeta \cdot \density(\zeta))$, the probability of not hitting anything during the step:
+% 
+\begin{align}
+\transmittance_{\zeta+d\zeta} =& \transmittance_{\zeta} \cdot (1 - d\zeta \cdot \density(\zeta))
+\\
+\frac{\transmittance_{\zeta+d\zeta} - \transmittance_{\zeta}}{d\zeta} \equiv& \transmittance'(\zeta) = -\transmittance_{\zeta} \cdot \sigma(\zeta) 
+\label{eq:derivative}
+\end{align}
+% 
+We solve the differential equation as follows:
+%
+\begin{align}
+\transmittance'(\zeta) &= -\transmittance_{\zeta} \cdot \density(\zeta) \\
+\frac{\transmittance'(\zeta)}{\transmittance_{\zeta}} &= -\density(\zeta) \\
+\int_a^b \frac{\transmittance'(\zeta)}{\transmittance_{\zeta}} \; d\zeta &= -\int_a^b \density(\zeta) \; d\zeta \\
+\left. \log \transmittance_{\zeta} \right|_a^b &= -\int_a^b \density(\zeta) \; d\zeta \\
+\transmittance_{a \rightarrow b} \equiv \frac{\transmittance_{b}}{\transmittance_{a}} &= \exponential{-\int_a^b \density(\zeta) \; d\zeta}   
+\end{align}
+% 
+Hence, for a ray segment between $\zeta_0$ and $\zeta$, transmittance is given by:
+
+\begin{equation}
+\transmittance_{\zeta_0 \rightarrow \zeta} \equiv \frac{\transmittance_{\zeta}}{\transmittance_{\zeta_0}} = exp({-\int_{\zeta_0}^\zeta \density_t dt})\;,
+\label{eq:trans_ab}
+\end{equation}
+which leads to following factorization of the transmittance:
+\begin{equation}
+\transmittance_{\zeta} = \transmittance_{0 \rightarrow \zeta_0} \cdot \transmittance_{\zeta_0 \rightarrow \zeta}\;.
+\label{eq:factor}
+\end{equation}
+
+\paragraph{Opacity}
+Opacity is the complement of transmittance and represents the fraction of light that is either absorbed or scattered in the medium. In a homogeneous medium with constant density $\density$  the opacity for a segment $[\zeta_j, \zeta_{j+1}]$ of length $\Delta \zeta$ is given by $\opacity_{\zeta_j} = 1 - exp(-\density \cdot \Delta \zeta)$.
+
+\paragraph{SDF-based volume rendering for active sensor}
+NeuS\cite{wang2021neus} derives the opaque density based on the SDF which is:
+\begin{equation}
+\begin{split}
+\density_{\zeta_i} =&  \max\left(\frac{-\frac{d\Phi_s}{d\zeta_i}(f(\zeta_i))}{\Phi_s(f(\zeta_i))},0\right)\\
+                  =& \max\left(\frac{-(\nabla f(\zeta_i)\cdot \mathbf{v})\phi_s(f(\zeta_i))}{\Phi_s(f(\zeta_i))}, 0\right)
+\end{split}
+\label{eq:sigmoid_density_}
+\end{equation}
+where $\Phi_s$ represents the Sigmoid function, $f$ is the SDF function that maps a range $\zeta$ to the SDF value of the point position $\origin + \dir * \zeta$. Note that the integral term is computed by
+\begin{equation}
+\int \frac{-(\nabla f(\zeta)\cdot \mathbf{v})\phi_s(f(\zeta))}{\Phi_s(f(\zeta))}d\zeta = -\ln(\Phi_s(f(\zeta))) + C,
+\label{eq:intergration_density}
+\end{equation}
+We extend the density-based volume rendering for active sensor to SDF-based. Starting from the passive SDF-based volume rendering \cite{wang2021neus}, We substitute the density $\tilde{\density}$ with opaque density in \ref{eq:sigmoid_density_}
+and evaluate the radiant power integrated from ray segment [a,b] with constant reflectivity $\reflectivity_a$.
+
+Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v})>0$ within the ray segment $[a,b]$, we have
+\begin{align}
+P(a \rightarrow b)
+&= \int_a^b \transmittance^2_{a\rightarrow t} \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
+\\
+&= \reflectivity_a \int_a^b \transmittance^2_{a\rightarrow t} \cdot \tilde{\density}_t \; dt
+\\
+&= \reflectivity_a \int_a^b \exponential{-\int_a^t 2\tilde{\density}(u) \; du} \cdot \tilde{\density}_t \; dt
+\\
+&= \reflectivity_a \int_a^b \exponential{-2\int_a^t \tilde{\density}(u) \; du} \cdot \tilde{\density}_t \; dt
+\\
+&= \reflectivity_a \int_a^b \exponential{\left. 2\ln(\Phi_s(f(u)))\right|_a^t} \cdot \tilde{\density}_t \; dt
+\\
+&= \reflectivity_a \int_a^b \exponential{2\ln(\Omega_t) - 2\ln(\Omega_a)} \cdot \tilde{\density}_t \; dt 
+\\
+&= \reflectivity_a \int_a^b \frac{{\Omega_t}^2}{{\Omega_a}^2} \cdot \tilde{\density}_t \; dt ~~~~\text{\textbf{let} $\Omega_x = \Phi_s(f(x))$}
+\\
+&= \frac{\reflectivity_a}{{\Omega_a}^2} \int_a^b {\Omega_t}^2 \cdot \tilde{\density}_t \; dt 
+\\
+&= \frac{\reflectivity_a}{{\Omega_a}^2} \int_a^b -\frac{d\Phi_s}{dt}(f(t)) \cdot \Phi_s(f(t)) \; dt 
+\\
+&= \frac{\reflectivity_a}{{\Omega_a}^2} ( \left. -\frac{1}{2}{\Phi_s(f(t))}^2 \right|_a^b) \\
+&= \frac{\reflectivity_a}{{\Omega_a}^2} (\frac{1}{2}{\Phi_s(f(a))}^2 -\frac{1}{2}{\Phi_s(f(b))}^2 )\\
+&= \frac{{\Phi_s(f(a))}^2 -{\Phi_s(f(b))}^2}{{2\Phi_s(f(a))}^2} \cdot \reflectivity_a 
+\label{eq:homogeneous}
+\end{align}
+
+Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v})<0$ within the ray segment $[a,b]$, we have
+\begin{align}
+P(a \rightarrow b)
+&= \int_a^b \transmittance^2_{a\rightarrow t} \cdot \tilde{\density}_t \cdot \reflectivity(t)  \; dt
+\\
+&= \int_a^b \transmittance^2_{a\rightarrow t} \cdot 0 \cdot \reflectivity(t)  \; dt
+\\
+&= 0
+\end{align}
+Hence we conclude 
+\begin{align}
+P(a \rightarrow b)
+&= \max\left(\frac{{\Phi_s(f(a))}^2 -{\Phi_s(f(b))}^2}{{2\Phi_s(f(a))}^2},0\right) \cdot \reflectivity_a 
+\end{align}
+
+\paragraph{Volume rendering of piecewise constant data}
+Combining the above, we can evaluate the volume rendering integral through a medium with piecewise constant reflectivity:
+% 
+\begin{align}
+P(\zeta_{N+1}) &= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2_{\zeta} \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta
+\\
+&= \sum_{n=1}^N \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2_{\zeta_n} \cdot \transmittance^2_{\zeta_n \rightarrow \zeta} \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
+\\
+&= \sum_{n=1}^N \transmittance^2_{\zeta_n}  \int_{\zeta_n}^{\zeta_{n+1}} \transmittance^2_{\zeta_n \rightarrow \zeta} \cdot \tilde{\density}_{\zeta} \cdot \reflectivity_{\zeta_n} \; d\zeta 
+\\
+&=\sum_{n=1}^N \transmittance^2_{\zeta_n} P(\zeta_n \rightarrow \zeta_{n+1})
+\\
+&= \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n}
+\end{align}
+
+where 
+\begin{align}
+\tilde{\weight}_{\zeta_n} \equiv \max\left(\frac{{\Phi_s(f(\zeta_n)}^2 -{\Phi_s(f(\zeta_{n+1}))}^2}{{2\Phi_s(f(\zeta_n))}^2},0\right)
+\end{align}
+
+The discrete accumulated transmittance $\transmittance$ can be calculated as follows:
+
+Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v}) > 0$ in $[\zeta_n, \zeta_{n+1}]$: 
+%
+\begin{align}
+\transmittance_{\zeta_n} 
+&=\prod_{i=1}^{n-1}(\exp(-\int_{\zeta_n}^{\zeta_{n+1}}\tilde{\density}_\zeta \; d\zeta) \\
+&= \prod_{i=1}^{n-1}(\frac{\Phi_s(f(\zeta_{n+1}))}{\Phi_s(f(\zeta_n))})\\
+\transmittance^2_{\zeta_n}
+&= \prod_{i=1}^{n-1}(\frac{{\Phi_s(f(\zeta_{n+1}))}^2}{{\Phi_s(f(\zeta_n))}^2})\\
+&= \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_n})
+\label{eq:dicrete_transmittance}
+\end{align}
+
+Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v}) < 0$ in $[\zeta_n, \zeta_{n+1}]$: 
+\begin{align}
+\transmittance_{\zeta_n} 
+&=\prod_{i=1}^{n-1}(\exp(-\int_{\zeta_n}^{\zeta_{n+1}}\tilde{\density}_\zeta \; d\zeta) = \prod_{i=1}^{n-1}(1)
+\\
+\transmittance^2_{\zeta_n} &= \prod_{i=1}^{n-1}(1^2) = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_n})
+\end{align}
+In conclusion, the radiant power can be reformulated as:
+
+\begin{align}
+P(\zeta_{N+1}) = \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \reflectivity_{\zeta_n}
+\label{eq:final_radiant2}
+\end{align}
+where $\transmittance^2_{\zeta_n} = \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_i})$.
+
+
+\paragraph{Depth volume rendering of piecewise constant data}
+Note that $\tilde{\weight}_{\zeta_n} \in [0, 0.5], \transmittance^2_{\zeta_n} \in [0,1], \sum_{n=1}^N \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} = 0.5$, for depth volumetric rendering, we have 
+\begin{align}
+    \zeta = \sum_{n=1}^N 2 \cdot \transmittance^2_{\zeta_n} \cdot \tilde{\weight}_{\zeta_n} \cdot \zeta_n
+    =\sum_{n=1}^N w_n \cdot \zeta_n
+    \label{eq:depth_render}
+\end{align}
+where $w_n = 2\tilde{\weight}_{\zeta_n} \cdot \prod_{i=1}^{n-1}(1-2\tilde{\weight}_{\zeta_i})$.

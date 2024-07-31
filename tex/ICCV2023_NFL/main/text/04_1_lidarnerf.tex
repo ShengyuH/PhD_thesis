@@ -4,11 +4,11 @@ In contrast to passive sensors like cameras that rely on ambient illumination, L
 
 \paragraph{Radiant power integration}
 As discussed in \cref{sec:lidar_model} 
-the radiant power along a LiDAR ray is a delta function that is non-zero only at reflecting surfaces. To incorporate this forward model into the volumetric representation we combine \cref{eq:ht} and \cref{eq:hc} to obtain the 
+the radiant power along a LiDAR ray is a delta function that is non-zero only at reflecting surfaces. To incorporate this forward model into the volumetric representation we combine \cref{eq:iccv_ht} and \cref{eq:iccv_hc} to obtain the 
 probabilistic radiant power:
 \begin{equation}
 P_\zeta = C \frac{T^2_{\zeta} \cdot \density_\zeta  \reflectance_\zeta}{\zeta^2} \cos(\theta)\;,
-\label{eq:radiance}
+\label{eq:iccv_radiance}
 \end{equation}
 where $C$ is a system constant, $\reflectance_\zeta$ is the differentiable reflectance, and $\theta$ is the incidence angle.
 In a homogeneous medium with constant reflectance $\reflectance$ and density $\density$, the integrated $P(\zeta_j \rightarrow \zeta_{j+1})$ evaluates to:
@@ -16,7 +16,7 @@ In a homogeneous medium with constant reflectance $\reflectance$ and density $\d
      P(\zeta_j \rightarrow \zeta_{j+1}) 
      \!=\!\!\!\int_{\zeta_j}^{\zeta_{j+1}}\!\!\!\!C \frac{T^2_{\zeta_j \rightarrow \zeta} \density_\zeta \reflectance_\zeta}{\zeta^2}\!\cos(\theta_{j})\,d\zeta
      \!\approx\!\opacity_{\zeta_j} \reflectance_{\zeta_j}', 
-\label{eq:lidar_rad}
+\label{eq:iccv_lidar_rad}
 \end{equation}
 where we approximate $\zeta \in [\zeta_j, \zeta_{j+1}]$ by $\frac{\zeta_j + \zeta_{j+1}}{2}$, and 
 \begin{equation}
@@ -25,14 +25,14 @@ where we approximate $\zeta \in [\zeta_j, \zeta_{j+1}]$ by $\frac{\zeta_j + \zet
 
 
 \paragraph{Volume rendering}
-The observed power at the active sensor can be evaluated by plugging \cref{eq:lidar_rad} into \cref{eq: vol_render_nerf}: 
+The observed power at the active sensor can be evaluated by plugging \cref{eq:iccv_lidar_rad} into \cref{eq:iccv_ vol_render_nerf}: 
 \begin{equation}
       P
       =\!\sum_{j=1}^N \int_{\zeta_j}^{\zeta_{j+1}}\!\!C \frac{T^2_{\zeta} \cdot \density_\zeta \reflectance_\zeta}{\zeta^2} \cos(\theta_j) \; d\zeta
       =\!\sum_{j=1}^N w_j \reflectance_{\zeta_j}',
 \end{equation}
-where the weights $w_j$ are now evaluated as (\cf \cref{eq:weights_nerf}):
+where the weights $w_j$ are now evaluated as (\cf \cref{eq:iccv_weights_nerf}):
 \begin{equation}
    w_j = 2 \opacity_{\zeta_j} \cdot\prod_{k=1}^{j-1}(1 - 2 \opacity_{\zeta_k})\;.
-\label{eq:lidar_weights}
+\label{eq:iccv_lidar_weights}
 \end{equation}

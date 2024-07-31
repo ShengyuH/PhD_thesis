@@ -2,7 +2,7 @@
 \label{sec:lidar_model}
 
 LiDAR emits laser beam pulses and determines the distance from the sensor to the nearest reflective surface by measuring the time of flight. 
-Often the LiDAR beams are pictured as ideal straight-line segments ending on a 3D surface point. In reality, things are more complicated: real lasers emit a pulse with non-zero divergence and finite pulse width, while real receivers employ signal processing techniques like radiant thresholding and binning to detect the return. This leads to phenomena such as discretization errors, over- and underestimation biases~(\cf \cref{fig:toy_example}), and multiple returns from one beam (or no return at all). 
+Often the LiDAR beams are pictured as ideal straight-line segments ending on a 3D surface point. In reality, things are more complicated: real lasers emit a pulse with non-zero divergence and finite pulse width, while real receivers employ signal processing techniques like radiant thresholding and binning to detect the return. This leads to phenomena such as discretization errors, over- and underestimation biases~(\cf \cref{fig:iccv_toy_example}), and multiple returns from one beam (or no return at all). 
 In the following, we discuss key aspects of the LiDAR acquisition process and explain the effects that emerge, which inspire our model design. We also built a LiDAR simulator that accounts for these mechanisms, see~\cref{sec:dataset}.
 
 
@@ -42,11 +42,11 @@ where $T_{\zeta} \in [0,1]$ is the one-way transmittance, squared to account for
 
 \paragraph{Beam discretization}
 In practice, we follow~\cite{winiwarter2022virtual} and approximate the Gaussian beam profile using $M\!=\!37$ rays that are radially distributed around the central ray with different divergence angles $\gamma_i$. The total radiant power $P(\zeta)$ is the weighted sum over those rays: $P(\zeta) = \sum_{i=1}^M g(\gamma_i) P_i(\zeta)\;.$
-Taking into account the beam divergence is important to reproduce two important phenomena: range biases and multiple returns, see \cref{fig:overview} and \cref{fig:toy_example}. As different rays hit a slanted surface at different ranges the integrated waveform peak may shift, causing over- or underestimations. Along object edges, rays within the same beam may hit different surfaces, causing multiple peaks (respectively, range readings), in the return waveform.
+Taking into account the beam divergence is important to reproduce two important phenomena: range biases and multiple returns, see \cref{fig:iccv_overview} and \cref{fig:iccv_toy_example}. As different rays hit a slanted surface at different ranges the integrated waveform peak may shift, causing over- or underestimations. Along object edges, rays within the same beam may hit different surfaces, causing multiple peaks (respectively, range readings), in the return waveform.
 
 
 \paragraph{Range estimation}
 One common approach to estimate the surface range from the received waveform is to locate its peak. To that end the signal is discretized in time to obtain a histogram, and local maxima above a certain threshold are declared detections~\cite{winiwarter2022virtual}. The associated range values are then corrected to remove known biases stemming from the pulse waveform (\cf \cref{eq:pulse}) and, optionally, biases due to the radiant power~\cite{winiwarter2022virtual}.
-By modeling the binning and thresholding procedure one can reproduce further LiDAR  behaviors: systematic discretization errors in the range resolution (\cf \cref{fig:toy_example}), and the dropping of rays with low returned power (\cf \cref{fig:overview}).
+By modeling the binning and thresholding procedure one can reproduce further LiDAR  behaviors: systematic discretization errors in the range resolution (\cf \cref{fig:iccv_toy_example}), and the dropping of rays with low returned power (\cf \cref{fig:iccv_overview}).
 
 

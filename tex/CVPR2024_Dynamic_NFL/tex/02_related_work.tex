@@ -1,20 +1,18 @@
 \section{Related work}
-\subsection{Neural radiance fields and volume rendering}
-
-
+\paragraph{Neural radiance fields and volume rendering}
 Neural Radiance Fields (NeRF)~\cite{mildenhall2020nerf} have demonstrated remarkable success in novel-view image synthesis through neural volume rendering. These fields are characterized by the weights of Multilayer Perceptrons (MLPs), which enable the retrieval of volume density and RGB colors at any specified point within the field for image compositing via volume rendering. Several studies~\cite{barron2021mip,barron2022mip,verbin2022ref,chen2022tensorf,fridovich2022plenoxels} have subsequently advanced NeRF's rendering quality by addressing challenges such as reducing aliasing artifacts~\cite{barron2021mip}, scaling to unbound large-scale scenarios~\cite{barron2022mip}, and capturing specular reflections on glossy surfaces~\cite{verbin2022ref}.
 Certain works~\cite{chen2022tensorf,fridovich2022plenoxels,mueller2022instant,kerbl20233d} have explored more effective representations of radiance fields. TensorsRF~\cite{chen2022tensorf} employs multiple compact low-rank tensor components, such as vectors and matrices, to represent the radiance field. Plenoxels~\cite{fridovich2022plenoxels} accelerates NeRF training by replacing MLPs with explicit plenoptic elements stored in sparse voxels and factorizing appearance through spherical-harmonic functions.
 M\"uller et al.~\cite{mueller2022instant} achieved a substantial acceleration in rendering speed by employing a representation that combines trainable multi-resolution hash encodings (MHE) with shared shallow MLP networks. Kerbel et al.~\cite{kerbl20233d} introduce a novel volume rendering method utilizing 3D Gaussians to represent the radiance field and rendering images based on visibility-aware splatting of 3D Gaussians.
 
 
-\subsection{Dynamic neural radiance fields} 
+\paragraph{Dynamic neural radiance fields} 
 Neural fields \cite{xie2022neural} can be extended to represent dynamic scenes. On top of the \textit{canonical} scene representation, some methods~\cite{pumarola2020d, park2021nerfies, park2021hypernerf,yuan2021star} additionally model the 4D deformation fields. Meanwhile, some other works learn a space-time correlated~\cite{kplanes_2023, li2020neural, attal2023hyperreel, liu2023robust}, or decomposed~\cite{turki2023suds,wu2022d,yang2023emernerf} neural field to encode the 4D scenes, achieving fine-grained reconstruction of the geometry and the appearance.
 %
 Some other methods decompose the scene into static and dynamic parts, and model each dynamic actor with dedicated neural fields. 
 Neural Scene Graph~\cite{Ost_2021_CVPR} and Panoptic Neural Fields~\cite{KunduCVPR2022PNF} treat every dynamic object in the scene as a node, and synthesize photo-realistic RGB images by jointly rendering from both dynamic nodes and static background. UniSim\cite{yang2023unisim} employs neural SDF representation to model dynamic scenes in driving scenarios, and render in a similar way to Neural Scene Graph~\cite{Ost_2021_CVPR}.
 
 
-\subsection{Neural surface representation}
+\paragraph{Neural surface representation}
 A fundamental challenge for NeRF and its variants involves accurately recovering the underlying 3D surface from the implicit radiance field. Surfaces obtained by thresholding on the volume density of NeRF often exhibit noise~\cite{wang2021neus, yariv2021volume}. To address this, implicit surface representations like Occupancy~\cite{niemeyer2020differentiable, oechsle2021unisurf} and signed distance functions (SDF)~\cite{wang2021neus, yariv2021volume, yu2022monosdf, sun2022neural, wang2022hf, zuo2023incremental, li2023neuralangelo, wang2023neus2} in grid maps are commonly integrated into neural volume rendering techniques.
 
 NeuS~\cite{wang2021neus} introduces a neural SDF representation for surface reconstruction, proposing an unbiased weight function for the appearance composition process in volume rendering. Similarly, VolSDF~\cite{yariv2021volume} models scenes with a neural SDF and incorporates the SDF into the volume rendering process, advocating a sampling strategy of the viewing ray to bound opacity approximation error. Neuralangelo~\cite{li2023neuralangelo} improves surface reconstruction using the multi-resolution hash encoding (MHE)~\cite{mueller2022instant} and SDF-based volume rendering~\cite{wang2021neus}. While these methods might deliver satisfying dense surface reconstructions, their training is time-consuming, taking hours for a single scene.
@@ -23,10 +21,7 @@ Voxurf~\cite{wu2022voxurf} offers a faster surface reconstruction method through
 Many works also incorporate distances measured by LiDAR as auxiliary information to constrain the radiance field. For instance, works~\cite{chang2023neural, wang2023neural} render depth by accumulating volume density and minimizing depth discrepancies between LiDAR and render depth during training. Rematas et al.~\cite{rematas2022urban} enforces empty space between the actual surface and the ray origin.
 
 
-
-
-
-\subsection{LiDAR simulation} 
+\paragraph{LiDAR simulation} 
 While simulators like CARLA~\cite{dosovitskiy2017carla} and AirSim~\cite{shah2018airsim} can simulate LiDAR data, they suffer from expensive human annotation requirements and a notable sim-to-real gap due to limited rendering quality. Generative model-based methods for LiDAR synthesis~\cite{caccia2019deep,zyrianov2022learning} offer an alternative but often lack control and produce distorted geometries~\cite{li2023pcgen}.
 Learning-based approaches~\cite{li2023pcgen,fang2020augmented,manivasagam2020lidarsim} try to enhance realism by transferring real scan properties to simulations. For example, \cite{guillard2022learning} uses a RINet trained on RGB and real LiDAR data to augment simulated scan qualities. LiDARsim~\cite{manivasagam2020lidarsim} employs ray-surfel casting with explicit disk surfels for more accurate simulations.
 Huang et al.~\cite{Huang2023nfl} proposed Neural LiDAR Fields (NFL), combining neural fields with a physical LiDAR model for high-quality synthesis, although it's limited to static scenes and can produce noisy outputs due to its unconstrained volume density representation.

@@ -4,11 +4,11 @@
 \acro\ is a two-stream encoder-decoder network. Our default implementation uses residual blocks with KPConv-style point convolutions~\cite{thomas2019kpconv}, but the architecture is agnostic w.r.t.\ the backbone and can also be implemented with other formulations of 3D convolutions, such as for instance sparse voxel convolutions~\cite{choy2019Minkowski} (\cf Appendix). 
 As illustrated in Fig.~\ref{fig:network_arch}, the architecture of \acro\ can be decomposed into three main modules:
 \begin{enumerate}
-\item encoding of the two point clouds into smaller sets of superpoints and associated latent feature encodings, with shared weights (Sec.~\ref{sec:method_encoder});
-\item the overlap attention module (in the bottleneck) that extracts co-contextual information between the feature encodings of the two point clouds, and assigns each superpoint two overlap scores that quantify how likely the superpoint itself and its soft-correspondence are located in the overlap between the two inputs (Sec.~\ref{sec:method_overlap_attention}); 
-\item decoding of the mutually conditioned bottleneck representations to point-wise descriptors as well as refined per-point overlap and matchability scores (Sec.~\ref{sec:method_decoder}).
+\item encoding of the two point clouds into smaller sets of superpoints and associated latent feature encodings, with shared weights (~\cref{sec:method_encoder});
+\item the overlap attention module (in the bottleneck) that extracts co-contextual information between the feature encodings of the two point clouds, and assigns each superpoint two overlap scores that quantify how likely the superpoint itself and its soft-correspondence are located in the overlap between the two inputs (~\cref{sec:method_overlap_attention}); 
+\item decoding of the mutually conditioned bottleneck representations to point-wise descriptors as well as refined per-point overlap and matchability scores (~\cref{sec:method_decoder}).
 \end{enumerate}
-Before diving into each component we lay out the basic problem setting and notation in Sec.~\ref{sec:method_notation}. %
+Before diving into each component we lay out the basic problem setting and notation in ~\cref{sec:method_notation}. %
 \subsection{Problem setting}
 \label{sec:method_notation}
 

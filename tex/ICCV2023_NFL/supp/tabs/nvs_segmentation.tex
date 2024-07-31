@@ -1,0 +1,23 @@
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+    \centering
+    \resizebox{0.7\columnwidth}{!}{
+    \begin{tabular}{l|ccc|ccc}
+    \toprule
+    & \multicolumn{3}{c|}{Vehicle} & \multicolumn{3}{c}{Background} \\
+    Method & Recall $\uparrow$ & Precision $\uparrow$ & IoU $\uparrow$ & Recall $\uparrow$ & Precision $\uparrow$ & IoU $\uparrow$ \\
+    \midrule
+    i-NGP~\cite{mueller2022instant} + L2 & 68.4 & \textbf{90.2} & 64.1 & \textbf{99.3} & 96.3 & 95.6\\
+    i-NGP~\cite{mueller2022instant} & \underline{93.2} & 85.9 & \underline{80.9} & 98.3 & \underline{99.2} & \underline{97.6}\\
+    DS-NeRF~\cite{deng2021depth} & 90.7 & \underline{87.1} & 80.2 & \textbf{98.5} & 98.9 & 97.4\\
+    URF~\cite{rematas2021urban} & 87.8 & 81.7 & 73.7 & 98.0 & 98.4 & 96.5\\
+    Lidarsim~\cite{manivasagam2020lidarsim} & 90.5 & 70.5 & 65.9 & 94.9 & 99.0 & 94.0\\
+    Ours & \textbf{95.9} & 87.0 & \textbf{83.9} & 98.3 & \textbf{99.5} & \textbf{97.8}\\
+    \bottomrule
+    \end{tabular}
+    }
+    
+    \caption{Semantic segmentation results on \textit{Waymo NVS} dataset.}
+    \label{tab:supp_sem_seg}
+    \end{table}

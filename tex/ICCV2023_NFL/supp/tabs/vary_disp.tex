@@ -1,0 +1,35 @@
+% \begin{table}[t]
+%     \setlength{\tabcolsep}{6pt}
+%     \renewcommand{\arraystretch}{1.2}
+% 	\centering
+% 	\resizebox{0.8\columnwidth}{!}{
+%     \begin{tabular}{c|ccccc}
+%     \toprule
+%      & i-NGP & DS-NeRF & URF & LiDARsim & Ours \\
+%     \midrule
+%     (0.5, 0.5, 0.5)  & 7.0 / 14.4 & 7.0 / 16.0 & 9.0 / 19.6 & 16.1 / 33.1 & \textbf{5.4} / \textbf{13.0} \\
+%     (1.5, 1.5, 1.0)  & 8.4 / 17.6 & 7.8 / 18.5 & 11.0 / 27.5 & 16.5 / 37.9 & \textbf{5.8} / \textbf{14.3}  \\
+%     (2.5, 2.5, 1.5)  & 11.6 / 28.0 & 9.3 / 22.8 & 13.9 / 35.5 & 17.2 / 46.3 & \textbf{6.4} / \textbf{18.4} \\
+%     \bottomrule
+%     \end{tabular}
+%     }
+%     \caption{Varying the displacement on \textit{Waymo NVS} dataset. Numbers are reported as \textit{MedAE} / \textit{CD} [cm].}
+%     \label{tab:rebuttaL_nvs}
+% \end{table}
+
+\begin{table}[t]
+    \setlength{\tabcolsep}{6pt}
+    \renewcommand{\arraystretch}{1.2}
+	\centering
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}m{0.2\textwidth}|YYYYY}
+    \toprule
+     & i-NGP & DS-NeRF & URF & LiDARsim & Ours \\
+    \midrule
+    (0.5, 0.5, 0.5)  & 7.0 / 14.4 & 7.0 / 16.0 & 9.0 / 19.6 & 16.1 / 33.1 & \textbf{5.4} / \textbf{13.0} \\
+    (1.5, 1.5, 1.0)  & 8.4 / 17.6 & 7.8 / 18.5 & 11.0 / 27.5 & 16.5 / 37.9 & \textbf{5.8} / \textbf{14.3}  \\
+    (2.5, 2.5, 1.5)  & 11.6 / 28.0 & 9.3 / 22.8 & 13.9 / 35.5 & 17.2 / 46.3 & \textbf{6.4} / \textbf{18.4} \\
+    \bottomrule
+    \end{tabularx}
+    \caption{Varying the displacement on \textit{Waymo NVS} dataset. Numbers are reported as \textit{MedAE} / \textit{CD} [cm].}
+    \label{tab:rebuttaL_nvs}
+\end{table}

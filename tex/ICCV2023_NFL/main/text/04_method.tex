@@ -13,7 +13,7 @@ Our goal is to reconstruct a (continuous) volumetric representation of the scene
 We encode the scene as a neural field $F: (\x, \dir) \mapsto (\density, \reflectance, \pdrop)$ that takes as input a location $\x \in \real^3$ and viewing direction $\dir \in \real^3$, and returns a density $\density$, a reflectance $\reflectance$ and a ray drop probability $\pdrop$. We found it beneficial to additionally return also a local contribution $\pdrop \in [0, 1]$ to the probability of ray drop, which will be discussed below.
 Technically, we use a hash encoding~\cite{mueller2022instant} to map coordinates $\x$ to positional features $\posfeat \in \real^{32}$ and project the view direction onto the first 16 coefficients of the spherical harmonics basis, $\dirfeat \in \real^{16}$. The neural field is parameterized by four Multi-Layer Perceptrons (MLPs): $[\density; \geofeat] = f_\density(\posfeat)$ regresses density and extracts an additional geometry feature $\geofeat \in \real^{15}$ that supports the other networks; $\reflectance = f_{\reflectance}(\geofeat, \dirfeat)$ regresses reflectance; $\pdrop = f_{\text{drop}}(\geofeat, \dirfeat)$ classifies whether a ray drop occurs; and  $p_s = f_{\text{sr}}(\rayfeat)$ classifies the existance of a second return. The feature $\rayfeat$ will be detailed in \cref{sec:render_lidar}.
 
-\input{\subdir/content/main/text/04_1_lidarnerf}
+\input{\subdir/main/text/04_1_lidarnerf}
 
 
 

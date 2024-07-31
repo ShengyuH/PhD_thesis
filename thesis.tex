@@ -7,20 +7,14 @@
 }
 \setkomafont{disposition}{\normalcolor\bfseries}
 \input{tex/packages}
-
-
+\input{tex/preamble}
 
 \hyphenation{VIIRS}
-
-% \graphicspath{{./figs/}}
 
 \setlength{\parindent}{2em}
 \renewcommand{\baselinestretch}{1.05}
 
-% \captionsetup{justification=RaggedRight,singlelinecheck=false}
 
-
-\input{tex/preamble}
 \begin{document}
 
 \selectlanguage{english}
@@ -34,7 +28,6 @@
 \tableofcontents
 % \listoffigures
 % \listoftables
-% \input{tex/04_acronyms}
 
 \mainmatter
 
@@ -78,9 +71,7 @@
 
 
 \renewcommand\bibsection{\chapter{Bibliography}}
-% \bibliographystyle{elsarticle-harv}\
 \bibliographystyle{plain}
-% \bibliographystyle{plainnat}
 \bibliography{references}                % name your BibTeX data base
 
 \input{tex/09_cv}

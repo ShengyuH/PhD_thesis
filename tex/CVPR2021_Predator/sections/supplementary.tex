@@ -1,10 +1,10 @@
 \section{Appendix}
-In this supplementary material, we first provide rigorous definitions of evaluation metrics (Sec.~\ref{sec:evaluation_metrics_supp}), then describe the data pre-processing step (Sec.~\ref{sec:datasets_supp}), network architectures (Sec.~\ref{sec:network_arch_supp}) and training on individual datasets (Sec.~\ref{sec:training_supp}) in more detail. We further provide additional results (Sec.~\ref{sec:additional_results_supp}), ablation studies (Sec.~\ref{sec:addtional_ablation_supp}) as well as a runtime analysis (Sec.~\ref{sec:timing}). Finally, we show more visualisations on \emph{3DLoMatch} and \emph{ModelLoNet} benchmarks (Sec.~\ref{sec:qualitative_supp}). 
+In this appendix, we first provide rigorous definitions of evaluation metrics (Sec.~\ref{sec:evaluation_metrics_supp}), then describe the data pre-processing step (Sec.~\ref{sec:datasets_supp}), network architectures (Sec.~\ref{sec:network_arch_supp}) and training on individual datasets (Sec.~\ref{sec:training_supp}) in more detail. We further provide additional results (Sec.~\ref{sec:additional_results_supp}), ablation studies (Sec.~\ref{sec:addtional_ablation_supp}) as well as a runtime analysis (Sec.~\ref{sec:timing}). Finally, we show more visualisations on \emph{3DLoMatch} and \emph{ModelLoNet} benchmarks (Sec.~\ref{sec:qualitative_supp}). 
 
 
 \subsection{Evaluation metrics}
 \label{sec:evaluation_metrics_supp}
-The evaluation metrics, which we use to assess model performance in Sec.~4 of the main paper and Sec.~\ref{sec:additional_results_supp} of this supplementary material, are formally defined as follows:
+The evaluation metrics, which we use to assess model performance in Sec.~4 of the main paper and Sec.~\ref{sec:additional_results_supp} of this appendix, are formally defined as follows:
 
 \textbf{Inlier ratio} looks at the set of putative correspondences $(\mathbf{p}, \mathbf{q}) \in \mathcal{K}_{i j}$ found by reciprocal matching%
 in feature space, and measures what fraction of them is "correct", in the sense that they lie within a threshold $\tau_1\!=\!10\,$cm after registering the two scans with the ground truth transformation $\overbar{T}_\mathbf{P}^ \mathbf{Q}$:

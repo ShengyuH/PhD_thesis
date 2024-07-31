@@ -34,7 +34,7 @@ The gains are larger when fewer points are sampled. In the low-overlap regime th
 We observe that, as expected, high inlier ratio does not necessarily imply high registration recall: our scores are apparently well calibrated, so that \emph{top-k (om)} indeed finds most inliers, but these are often clustered and too close to each other to reliably estimate the transformation parameters (Fig.~\ref{fig:sampling}).
 We thus use the more robust \emph{prob. (om)} sampling, which yields the best \emph{registration recall}. It may be possible to achieve even higher registration recall by combining \emph{top-k (om)} sampling with non-maxima suppression. We leave this for future work.
 
-\input{\subdir/tables/bigPredator}
+\input{\subdir/tables/main_results}
 \paragraph{Comparison to feature-based methods}
 We compare \acro\ to recent feature-based registration methods: 3DSN~\cite{gojcic2018learned}, FCGF~\cite{Choy2019FCGF} and D3Feat~\cite{bai2020d3feat}, see Tab.~\ref{tab:big_predator}. 
 Even though \acro\ can not solve all the cases (\cf Fig.~\ref{fig:failure_image}), it greatly outperforms existing methods on the low-overlap \emph{3DLoMatch} dataset, improving registration recall by 15.5-19.7 percent points (pp) over the closest competitor---variously FCGF or 3DFeat. 

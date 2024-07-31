@@ -24,13 +24,13 @@ We start by describing our LiDAR simulator,  datasets, evaluation metrics, and b
 To enable quantitative evaluation in a controlled environment, we build a LiDAR simulator that allows us to virtually scan synthetic 3D assets represented either as triangular meshes or surfels. Specifically, we follow the LiDAR model described in \cref{sec:lidar_model} and allow control over the angular resolution, beam divergence, and pulse shape of the LiDAR sensor.  %
 
 We use this simulator in combination with a 3D asset of a town~\cite{turbosquid} to synthesize the \emph{Town} dataset. We generate four scenes by splitting the 3D asset into four non-overlapping areas. Training and test scans %
-are created from different trajectories.  We use two different configurations of the LiDAR sensor: \textit{(\romannumeral 1)} \textit{TownClean}, in which LiDAR scans are simulated using an idealized, non-divergent ray; and \textit{(\romannumeral 2)} \textit{TownReal}, with a diverged beam profile approximated via 37 subrays. See the supplementary material for further details.
+are created from different trajectories.  We use two different configurations of the LiDAR sensor: \textit{(\romannumeral 1)} \textit{TownClean}, in which LiDAR scans are simulated using an idealized, non-divergent ray; and \textit{(\romannumeral 2)} \textit{TownReal}, with a diverged beam profile approximated via 37 subrays. See the appendix for further details.
 
 
  \paragraph{Waymo Open dataset}
- For evaluation on real-world data we use Waymo open dataset~\cite{sun2020scalability} which was captured by a 64-beam LiDAR sensor at 10 Hz. Here, we select four static scenes (see sequence IDs in supplementary material) and extract a five-second clip from each, resulting in 50 scans per scene. We hold out every $5$-th frame as a test view and use the remaining 40 scans for training (\textit{Waymo Interp.})
+ For evaluation on real-world data we use Waymo open dataset~\cite{sun2020scalability} which was captured by a 64-beam LiDAR sensor at 10 Hz. Here, we select four static scenes (see sequence IDs in appendix) and extract a five-second clip from each, resulting in 50 scans per scene. We hold out every $5$-th frame as a test view and use the remaining 40 scans for training (\textit{Waymo Interp.})
  
-To evaluate the methods in a more challenging setting we propose a novel evaluation protocol based on a closed-loop simulation (\emph{Waymo NVS}). The protocol involves training and testing on all scans of a scene by first optimizing on the input views to synthesize novel views from a changed trajectory (shift the sensor by [1.5, 1.5, 0.5] meters\footnote{Please refer to the supplementary for ablations on different sensor shift configurations.}). The novel view are then used to re-optimize the method, synthesize scans in the original view and compare to the original scans to gauge performance. This formulation allows us to control task difficulty and could also be applied to evaluate camera-based novel view synthesis methods.
+To evaluate the methods in a more challenging setting we propose a novel evaluation protocol based on a closed-loop simulation (\emph{Waymo NVS}). The protocol involves training and testing on all scans of a scene by first optimizing on the input views to synthesize novel views from a changed trajectory (shift the sensor by [1.5, 1.5, 0.5] meters\footnote{Please refer to the appendix for ablations on different sensor shift configurations.}). The novel view are then used to re-optimize the method, synthesize scans in the original view and compare to the original scans to gauge performance. This formulation allows us to control task difficulty and could also be applied to evaluate camera-based novel view synthesis methods.
 
 
 
@@ -43,7 +43,7 @@ For ray drop segmentation, we report recall and precision [$\%$], and intersecti
 
 \paragraph{Baselines}
 We compare NFL to four baselines. Closest to our problem setup is LiDARsim~\cite{manivasagam2020lidarsim} which was designed for LiDAR synthesis based on surface reconstruction and ray-surfel casting. We re-implement LiDARsim and augment it with a diverged beam profile to enable synthesis of the second returns. Additionally, we adapt three NeRF-like methods that were originally proposed for image synthesis i-NGP~\cite{mueller2022instant}, DS-NeRF~\cite{deng2021depth}, and URF~\cite{rematas2021urban} by modifying their volumetric rendering to improve their range predictions. 
-Additional details are available in the supplementary.
+Additional details are available in the appendix.
 
 
 \subsection{Evaluation of LiDAR novel view synthesis}

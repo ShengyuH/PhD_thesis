@@ -13,7 +13,7 @@ The network architecture of our multitask model is schematically depicted in \cr
 \end{equation}
 
 In the following, we provide a high-level description of each module. 
-Detailed network architectures, including parameters and loss formulations, are given in the supplementary material (unless already elaborated).
+Detailed network architectures, including parameters and loss formulations, are given in the appendix (unless already elaborated).
 
 \paragraph{Problem setting}
 Consider an \textit{ordered} point cloud sequence $\PCset = \{\PC^t\}_{t=1}^T$ consisting of $T$ frames $\PC^t = [\point_1^t,...,\point_i^t,...,\point_{n_t}^t] \in \mathbb{R}^{3 \times n_t}$ of variable size, captured by a \textit{single moving observer} at constant time intervals $\Delta t$. We denote the first frame $\PC^1$ the \textit{target} frame, while the remaining frames $\{ \PC^{t} \; | \; t>1 \}$ are termed \textit{source} frames. Our goal is then to estimate the flow vectors $\{ \Flow^t \in \mathbb{R}^{3 \times n_t} | t>1 \}$ that align each of the source frames to the target frame, and hence \emph{accumulate} the point clouds. Instead of predicting unconstrained pointwise flow vectors, we make use of the inductive bias that each frame can be decomposed into a %

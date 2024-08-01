@@ -36,7 +36,7 @@ In the shared encoder, a series of ResNet-like blocks and strided convolutions a
 $\mathbf{Q}'\in\mathbb{R}^{M'\times 3}$ with associated features $\mathbf{X}^{\mathbf{P}'} \in \mathbb{R}^{N{'} \times b}$ and $\mathbf{X}^{\mathbf{Q}'} \in \mathbb{R}^{M' \times b}$.
 Note that superpoints correspond to a fixed receptive field, so their number depends on the spatial extent of the input point cloud and may be different for the two inputs.
 
-\subsection{Overlap attention module}
+\subsection{Overlap Attention Module}
 \label{sec:method_overlap_attention}
 So far, the features $\mathbf{X}^{\mathbf{P}'}$, $\mathbf{X}^{\mathbf{Q}'}$ in the bottleneck encode the geometry and context of the two point clouds. But $\mathbf{X}^{\mathbf{P}'}$ has no knowledge of point cloud $\mathbf{Q}$ and vice versa.
 In order to reason about their respective overlap regions, some cross-talk is necessary.
@@ -113,7 +113,7 @@ to disentangle the reasons why a point is a good/bad candidate for matching: in 
 Empirically, we find that the network learns to predict high matchability mostly for points in the overlap; probably reflecting the fact that the ground truth correspondences used for training, naturally, always lie in the overlap.
 For further details about the architecture, please refer to Appendix and the \href{https://github.com/ShengyuH/OverlapPredator}{source code}.
 
-\subsection{Loss function and training}
+\subsection{Loss Function and Training}
 \label{sec:method_training}
 \acro\ is trained end-to-end, using three losses \wrt ground truth correspondences as supervision.
 

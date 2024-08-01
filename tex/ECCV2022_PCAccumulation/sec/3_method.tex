@@ -28,7 +28,7 @@ $\T_\ego^t \in \SEuc$ and the motion of the dynamic object relative to the stati
 \end{equation}
 where $\T\circ\PC$ (or $\T \circ \point$) denotes applying the transformation to the point set $\PC$ (or point $\point$).
 
-\subsection{Backbone network}
+\subsection{Backbone Network}
 \label{sec:backbone_network}
 Similar to~\cite{baur2021slim,jund2021scalable,wu2020motionnet}, our backbone network converts the 3D point cloud of a single frame into a bird's eye view (BEV) 
 latent feature image. Specifically, we lift the point coordinates to a higher-dimensional latent space using a point-wise MLP and then scatter them into a $H\times W$ feature grid aligned with the gravity axis. The features per grid cell (``pillar'') are aggregated with max-pooling, then fed through a 2D UNet~\cite{long2015fully} to enlarge their receptive field and strengthen the local context. The output of the backbone network is a 2D latent \emph{base} feature map $\Feature_\bev^t$ for each of the $T$ frames.
@@ -36,7 +36,7 @@ latent feature image. Specifically, we lift the point coordinates to a higher-di
 % \paragraph{Discussion on point cloud representation}
 % An alternative to the BEV projection is sparse voxel~\cite{choy2019Minkowski}. We choose BEV for several reasons: \textit{(i)}. BEV is more efficient in both time and memory, allowing for potential online deployment; \textit{(ii)} BEV allows one to warp, stack, and reuse feature maps in a differentiable manner. Doing the same for sparse voxels is non-trivial; \textit{(iii)} compared to \cite{gojcic2021weakly} that uses a sparse voxel backbone, BEV turns out be to more robust to point density and thus improving the scene flow estimation (see \cref{sec:results}). 
 
-\subsection{Ego-motion estimation}
+\subsection{Ego-motion Estimation}
 \label{sec:ego_motion}
 We estimate the ego-motion $\T_\ego^t$ using a correspondence-based registration module separately for each source frame. Points belonging to dynamic objects can bias the estimate of ego-motion, especially when using a correspondence-based approach, and should therefore be discarded. 
 However, at an early stage of the pipeline it is challenging to reason about scene dynamics, so we rather follow the conservative approach and classify points into background and foreground, where foreground contains all the \emph{movable} objects (\eg, cars and pedestrians), irrespective of their actual dynamics~\cite{gojcic2021weakly}. 
@@ -55,7 +55,7 @@ The foreground score $\s_\FG^t$ is supervised using a combination of weighted bi
 The weights in $\loss_{\text{bce}}$ are inversely proportional to the square root of elements in each class. 
 
 
-\subsection{Motion segmentation}
+\subsection{Motion Segmentation}
 \label{sec:motion_seg}
 To separate the \emph{moving} objects from the \emph{static} ones we perform motion segmentation, reusing the per-frame base features $\{\Feature_\bev^t\}$.
 Specifically, we apply a differentiable feature warping scheme~\cite{sun2018pwc} that warps each $\Feature_\bev^t$ using the predicted ego-motion $\T^t_\ego$, and obtain a spatio-temporal 3D feature tensor of size {\small${C\times T\times H\times W}$} by stacking the warped feature maps along the channel dimension.
@@ -71,7 +71,7 @@ The point-level motion feature for $\point_i^t$ is computed as:
 where $\MLP(\cdot)$ denotes a multi-layer perceptron, $\cat[\cdot]$ concatenation, and $\psi(\point, \Feature)$ a bilinear interpolation from $\Feature$ to $\point$.
 The dynamic score $\s_i^t$ of the point $\point_i^t$ is then decoded from the motion feature $\feature_{\motion,i}^t$ using another MLP, and supervised similar to the foreground segmentation, with a loss $\loss_\motion^\lcircle{lossblue} = \loss_{\text{bce}}(\s_i^t, \overline{\s}_i^t) + \loss_{\text{ls}}(\s_i^t, \overline{\s}_i^t)$, where $\overline{\s}_i^t$ denotes the ground-truth motion label of point $\point_i^t$.
 
-\subsection{Spatio-temporal instance association}
+\subsection{Spatio-temporal Instance Association}
 \label{sec:clustering}
 To segment the dynamic points (extracted by thresholding the $\s_i^t$) into individual objects and associate them over time, we perform spatio-temporal instance association.
 Different from the common tracking-by-detection~\cite{dendorfer2021motchallenge,weng20203d} paradigm, we propose to directly \emph{cluster the spatio-temporal point cloud}, which simultaneously provides instance masks and the corresponding associations.
@@ -91,7 +91,7 @@ loss:
 where $\overline{\offset}$ is the ground truth offset $\mathbf{o}-\point$ from the associated instance centroid $\mathbf{o}$ in the target frame, and $\langle \cdot \rangle$ is the inner product.
 
 
-\subsection{Dynamic object motion modelling}
+\subsection{Dynamic Object Motion Modelling}
 \label{sec:dynamic_obj}
 Once we have spatio-temporally segmented objects, we must
 recover their motions at each frame.
@@ -116,12 +116,12 @@ where $\overline{\tvec}_k^t$ and $\overline{\quat}_k^t$ are the ground truth tra
 $\loss_\trans$ is the same as in the ego-motion (\cref{sec:ego_motion}).
 
 
-\subsection{Comparison to related work}
+\subsection{Comparison to Related Work}
 \paragraph{WsRSF~\cite{gojcic2021weakly}} Our proposed method differs from WsRSF in several ways: \textit{(i)} WsRSF is a pair-wise scene flow estimation method, while we can handle multiple frames; \textit{(ii)} unlike WsRSF we perform motion segmentation for a more complete understanding of the scene dynamics; \textit{(iii)} our method outputs instance-level associations, while WsRSF simply connects each instance to the complete foreground of the other point cloud.
 
 \paragraph{MotionNet~\cite{wu2020motionnet}} Similar to our method, MotionNet also deals with sequential point clouds and uses a BEV representation. However, MotionNet \textit{(i)} assumes that ground truth ego-motion is available, while we estimate it within our network; and \textit{(ii)} does not provide object-level understanding, rather it only separates the scene into a static and a dynamic part. 
 
-\subsection{Implementation details}
+\subsection{Implementation Details}
 Our model is implemented in pytorch~\cite{NEURIPS2019_9015} and can be trained on a single RTX 3090 GPU. During training we minimize \cref{eq:eccv_loss} with the Adam~\cite{kingma2014adam} optimiser, with an initial learning rate 0.0005 that exponentially decays at a rate of 0.98 per epoch. For both \emph{Waymo} and \emph{nuScenes}, the size of the pillars is $(\delta_x, \delta_y, \delta_z) = (0.25, 0.25, 8)$ m. We sample $N_{\text{ego}} = 1024$ points for ego-motion estimation and set $\tau =0.5$ for foreground/background segmentation. The feature dimensions of $\Feature_\bev^t$, $\Feature_\ego^t$, $\Feature_\motion$ are 32, 64, 64 respectively. During inference we additionally use ICP~\cite{besl1992method} to perform test-time optimisation of the ego-motion as well as the transformation parameters of each dynamic object. ICP thresholds for ego-motion and dynamic object motion are 0.1/0.2 and 0.15/0.25 $\,$m for \emph{Waymo} / \emph{nuScenes}. 
 
 

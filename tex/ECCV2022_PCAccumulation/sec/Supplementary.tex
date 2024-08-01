@@ -1,7 +1,7 @@
 \section{Appendix}
 In this appendix, we first present additional information about our network architecture and implementation in \cref{sec:supp_network}. We then elaborate on technical details of ego-motion estimation, iterative pose refinement, and scene reconstruction in \cref{sec:supp_eccv_method}. Precise definitions of loss functions and evaluation metrics are provided in \cref{sec:supp_loss}. Further analysis of the two datasets, \emph{nuScenes} and \emph{Waymo}, is presented in \cref{sec:supp_dataset}, followed by additional quantitative results including scene flow estimation, instance association, and the TubeNet motion model in \cref{sec:supp_quan}. Finally, we show more qualitative results in \cref{sec:supp_qual}. 
 
-\subsection{Network and implementation}
+\subsection{Network and Implementation}
 \label{sec:supp_network}
 
 \paragraph{Network architecture}
@@ -37,7 +37,7 @@ To improve the estimation of the transformation parameters for dynamic objects, 
 \paragraph{Scene reconstruction}
 To show the benefits of our method for downstream tasks, we use the points accumulated with different methods as a basis for 3D surface reconstruction, see \cref{fig:supp_nuscene,fig:supp_waymo}. Specifically, we use the accumulated points as input to the Poisson reconstruction~\cite{kazhdan2006poisson}, implemented in Open3D~\cite{Zhou2018}. To estimate point cloud normals, the neighborhood radius is set to 0.5$\,$m and the maximum number of neighbors is set to 128. The depth for the Poisson method is set to 10, and the reconstructed meshes are filtered by removing vertices with densities below the 15$^\text{th}$ percentile. 
 
-\subsection{Loss functions and evaluation metrics}
+\subsection{Loss Functions and Evaluation Metrics}
 \label{sec:supp_loss}
 \paragraph{Weighted BCE loss}
 To compensate for class imbalance, we use a weighted BCE and compute the weights of each class on the fly. Specifically, for a mini-batch with $N_{\text{pos}}$ positive and $N_{\text{neg}}$ negative samples, the associated weights $w_{\text{pos}}$ and $w_{\text{neg}}$ are computed as:
@@ -105,7 +105,7 @@ The Empirical Cumulative Distribution Function (ECDF) measures the distribution 
 \end{equation}
 where $O = \{o_i\}$ is a set of samples and $x \in [\min\{O\}, \max\{O\}]$.
 
-\subsection{Dataset analysis}
+\subsection{Dataset Analysis}
 \label{sec:supp_dataset}
 \input{\subdir/figs/tex/dataset_stats}
 \input{\subdir/figs/tex/dataset_motion}
@@ -115,7 +115,7 @@ our strategy to start with motion segmentation, so as to make explicit the large
 In \cref{fig:motion_ecdf}, we show the \textit{ECDF} curve of scene flow magnitudes ($L_2$-norm of scene flow vectors) for the dynamic portions of the two datasets. The motions span a large range, but 75\% of the flow vectors are of moderate magnitude \textless3$\,$m. \emph{nuScenes} has slightly larger overall flow magnitudes than \emph{Waymo}, but \emph{Waymo} contains more instances of large motions (\cref{fig:motion_ecdf}~(left)).
 
 \input{\subdir/tab/sf_average_by_scene}
-\subsection{Additional results}
+\subsection{Additional Results}
 \label{sec:supp_quan}
 \paragraph{Results averaged over scenes}
 In \cref{tab:sf_main} we report evaluation metrics calculated over all the points in the test set. However, this does not fully reveal the difficulties encountered in different scenes. Here, we first calculate evaluation metrics per scene, then report the average over scenes in \cref{tab:sf_supp}. For \textit{EPE avg.}, we additionally report the standard deviations. We can see that for both static and dynamic parts, all methods have large standard deviations, which indicates varying difficulty of the scenes, as well as gross errors from challenging samples. Our model still achieves the smallest flow errors and standard deviations under this evaluation setting, for both datasets . 
@@ -131,7 +131,7 @@ We plot instance association metrics at different thresholds in \cref{fig:supp_a
 We additionally compare the proposed TubeNet to two baseline methods. We naively align each frame $\PC_k^t$ $(t>1)$ of an instance $\PC_k$ to frame $\PC_k^0$ by %
 translating the centroids, and term this method \textit{center}. For \textit{center+ICP} we refine the simple translational alignment by a subsequent ICP. The detailed comparison is shown in \cref{tab:tubenet_comparison}. Our learned TubeNet achieves the best performance on both datasets. The improvement is larger on the challenging \emph{nuScenes} data, where the point clouds are sparser and less complete, so centroids computed from partial observations are not an accurate proxy for the object location. Our learned TubeNet can implicitly exploit prior knowledge about object shape and surface-level correspondence, leading to more robust and accurate motion modelling. 
 
-\subsection{Qualitative results}
+\subsection{Qualitative Results}
 \label{sec:supp_qual}
 We show additional qualitative results in \cref{fig:supp_waymo} and \cref{fig:supp_nuscene}. Benefiting from the explicit \textit{multi-body} assumption, our model achieves accurate scene flow estimation of both static parts (\cref{fig:supp_waymo} (1) and \cref{fig:supp_nuscene} (2)) and dynamic parts (\cref{fig:supp_waymo} (3) and \cref{fig:supp_nuscene} (1)). Errors in the automatically generated pseudo-ground truth are shown in \cref{fig:supp_nuscene} (3), in this case our model achieves more accurate flow estimation and reconstruction.  
 

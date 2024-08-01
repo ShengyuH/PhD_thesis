@@ -1,7 +1,7 @@
 \section{Appendix}
 In this appendix, we first present additional information about our dataset, evaluation setting, implementation details in \cref{sec:supp_data}. We then elaborate on technical details of our methods in \cref{sec:supp_method}. Additional results of the two return mask segmentation, more quantitative and qualitative results are provided in \cref{sec:supp_results}.
 
-\subsection{Datasets and implementation details}
+\subsection{Datasets and Implementation Details}
 \label{sec:supp_data}
 \paragraph{Town dataset}
 To simulate \textit{TownReal} dataset, we approximate a diverged beam profile using 37 subrays and the divergence angle $\gamma_0 = 2 $~mrad~\cite{glennie2012calibration}. We use the subray distribution proposed from~\cite{winiwarter2022virtual}~(\cf \cref{fig:iccv_diverged_ray}). The dataset is shown in~\cref{fig:iccv_supp_town_dataset}. 
@@ -50,7 +50,7 @@ Because the original implementation is not publicly available, we re-implemented
 We also use \emph{torch-ngp}~\cite{torch-ngp} codebase to implement other methods, using the same network and sampling configurations as used in ours. To estimate the range, we remove the radiance MLP and instead, apply volume rendering of the sampled $\zeta$ along the ray.  For DS-NeRF~\cite{deng2021depth} and URF~\cite{rematas2021urban}, we replace their positional encoding with a hash-grid~\cite{mueller2022instant} to facilitate a fair comparison with i-NGP~\cite{mueller2022instant}. Moreover, we substitute the original L2 loss with the L1 loss, as it results in better performance. Finally, we follow the original paper and augment DS-NeRF~\cite{deng2021depth} and URF~\cite{rematas2021urban} with the ray distribution loss and line-of-sight loss, respectively, to regularise the underlying geometry. 
 
 
-\subsection{Methodology and loss functions}
+\subsection{Methodology and Loss Functions}
 \label{sec:supp_method}
 \paragraph{First range estimation}
 If the maximum weight at the first stage $w_p^c$ is below a predefined threshold $\eta=0.1$, we assume that the network is uncertain about the reconstruction and the resulting range estimate may be inaccurate. In these cases, we only apply the coarse stage volume rendering and directly estimate the range as: $\zeta = \sum_{j=1}^{N^c} w_j^c \cdot \zeta_j$. 
@@ -67,7 +67,7 @@ The ground truth weight $\hat{w}_j$ is computed as:
 \end{equation}
 
 
-\subsection{Additional results}
+\subsection{Additional Results}
 \label{sec:supp_results}
 
 \begin{figure}[!t]

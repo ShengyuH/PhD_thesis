@@ -18,7 +18,7 @@ We start by describing our LiDAR simulator,  datasets, evaluation metrics, and b
 
 
 
-\subsection{Datasets and Evaluation setting}
+\subsection{Datasets and Evaluation Setting}
 \label{sec:dataset}
 \paragraph{LiDAR simulator -- TownReal dataset.} 
 To enable quantitative evaluation in a controlled environment, we build a LiDAR simulator that allows us to virtually scan synthetic 3D assets represented either as triangular meshes or surfels. Specifically, we follow the LiDAR model described in \cref{sec:lidar_model} and allow control over the angular resolution, beam divergence, and pulse shape of the LiDAR sensor.  %
@@ -46,7 +46,7 @@ We compare NFL to four baselines. Closest to our problem setup is LiDARsim~\cite
 Additional details are available in the appendix.
 
 
-\subsection{Evaluation of LiDAR novel view synthesis}
+\subsection{Evaluation of LiDAR Novel View Synthesis}
 \label{sec:lidar_nvs_eval}
 
 \paragraph{Ray measurement}
@@ -67,7 +67,7 @@ To evaluate the effectiveness of our volume rendering formulation for active sen
 \input{\subdir/main/figures/semseg}
 
 
-\subsection{Downstream evaluation of novel views}
+\subsection{Downstream Evaluation of Novel Views}
 \label{sec:perceptual_quality} 
 Having demonstrated NFL's improved ability to synthesize high-quality LiDAR scans through various metrics, we proceed to evaluate their perceptual quality by using them as input for two low-level perception tasks: point cloud registration~\cite{huang2021predator} and semantic segmentation~\cite{tang2020searching}.
 

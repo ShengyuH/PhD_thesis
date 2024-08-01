@@ -2,7 +2,7 @@
 \label{sec:results}
 In this section, we first describe the datasets and the evaluation setting for our experiments (\cref{sec:dataset_evalsetting}). We then proceed with a quantitative evaluation of our method and showcase its applicability to downstream tasks with qualitative results for surface reconstruction~(\cref{sec:evaluation_results}). Finally, we validate our design choices in an ablation study~(\cref{sec:ablation}).
 
-\subsection{Datasets and evaluation setting}
+\subsection{Datasets and Evaluation Setting}
 \label{sec:dataset_evalsetting}
 
 \paragraph{Waymo} The Waymo Open Dataset~\cite{sun2020scalability} includes 798/202 scenes for training/validation, where each scene is a 20-second clip captured by a 64-beam LiDAR at 10~Hz. We randomly sample 573/201 scenes for training/validation from the training split, and treat the whole validation split as a held-out test set. We consider every 5 consecutive frames as a \textit{sample} and extract 20 \textit{samples} from each clip, for a total of 11440/4013/4031 samples for training/validation/test. %
@@ -23,7 +23,7 @@ Following \cite{wu2020motionnet,luo2021self}, we evaluate the performance of all
 \paragraph{Baselines}
 We compare our method to 4 baseline methods. PPWC~\cite{wu2019pointpwc} and FLOT~\cite{puy2020flot} are based on dense matching and are trained in a fully supervised manner; WsRSF~\cite{gojcic2021weakly} assumes a \textit{multi-body} scene and can be trained with weak supervision; NSFPrior~\cite{li2021neural} is an optimisation-based method without pre-training. For PPWC~\cite{wu2019pointpwc}, FLOT~\cite{puy2020flot} and WsRSF~\cite{gojcic2021weakly}, we sample at most 8192 points from each frame due to memory constraints, and use the $k$-nn graph to up-sample flow vectors to full resolution at inference time. For NSFPrior~\cite{li2021neural}, we use the full point clouds and take the default hyper-parameter settings given by the authors, except for the early-stopping patience, which we set to 50 to make it computationally tractable on our large-scale dataset. For all baseline methods, we directly estimate flow vectors from any \textit{source} frame to the \textit{target} frame. 
 
-\subsection{Main results}
+\subsection{Main Results}
 \label{sec:evaluation_results}
 The detailed comparison on the \waymo~and \nuscenes~data is given in \cref{tab:sf_main}. \emph{Ours} denotes the direct output of our model, while \emph{Ours+} describes the results after test-time refinement with ICP. Many downstream tasks (e.g., surface reconstruction) rely on the accumulation of full point clouds and require also ground points. We therefore also train a variant of our method on point clouds with ground points and denote it \emph{Ours (w. ground)}. To facilitate a fair comparison, we use full point clouds as input during training and inference, but only compute the evaluation metrics on points that do not belong to ground. 
 

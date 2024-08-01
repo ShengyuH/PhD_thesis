@@ -1,9 +1,9 @@
-\section{Neural rendering of the dynamic scene}
+\section{Neural Rendering of the Dynamic Scene}
 In this section, we present the methodology for rendering LiDAR scans from the neural scene representation. We begin by revisiting the density-based volume rendering formulation for active sensors~\cite{Huang2023nfl} in \cref{sec:vol_render_background}. Subsequently, we explore the extension of this formulation to SDF-based neural scene representation in \cref{sec:sdf_vol_render}. Finally, we provide a detailed discussion on rendering LiDAR measurements from individual neural fields in~\cref{sec:dynamic_nfl_rendering} and the process of composing results from different neural fields in \cref{sec:neural_fields_composition}.
 
 
 
-\subsection{Volume rendering for active sensor} 
+\subsection{Volume Rendering for Active Sensor} 
 \label{sec:vol_render_background}
 LiDAR utilizes laser beam pulses to determine the distance to the nearest reflective surface by analyzing full waveform profile of the returned radiant power. The radiant power $P(\zeta)$ from range $\zeta$ is the result of a convolution between the pulse power $P_e(t)$ and the impulse response $H(\zeta)$, defined as~\cite{hahner2021fog,hahner2022lidar,Huang2023nfl}:
 \begin{equation}
@@ -31,7 +31,7 @@ where the weights $w_j = 2 \opacity_{\zeta_j} \cdot\prod_{i=1}^{j-1}(1 - 2 \opac
 Here $\alpha_{\zeta_j}$ is the discrete opacity at range $\zeta_j$. Please refer to~\cite{Huang2023nfl} for more details.
 
 
-\subsection{SDF-based volume rendering for active sensor} 
+\subsection{SDF-based Volume Rendering for Active Sensor} 
 \label{sec:sdf_vol_render}
 A neural scene representation based on probabilistic density often results in surfaces with noticeable noise due to insufficient surface regularization~\cite{wang2021neus}. To address this, we opt for a signed distance-based scene representation and establish the volume rendering formulation within the framework of an active sensor. Building upon SDF-based volume rendering for passive sensors~\cite{wang2021neus}, we compute the opaque density $\tilde{\density}_{\zeta_i}$ as follows:
 \begin{equation}
@@ -53,12 +53,12 @@ In this context, $\tilde{\alpha}_{\zeta_j}$ is computed as:
 Please refer to the appendix for more details.
 
 
-\subsection{Volume rendering for LiDAR measurements}
+\subsection{Volume Rendering for LiDAR Measurements}
 \label{sec:dynamic_nfl_rendering}
 Consider rendering the LiDAR measurements from a single neural field, we employ the hierarchical sampling\cite{wang2021neus} technique to sample a total of $N_s= N_u + N_i$ points along each ray, where $N_u$ points are uniformly sampled, and $N_i$ points are probabilistically sampled based on the weights along the ray, facilitating denser sampling in proximity to the surface. Subsequently, we compute the weights for the $N_s$ points following~\cref{eq:new_weights}. The rendering of range, intensity, and ray drop for each ray can be expressed through volume rendering as follows: $y_\text{est} = \sum_{j=1}^{N_s} w_j y_j$, where $y \in \{\zeta, \intensity, \pdrop\}$.
 
 
-\subsection{Neural rendering for multiple fields}\label{sec:neural_fields_composition}
+\subsection{Neural Rendering for Multiple Fields}\label{sec:neural_fields_composition}
 Our full neural scene representation comprises $N+1$ neural fields as discussed in ~\cref{sec: decomposition}. Rendering from all these fields for each ray during inference is computationally intensive. To address this, we implement a two-stage method. In the first stage, we identify the $k+1$ neural fields, where $k \geq 0$ represents the number of dynamic fields, that are likely to intersect with a given ray. The second stage involves rendering LiDAR measurements from these selected fields individually and then integrating them into a unified set of measurements.
 
 

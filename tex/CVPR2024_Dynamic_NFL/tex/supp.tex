@@ -1,7 +1,7 @@
 \section{Appendix}
 In this appendix, we first provide additional information about the datasets for our evaluations and implementation details of our proposed method in~\cref{sec:sup_dataset}. Next, we present more qualitative results in~\cref{sec:sup_visual}. Finally, we provide the complete derivations of the SDF-based volume rendering for active sensor in~\cref{sec:sup_sdf_vol_render}. 
 
-\subsection{Datasets and implementation details}\label{sec:sup_dataset}
+\subsection{Datasets and Implementation Details}\label{sec:sup_dataset}
 \paragraph{\textit{Waymo Dynamic}} For the \textit{Waymo Dynamic} dataset, we take them from 4 scenes of \textit{Waymo Open Dataset}~\cite{sun2020scalability}. There are multiple moving vehicles inside each scene. 50 consecutive frames are taken from each scene for our evaluation. The vehicles are deemed as \textit{dynamic} if the speed is $>1\,$m/s. in any of the 50 frames. The corresponding scene IDs on \textit{Waymo Open Dataset} for our selected scenes are shown as follows:
 
 \begin{table}[!h]
@@ -33,7 +33,7 @@ To handle dynamic vehicles, we follow LiDARsim~\cite{manivasagam2020lidarsim} by
 We re-implement UniSim's~\cite{yang2023unisim} rendering process for LiDAR measurements by replacing our ray-drop test-based neural fields composition method with its joint rendering method. For every ray $\mathbf{r} (\mathbf{o},\mathbf{d})$, we begin by conducting an intersection test with all dynamic bounding boxes in the scene to identify the near and far limits. We then uniformly sample 512 points along each ray, assigning each point to either a dynamic neural field, if it falls within a dynamic bounding box, or to the static neural field otherwise. After sampling, we query the SDF and intensity values from the relevant neural fields. Finally, using the SDF-based volume rendering formula in Eq.~\ref{eq:depth_render} for active sensors, we calculate the weights and perform the rendering. Note that we use the same neural field architecture as in our method.
 
 
-\subsection{More qualitative results}
+\subsection{More Qualitative Results}
 \label{sec:sup_visual}
 In this section, we provide more qualitative results. In \cref{fig:4_scenes_supp}, we showcase the 4 scenes from \textit{Waymo dynamic} dataset. We show additional scene editing results in~\cref{fig:scene_editing_supp}. 
 
@@ -59,7 +59,7 @@ In this section, we provide more qualitative results. In \cref{fig:4_scenes_supp
 
 
 \clearpage
-\subsection{SDF-based volume rendering for active sensor}\label{sec:sup_sdf_vol_render}
+\subsection{SDF-based Volume Rendering for Active Sensor}\label{sec:sup_sdf_vol_render}
 In this section, we start by introducing the preliminary of NeRF~\cite{mildenhall2020nerf} following terminology as described in~\cite{tagliasacchi2022volume}. Then we provide the full derivation of the SDF-based volume rendering for active sensor. 
 
 \paragraph{Density}
@@ -114,7 +114,7 @@ where $\Phi_s$ represents the Sigmoid function, $f$ is the SDF function that map
 \int \frac{-(\nabla f(\zeta)\cdot \mathbf{v})\phi_s(f(\zeta))}{\Phi_s(f(\zeta))}d\zeta = -\ln(\Phi_s(f(\zeta))) + C,
 \label{eq:intergration_density}
 \end{equation}
-We extend the density-based volume rendering for active sensor to SDF-based. Starting from the passive SDF-based volume rendering \cite{wang2021neus}, We substitute the density $\tilde{\density}$ with opaque density in \ref{eq:sigmoid_density_}
+We extend the density-based volume rendering for active sensor to SDF-based. Starting from the passive SDF-based volume rendering \cite{wang2021neus}, We substitute the density $\tilde{\density}$ with opaque density in \cref{eq:sigmoid_density_}
 and evaluate the radiant power integrated from ray segment [a,b] with constant reflectivity $\reflectivity_a$.
 
 Consider the case where $-(\nabla f(\zeta)\cdot \mathbf{v})>0$ within the ray segment $[a,b]$, we have

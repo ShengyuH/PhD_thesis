@@ -1,4 +1,4 @@
-\section{Dynamic neural scene representation}
+\section{Dynamic Neural Scene Representation}
 
 \paragraph{Problem statement} 
 Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_t\}_{t=1}^T$ that have been compensated for ego-motion, along with tracked bounding boxes\footnote{We assume that the ground truth object detection and tracking annotations are available.} for dynamic vehicles $\mathcal{B} = \{\mathbf{B}_t^v\}_{v=1}^{N}$, where $T$ represents the total number of LiDAR scans, and $N$ is the count of dynamic vehicles. Each scan $\mathbf{X}_t$ is composed of $n_t$ rays, each ray $\mathbf{r}$ is described by the tuple $(\origin, \dir, \zeta, \intensity, \pdrop)$, where $\origin$ and $\dir$ denote the ray's origin and direction, $\zeta$ and $\intensity$ represent range and intensity values, and $\pdrop \in \{0,1\}$ indicates whether the ray is dropped or not due to insufficient returned radiant power.
@@ -6,7 +6,7 @@ Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_t\}_{t=1}^T$ that have
 
 The goal is to reconstruct the scene with a static-dynamic decomposed neural representation, that can enable the rendering of LiDAR scan $\mathbf{X}_{\text{tgt}}$ from novel viewpoint $\mathbf{T}_{\text{tgt}}$. This setup also facilitates various object manipulations, including altering object trajectories, and inserting or removing objects from the scene. The overview of our method is given in~\cref{fig:main}.
 
-\subsection{Neural scene decomposition} \label{sec: decomposition}
+\subsection{Neural Scene Decomposition} \label{sec: decomposition}
 We leverage the inductive bias that driving scenes can be decomposed into a static component and $N$ rigidly-moving dynamic components~\cite{huang2022dynamic,gojcic2021weakly}. Consequently, we establish $N+1$ neural fields. The neural field $\mathbf{F}_{\text{static}}$ is designated for the static component of the scene, capturing the unchanging background elements. Concurrently, the set of neural fields $\{\mathbf{F}^v\}_{v=1}^{N}$ is used to model the $N$ dynamic entities, specifically the vehicles in motion.
 
 

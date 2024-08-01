@@ -1,6 +1,6 @@
 \section{Experiments}
 \input{\subdir/fig/qualitative_waymodynamic}
-\subsection{Datasets and evaluation protocol}\label{sec:datasets}
+\subsection{Datasets and Evaluation Protocol}\label{sec:datasets}
 
 \paragraph{Real-world Dynamic scenes} 
 We construct \textit{Waymo Dynamic} dataset by selecting four representative scenes from Waymo Open dataset~\cite{sun2020scalability}, with multiple moving vehicles inside. These scenes are comprised of sequences of 50 consecutive frames. For evaluation purposes, every fifth frame is designated for testing, while the other 40 frames are allocated for training.
@@ -32,7 +32,7 @@ Regarding LiDAR simulation on static scenes, NFL~\cite{Huang2023nfl} and LiDARsi
 \input{\subdir/tables/quantitative_waymostatic}
 \input{\subdir/fig/ecdf_waymodynamic}
 \input{\subdir/fig/qualitative_waymostatic}
-\subsection{LiDAR novel view synthesis evaluation} \label{sec:lidar_eval}
+\subsection{LiDAR Novel View Synthesis Evaluation} \label{sec:lidar_eval}
 \paragraph{LiDAR NVS in dynamic scenes}
 Quantitative comparisons with baseline methods are detailed in~\cref{tab:waymodynamic}. \dynfl notably outperforms LiDARsim~\cite{manivasagam2020lidarsim} and UniSim~\cite{yang2023unisim} in range reconstruction. This improvement is largely due to our SDF-based neural scene representation, which incorporates the physical aspects of LiDAR sensing. Additionally, our method employs a ray drop test when rendering multiple neural fields, leading to a more accurate reconstruction of dynamic vehicles, as evidenced in~\cref{fig:errormap_dynamic} and further supported by the data in~\cref{fig:ecdf}.
 
@@ -53,7 +53,7 @@ In addition to dynamic scenes, we evaluate \dynfl against baseline methods in st
 
 
 
-\subsection{Ablation study}
+\subsection{Ablation Study}
 \paragraph{SDF-based volume rendering for active sensing}
 We begin by assessing the efficacy of our SDF-based volume rendering for active sensor, the results are shown in~\cref{tab:active_sensing}. When compared to our baseline that uses the SDF-based volume rendering for passive sensing, \dynfl demonstrates enhanced performance in both synthetic (\textit{TownClean}) and real-world (\textit{Waymo Interp} and \textit{Waymo Dynamic}) datasets, indicating the importance of incorporating the physical sensing process of LiDAR in addressing the inverse problem.
 
@@ -66,7 +66,7 @@ To validate the efficacy of our two-stage neural field composition approach, we 
 We examine the importance of the surface points' SDF constraint discussed in ~\cref{sec:optmisation} on \textit{Town Real} and \textit{Waymo Interp} datasets. The results shown in \cref{tab:surface_sdf} suggest that our method yields improved geometry reconstruction quality by additionally enforcing LiDAR points to have zero SDF values. 
 
 
-\subsection{Auxiliary task evaluations} 
+\subsection{Auxiliary Task Evaluations} 
 \label{sec:downstream}
 To assess the fidelity of our neural re-simulation and gauge the domain gap between re-simulated and real scans, we evaluate their applicability in two downstream tasks: object detection and semantic segmentation.
 
@@ -80,7 +80,7 @@ For semantic segmentation, we use the pre-trained SPVNAS model~\cite{tang2020sea
 
 
 
-\subsection{Scene editing}
+\subsection{Scene Editing}
 Beyond LiDAR novel view synthesis by adjusting the sensor configurations (\cf \cref{fig:lidar_nvs}), we additionally demonstrate the practicality of our compositional neural fields approach through two scene editing applications.
 
 \input{\subdir/fig/object_insertion}

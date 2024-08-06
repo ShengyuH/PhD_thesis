@@ -4,7 +4,9 @@
 
 Imagine waking up to a world where a service robot has already prepared your cappuccino and croissant, and an autonomous vehicle is ready to smoothly take you to your office. Advances in robotics and autonomous systems have the potential to revolutionize various aspects of our lives and numerous industries, including healthcare, transportation, and manufacturing. Central to these innovations is the capability to accurately model and understand complex dynamic physical environments, allowing for seamless and safe interactions with the real world.
 
-Simulation plays a critical role in the development of these intelligent systems. By providing controlled and authentic environments, simulations allow these systems to be rigorously tested and trained. This approach is particularly important for exploring scenarios that are either too rare or too dangerous to reproduce in real life. For instance, in autonomous driving, simulating scenarios such as sudden pedestrian crossings or severe weather conditions like snowstorms and heavy rain is crucial. Similarly, in healthcare, robots performing delicate surgeries can be trained in simulations to handle unexpected complications without risking patient safety. By simulating such scenarios, developers can ensure their systems can handle a wide range of conditions and challenges, thereby enhancing the overall robustness and reliability of autonomous systems. Thus, simulation not only accelerates the development process but also contributes to the safety and effectiveness of the deployed systems.
+One key factor in creating intelligent systems is access to large, high-quality datasets. In image processing, pre-training on ImageNet~\cite{deng2009imagenet} has led to significant advancements in computer vision. Similarly, in language processing, large language models~\cite{radford2018improving} trained on extensive text datasets have shown superior capabilities across various tasks. These examples highlight the transformative impact of substantial, high-quality datasets on developing intelligent systems. However, obtaining such datasets for autonomous robots is challenging. Collecting real-world data is often costly, time-consuming, and fraught with ethical and safety concerns, particularly in high-stakes domains like autonomous driving and service robotics. This data scarcity hinders the development and fine-tuning of algorithms needed for reliable performance in diverse and unpredictable environments.
+
+Simulation offers a viable solution to address this dataset issue. It provide controlled and realistic environments for rigorous testing and training of these systems, especially for scenarios that are too rare or dangerous to replicate in real life. For example, in autonomous driving, simulations can replicate sudden pedestrian crossings or severe weather conditions, such as snowstorms and heavy rain. In healthcare, robots performing delicate surgeries can be trained in simulations to handle unexpected complications without risking patient safety. By simulating such scenarios, developers can ensure their systems are prepared for a wide range of conditions and challenges, enhancing the overall robustness and reliability of autonomous systems. Thus, simulation not only accelerates development but also improves the safety and effectiveness of deployed systems.
 
 Traditional simulation approaches, such as those proposed in CARLA~\cite{dosovitskiy2017carla} and Isaac Sim~\cite{makoviychuk2021isaac}, have significantly advanced autonomous systems. However, these methods have several limitations. They are often costly and time-consuming to create, requiring extensive manual setup. This not only limits their scalability but also introduces a domain gap—the discrepancies between simulated environments and the real world. Such gaps can lead to underperformance when models trained in simulated settings are deployed in real-world scenarios. Therefore, while traditional simulations provide valuable insights and testing grounds, their limitations necessitate more efficient and scalable solutions to bridge the gap between simulation and reality.
 
@@ -29,7 +31,7 @@ Point cloud registration has been a long-standing research question. Although re
 Street scenes are often captured by RGB cameras and LiDAR sensors at high frequencies, comprising a static background, parked vehicles, and moving agents such as vehicles, bicycles, and pedestrians. Understanding these scene dynamics is essential for reconstruction and subsequent simulation. Previous works~\cite{li2020neural,gojcic2021weakly} either use unconstrained scene flow representations that may produce physically implausible motions or rely on only two frames, which do not account for the temporal smoothness of motions. Our objective is to design a method that handles multiple frames and accurately predicts physically viable motions.
 
 \noindent
-\textbf{\textit{Research Question 3: What is an appropriate neural scene representation and forward model for LiDAR simulation?}}
+\textbf{\textit{Research Question 3: What is a good neural scene representation and forward model for LiDAR simulation?}}
 
 After addressing motion estimation for both sparsely captured static scenes and densely captured dynamic scenes, the next step is to design a scene representation and a forward model for simulation. Prior work~\cite{manivasagam2020lidarsim} employs explicit surface reconstruction and ray-surfel casting for LiDAR scans simulation. However, explicit reconstruction often results in the loss of surface details, and such decoupled two-stage methods cannot directly optimize the scene reconstruction for simulation tasks. Our goal is to create an alternative neural scene representation and a forward model tailored to LiDAR sensors to faithfully reconstruct and simulate static LiDAR scans.
 
@@ -46,9 +48,9 @@ This thesis addresses the research questions outlined earlier and contributes to
 In \cref{chap:cvpr21}, we address the challenge of pairwise registration of point clouds with low overlap by introducing \acro, a neural architecture designed to detect overlap regions between two unregistered scans and focus on those regions when sampling feature points. This approach results in improved registration recall. The main contributions of this work are as follows:
 
 \begin{itemize}
-\item We analyze the reasons why existing registration pipelines fail in low-overlap scenarios.
-\item We propose a novel overlap attention block that facilitates early information exchange between the two point clouds and directs subsequent steps to focus on the overlap region.
-\item We develop a scheme to refine feature point descriptors by conditioning them on the respective other point cloud.
+\item We analyze the reasons why existing registration pipelines fail in low-overlap scenarios;
+\item We propose a novel overlap attention block that facilitates early information exchange between the two point clouds and directs subsequent steps to focus on the overlap region;
+\item We develop a scheme to refine feature point descriptors by conditioning them on the respective other point cloud;
 \item We introduce a novel loss function to train matchability scores, which enhances the sampling of better and more repeatable interest points.
 \end{itemize}
 
@@ -56,9 +58,9 @@ In \cref{chap:cvpr21}, we address the challenge of pairwise registration of poin
 In ~\cref{chap:eccv22}, we explore the motion representation in street scenes and introduce a novel approach for multi-frame point cloud accumulation from LiDAR sequences. Our method leverages the inductive biases inherent in outdoor street scenes, such as their geometric layout and object-level rigidity, resulting in enhanced motion estimation. The main contributions of this work are as follows:
 
 \begin{itemize}
-\item We propose a novel learnable model for the temporal accumulation of 3D point cloud sequences across multiple frames, enabling improved reasoning about motion over extended time sequences.
-\item Our model decomposes scenes into static background and agents that exhibit rigid motion over time, achieving holistic scene understanding, including foreground/background segmentation, motion segmentation, and per-object parametric motion compensation.
-\item The use of Birds-Eye-View projection in our method facilitates low-latency processing.
+\item We propose a novel learnable model for the temporal accumulation of 3D point cloud sequences across multiple frames, enabling improved reasoning about motion over extended time sequences;
+\item Our model decomposes scenes into static background and agents that exhibit rigid motion over time, achieving holistic scene understanding, including foreground/background segmentation, motion segmentation, and per-object parametric motion compensation'
+\item The use of Birds-Eye-View projection in our method facilitates low-latency processing;
 \item We demonstrate the effectiveness of our approach in enhancing surface reconstruction.
 \end{itemize}
 
@@ -66,10 +68,10 @@ In ~\cref{chap:eccv22}, we explore the motion representation in street scenes an
 In \cref{chap:iccv23}, we address the challenge of simulating LiDAR data from novel viewpoints or different sensor types. Unlike concurrent works~\cite{zhang2023nerflidar,tao2023lidarnerf} that treat LiDAR data merely as depth maps, we explore various sensor responses, including dropped rays, single returns, and dual returns. Compared to LiDARsim~\cite{manivasagam2020lidarsim}, our approach introduces an alternative neural scene representation, moving away from traditional explicit mesh or surface reconstructions. The contributions of this work are as follows:
 
 \begin{itemize}
-\item We devise a volume rendering technique specifically for LiDAR sensors.
-\item We incorporate beam divergence into the forward model to accurately simulate dual returns.
-\item We propose truncated volume rendering to account for secondary returns, thereby improving range prediction.
-\item We develop a LiDAR simulator capable of synthesizing scenes from 3D assets, serving as a test bed for evaluating viewpoints far from the original scan locations and studying the effects of different scan patterns.
+\item We devise a volume rendering technique specifically for LiDAR sensors;
+\item We incorporate beam divergence into the forward model to accurately simulate dual returns;
+\item We propose truncated volume rendering to account for secondary returns, thereby improving range prediction;
+\item We develop a LiDAR simulator capable of synthesizing scenes from 3D assets, serving as a test bed for evaluating viewpoints far from the original scan locations and studying the effects of different scan patterns;
 \item We introduce a novel closed-loop evaluation protocol that leverages real data to assess view synthesis in challenging perspectives.
 \end{itemize}
 
@@ -78,8 +80,8 @@ In \cref{chap:iccv23}, we address the challenge of simulating LiDAR data from no
 In \cref{chap:cvpr24}, we present DyNFL, a novel approach for high-fidelity simulation of LiDAR scans in dynamic driving scenes. DyNFL constructs editable neural fields from LiDAR measurements in dynamic environments, enabling modifications such as changing viewpoints, adjusting object positions, and adding or removing objects. By leveraging scene decomposition and neural field composition techniques, DyNFL achieves high fidelity with flexible editing capabilities. The main contributions of this work are as follows:
 
 \begin{itemize}
-\item We introduce a framework for constructing editable neural fields from dynamic LiDAR measurements.
-\item We propose a novel neural field composition technique for integrating assets reconstructed from other scenes.
+\item We introduce a framework for constructing editable neural fields from dynamic LiDAR measurements;
+\item We propose a novel neural field composition technique for integrating assets reconstructed from other scenes;
 \item We demonstrate the application of DyNFL in counterfactual scenario testing, providing a powerful tool for assessing the robustness of autonomous systems.
 \end{itemize}
 
@@ -144,20 +146,29 @@ This thesis includes the following 4 publications:
     Zhaoyi Wang, \textbf{Shengyu Huang}, Jemil Butt, Yuanzhou Cai, Matej Varga, Andreas Wieser \\
     \textit{in submission, 2024}
 
-    \item \noindent\textbf{ LoopSplat: Gaussian Splatting Registration for SLAM Loop Closure} \\[0.5em]
+    \item \noindent\textbf{ LoopSplat: Gaussian Splatting Registration for Loop Closure} \\[0.5em]
     Liyuan Zhu, Yue Li, Erik Sandström, \textbf{Shengyu Huang}, Konrad Schindler, Iro Armeni \\
     \textit{in submission, 2024}
 
 \end{itemize}
 
 
-
-
 \section{Relevance to Science and Economy}
+When asked, "What are the three most important problems in computer vision?", the renowned computer vision scientist Takeo Kanade famously responded, "Correspondence, correspondence, correspondence!" Indeed, correspondence problems are fundamental in computer vision as they are crucial for various applications, including 3D reconstruction~\cite{schoenberger2016mvs,schoenberger2016sfm}, optical flow estimation~\cite{dosovitskiy2015flownet,sun2018pwc}, and object recognition and tracking~\cite{tang2023emergent}, among others. 
+
+In this thesis, \cref{chap:cvpr21} focuses on the geometric point correspondence problems in 3D. Rather than merely improving local feature descriptors, we introduce an important concept in feature matching: keypoints should only be sampled for the matching task if they are in the overlap region. The proposed overlap attention module significantly enhances the robustness of registration methods and complements advancements in point cloud representation learning. In \cref{chap:eccv22}, we tackle object correspondence problems using sequential LiDAR scans. Our method robustly associates objects across time, despite their partial visibility, through accurate segmentation and clustering.
+
+Another vital aspect of 3D vision research is representation: what is the most efficient representation for a given task? \cref{chap:cvpr21} delves into rich geometric and semantic features in a high-dimensional latent space, subsequently decoding them into overlap scores to improve keypoint detection. \cref{chap:eccv22} proposes representing street scene dynamics using compact \textbf{SE(3)} transformations, overcoming the limitations of unconstrained scene flow representations~\cite{wu2019pointpwc}. Furthermore, \cref{chap:iccv23} introduces a novel neural scene representation for data-driven LiDAR simulation. This approach offers an alternative to explicit mesh or surfel representations, which often lose detail when modeling complex geometry. By combining the proposed motion representation with the scene representation, \cref{chap:eccv22} constructs a flexible and powerful neural simulator, advancing the field of data-driven neural simulation.
+
+
 \paragraph{Scientific recognition}
-The content presented in this thesis is derived from twelve papers I produced during my PhD, four of which are included in this thesis. Ten of these papers were published at renowned conferences in Computer Vision, Robotics, or Remote Sensing. Several of them received recognitions such as Best Paper Award, Best Paper Award Candidate, Oral, or Highlight papers. One paper was accepted at a workshop and won the Best Paper Award. Additionally, ten out of the twelve projects were open-sourced and received recognition from the community in the form of github stars. The datasets, code, and accompanying illustrative videos are available on my personal website: \url{shengyuh.github.io}.
+The content presented in this thesis is derived from threeteen papers I produced during my PhD, four of which are included in this thesis. Ten of these papers were published at renowned conferences in Computer Vision, Robotics, or Remote Sensing. Several of them received recognitions such as Best Young Author Award, Best Paper Award, Best Paper Award Candidate, Oral, or Highlight papers. Additionally, ten out of the threeteen projects were open-sourced and received recognition from the community in the form of github stars. The datasets, code, and accompanying illustrative videos are available on my personal website: \url{shengyuh.github.io}.
 
 \paragraph{Relevance to economy}
-The advancements in data-driven simulation and autonomous systems detailed in this thesis have significant economic implications, particularly for the automotive and service robotics industries. Enhanced simulation capabilities can accelerate the development and deployment of autonomous vehicles, reducing costs associated with physical prototyping and extensive road testing. This facilitates faster and safer integration of autonomous cars into transportation networks, potentially transforming infrastructure, improving traffic efficiency, and reducing accidents.
+The advancements in data-driven simulation detailed in this thesis have profound economic implications, especially for the rapidly expanding industries of automation and autonomous robotics. Enhanced simulation capabilities are crucial building blocks for these trends, particularly in the automotive and service robotics sectors.
 
-For service robots, improved simulation tools enable the creation of more reliable and versatile robots capable of performing tasks in various environments, from homes to hospitals. This can lead to significant labor cost reductions and increased productivity in service sectors. By automating repetitive tasks, these advanced autonomous systems promise to enhance quality of life and drive economic growth by streamlining daily tasks and professional services.
+In the automotive industry, improved simulation can significantly accelerate the development and deployment of autonomous vehicles. By reducing the need for physical prototyping and extensive road testing, these advancements lower development costs and expedite the integration of autonomous cars into transportation networks. This has the potential to transform infrastructure, improve traffic efficiency, and reduce accidents, thereby fostering safer and more efficient transportation systems.
+
+For service robots, advanced simulation tools enable the creation of more reliable and versatile robots capable of performing tasks in diverse environments, from homes to hospitals. This not only leads to significant labor cost reductions but also boosts productivity across various service sectors. By automating repetitive and labor-intensive tasks, these sophisticated autonomous systems can improve quality of life, streamline daily activities, and drive economic growth by improving efficiency in professional services.
+
+Overall, the core topics of this thesis, 3D representation and simulation, are essential for the advancement of automation and autonomous robotics. These technologies promise to revolutionize multiple industries, bringing about substantial economic benefits and shaping the future of work and daily life.

@@ -1,37 +1,105 @@
 \chapter{Conclusions}
 \label{chap:conclusion}
-placeholder
 
-\section{Lessons Learned}
-placeholder
-% -------
-\section{Limitations}
-Predator:
-1. the key point is not very accurate 
-2. no coarse matching, are not fully leveraging the feature matching at coarse level
+\section{Core contributions \& Applications}
+In this thesis, we advance the field of data-driven neural simulation for intelligent systems by innovating in two key areas: the representation and estimation of scene dynamics, and neural scene reconstruction.
 
-PCAccumulation:
-1. fully supervised methods, how to scale up to huge unlabeled datasets 
-2. how to spot and alleviate the domain gap
+~\cref{chap:cvpr21} makes a significant advancement in the long-standing challenge of point cloud registration by addressing the difficult task of registering point cloud pairs with low overlap. Through a careful examination of the failure cases of existing methods, we introduce the concept of the overlap region at the keypoint sampling step, thereby significantly enhancing the reliability of registration models with the novel overlap attention block. The simplicity and effectiveness of this method have led to its widespread adoption in point cloud registration. For example, \cite{qin2023geotransformer,yu2021cofinet} incorporate it into the coarse-to-fine point cloud registration pipeline to improve accuracy, while \cite{attaiki2021dpfm,li2022lepard} extend the overlap attention block to non-rigid registration methods. Zhang \etal~\cite{zhang2022pcr} utilize it for RGB-D registration tasks. Additionally, \cite{delitzas2024scenefun3d} employs it to construct datasets for scene understanding tasks, and \cite{wen2024foundationpose} demonstrates its potential in 6 DoF pose estimation.
 
-NFL:
-1. handle the adverse weather
+~\cref{chap:iccv23} presents a powerful neural scene reconstruction method for data-driven LiDAR simulation. This approach combines the superior representation capabilities of neural fields with a detailed, physical sensor model, enabling authentic LiDAR simulations from novel viewpoints and under different sensor configurations. By meticulously modeling various sensor responses, we have significantly enhanced the realism of simulated LiDAR scans, facilitating their adoption for closed-loop testing of autonomous navigation systems. This work has inspired subsequent research on LiDAR 4D reconstruction, such as \cite{zheng2024lidar4d,zhong20243d}. Additionally, NFL emphasizes the importance of an accurate sensor model and corresponding forward model when addressing various inverse problems using neural fields, as also highlighted by \cite{ehret2024radar,klinghoffer2024platonerf}. This research also led to my co-organization of the first workshop on "Neural Fields Beyond Conventional Cameras" at ECCV 2024.
 
-DyNFL:
-1. jointly optimise the poses to account for inaccurate object detection results 
-2. 
+\acro and NFL, detailed in \cref{chap:cvpr21} and \cref{chap:iccv23},  address the challenging tasks of motion estimation and neural reconstruction in static scenes. However, our world is predominantly dynamic. PCAccumlation, discussed in \cref{chap:eccv22}, introduces an efficient representation of scene dynamics by decomposing the scene into a static background and a set of rigidly moving agents, representing their motions using compact \textbf{SE(3)} transformations. By sequentially performing foreground-background segmentation, motion segmentation, instance association, and motion regression, we not only achieve highly accurate motion estimation but also develop a holistic understanding of the scenes. In \cref{chap:cvpr24}, we combine this motion representation with neural scene representation tailored for LiDAR simulation, creating a neural simulator that enables various scene editing capabilities, marking a significant step towards data-driven neural simulation.
+
+% \section{Outlook}
+% Looking into the future, there are various research fronts that we can advance: 
 
 
-\section{Outlook}
-Looking into the future, there are various research fronts that we can advance: 
+% \paragraph{Gaussian Splatting: a unified representation for point cloud and images}
+% Point cloud serves as initialisation, 2D foundation models can be distilled into 3D via reconstruction. 
 
-1. Multi-body dynamics reconstruction
-    1. leverage the vison foundation models, to scale up the multi-body dynamic reconstruction
-    2. one 3D backbone for most of the point cloud data 
-2. neural simulation:
-    1. how to integrate the learned shape priors to amid partial reconstruction 
-    2. how to additionally model the adverse weather in the inverse problem 
-    3. a scalable neural reconstruction that can circumvent the time-consuming optimisation, at least to some extent
-3. apply matching to neural representations
-    1. our gaussian splatting loop closure can be seen as one attempt on this front 
+% \paragraph{DUST3R / MAST3R}
 
+% \paragraph{How to combine feature matching and direct pose regression}
+% Predator can help improve registration under small overlap, but can still fail in extreme cases: small overlap, textureless region
+% How to smartly combine with the regression-based method ? 
+
+
+
+
+% \paragraph{Point cloud representation learning}
+% 1. a backbone that is computationally efficient, allows for joint training 
+% 2. a self-supervised training paradigm 
+% 3. leverage multiple modalities
+% 4. 
+
+
+% 2D Image processing has benefitted from self-supervised pretrianing on large datasets since deep learning got popularised, for different tasks. For example, the pretrained VGG-Net~\cite{simonyan2015very} is used to assess the genearted image visual quality; for many segmentation and detection tasks, people used pre-trained backbones on ImageNet for initialisation. This leads to better generalisation as also task-specific performance; Nowaways, the pre-training has been extends to Image-Text paired training, on datasets like Laion. This has been employed for many discriminative tasks, including semantic matching, depth estimation, normal estimation, etc. 
+
+% ULIP~\cite{xue2023ulip} aligns feature embedding for point cloud, image, and text. 
+
+% survey~\cite{xiao2023unsupervised}
+
+% MAE~\cite{he2022masked}
+
+% GD-MAE~\cite{yang2023gd}
+
+% Combine images and point cloud for pre-training, this is combined with MAE pre-training. UniPAD~\cite{yang2024unipad}
+
+% BUFFER~\cite{ao2023buffer} targets generalisation ability
+
+% GaussReg~\cite{chang2024gaussreg} combines images and point cloud for accurate registration
+
+% PointTransformerV3~\cite{wu2024point} scaling law could rule all. 
+
+% Point-BERT~\cite{yu2022point}
+
+% RIGA~\cite{yu2024riga}
+
+% PointPrompTraining~\cite{wu2024towards} 
+
+% GPT4Point~\cite{qi2024gpt4point}
+
+
+
+% Point cloud registration, in general, correspondence problems for point cloud processing, is highly relevant to point cloud pre-training. 
+
+% However, pretraining for 3D data has been largely lagged behind for multiple reasons. One reason is the lack of huge and diverse 3D datasets. Objaverse-XL is the biggest 3D datasest we have so far, but it's purely object-centric, and come in the form of mesh representation, sampling point cloud can lead to bias of the point cloud patterns. One interesting question is that if object-centric pre-training can generalise to scenes, and if not, how much 3D scene datasets we need to fill this gap. How many 3D scene datasets do we actually have ? 
+
+% What's the best point cloud processing backbone that can generalise across different scanning patterns ? 3D data are acquired through different sensing device, including multiview-rig, RGB-D camera, LiDAR sensor, terestial laser scanning, leading to different patterns. This poses quite a challenge for 3D feature extraction and local context aggregation. Can this be alleviated by large scale training or smarter operaors ?  What's the role of Transformer in point cloud processing ? How many patches does a point cloud worth ? 
+
+% What the best pre-training task. For 2D, MAE pretraining and DINO pretraining both work well 
+
+
+% \paragraph{2D foundation model for 3D tasks}
+% reconstruction of the scene dynamics has made a lot of progress, from several different aspects:
+% 1. leverage the vision foundation model to do open world understanding 
+% 2. Gaussian splatting or NeRF to get 3D consistency
+% 3. Diffusion model to inpaint the reconstruction
+% 4. What can vision foundation model do:
+% - open vocabulary object segmentation
+% - The emerging correspondence from pre-training 
+% 5. is it really feasible to have one backbone for all different point cloud ? 
+% - what's the good pre-training task for this
+% - what's the most suitable local feature aggregation methods 
+% - 
+
+
+% \paragraph{anology between point cloud and Gaussian Splatting}
+% - Perception directly over Gaussian Splatting, see it as a data representation, we did it for registration task. 
+% - Storing all the 2D foundational features are expensive
+% - 
+
+
+% \paragraph{Generalisable neural LiDAR fields}
+% - so far, our focus is more on the applications of NVS for testing, as per-scene optmisation is expensive 
+% - There're efforsts on Generalisable NeRF, with a few advantages:
+%     - faster inference 
+%     - more robust, can handle sparse views 
+
+% - Some ideas along LiDAR NVS with learned prior 
+%     - integrate the shape prior 
+%     - integrate the features from 2D images
+
+
+% - Can we do the same for LiDAR scans ? 
+%     - some hybrid representation for LiDAR NVS, combine GS with X

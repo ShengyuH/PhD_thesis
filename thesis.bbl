@@ -168,6 +168,14 @@ Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, and Hao Su.
 \newblock {TensorRF}: Tensorial radiance fields.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2022.
 
+\bibitem{chen2021mvsnerf}
+Anpei Chen, Zexiang Xu, Fuqiang Zhao, Xiaoshuai Zhang, Fanbo Xiang, Jingyi Yu,
+  and Hao Su.
+\newblock Mvsnerf: Fast generalizable radiance field reconstruction from
+  multi-view stereo.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2021.
+
 \bibitem{chen2016dynamic}
 Chi Chen and Bisheng Yang.
 \newblock Dynamic occlusion detection and inpainting of in situ captured
@@ -237,6 +245,14 @@ Paul~E Debevec, Camillo~J Taylor, and Jitendra Malik.
 \newblock Modeling and rendering architecture from photographs: A hybrid
   geometry-and image-based approach.
 \newblock In {\em Seminal Graphics Papers: Pushing the Boundaries}. 2023.
+
+\bibitem{deitke2024objaverse}
+Matt Deitke, Ruoshi Liu, Matthew Wallingford, Huong Ngo, Oscar Michel, Aditya
+  Kusupati, Alan Fan, Christian Laforte, Vikram Voleti, Samir~Yitzhak Gadre,
+  et~al.
+\newblock Objaverse-xl: A universe of 10m+ 3d objects.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2024.
 
 \bibitem{delitzas2024scenefun3d}
 Alexandros Delitzas, Ayca Takmaz, Federico Tombari, Robert Sumner, Marc
@@ -708,6 +724,11 @@ Seongjo Lee, Dahyeon Kang, Seoungjae Cho, Sungdae Sim, Yong~Woon Park, Kyhyun
 \newblock Lidar simulation method for low-cost repetitive validation.
 \newblock In {\em Advances in Computer Science and Ubiquitous Computing: CSA \&
   CUTE}, pages 237--242. Springer, 2015.
+
+\bibitem{leroy2024grounding}
+Vincent Leroy, Yohann Cabon, and J{\'e}r{\^o}me Revaud.
+\newblock Grounding image matching in 3d with mast3r.
+\newblock {\em arXiv preprint arXiv:2406.09756}, 2024.
 
 \bibitem{levoy1990efficient}
 Marc Levoy.
@@ -1182,6 +1203,22 @@ Johannes~Lutz Sch\"{o}nberger, Enliang Zheng, Marc Pollefeys, and Jan-Michael
 \newblock Pixelwise view selection for unstructured multi-view stereo.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2016.
 
+\bibitem{schuhmann2022laion}
+Christoph Schuhmann, Romain Beaumont, Richard Vencu, Cade Gordon, Ross
+  Wightman, Mehdi Cherti, Theo Coombes, Aarush Katta, Clayton Mullis, Mitchell
+  Wortsman, et~al.
+\newblock Laion-5b: An open large-scale dataset for training next generation
+  image-text models.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2022.
+
+\bibitem{seidenschwarz2024semoli}
+Jenny Seidenschwarz, Aljosa Osep, Francesco Ferroni, Simon Lucey, and Laura
+  Leal-Taix{\'e}.
+\newblock Semoli: What moves together belongs together.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2024.
+
 \bibitem{shade1998layered}
 Jonathan Shade, Steven Gortler, Li-wei He, and Richard Szeliski.
 \newblock Layered depth images.
@@ -1399,6 +1436,11 @@ Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan~T Barron, and
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2022.
 
+\bibitem{vidanapathirana2024multi}
+Kavisha Vidanapathirana, Shin-Fang Chng, Xueqian Li, and Simon Lucey.
+\newblock Multi-body neural scene flow.
+\newblock In {\em IEEE International Conference on 3D Vision (3DV)}, 2024.
+
 \bibitem{vogel20113d}
 Christoph Vogel, Konrad Schindler, and Stefan Roth.
 \newblock 3d scene flow estimation with a rigid motion prior.
@@ -1442,6 +1484,12 @@ Peng Wang, Lingjie Liu, Yuan Liu, Christian Theobalt, Taku Komura, and Wenping
 \newblock {NeuS}: Learning neural implicit surfaces by volume rendering for
   multi-view reconstruction.
 \newblock {\em arXiv preprint arXiv:2106.10689}, 2021.
+
+\bibitem{wang2024dust3r}
+Shuzhe Wang, Vincent Leroy, Yohann Cabon, Boris Chidlovskii, and Jerome Revaud.
+\newblock Dust3r: Geometric 3d vision made easy.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2024.
 
 \bibitem{wang2019associatively}
 Xinlong Wang, Shu Liu, Xiaoyong Shen, Chunhua Shen, and Jiaya Jia.
@@ -1529,6 +1577,13 @@ Lukas Winiwarter, Alberto Manuel~Esmor{\'\i}s Pena, Hannah Weiser, Katharina
   tracing-based simulation of topographic full-waveform 3d laser scanning.
 \newblock {\em Remote Sensing of Environment}, 2022.
 
+\bibitem{Wu2023dynfl}
+Hanfeng Wu, Xingxing Zuo, Stefan Leutenegger, Or~Litany, Konrad Schindler, and
+  Shengyu Huang.
+\newblock Dynamic lidar re-simulation using compositional neural fields.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2024.
+
 \bibitem{wu2020motionnet}
 Pengxiang Wu, Siheng Chen, and Dimitris~N Metaxas.
 \newblock {MotionNet}: Joint perception and motion prediction for autonomous
@@ -1563,6 +1618,28 @@ Wenxuan Wu, Zhi~Yuan Wang, Zhuwen Li, Wei Liu, and Li~Fuxin.
   scene flow estimation.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
 
+\bibitem{wu2024point}
+Xiaoyang Wu, Li~Jiang, Peng-Shuai Wang, Zhijian Liu, Xihui Liu, Yu~Qiao, Wanli
+  Ouyang, Tong He, and Hengshuang Zhao.
+\newblock Point transformer v3: Simpler faster stronger.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2024.
+
+\bibitem{wu2022point}
+Xiaoyang Wu, Yixing Lao, Li~Jiang, Xihui Liu, and Hengshuang Zhao.
+\newblock Point transformer v2: Grouped vector attention and partition-based
+  pooling.
+\newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  2022.
+
+\bibitem{wu2024towards}
+Xiaoyang Wu, Zhuotao Tian, Xin Wen, Bohao Peng, Xihui Liu, Kaicheng Yu, and
+  Hengshuang Zhao.
+\newblock Towards large-scale 3d representation learning with multi-dataset
+  point prompt training.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2024.
+
 \bibitem{wu20153d}
 Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang,
   and Jianxiong Xiao.
@@ -1589,6 +1666,12 @@ Yiheng Xie, Towaki Takikawa, Shunsuke Saito, Or~Litany, Shiqin Yan, Numair
   Khan, Federico Tombari, James Tompkin, Vincent Sitzmann, and Srinath Sridhar.
 \newblock Neural fields in visual computing and beyond.
 \newblock In {\em Computer Graphics Forum}, 2022.
+
+\bibitem{xu2023point}
+Jiabo Xu, Yirui Zhang, Yanni Zou, and Peter~X Liu.
+\newblock Point cloud registration with zero overlap rate and negative overlap
+  rate.
+\newblock {\em IEEE Robotics and Automation Letters (RA-L)}, 2023.
 
 \bibitem{yang2021auto4d}
 Bin Yang, Min Bai, Ming Liang, Wenyuan Zeng, and Raquel Urtasun.
@@ -1673,6 +1756,12 @@ Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
 \newblock Plenoxels: Radiance fields without neural networks.
 \newblock {\em arXiv preprint arXiv:2112.05131}, 2021.
 
+\bibitem{yu2021pixelnerf}
+Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa.
+\newblock pixelnerf: Neural radiance fields from one or few images.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, pages 4578--4587, 2021.
+
 \bibitem{yu2021cofinet}
 Hao Yu, Fu~Li, Mahdi Saleh, Benjamin Busam, and Slobodan Ilic.
 \newblock Cofinet: Reliable coarse-to-fine correspondences for robust
@@ -1735,6 +1824,12 @@ Yu~Zhang, Junle Yu, Xiaolin Huang, Wenhui Zhou, and Ji~Hou.
 \newblock Pcr-cg: Point cloud registration via deep explicit color and
   geometry.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2022.
+
+\bibitem{zhao2021point}
+Hengshuang Zhao, Li~Jiang, Jiaya Jia, Philip~HS Torr, and Vladlen Koltun.
+\newblock Point transformer.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2021.
 
 \bibitem{zheng2024lidar4d}
 Zehan Zheng, Fan Lu, Weiyi Xue, Guang Chen, and Changjun Jiang.

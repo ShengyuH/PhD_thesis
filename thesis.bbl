@@ -1311,6 +1311,13 @@ Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
+\bibitem{sun2023nothing}
+Tao Sun, Yan Hao, Shengyu Huang, Silvio Savarese, Konrad Schindler, Marc
+  Pollefeys, and Iro Armeni.
+\newblock Nothing stands still: A spatiotemporal benchmark on 3d point cloud
+  registration under large geometric and temporal change.
+\newblock {\em arXiv preprint arXiv:2311.09346}, 2023.
+
 \bibitem{sun2020circle}
 Yifan Sun, Changmao Cheng, Yuhan Zhang, Chi Zhang, Liang Zheng, Zhongdao Wang,
   and Yichen Wei.
@@ -1491,6 +1498,12 @@ Shuzhe Wang, Vincent Leroy, Yohann Cabon, Boris Chidlovskii, and Jerome Revaud.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2024.
 
+\bibitem{Wang-2019-117586}
+Xiaolong Wang.
+\newblock {\em Learning and Reasoning with Visual Correspondence in Time}.
+\newblock PhD thesis, Carnegie Mellon University, Pittsburgh, PA, September
+  2019.
+
 \bibitem{wang2019associatively}
 Xinlong Wang, Shu Liu, Xiaoyong Shen, Chunhua Shen, and Jiaya Jia.
 \newblock Associatively segmenting instances and semantics in point clouds.
@@ -1531,6 +1544,14 @@ Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay~E Sarma, Michael~M Bronstein, and
   Justin~M Solomon.
 \newblock Dynamic graph {CNN} for learning on point clouds.
 \newblock {\em ACM TOG}, 38(5), 2019.
+
+\bibitem{wang2023fegr}
+Zian Wang, Tianchang Shen, Jun Gao, Shengyu Huang, Jacob Munkberg, Jon
+  Hasselgren, Zan Gojcic, Wenzheng Chen, and Sanja Fidler.
+\newblock Neural fields meet explicit geometric representations for inverse
+  rendering of urban scenes.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2023.
 
 \bibitem{wang2023neural}
 Zian Wang, Tianchang Shen, Jun Gao, Shengyu Huang, Jacob Munkberg, Jon
@@ -1759,8 +1780,8 @@ Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
 \bibitem{yu2021pixelnerf}
 Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa.
 \newblock pixelnerf: Neural radiance fields from one or few images.
-\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
-  pattern recognition}, pages 4578--4587, 2021.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 4578--4587, 2021.
 
 \bibitem{yu2021cofinet}
 Hao Yu, Fu~Li, Mahdi Saleh, Benjamin Busam, and Slobodan Ilic.
@@ -1863,6 +1884,18 @@ Liyuan Zhu, Shengyu Huang, and Iro~Armeni Konrad~Schindler.
   changing 3d environments.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2024.
+
+\bibitem{Zhu_2023_CVPR}
+Liyuan Zhu, Yuru Jia, Shengyu Huang, Nicholas Meyer, Andreas Wieser, Konrad
+  Schindler, and Jordan Aaron.
+\newblock Deflow: Self-supervised 3d motion estimation of debris flow.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR) Workshops}, 2023.
+
+\bibitem{zhu2024_loopsplat}
+Liyuan Zhu, Yue Li, Erik Sandström, Shengyu Huang, Konrad Schindler, and Iro
+  Armeni.
+\newblock Loopsplat: Loop closure by registering 3d gaussian splats, 2024.
 
 \bibitem{zuo2023incremental}
 Xingxing Zuo, Nan Yang, Nathaniel Merrill, Binbin Xu, and Stefan Leutenegger.

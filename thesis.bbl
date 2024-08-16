@@ -628,6 +628,14 @@ Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe.
 \newblock Poisson surface reconstruction.
 \newblock In {\em Eurographics}, 2006.
 
+\bibitem{ke2023marigold}
+Bingxin Ke, Anton Obukhov, Shengyu Huang, Nando Metzger, Rodrigo~Caye Daudt,
+  and Konrad Schindler.
+\newblock Repurposing diffusion-based image generators for monocular depth
+  estimation.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2024.
+
 \bibitem{kerbl20233d}
 Bernhard Kerbl, Georgios Kopanas, Thomas Leimk{\"u}hler, and George Drettakis.
 \newblock 3d gaussian splatting for real-time radiance field rendering.
@@ -959,6 +967,12 @@ Michael Oechsle, Songyou Peng, and Andreas Geiger.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2021.
 
+\bibitem{nfcc}
+Workshop organisers.
+\newblock Neural fields beyond conventional cameras.
+\newblock \url{https://neural-fields-beyond-cams.github.io}.
+\newblock last accessed 2024.
+
 \bibitem{Ost_2022_CVPR}
 Julian Ost, Issam Laradji, Alejandro Newell, Yuval Bahat, and Felix Heide.
 \newblock Neural point light fields.
@@ -1114,6 +1128,12 @@ Zheng Qin, Hao Yu, Changjian Wang, Yulan Guo, Yuxing Peng, Slobodan Ilic, Dewen
 Alec Radford, Karthik Narasimhan, Tim Salimans, and Ilya Sutskever.
 \newblock Improving language understanding by generative pre-training.
 \newblock {\em OpenAI}, 2018.
+
+\bibitem{rashdi2022scanning}
+Rabia Rashdi, Joaqu{\'\i}n Mart{\'\i}nez-S{\'a}nchez, Pedro Arias, and Zhouyan
+  Qiu.
+\newblock Scanning technologies to building information modelling: A review.
+\newblock {\em MDPI Infrastructures}, 2022.
 
 \bibitem{rasshofer2011influences}
 Ralph~H Rasshofer, Martin Spies, and Hans Spies.
@@ -1694,6 +1714,13 @@ Jiabo Xu, Yirui Zhang, Yanni Zou, and Peter~X Liu.
   rate.
 \newblock {\em IEEE Robotics and Automation Letters (RA-L)}, 2023.
 
+\bibitem{xu2023point_isprs}
+Ningli Xu, Rongjun Qin, and Shuang Song.
+\newblock Point cloud registration for lidar and photogrammetric data: A
+  critical synthesis and performance analysis on classic and deep learning
+  algorithms.
+\newblock {\em ISPRS open journal of photogrammetry and remote sensing}, 2023.
+
 \bibitem{yang2021auto4d}
 Bin Yang, Min Bai, Ming Liang, Wenyuan Zeng, and Raquel Urtasun.
 \newblock Auto4d: Learning to label 4d objects from sequential point clouds.
@@ -1845,6 +1872,14 @@ Yu~Zhang, Junle Yu, Xiaolin Huang, Wenhui Zhou, and Ji~Hou.
 \newblock Pcr-cg: Point cloud registration via deep explicit color and
   geometry.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2022.
+
+\bibitem{Zhao_2023_ICCV}
+Heng Zhao, Shenxing Wei, Dahu Shi, Wenming Tan, Zheyang Li, Ye~Ren, Xing Wei,
+  Yi~Yang, and Shiliang Pu.
+\newblock Learning symmetry-aware geometry correspondences for 6d object pose
+  estimation.
+\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
+  2023.
 
 \bibitem{zhao2021point}
 Hengshuang Zhao, Li~Jiang, Jiaya Jia, Philip~HS Torr, and Vladlen Koltun.

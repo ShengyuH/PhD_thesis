@@ -87,6 +87,13 @@ To address this limitation, several works have proposed conditioning on local sh
 % 3D data are often captured and represented in the form of point cloud or multi-view images. How to effectively reconstruct the underlying geometry remains a challenging problem, due to sparse surface sampling, noisy points, varying lighting condition, or small overlap among multi-view images. OccupancyNetwork~\cite{} 
 
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.0\columnwidth]{imgs/nerf.png}
+    \caption{Neural radiance field (NeRF). Image is taken from~\cite{mildenhall2020nerf}.}
+    \label{fig:3d_representation}
+\end{figure}
+
 \paragraph{Novel view synthesis}
 Given a set of posed images capturing a scene, novel view synthesis involves rendering views from new viewpoints of the same scene. This is an important task due to its numerous applications in fields such as AR/VR, movies, visual effects, virtual try-on, and more. At its core, it addresses a fundamental challenge: effectively representing and reconstructing the underlying 3D scene from images, enabling rendering photorealistic and view-consistent images when projected back to the sensor domain. Previous methods employ various representations such as meshes~\cite{buehler2001unstructured,debevec2023modeling}, depth map warping~\cite{chen2023view,shade1998layered}, multi-plane images~\cite{flynn2019deepview,srinivasan2019pushing}, and volumes~\cite{henzler2018single,Lombardi2019,curless1996volumetric}, each offering unique approaches to reconstruct and render novel views. However, these methods often suffer from limited representation capacity due to the discretization of space, or difficulties during shape optimization.
 
@@ -94,6 +101,13 @@ Neural Radiance Fields (NeRF)\cite{mildenhall2020nerf} provides an alternative s
 
 NeRF~\cite{mildenhall2020nerf} is slow to optimize due to the dense ray sampling and the deep and wide MLP network required to model large-scale and complex scenes. Follow-up works have improved training efficiency by leveraging explicit feature grids~\cite{mueller2022instant,SunSC22,fridovich2022plenoxels,yu2021plenoxels} or factorized feature planes~\cite{chen2022tensorf,kplanes_2023}. For instance, Instant-NGP~\cite{mueller2022instant} optimizes a fixed-size hash lookup table. For each query point, it indexes the multi-resolution hash encoding according to the corresponding grid corners at each resolution, then linearly interpolates the features based on the coordinates within the grid. Features at different resolutions are concatenated to form the final local feature. Given the sufficient representation capacity of the multi-resolution hash encoding, the NeRF decoder can be a shallow MLP, significantly improving query efficiency. Another key component of Instant-NGP is the fast fully-fused MLPs of the tiny-cuda-nn framework~\cite{tiny-cuda-nn}, reducing training time to seconds. However, rendering efficiency at inference time remains limited by the expensive ray sampling. Gaussian Splatting~\cite{kerbl20233d} further enhances rendering efficiency by replacing volume rendering with rasterization.
 
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.0\columnwidth]{imgs/lidar_nvs.pdf}
+    \caption{LiDAR data.}
+    \label{fig:3d_representation}
+\end{figure}
 \paragraph{LiDAR novel view synthesis}
 Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor, such as one mounted on a vehicle. Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \textbf{SE(3)}$ and compromises $n_r$ rays. Every ray $\ray(\origin, \dir)$ records the following observations: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return. Here, the range refers to the distance from the sensor to the surface that reflected the ray, while intensity captures the radiometric information of the return signal. The ray drop value is set to 1 if the emitted ray is \textit{dropped}, meaning it either fails to hit any opaque surface or the return energy is too low, possibly due to absorption (\eg by water) or because the distance exceeds the sensing range. A ray records two returns when it barely interacts with the first surface, and the remaining energy continues to hit and reflect off a second surface. The goal is to reconstruct a scene representation that enables the rendering of a virtual LiDAR scan $\mathbf{X}_{tgt}$ from a novel sensor pose $\mathbf{T}_{tgt}$.
 

@@ -157,6 +157,12 @@ Rohan Chabra, Jan~E Lenssen, Eddy Ilg, Tanner Schmidt, Julian Straub, Steven
   reconstruction.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2020.
 
+\bibitem{chang2015shapenet}
+Angel~X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang,
+  Zimo Li, Silvio Savarese, Manolis Savva, Shuran Song, Hao Su, et~al.
+\newblock {ShapeNet}: An information-rich 3d model repository.
+\newblock {\em arXiv preprint arXiv:1512.03012}, 2015.
+
 \bibitem{chang2023neural}
 MingFang Chang, Akash Sharma, Michael Kaess, and Simon Lucey.
 \newblock Neural radiance field with {LiDAR} maps.
@@ -389,6 +395,12 @@ Artem Filatov, Andrey Rykov, and Viacheslav Murashkin.
   sequence of lidar point clouds.
 \newblock In {\em IEEE International Conference on Robotics and Automation
   (ICRA)}, 2020.
+
+\bibitem{ransac}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: a paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Commun. ACM}, 1981.
 
 \bibitem{flynn2019deepview}
 John Flynn, Michael Broxton, Paul Debevec, Matthew DuVall, Graham Fyffe, Ryan
@@ -781,6 +793,13 @@ Xueqian Li, Jhony Kaesemodel~Pontes, and Simon Lucey.
 \newblock Neural scene flow prior.
 \newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
   2021.
+
+\bibitem{li2023fast}
+Xueqian Li, Jianqiao Zheng, Francesco Ferroni, Jhony~Kaesemodel Pontes, and
+  Simon Lucey.
+\newblock Fast neural scene flow.
+\newblock In {\em IEEE International Conference on Computer Vision (ICCV)},
+  2023.
 
 \bibitem{li2022lepard}
 Yang Li and Tatsuya Harada.

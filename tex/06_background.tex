@@ -1,7 +1,10 @@
 \chapter{Background}
 \label{chap:background}
 
-In this chapter, I provide the background for the thesis. ~\cref{chap:cvpr21} and ~\cref{chap:eccv22} address registration and scene flow estimation tasks from point cloud data, while ~\cref{chap:iccv23} and ~\cref{chap:cvpr24} focus on LiDAR novel view synthesis task using neural fields representation. In this following, I first introduce various ways to capture point cloud data in~\cref{sec:bg_pc_caputure}. Next, I discuss point cloud processing techniques in ~\cref{sec:bg_pc_process} and neural fields in visual computing in ~\cref{sec:bg_neural_field}. Finally, I will briefly introduce the three tasks tackled in this thesis in ~\cref{sec:bg_problems}. Detailed related works and background for each specific task are discussed in subsequent chapters.
+In this chapter, I provide the background for the thesis. I begin by introducing various ways to capture point cloud data in~\cref{sec:bg_pc_caputure} and then discuss learning-based point cloud processing tecniques in ~\cref{sec:bg_pc_process}, as these topics are central to all four core chapters. I then present two point cloud correspondences problems: point cloud registration and scene flow estimation~(\cref{sec:bg_problems}), which are the focus of \cref{chap:cvpr21} and \cref{chap:eccv22}. Finally, I introduce neural fields in visual computing in ~\cref{sec:bg_neural_field}. This is the core scene representation in~\cref{chap:iccv23} and ~\cref{chap:cvpr24}. Detailed related works and background for each specific task are discussed in subsequent chapters.
+
+
+% ~\cref{chap:cvpr21} and ~\cref{chap:eccv22} address registration and scene flow estimation tasks from point cloud data, while ~\cref{chap:iccv23} and ~\cref{chap:cvpr24} focus on LiDAR novel view synthesis task using neural fields representation. In this following, 
 
 
 \begin{figure}[t]
@@ -11,22 +14,19 @@ In this chapter, I provide the background for the thesis. ~\cref{chap:cvpr21} an
     \label{fig:3d_representation}
 \end{figure}
 
-
 \section{Point Cloud Capturing}
 \label{sec:bg_pc_caputure}
 3D data can be represented in various forms (\cf \cref{fig:3d_representation}), including multi-view images~\cite{su2015multi,qi2016volumetric}, voxels~\cite{wu20153d,maturana2015voxnet}, point clouds~\cite{qi2017pointnet,wang2019dynamic}, polygon meshes~\cite{hanocka2019meshcnn,NEURIPS2020_0a656cc1}, and implicit representations~\cite{mescheder2019occupancy,park2019deepsdf,chen2019learning,yang2021geometry}. Among these, point clouds are favored for their scalability and reduced complexity compared to voxels and meshes, and their explicitness compared to multi-view images and implicit representations. In its simplest form, a point cloud represents 3D geometry as a set of unordered points, where each point encodes the 3D coordinates. Depending on the capturing device, these points may also include color information and intensity values, which provide radiometric information that can be used to infer surface material properties. Various sensors can capture point cloud data, each offering distinct working principles, levels of accuracy, and application scenarios.
 
-\noindent
 \textbf{LiDAR (Light Detection and Ranging)} uses laser pulses to measure distances with centimeter-level accuracy. Unlike cameras, LiDAR is an active sensor, meaning it operates independently of ambient light, making it highly reliable for 24/7 operations. With a wide field of view, LiDAR sensors can capture a comprehensive view of the surroundings in all directions simultaneously. These advantages, along with its proven reliability, have made LiDAR a key technology in autonomous driving (AV) and robot navigation. Datasets like KITTI~\cite{geiger2012we}, Waymo~\cite{sun2020scalability}, and nuScenes~\cite{caesar2020nuscenes} are all captured using LiDAR sensors. KITTI and Waymo employ 64-beam LiDAR, while nuScenes uses a 32-beam LiDAR, which offers lower vertical resolution but higher capture frequency (10 Hz for 64-beam versus 20 Hz for 32-beam LiDAR). The resulting LiDAR data typically exhibit a layered pattern, with each layer corresponding to a specific vertical angle. The point cloud is denser near the sensor and becomes sparser at greater distances, which poses challenges for point cloud processing techniques.
 
-\noindent
 \textbf{Terrestrial Laser Scanning (TLS)}, similar to LiDAR, operates by emitting laser pulses to measure distances but remains stationary during data collection. This stationary operation results in highly detailed and precise point clouds with millimeter-level accuracy, making TLS ideal for applications requiring fine-grained detail, such as surface reconstruction, building information modeling (BIM), heritage preservation, and structural analysis. Well-known examples of TLS datasets include the Stanford 3D Scanning Repository~\cite{curless1996volumetric} and the ETH ASL point cloud registration dataset~\cite{Pomerleau_2012}.
 
-\noindent
 \textbf{RGB-D cameras}, such as Microsoft Kinect and Intel RealSense, integrate standard RGB imaging with depth sensing to capture both color and depth information simultaneously. These cameras typically use either structured light or Time-of-Flight (ToF) technology to generate depth maps, which are then combined with RGB data to create a sparse 3D point cloud with color information. To obtain a dense point cloud, multiple RGB-D frames can be fused using TSDF fusion~\cite{curless1996volumetric,zeng20163dmatch}. While RGB-D cameras are valued for their ability to capture rich 3D data in real-time at relatively low cost and moderate accuracy, typically within a few millimeters, they often face challenges with transparent or highly reflective surfaces. This issue arises because the light used to measure depth can either pass through transparent materials or be reflected away from the sensor, resulting in inaccuracies or gaps in the depth data. Despite these challenges, RGB-D cameras are widely used in robotics, augmented reality, and human-computer interaction. Notable datasets captured using RGB-D cameras include the NYU Depth Dataset~\cite{Silberman_ECCV12}, ScanNet~\cite{dai2017scannet}, and 3DMatch~\cite{zeng20163dmatch}.
 
-\noindent
 \textbf{Stereo cameras} capture two or more images from slightly different angles, and by comparing these images, they calculate disparity maps to generate a 3D point cloud. The accuracy of depth estimation depends on the baseline distance between cameras, image resolution, and the stereo matching algorithm. They may struggle in low-light conditions or with featureless surfaces, where establishing correspondences between the images becomes difficult. Stereo cameras are widely used in photogrammetry for 3D reconstruction. Notable datasets include the Middlebury Stereo Dataset~\cite{scharstein2002taxonomy} and ETH3D stereo benchmark~\cite{schops2017multi}.
+
+In addition to capturing point cloud data with various sensors, \textbf{surface sampling} is another technique used to generate point clouds from polygonal meshes. Notable examples include the ModelNet40~\cite{wu2015ModelNet} and ShapeNet~\cite{chang2015shapenet} datasets, which consist of 3D CAD models of objects, with point clouds obtained by sampling points from the mesh surfaces. Common sampling strategies include random, grid, and uniform sampling. A more advanced technique, Farthest Point Sampling (FPS)~\cite{qi2017pointnet++}, samples a fixed number of points by maximizing the distances between them, ensuring broad coverage of the surface surface.
 
 \section{Point Cloud Processing}
 \label{sec:bg_pc_process}
@@ -45,6 +45,31 @@ Addressing the inherent sparsity of point cloud data, sparse convolution methods
 Bird's Eye View (BEV) projection transforms point clouds into a top-down 2D grid representation, simplifying the data structure and making it compatible with traditional 2D convolutional neural networks. This technique is widely used in autonomous driving for tasks like object detection~\cite{zhou2018voxelnet,lang2019pointpillars} and semantic segmentation~\cite{aksoy2020salsanet}, leveraging efficient 2D CNN architectures. The main advantage is computational efficiency and ease of integration with existing 2D CNN frameworks. However, the projection can lead to loss of height information and resolution, potentially affecting 3D feature extraction accuracy. Advanced approaches combine BEV with other local feature aggregations. PointPillars~\cite{lang2019pointpillars} applies PointNet~\cite{qi2017pointnet} within each grid to aggregate local context before applying 2D operations.
 
 \paragraph{Relevance to my works} In~\cref{chap:cvpr21}, we adopt both point convolution~\cite{thomas2019kpconv} and sparse convolution~\cite{choy2019Minkowski} to build the feature extraction backbone. In~\cref{chap:eccv22}, we combine point-wise MLP and BEV projection to handle LiDAR scans captured in street scenes. 
+
+\section{Point Cloud Correspondence Problems}
+\label{sec:bg_problems}
+\paragraph{Point cloud registration}
+Consider two unposed point clouds $\mathbf{P} \in \mathbb{R}^{3 \times N} $, and $\mathbf{Q} \in \mathbb{R}^{3 \times M}$ that measure the same \textbf{rigid} and \textbf{static} scene. The task is to recover a rigid transformation $\mathbf{T}_{\mathbf{P} \rightarrow \mathbf{Q}}$ with parameters $\mathbf{R} \in SO(3)$ and $\mathbf{t} \in \mathbb{R}^{3 \times 1}$ that aligns %
+$\mathbf{P}$ to $\mathbf{Q}$:
+\begin{equation}
+    \mathbf{Q}' = \mathbf{R} \cdot \mathbf{P}' + \mathbf{t},
+\end{equation}
+where $\mathbf{P}'$ and $\mathbf{Q}'$ are subsets of $\mathbf{P}$ and $\mathbf{Q}$, respectively, that lie within the overlapping region. Here, $(\mathbf{P}'_i, \mathbf{Q}'_i)$ represents a correspondence, with $\mathbf{P}'_i = \mathbf{P}'[:,i]$.  The optimal rotation $\mathbf{R}^*$ and translation $\mathbf{t}^*$ are typically obtained by first building correspondences in feature space, and then solving the following least-squres problem:
+\begin{equation}
+    \mathbf{R}^*, \mathbf{t}^* = \arg \min_{\mathbf{R}, \mathbf{t}} \sum_{i=1}^N \| \mathbf{R} \cdot \mathbf{P}_i + \mathbf{t} - \phi(\mathbf{P}_i, \mathbf{Q}) \|_2,
+\end{equation}
+where $\|\!\cdot\!\|_2$ is the Euclidean norm, $\phi(\mathbf{P}_i, \mathbf{Q})$ identifies the correspondence of $\mathbf{P}_i$ within $\mathbf{Q}$. This can be solved via Kabsch~\cite{kabsch1976solution} or RANSAC~\cite{ransac} algorithms.
+
+\paragraph{Scene flow estimation}
+Given two unposed point clouds $\mathbf{P} \in \mathbb{R}^{3 \times N} $, and $\mathbf{Q} \in \mathbb{R}^{3 \times N}$ that capture the same scene, the goal is to estimate flow vectors $\mathbf{V}_{\mathbf{P} \rightarrow \mathbf{Q}} \in \mathbb{R}^{3 \times N}$ that align $\mathbf{P}$ with $\mathbf{Q}$ such that:
+\begin{equation}
+    \mathbf{Q}' = \mathbf{P}' + \mathbf{V},
+\end{equation}
+where $\mathbf{P}'$ and $\mathbf{Q}'$ are re-ordered variants of $\mathbf{P}$ and $\mathbf{Q}$,respectively, and each pair $(\mathbf{P}'_i, \mathbf{Q}'_i)$ serves as a correspondence. Directly solving the task by establishing point-wise correspondence~\cite{wu2019pointpwc} assumes a one-to-one mapping between the two point clouds, an assumption that often fails in real-world scenarios (\eg Waymo~\cite{sun2020scalability} and nuScenes~\cite{caesar2020nuscenes}) due to occlusions or significant ego motion between two capturing epochs. Instead, relying on priors such as rigidity~\cite{gojcic2021weakly} and local smoothness~\cite{li2020neural} can be more effective. If the scene is static and rigid, scene flow estimation simplifies to point cloud registration, where the flow vectors can be expressed through rigid transformation as:
+\begin{equation}
+    \mathbf{V} = \mathbf{R}\cdot \mathbf{P}' + \mathbf{t} - \mathbf{P}'.
+\end{equation}
+In cases where the scene comprises multiple rigidly moving objects, the flow vectors for each object can be expressed as a combination of ego motion and the object's own motion. For scenes undergoing non-rigid deformations, unconstrained flow vectors must be estimated, but these can still be regularized using local smoothness terms, for example, through the smoothness inductive bias of multi-layer perceptrons~\cite{li2020neural,li2023fast}.
 
 
 \section{Neural Field in Visual Computing}
@@ -69,8 +94,11 @@ Neural Radiance Fields (NeRF)\cite{mildenhall2020nerf} provides an alternative s
 
 NeRF~\cite{mildenhall2020nerf} is slow to optimize due to the dense ray sampling and the deep and wide MLP network required to model large-scale and complex scenes. Follow-up works have improved training efficiency by leveraging explicit feature grids~\cite{mueller2022instant,SunSC22,fridovich2022plenoxels,yu2021plenoxels} or factorized feature planes~\cite{chen2022tensorf,kplanes_2023}. For instance, Instant-NGP~\cite{mueller2022instant} optimizes a fixed-size hash lookup table. For each query point, it indexes the multi-resolution hash encoding according to the corresponding grid corners at each resolution, then linearly interpolates the features based on the coordinates within the grid. Features at different resolutions are concatenated to form the final local feature. Given the sufficient representation capacity of the multi-resolution hash encoding, the NeRF decoder can be a shallow MLP, significantly improving query efficiency. Another key component of Instant-NGP is the fast fully-fused MLPs of the tiny-cuda-nn framework~\cite{tiny-cuda-nn}, reducing training time to seconds. However, rendering efficiency at inference time remains limited by the expensive ray sampling. Gaussian Splatting~\cite{kerbl20233d} further enhances rendering efficiency by replacing volume rendering with rasterization.
 
+\paragraph{LiDAR novel view synthesis}
+Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor, such as one mounted on a vehicle. Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \textbf{SE(3)}$ and compromises $n_r$ rays. Every ray $\ray(\origin, \dir)$ records the following observations: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return. Here, the range refers to the distance from the sensor to the surface that reflected the ray, while intensity captures the radiometric information of the return signal. The ray drop value is set to 1 if the emitted ray is \textit{dropped}, meaning it either fails to hit any opaque surface or the return energy is too low, possibly due to absorption (\eg by water) or because the distance exceeds the sensing range. A ray records two returns when it barely interacts with the first surface, and the remaining energy continues to hit and reflect off a second surface. The goal is to reconstruct a scene representation that enables the rendering of a virtual LiDAR scan $\mathbf{X}_{tgt}$ from a novel sensor pose $\mathbf{T}_{tgt}$.
+
+
+
 \paragraph{Relevance to my works} In ~\cref{chap:iccv23} and ~\cref{chap:cvpr24}, we utilize Instant-NGP as the backbone for our neural LiDAR field. In FEGR~\cite{wang2023neural}, we integrate both neural fields and meshes for inverse rendering tasks. For large-scale scene modeling in ImpliCity~\cite{stucker2022implicity}, we employ ConvOccNet~\cite{peng2020convolutional}. Additionally, in LivingScene~\cite{zhu2023living}, we use DeepSDF~\cite{park2019deepsdf} to model shapes.
 
 
-\section{Problem statements}
-\label{sec:bg_problems}

@@ -240,6 +240,13 @@ Marco Cuturi.
 \newblock {\em Advances in Neural Information Processing Systems (NeurIPS)},
   2013.
 
+\bibitem{dai2017scannet}
+Angela Dai, Angel~X. Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser,
+  and Matthias Nie{\ss}ner.
+\newblock Scannet: Richly-annotated 3d reconstructions of indoor scenes.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2017.
+
 \bibitem{debevec2023modeling}
 Paul~E Debevec, Camillo~J Taylor, and Jitendra Malik.
 \newblock Modeling and rendering architecture from photographs: A hybrid
@@ -396,6 +403,13 @@ Sara Fridovich-Keil, Alex Yu, Matthew Tancik, Qinhong Chen, Benjamin Recht, and
 \newblock Plenoxels: Radiance fields without neural networks.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2022.
+
+\bibitem{geiger2012we}
+Andreas Geiger, Philip Lenz, and Raquel Urtasun.
+\newblock Are we ready for autonomous driving? the kitti vision benchmark
+  suite.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2012.
 
 \bibitem{geiger2012kitti}
 Andreas Geiger, Philip Lenz, and Raquel Urtasun.
@@ -953,6 +967,11 @@ Vinod Nair and Geoffrey~E Hinton.
 \newblock In {\em IEEE International Conference on Machine Learning (ICML)},
   2010.
 
+\bibitem{Silberman_ECCV12}
+Pushmeet~Kohli Nathan~Silberman, Derek~Hoiem and Rob Fergus.
+\newblock Indoor segmentation and support inference from rgbd images.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2012.
+
 \bibitem{niemeyer2020differentiable}
 Michael Niemeyer, Lars Mescheder, Michael Oechsle, and Andreas Geiger.
 \newblock Differentiable volumetric rendering: Learning implicit 3d
@@ -1058,6 +1077,11 @@ Fran{\c{c}}ois Pomerleau, Philipp Kr{\"u}si, Francis Colas, Paul Furgale, and
 \newblock Long-term 3d map maintenance in dynamic environments.
 \newblock In {\em IEEE International Conference on Robotics and Automation
   (ICRA)}, 2014.
+
+\bibitem{Pomerleau_2012}
+Fran{\c c}ois Pomerleau, M.~Liu, Francis Colas, and Roland Siegwart.
+\newblock {Challenging data sets for point cloud registration algorithms}.
+\newblock {\em The International Journal of Robotics Research (IJRR)}, 2012.
 
 \bibitem{pumarola2021d}
 Albert Pumarola, Enric Corona, Gerard Pons-Moll, and Francesc Moreno-Noguer.
@@ -1205,6 +1229,12 @@ Paul-Edouard Sarlin, Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
 \newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, 2020.
 
+\bibitem{scharstein2002taxonomy}
+Daniel Scharstein and Richard Szeliski.
+\newblock A taxonomy and evaluation of dense two-frame stereo correspondence
+  algorithms.
+\newblock {\em International Journal of Computer Vision (IJCV)}, 2002.
+
 \bibitem{schauer2018peopleremover}
 Johannes Schauer and Andreas N{\"u}chter.
 \newblock The peopleremover—removing dynamic objects from 3-d point cloud
@@ -1222,6 +1252,14 @@ Johannes~Lutz Sch\"{o}nberger, Enliang Zheng, Marc Pollefeys, and Jan-Michael
   Frahm.
 \newblock Pixelwise view selection for unstructured multi-view stereo.
 \newblock In {\em European Conference on Computer Vision (ECCV)}, 2016.
+
+\bibitem{schops2017multi}
+Thomas Schops, Johannes~L Schonberger, Silvano Galliani, Torsten Sattler,
+  Konrad Schindler, Marc Pollefeys, and Andreas Geiger.
+\newblock A multi-view stereo benchmark with high-resolution images and
+  multi-camera videos.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2017.
 
 \bibitem{schuhmann2022laion}
 Christoph Schuhmann, Romain Beaumont, Richard Vencu, Cade Gordon, Ross

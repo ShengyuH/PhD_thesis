@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{chap:background}
 
-In this chapter, I provide the background for the thesis. I begin by introducing various ways to capture point cloud data in~\cref{sec:bg_pc_caputure} and then discuss learning-based point cloud processing tecniques in ~\cref{sec:bg_pc_process}, as these topics are central to all four core chapters. I then present two point cloud correspondences problems: point cloud registration and scene flow estimation~(\cref{sec:bg_problems}), which are the focus of \cref{chap:cvpr21} and \cref{chap:eccv22}. Finally, I introduce neural fields in visual computing in ~\cref{sec:bg_neural_field}. This is the core scene representation in~\cref{chap:iccv23} and ~\cref{chap:cvpr24}. Detailed related works and background for each specific task are discussed in subsequent chapters.
+In this chapter, I provide the background for the thesis. I begin by introducing various ways to capture point cloud data in~\cref{sec:bg_pc_caputure} and then discuss learning-based point cloud processing tecniques in ~\cref{sec:bg_pc_process}, as these topics are central to all four core chapters. I then present two point cloud correspondences problems~(\cref{sec:bg_problems}): point cloud registration (\cref{fig:bg_registration}) and scene flow estimation(\cref{fig:bg_sceneflow}), which are the focus of \cref{chap:cvpr21} and \cref{chap:eccv22}. Finally, I introduce neural fields in visual computing in ~\cref{sec:bg_neural_field}. This is the core scene representation in~\cref{chap:iccv23} and ~\cref{chap:cvpr24}. Detailed related works and background for each specific task are discussed in subsequent chapters.
 
 
 % ~\cref{chap:cvpr21} and ~\cref{chap:eccv22} address registration and scene flow estimation tasks from point cloud data, while ~\cref{chap:iccv23} and ~\cref{chap:cvpr24} focus on LiDAR novel view synthesis task using neural fields representation. In this following, 
@@ -10,7 +10,7 @@ In this chapter, I provide the background for the thesis. I begin by introducing
 \begin{figure}[t]
     \centering
     \includegraphics[width=1.0\columnwidth]{imgs/3d_representation.png}
-    \caption{Different 3D representations. Image is taken from~\cite{mescheder2019occupancy}.}
+    \caption{\textbf{Different 3D representations}. Image is taken from~\cite{mescheder2019occupancy}. Voxel grids represent 3D data using discrete volumetric cells, point clouds consist of unordered points, meshes capture surfaces through a collection of vertices, edges, and faces, while implicit representations model 3D surfaces via the continuous decision boundary of a classifier $f_{\theta}()$.}
     \label{fig:3d_representation}
 \end{figure}
 
@@ -48,6 +48,14 @@ Bird's Eye View (BEV) projection transforms point clouds into a top-down 2D grid
 
 \section{Point Cloud Correspondence Problems}
 \label{sec:bg_problems}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{imgs/registration.png}
+    \caption{Point cloud registration is generally addressed by first establishing correspondences (point pairs connected by \textcolor{red}{red} and \textcolor{green}{green} lines) between two unaligned point cloud fragments, and then solving \cref{eq:bg_registration} to determine the final rigid transformation, consisting of the optimal rotation matrix $\mathbf{R}^*$ and translation $\mathbf{t}^*$.}
+    \label{fig:bg_registration}
+\end{figure}
+
 \paragraph{Point cloud registration}
 Consider two unposed point clouds $\mathbf{P} \in \mathbb{R}^{3 \times N} $, and $\mathbf{Q} \in \mathbb{R}^{3 \times M}$ that measure the same \textbf{rigid} and \textbf{static} scene. The task is to recover a rigid transformation $\mathbf{T}_{\mathbf{P} \rightarrow \mathbf{Q}}$ with parameters $\mathbf{R} \in SO(3)$ and $\mathbf{t} \in \mathbb{R}^{3 \times 1}$ that aligns %
 $\mathbf{P}$ to $\mathbf{Q}$:
@@ -57,8 +65,24 @@ $\mathbf{P}$ to $\mathbf{Q}$:
 where $\mathbf{P}'$ and $\mathbf{Q}'$ are subsets of $\mathbf{P}$ and $\mathbf{Q}$, respectively, that lie within the overlapping region. Here, $(\mathbf{P}'_i, \mathbf{Q}'_i)$ represents a correspondence, with $\mathbf{P}'_i = \mathbf{P}'[:,i]$.  The optimal rotation $\mathbf{R}^*$ and translation $\mathbf{t}^*$ are typically obtained by first building correspondences in feature space, and then solving the following least-squres problem:
 \begin{equation}
     \mathbf{R}^*, \mathbf{t}^* = \arg \min_{\mathbf{R}, \mathbf{t}} \sum_{i=1}^N \| \mathbf{R} \cdot \mathbf{P}_i + \mathbf{t} - \phi(\mathbf{P}_i, \mathbf{Q}) \|_2,
+\label{eq:bg_registration}
 \end{equation}
 where $\|\!\cdot\!\|_2$ is the Euclidean norm, $\phi(\mathbf{P}_i, \mathbf{Q})$ identifies the correspondence of $\mathbf{P}_i$ within $\mathbf{Q}$. This can be solved via Kabsch~\cite{kabsch1976solution} or RANSAC~\cite{ransac} algorithms.
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.0\columnwidth]{imgs/sceneflow.pdf}
+    \caption{\textbf{Scene flow estimation}. Images are originally shown in~\cite{liu2019flownet3d}. In the real world example from KITTI dataset~\cite{geiger2012we}, the Lidar points are colored to indicate points as from source point cloud \textcolor{red}{$\mathbf{P}$}, target point cloud \textcolor{green}{$\mathbf{Q}$}, and motion compensated point cloud \textcolor{blue}{$\mathbf{P} + \mathbf{V}$}.}
+    \label{fig:bg_sceneflow}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{imgs/multibody_sf.pdf}
+    \caption{Instead of predicting unconstrained flow vectors, multi-body scene flow estimation methods~\cite{huang2022dynamic,gojcic2021weakly,zhu2023living} decompose the scene into multiple movable or moving objects (with instances color-coded differently in the first point cloud), and then align the two point clouds by predicting a set of rigid transformations $\{\mathbf{T}_i\}$, which account for both ego motion and the motions of individual objects.}
+    \label{fig:bg_multibody_sf}
+\end{figure}
 
 \paragraph{Scene flow estimation}
 Given two unposed point clouds $\mathbf{P} \in \mathbb{R}^{3 \times N} $, and $\mathbf{Q} \in \mathbb{R}^{3 \times N}$ that capture the same scene, the goal is to estimate flow vectors $\mathbf{V}_{\mathbf{P} \rightarrow \mathbf{Q}} \in \mathbb{R}^{3 \times N}$ that align $\mathbf{P}$ with $\mathbf{Q}$ such that:
@@ -69,7 +93,7 @@ where $\mathbf{P}'$ and $\mathbf{Q}'$ are re-ordered variants of $\mathbf{P}$ an
 \begin{equation}
     \mathbf{V} = \mathbf{R}\cdot \mathbf{P}' + \mathbf{t} - \mathbf{P}'.
 \end{equation}
-In cases where the scene comprises multiple rigidly moving objects, the flow vectors for each object can be expressed as a combination of ego motion and the object's own motion. For scenes undergoing non-rigid deformations, unconstrained flow vectors must be estimated, but these can still be regularized using local smoothness terms, for example, through the smoothness inductive bias of multi-layer perceptrons~\cite{li2020neural,li2023fast}.
+In cases where the scene comprises multiple rigidly moving objects (\cf \cref{fig:bg_multibody_sf}), the flow vectors for each object can be expressed as a combination of ego motion and the object's own motion. For scenes undergoing non-rigid deformations, unconstrained flow vectors must be estimated, but these can still be regularized using local smoothness terms, for example, through the smoothness inductive bias of multi-layer perceptrons~\cite{li2020neural,li2023fast}.
 
 
 \section{Neural Field in Visual Computing}
@@ -86,16 +110,15 @@ The decoders in these models are often parameterized as fully connected multilay
 To address this limitation, several works have proposed conditioning on local shape codes~\cite{peng2020convolutional, jiang2020local, genova2020local, chabra2020deep}. This approach allows implicit representations to scale up to large-scale indoor scenes. For example, the ConvOccNet~\cite{peng2020convolutional} uses a volume encoder and decoder. It first voxelizes the point cloud and extracts voxel features using a small PointNet, then aggregates global features using 3D UNet architectures. For a query coordinate, it interpolates local features from the 3D feature volume and uses a shared decoder to output the occupancy value. By conditioning on local features instead of a global shape code, these methods excel at preserving fine-grained details and generalizing to new scenes or shapes.
 % 3D data are often captured and represented in the form of point cloud or multi-view images. How to effectively reconstruct the underlying geometry remains a challenging problem, due to sparse surface sampling, noisy points, varying lighting condition, or small overlap among multi-view images. OccupancyNetwork~\cite{} 
 
-
 \begin{figure}[t]
     \centering
-    \includegraphics[width=1.0\columnwidth]{imgs/nerf.png}
-    \caption{Neural radiance field (NeRF). Image is taken from~\cite{mildenhall2020nerf}.}
-    \label{fig:3d_representation}
+    \includegraphics[width=1.0\columnwidth]{imgs/nerf.pdf}
+    \caption{\textbf{Novel view synthesis (NVS) and neural radiance field (NeRF) training}. Image is taken from~\cite{mildenhall2020nerf}. NVS involves reconstructing a 3D scene representation (in this case, a NeRF) from a set of posed input images, enabling the rendering of photorealistic new views from different viewpoints. NeRF represents the scene as a neural field that takes 5D input — consisting of $(x, y, z)$ coordinate and $(\theta, \phi)$ view direction — and outputs the density value ${\sigma}$ and color information at that query position throught function $\mathbf{F}_{\Theta}$, which is parameterized by fully-connected multi-layer perceptrons. $\mathbf{F}_{\Theta}$ is trained using volume rendering, which involves sampling equidistant points along each camera ray, querying their density and color values, and then applying alpha compositing to estimate the color. This procedure is fully differentiable and the model is supervised by the ground truth color using $L_2$ loss.}
+    \label{fig:nerf_illustration}
 \end{figure}
 
 \paragraph{Novel view synthesis}
-Given a set of posed images capturing a scene, novel view synthesis involves rendering views from new viewpoints of the same scene. This is an important task due to its numerous applications in fields such as AR/VR, movies, visual effects, virtual try-on, and more. At its core, it addresses a fundamental challenge: effectively representing and reconstructing the underlying 3D scene from images, enabling rendering photorealistic and view-consistent images when projected back to the sensor domain. Previous methods employ various representations such as meshes~\cite{buehler2001unstructured,debevec2023modeling}, depth map warping~\cite{chen2023view,shade1998layered}, multi-plane images~\cite{flynn2019deepview,srinivasan2019pushing}, and volumes~\cite{henzler2018single,Lombardi2019,curless1996volumetric}, each offering unique approaches to reconstruct and render novel views. However, these methods often suffer from limited representation capacity due to the discretization of space, or difficulties during shape optimization.
+Given a set of posed images capturing a scene, novel view synthesis involves rendering views from new viewpoints of the same scene (\cref{fig:nerf_illustration}). This is an important task due to its numerous applications in fields such as AR/VR, movies, visual effects, virtual try-on, and more. At its core, it addresses a fundamental challenge: effectively representing and reconstructing the underlying 3D scene from images, enabling rendering photorealistic and view-consistent images when projected back to the sensor domain. Previous methods employ various representations such as meshes~\cite{buehler2001unstructured,debevec2023modeling}, depth map warping~\cite{chen2023view,shade1998layered}, multi-plane images~\cite{flynn2019deepview,srinivasan2019pushing}, and volumes~\cite{henzler2018single,Lombardi2019,curless1996volumetric}, each offering unique approaches to reconstruct and render novel views. However, these methods often suffer from limited representation capacity due to the discretization of space, or difficulties during shape optimization.
 
 Neural Radiance Fields (NeRF)\cite{mildenhall2020nerf} provides an alternative solution to circumvent these problems. NeRF represents the 3D scene using a neural field parameterized by a Multi-Layer Perceptron (MLP) network that takes 5D input (3D spatial coordinates and 2D view direction) and outputs density and radiance values. To mitigate the spectral bias\cite{tancik2020fourier} of fully connected networks, which tend to only represent low-frequency signals, NeRF lifts spatial coordinates to high-dimensional Fourier features before feeding them to the MLP. The final pixel is rendered using volume rendering~\cite{levoy1990efficient,max1995optical}, which samples equidistant points along a ray, queries their individual density and radiance values, and integrates the transmitted radiance along the ray. This entire model is fully differentiable, with dense sampling of the 3D space resulting in stable scene optimization. 
 
@@ -105,14 +128,10 @@ NeRF~\cite{mildenhall2020nerf} is slow to optimize due to the dense ray sampling
 \begin{figure}[t]
     \centering
     \includegraphics[width=1.0\columnwidth]{imgs/lidar_nvs.pdf}
-    \caption{LiDAR data.}
-    \label{fig:3d_representation}
+    \caption{Illustration of three types of LiDAR responses: single return, two returns, and ray drop. The corresponding waveform profiles (radiant power $P$ versus distance to the sensor $\zeta$) are displayed in the second row. As depicted on the left, the two-return scenario typically occurs at "edges."}
+    \label{fig:bg_lidar}
 \end{figure}
 \paragraph{LiDAR novel view synthesis}
-Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor, such as one mounted on a vehicle. Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \textbf{SE(3)}$ and compromises $n_r$ rays. Every ray $\ray(\origin, \dir)$ records the following observations: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return. Here, the range refers to the distance from the sensor to the surface that reflected the ray, while intensity captures the radiometric information of the return signal. The ray drop value is set to 1 if the emitted ray is \textit{dropped}, meaning it either fails to hit any opaque surface or the return energy is too low, possibly due to absorption (\eg by water) or because the distance exceeds the sensing range. A ray records two returns when it barely interacts with the first surface, and the remaining energy continues to hit and reflect off a second surface. The goal is to reconstruct a scene representation that enables the rendering of a virtual LiDAR scan $\mathbf{X}_{tgt}$ from a novel sensor pose $\mathbf{T}_{tgt}$.
-
-
+Consider a set of LiDAR scans $\mathcal{X} = \{\mathbf{X}_v\}_{v=1}^{n_v}$ captured by a moving sensor, such as one mounted on a vehicle. Each scan $\mathbf{X}_v$ is associated with a sensor pose $\mathbf{T}_v \in \textbf{SE(3)}$ and compromises $n_r$ rays. Every ray $\ray(\origin, \dir)$ records the following observations: the range $\zeta_1$ and intensity $\intensity_1$ of the first return; a ray drop flag $\pdrop \in \{0, 1\}$; a two-return mask $\ptwo \in \{0,1\}$; and range $\zeta_2$ and intensity~$\intensity_2$ values of the second return. Here, the range refers to the distance from the sensor to the surface that reflected the ray, while intensity captures the radiometric information of the return signal. The ray drop value is set to 1 if the emitted ray is \textit{dropped}, meaning it either fails to hit any opaque surface or the return energy is too low, possibly due to absorption (\eg by water) or because the distance exceeds the sensing range. A ray records two returns when it barely interacts with the first surface, and the remaining energy continues to hit and reflect off a second surface (\cref{fig:bg_lidar}). The goal is to reconstruct a scene representation that enables the rendering of a virtual LiDAR scan $\mathbf{X}_{tgt}$ from a novel sensor pose $\mathbf{T}_{tgt}$.
 
 \paragraph{Relevance to my works} In ~\cref{chap:iccv23} and ~\cref{chap:cvpr24}, we utilize Instant-NGP as the backbone for our neural LiDAR field. In FEGR~\cite{wang2023neural}, we integrate both neural fields and meshes for inverse rendering tasks. For large-scale scene modeling in ImpliCity~\cite{stucker2022implicity}, we employ ConvOccNet~\cite{peng2020convolutional}. Additionally, in LivingScene~\cite{zhu2023living}, we use DeepSDF~\cite{park2019deepsdf} to model shapes.
-
-

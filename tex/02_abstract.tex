@@ -1,16 +1,16 @@
 %!TEX root = ../thesis.tex
 
-\chapter*{Abstract}
+\chapter{Abstract}
 \label{chap:abstract}
-\addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
+% \addcontentsline{toc}{chapter}{\nameref{chap:abstract}}
 A critical component of intelligent systems and robotics is the ability to accurately model and understand complex dynamic environments, enabling seamless and safe interactions with the real world. While significant progress has been made in image processing and language understanding domain, through training on massive high-quality datasets, obtaining similar datasets for robotics is more challenging, costly, and time-consuming. This thesis addresses the issue of data scarcity using data-driven simulation, aiming to expand existing datasets by simulating their authentic and complimentary variants, to facilitate the training and testing of intelligent systems, ensuring their safe deployment.
 
 This research presented in this thesis advances data-driven simulation of dynamic environments, particularly focusing on point cloud and LiDAR data, through two primary avenues: \textit{(i)} accurate estimation and efficient representation of scene dynamics, and \textit{(ii)} neural scene reconstruction and simulation. First, we address the challenge of pairwise point cloud registration by proposing a novel overlap attention block, enhancing the robustness of registering point cloud pairs with low overlap. Next, we tackle scene dynamics estimation from multiple LiDAR frames by decomposing the scene into a static background and dynamic objects, parameterizing the scene dynamics with a set of rigid transformations, and performing motion estimation at the instance level. This results in highly accurate and efficient motion representation. Furthermore, we explore neural fields as an alternative to explicit mesh or surfels reconstructions for LiDAR simulation, proposing to augment the neural scene representation with a physical sensor model to produce realistic LiDAR simulations. Finally, we integrate the proposed motion representation with neural scene reconstruction tailored for LiDAR simulation, creating a versatile neural simulator that enables various scene editing capabilities. These contributions provide essential building blocks for developing robust and reliable intelligent systems, offering improvements in data efficiency that have the potential to benefit a wide range of industries.
 
 
-\chapter*{Kurzfassung}
+\chapter{Kurzfassung}
 \label{chap:kurzfassung}
-\addcontentsline{toc}{chapter}{\nameref{chap:kurzfassung}}
+% \addcontentsline{toc}{chapter}{\nameref{chap:kurzfassung}}
 \foreignlanguage{german}{
 Eine entscheidende Komponente intelligenter Systeme und der Robotik ist die Fähigkeit, komplexe dynamische Umgebungen genau zu modellieren und zu verstehen, um nahtlose und sichere Interaktionen mit der realen Welt zu ermöglichen. Während im Bereich der Bildverarbeitung und des Sprachverständnisses durch das Training auf gigantischen, qualitativ hochwertigen Datensätzen erhebliche Fortschritte erzielt wurden, ist die Beschaffung ähnlicher Datensätze für die Robotik herausfordernder, kostspielig und zeitaufwändig. In dieser Dissertation wird das Problem der Datenknappheit durch datengestützte Simulation angegangen. Ziel ist es, bestehende Datensätze durch Simulation ihrer authentischen und ergänzenden Varianten zu erweitern, um das Training und Testen intelligenter Systeme zu erleichtern und ihren sicheren Einsatz zu gewährleisten.
 
